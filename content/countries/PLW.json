@@ -7,7 +7,7 @@
  "landmark": {
   "ar": "الجزر الصخرية",
   "en": "Rock Islands",
-  "zh": "洛克群岛"
+  "zh": "罗克群岛"
  },
  "languages": {
   "official": [
@@ -25,7 +25,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 6,
  "fact": "فيها «بحيرة قناديل البحر» التي يسبح فيها الناس لأن قناديلها تكاد لا تلسع."
 }

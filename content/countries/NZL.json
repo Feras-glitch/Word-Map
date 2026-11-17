@@ -11,13 +11,11 @@
  },
  "languages": {
   "official": [
+   "en",
    "mi",
    "nzs"
   ],
-  "defacto": [
-   "en"
-  ],
-  "officialNote": "الماورية ولغة الإشارة رسميتان بالقانون، والإنجليزية لغة أغلب الناس"
+  "officialNote": "أُقرّ في يوليو ٢٠٢٦ قانون يجعل الإنجليزية لغة رسمية بجانب الماورية ولغة الإشارة النيوزيلندية"
  },
  "sources": [
   {
@@ -25,10 +23,14 @@
    "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
   },
   {
+   "title": "برلمان نيوزيلندا: قانون اللغة الإنجليزية ٢٠٢٦",
+   "url": "https://www.legislation.govt.nz/bill/government/2026/198/en/latest/"
+  },
+  {
    "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 6
 }

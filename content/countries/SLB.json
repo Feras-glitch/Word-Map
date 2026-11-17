@@ -7,7 +7,7 @@
  "landmark": {
   "ar": "بحيرة ماروفو الساحلية",
   "en": "Marovo Lagoon",
-  "zh": "马罗沃泻湖"
+  "zh": "马罗沃潟湖"
  },
  "languages": {
   "official": [
@@ -27,7 +27,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 6,
  "fact": "تتكون من نحو ألف جزيرة."
 }

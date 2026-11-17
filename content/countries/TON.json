@@ -7,7 +7,7 @@
  "landmark": {
   "ar": "بوابة ماوي الحجرية",
   "en": "Haʻamonga ʻa Maui",
-  "zh": "毛伊三石门"
+  "zh": ""
  },
  "languages": {
   "official": [
@@ -25,7 +25,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 6,
- "fact": "المملكة الوحيدة بين جزر المحيط الهادئ."
+ "fact": "الدولة الوحيدة بين جزر المحيط الهادئ التي لها ملك من أهلها."
 }

@@ -7,7 +7,7 @@
  "landmark": {
   "ar": "خندق تو سوا البحري",
   "en": "To Sua Ocean Trench",
-  "zh": "托苏阿海沟"
+  "zh": ""
  },
  "languages": {
   "official": [
@@ -25,7 +25,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 6,
- "fact": "من أوائل الدول التي ترى شروق الشمس كل يوم."
+ "fact": "من أوائل الدول في العالم التي يبدأ فيها اليوم الجديد."
 }
