@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "لشبونة",
+  "en": "Lisbon",
+  "zh": "里斯本"
+ },
+ "landmark": {
+  "ar": "برج بيليم",
+  "en": "Belém Tower",
+  "zh": "贝伦塔"
+ },
+ "languages": {
+  "official": [
+   "pt"
+  ],
+  "regional": [
+   "mwl"
+  ],
+  "regionalNote": "الميرانديزية معترف بها رسمياً في منطقتها"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4
+}

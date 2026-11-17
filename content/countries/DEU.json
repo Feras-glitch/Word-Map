@@ -1,0 +1,29 @@
+{
+ "capital": {
+  "ar": "برلين",
+  "en": "Berlin",
+  "zh": "柏林"
+ },
+ "landmark": {
+  "ar": "بوابة براندنبورغ",
+  "en": "Brandenburg Gate",
+  "zh": "勃兰登堡门"
+ },
+ "languages": {
+  "official": [
+   "de"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4
+}

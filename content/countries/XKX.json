@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "بريشتينا",
+  "en": "Pristina",
+  "zh": "普里什蒂纳"
+ },
+ "landmark": {
+  "ar": "مدينة بريزرن القديمة",
+  "en": "Prizren",
+  "zh": "普里兹伦"
+ },
+ "languages": {
+  "official": [
+   "sq",
+   "sr"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4
+}

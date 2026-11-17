@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "بلغراد",
+  "en": "Belgrade",
+  "zh": "贝尔格莱德"
+ },
+ "landmark": {
+  "ar": "قلعة بلغراد",
+  "en": "Belgrade Fortress",
+  "zh": "贝尔格莱德要塞"
+ },
+ "languages": {
+  "official": [
+   "sr"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4,
+ "fact": "في عاصمتها بلغراد يلتقي نهرا الدانوب والسافا."
+}

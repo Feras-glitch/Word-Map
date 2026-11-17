@@ -51,8 +51,15 @@ export function shuffle(a) {
 export const pick = (a, n) => shuffle(a).slice(0, n);
 
 export function search(q) {
-  q = q.trim().toLowerCase().replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي');
+  const norm = (s) => (s || '').toLowerCase().replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/^ال/, '');
+  q = norm(q.trim());
   if (!q) return [];
-  const norm = (s) => (s || '').toLowerCase().replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي');
-  return countries.filter((c) => (norm(c.ar).includes(q) || norm(c.en).includes(q) || (c.zh || '').includes(q) || norm(c.capAr).includes(q))).slice(0, 8);
+  const score = (c) => {
+    const names = [c.ar, c.en, c.capAr].map(norm);
+    if (names.some((n) => n === q)) return 0;
+    if (names.some((n) => n.startsWith(q))) return 1;
+    if (names.some((n) => n.includes(q)) || (c.zh || '').includes(q)) return 2;
+    return 9;
+  };
+  return countries.map((c) => [score(c), c]).filter(([s]) => s < 9).sort((a, b) => a[0] - b[0] || (a[1].kind === 'state' ? -1 : 1)).slice(0, 8).map(([, c]) => c);
 }

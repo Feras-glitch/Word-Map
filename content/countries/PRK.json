@@ -1,0 +1,29 @@
+{
+ "capital": {
+  "ar": "بيونغ يانغ",
+  "en": "Pyongyang",
+  "zh": "平壤"
+ },
+ "landmark": {
+  "ar": "جبل بايكتو",
+  "en": "Paektu Mountain",
+  "zh": "长白山"
+ },
+ "languages": {
+  "official": [
+   "ko"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 3
+}

@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "مانيلا",
+  "en": "Manila",
+  "zh": "马尼拉"
+ },
+ "landmark": {
+  "ar": "تلال الشوكولاتة",
+  "en": "Chocolate Hills",
+  "zh": "巧克力山"
+ },
+ "languages": {
+  "official": [
+   "fil",
+   "en"
+  ],
+  "widespread": [
+   "ceb"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 3,
+ "fact": "تتكون من أكثر من ٧٠٠٠ جزيرة."
+}

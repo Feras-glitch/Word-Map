@@ -1,0 +1,35 @@
+{
+ "capital": {
+  "ar": "مدريد",
+  "en": "Madrid",
+  "zh": "马德里"
+ },
+ "landmark": {
+  "ar": "قصر الحمراء في غرناطة",
+  "en": "Alhambra",
+  "zh": "阿尔罕布拉宫"
+ },
+ "languages": {
+  "official": [
+   "es"
+  ],
+  "regional": [
+   "ca",
+   "gl",
+   "eu"
+  ],
+  "regionalNote": "رسمية في أقاليمها: كتالونيا وغاليسيا وبلاد الباسك وغيرها"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4
+}

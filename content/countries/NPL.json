@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "كاتماندو",
+  "en": "Kathmandu",
+  "zh": "加德满都"
+ },
+ "landmark": {
+  "ar": "جبل إيفرست",
+  "en": "Mount Everest",
+  "zh": "珠穆朗玛峰"
+ },
+ "languages": {
+  "official": [
+   "ne"
+  ],
+  "widespread": [
+   "mai",
+   "bho"
+  ],
+  "widespreadNote": "يسمح الدستور لكل ولاية أن تعتمد لغات رسمية إضافية"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 3
+}

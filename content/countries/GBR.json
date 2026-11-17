@@ -1,0 +1,36 @@
+{
+ "capital": {
+  "ar": "لندن",
+  "en": "London",
+  "zh": "伦敦"
+ },
+ "landmark": {
+  "ar": "ساعة بيغ بن",
+  "en": "Big Ben",
+  "zh": "大本钟"
+ },
+ "languages": {
+  "defacto": [
+   "en"
+  ],
+  "officialNote": "لا ينص القانون على لغة رسمية للمملكة كلها، والإنجليزية لغة الدولة",
+  "regional": [
+   "cy",
+   "gd",
+   "ga"
+  ],
+  "regionalNote": "الويلزية رسمية في ويلز، والغيلية الإسكتلندية في إسكتلندا، والأيرلندية في أيرلندا الشمالية"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4
+}

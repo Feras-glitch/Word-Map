@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "براغ",
+  "en": "Prague",
+  "zh": "布拉格"
+ },
+ "landmark": {
+  "ar": "جسر تشارلز",
+  "en": "Charles Bridge",
+  "zh": "查理大桥"
+ },
+ "languages": {
+  "official": [
+   "cs"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4,
+ "fact": "في براغ ساعة فلكية عمرها أكثر من ٦٠٠ سنة وما زالت تعمل."
+}

@@ -5,9 +5,9 @@
   "zh": "马累"
  },
  "landmark": {
-  "ar": "الجزر المرجانية",
-  "en": "Coral atolls",
-  "zh": "珊瑚环礁"
+  "ar": "مسجد الجمعة القديم في ماليه",
+  "en": "Malé Friday Mosque (Hukuru Miskiy)",
+  "zh": "马累星期五清真寺"
  },
  "languages": {
   "official": [
@@ -24,6 +24,6 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 2
 }

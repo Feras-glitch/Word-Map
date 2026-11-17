@@ -1,0 +1,29 @@
+{
+ "capital": {
+  "ar": "بانكوك",
+  "en": "Bangkok",
+  "zh": "曼谷"
+ },
+ "landmark": {
+  "ar": "القصر الكبير في بانكوك",
+  "en": "Grand Palace",
+  "zh": "大皇宫"
+ },
+ "languages": {
+  "official": [
+   "th"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 3
+}

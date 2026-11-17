@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "أندورا لا فيلا",
+  "en": "Andorra la Vella",
+  "zh": "安道尔城"
+ },
+ "landmark": {
+  "ar": "جبال البرانس",
+  "en": "Pyrenees",
+  "zh": "比利牛斯山脉"
+ },
+ "languages": {
+  "official": [
+   "ca"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4,
+ "fact": "دولة صغيرة بين جبال البرانس، يحكمها أميران معاً: رئيس فرنسا وأسقف أورغيل في إسبانيا."
+}

@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "وارسو",
+  "en": "Warsaw",
+  "zh": "华沙"
+ },
+ "landmark": {
+  "ar": "مدينة كراكوف القديمة",
+  "en": "Kraków Old Town",
+  "zh": "克拉科夫老城"
+ },
+ "languages": {
+  "official": [
+   "pl"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4,
+ "fact": "منها العالمة ماري كوري، أول من فاز بجائزة نوبل مرتين."
+}

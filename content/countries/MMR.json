@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "نايبيداو",
+  "en": "Naypyidaw",
+  "zh": "内比都"
+ },
+ "landmark": {
+  "ar": "معبد شويداغون",
+  "en": "Shwedagon Pagoda",
+  "zh": "仰光大金塔"
+ },
+ "languages": {
+  "official": [
+   "my"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 3,
+ "fact": "في مدينة يانغون معبد شويداغون المغطى بالذهب."
+}

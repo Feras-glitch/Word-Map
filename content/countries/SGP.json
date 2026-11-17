@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "سنغافورة",
+  "en": "Singapore",
+  "zh": "新加坡"
+ },
+ "landmark": {
+  "ar": "تمثال الأسد البحري (ميرلايون)",
+  "en": "Merlion",
+  "zh": "鱼尾狮"
+ },
+ "languages": {
+  "official": [
+   "ms",
+   "en",
+   "zh",
+   "ta"
+  ],
+  "officialNote": "الملايوية هي «اللغة الوطنية»، والإنجليزية لغة العمل والتعليم"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 3,
+ "fact": "مدينة ودولة في الوقت نفسه."
+}

@@ -1,0 +1,35 @@
+{
+ "capital": {
+  "ar": "موسكو",
+  "en": "Moscow",
+  "zh": "莫斯科"
+ },
+ "landmark": {
+  "ar": "الكرملين في موسكو",
+  "en": "Moscow Kremlin",
+  "zh": "莫斯科克里姆林宫"
+ },
+ "languages": {
+  "official": [
+   "ru"
+  ],
+  "regionalNote": "ولكل جمهورية داخل روسيا الحق في لغة رسمية خاصة بها، مثل التتارية والشيشانية والبشكيرية",
+  "regional": [
+   "tt",
+   "ce",
+   "ba"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4
+}

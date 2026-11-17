@@ -1,0 +1,32 @@
+{
+ "capital": {
+  "ar": "دبلن",
+  "en": "Dublin",
+  "zh": "都柏林"
+ },
+ "landmark": {
+  "ar": "منحدرات موهير",
+  "en": "Cliffs of Moher",
+  "zh": "莫赫悬崖"
+ },
+ "languages": {
+  "official": [
+   "ga",
+   "en"
+  ],
+  "officialNote": "الأيرلندية «اللغة الوطنية والرسمية الأولى»، والإنجليزية رسمية ثانية، لكن أغلب الناس يتكلمون الإنجليزية"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4,
+ "fact": "تسمى «الجزيرة الزمردية» لخضرة أرضها."
+}

@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "بوخارست",
+  "en": "Bucharest",
+  "zh": "布加勒斯特"
+ },
+ "landmark": {
+  "ar": "قلعة بران",
+  "en": "Bran Castle",
+  "zh": "布朗城堡"
+ },
+ "languages": {
+  "official": [
+   "ro"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4,
+ "fact": "يمر فيها نهر الدانوب ويصب في البحر الأسود."
+}

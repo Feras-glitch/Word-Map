@@ -11,13 +11,12 @@
  },
  "languages": {
   "official": [
-   "fr"
-  ],
-  "widespread": [
+   "fr",
    "ff",
    "emk",
    "sus"
-  ]
+  ],
+  "officialNote": "منذ دستور سبتمبر ٢٠٢٥ صارت اللغات الوطنية رسمية بجانب الفرنسية، وهذه أكبرها"
  },
  "sources": [
   {
@@ -25,11 +24,15 @@
    "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
   },
   {
+   "title": "دستور غينيا ٢٠٢٥: اللغات الوطنية رسمية بجانب الفرنسية",
+   "url": "https://www.irsem.fr/storage/file_manager_files/2025/08/bs-84-senou-dumartin.pdf"
+  },
+  {
    "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 2,
  "fact": "تنبع منها أنهار كبيرة مثل النيجر والسنغال، فتسمى «خزان مياه غرب أفريقيا»."
 }

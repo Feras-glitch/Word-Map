@@ -1,0 +1,31 @@
+{
+ "capital": {
+  "ar": "ديلي",
+  "en": "Dili",
+  "zh": "帝力"
+ },
+ "landmark": {
+  "ar": "جزيرة أتاورو",
+  "en": "Atauro Island",
+  "zh": "阿陶罗岛"
+ },
+ "languages": {
+  "official": [
+   "tet",
+   "pt"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 3,
+ "fact": "من أحدث دول العالم، نالت استقلالها عام ٢٠٠٢."
+}

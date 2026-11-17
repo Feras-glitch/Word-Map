@@ -1,0 +1,39 @@
+{
+ "capital": {
+  "ar": "سري جاياواردنابورا كوتي",
+  "en": "Sri Jayawardenepura Kotte",
+  "zh": "斯里贾亚瓦德纳普拉科特"
+ },
+ "landmark": {
+  "ar": "قمة آدم",
+  "en": "Adam's Peak",
+  "zh": "亚当峰"
+ },
+ "languages": {
+  "official": [
+   "si",
+   "ta"
+  ],
+  "widespread": [
+   "en"
+  ],
+  "widespreadNote": "الإنجليزية في الدستور «لغة الربط» بين الناس"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "بريتانيكا: سري جاياواردنابورا كوتي العاصمة التشريعية",
+   "url": "https://www.britannica.com/place/Sri-Jayewardenepura-Kotte"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 3,
+ "capitalNote": "كولومبو أكبر مدنها وعاصمتها التجارية"
+}

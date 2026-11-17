@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "أمستردام",
+  "en": "Amsterdam",
+  "zh": "阿姆斯特丹"
+ },
+ "landmark": {
+  "ar": "طواحين كيندرديك",
+  "en": "Kinderdijk windmills",
+  "zh": "小孩堤防风车村"
+ },
+ "languages": {
+  "official": [
+   "nl"
+  ],
+  "regional": [
+   "fy"
+  ],
+  "regionalNote": "الفريزية رسمية في إقليم فريزلاند"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4
+}

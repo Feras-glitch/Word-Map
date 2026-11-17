@@ -1,0 +1,35 @@
+{
+ "capital": {
+  "ar": "روما",
+  "en": "Rome",
+  "zh": "罗马"
+ },
+ "landmark": {
+  "ar": "برج بيزا المائل",
+  "en": "Leaning Tower of Pisa",
+  "zh": "比萨斜塔"
+ },
+ "languages": {
+  "official": [
+   "it"
+  ],
+  "regional": [
+   "de",
+   "fr",
+   "sl"
+  ],
+  "regionalNote": "رسمية في بعض الأقاليم على الحدود"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4
+}

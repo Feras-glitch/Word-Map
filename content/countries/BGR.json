@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "صوفيا",
+  "en": "Sofia",
+  "zh": "索非亚"
+ },
+ "landmark": {
+  "ar": "دير ريلا",
+  "en": "Rila Monastery",
+  "zh": "里拉修道院"
+ },
+ "languages": {
+  "official": [
+   "bg"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4,
+ "fact": "من أكبر منتجي زيت الورد في العالم."
+}

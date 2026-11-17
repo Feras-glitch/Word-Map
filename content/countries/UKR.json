@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "كييف",
+  "en": "Kyiv",
+  "zh": "基辅"
+ },
+ "landmark": {
+  "ar": "جبال الكاربات",
+  "en": "Carpathian Mountains",
+  "zh": "喀尔巴阡山脉"
+ },
+ "languages": {
+  "official": [
+   "uk"
+  ],
+  "widespread": [
+   "ru"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4,
+ "fact": "أكبر دولة تقع أرضها كلها في قارة أوروبا."
+}

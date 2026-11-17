@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "بنوم بنه",
+  "en": "Phnom Penh",
+  "zh": "金边"
+ },
+ "landmark": {
+  "ar": "معبد أنغكور وات",
+  "en": "Angkor Wat",
+  "zh": "吴哥窟"
+ },
+ "languages": {
+  "official": [
+   "km"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 3,
+ "fact": "على علمها صورة معبد أنغكور وات، أكبر معبد في العالم."
+}

@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "الفاتيكان",
+  "en": "Vatican City",
+  "zh": "梵蒂冈城"
+ },
+ "landmark": {
+  "ar": "ساحة القديس بطرس",
+  "en": "St. Peter's Square",
+  "zh": "圣彼得广场"
+ },
+ "languages": {
+  "official": [
+   "it"
+  ],
+  "officialNote": "الإيطالية لغة الدولة، واللاتينية لغة الكنيسة الرسمية"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4
+}

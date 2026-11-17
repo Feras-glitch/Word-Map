@@ -1,0 +1,37 @@
+{
+ "capital": {
+  "ar": "كيشيناو",
+  "en": "Chișinău",
+  "zh": "基希讷乌"
+ },
+ "landmark": {
+  "ar": "دير أورهيول فيكي",
+  "en": "Orheiul Vechi",
+  "zh": "旧奥尔海伊"
+ },
+ "languages": {
+  "official": [
+   "ro"
+  ],
+  "regional": [
+   "gag"
+  ],
+  "regionalNote": "الغاغاوزية رسمية في إقليم غاغاوزيا",
+  "widespread": [
+   "ru"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4,
+ "fact": "ليس لها بحر، ومشهورة بكروم العنب."
+}

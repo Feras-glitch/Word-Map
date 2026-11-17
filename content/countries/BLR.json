@@ -1,0 +1,31 @@
+{
+ "capital": {
+  "ar": "مينسك",
+  "en": "Minsk",
+  "zh": "明斯克"
+ },
+ "landmark": {
+  "ar": "قلعة مير",
+  "en": "Mir Castle",
+  "zh": "米尔城堡"
+ },
+ "languages": {
+  "official": [
+   "be",
+   "ru"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4,
+ "fact": "تغطي الغابات نحو ٤٠٪ من أرضها، ويعيش فيها البيسون الأوروبي."
+}

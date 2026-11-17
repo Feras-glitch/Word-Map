@@ -1,0 +1,36 @@
+{
+ "capital": {
+  "ar": "فيينا",
+  "en": "Vienna",
+  "zh": "维也纳"
+ },
+ "landmark": {
+  "ar": "قصر شونبرون",
+  "en": "Schönbrunn Palace",
+  "zh": "美泉宫"
+ },
+ "languages": {
+  "official": [
+   "de"
+  ],
+  "regional": [
+   "hr",
+   "sl",
+   "hu"
+  ],
+  "regionalNote": "رسمية في بعض الولايات بجانب الألمانية"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4,
+ "fact": "يمر نهر الدانوب بعاصمتها فيينا، واشتهرت بالموسيقى."
+}

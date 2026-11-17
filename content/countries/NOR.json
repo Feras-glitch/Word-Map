@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "أوسلو",
+  "en": "Oslo",
+  "zh": "奥斯陆"
+ },
+ "landmark": {
+  "ar": "مضيق جيرانغر",
+  "en": "Geirangerfjord",
+  "zh": "盖朗厄尔峡湾"
+ },
+ "languages": {
+  "official": [
+   "no"
+  ],
+  "regional": [
+   "se"
+  ],
+  "regionalNote": "لغة السامي رسمية في مناطق أهلها في الشمال"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4
+}

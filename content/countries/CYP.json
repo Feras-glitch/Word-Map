@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "نيقوسيا",
+  "en": "Nicosia",
+  "zh": "尼科西亚"
+ },
+ "landmark": {
+  "ar": "جبال ترودوس",
+  "en": "Troodos Mountains",
+  "zh": "特罗多斯山脉"
+ },
+ "languages": {
+  "official": [
+   "el",
+   "tr"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 3
+}

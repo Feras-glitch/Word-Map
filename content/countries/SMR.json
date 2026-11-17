@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "سان مارينو",
+  "en": "City of San Marino",
+  "zh": "圣马力诺市"
+ },
+ "landmark": {
+  "ar": "أبراج سان مارينو الثلاثة",
+  "en": "Three Towers of San Marino",
+  "zh": "圣马力诺三塔"
+ },
+ "languages": {
+  "official": [
+   "it"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4,
+ "fact": "من أقدم الجمهوريات في العالم، وتحيط بها إيطاليا من كل الجهات."
+}

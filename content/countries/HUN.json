@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "بودابست",
+  "en": "Budapest",
+  "zh": "布达佩斯"
+ },
+ "landmark": {
+  "ar": "مبنى البرلمان المجري",
+  "en": "Hungarian Parliament Building",
+  "zh": "匈牙利国会大厦"
+ },
+ "languages": {
+  "official": [
+   "hu"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 4,
+ "fact": "فيها بحيرة بالاتون، أكبر بحيرة في وسط أوروبا."
+}

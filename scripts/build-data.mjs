@@ -103,7 +103,7 @@ for (const c of out) {
   if (c.langs.others == null && eth[c.id] != null) c.langs.others = eth[c.id];
   if (!d.currency) d.currency = currentCurrency(c.f.toUpperCase());
   if (d.review) c.review = d.review;
-  for (const k of ['official', 'regional', 'widespread', 'working', 'second']) for (const l of d.languages[k] || []) usedLangs.add(l);
+  for (const k of ['official', 'regional', 'widespread', 'working', 'second', 'defacto']) for (const l of d.languages[k] || []) usedLangs.add(l);
   if (d.currency) {
     const code = typeof d.currency === 'string' ? d.currency : null;
     c.cur = code ? { code, ar: curFix[code]?.ar || curNames.ar[code].displayName, en: curNames.en[code].displayName, zh: curNames.zh[code].displayName } : d.currency;

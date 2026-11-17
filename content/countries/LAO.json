@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "فيينتيان",
+  "en": "Vientiane",
+  "zh": "万象"
+ },
+ "landmark": {
+  "ar": "معبد تات لوانغ",
+  "en": "Pha That Luang",
+  "zh": "塔銮"
+ },
+ "languages": {
+  "official": [
+   "lo"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 3,
+ "fact": "الدولة الوحيدة في جنوب شرق آسيا التي ليس لها بحر."
+}
