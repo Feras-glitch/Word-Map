@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "ياموسوكرو",
+  "en": "Yamoussoukro",
+  "zh": "亚穆苏克罗"
+ },
+ "landmark": {
+  "ar": "منتزه تاي الوطني",
+  "en": "Taï National Park",
+  "zh": "塔伊国家公园"
+ },
+ "languages": {
+  "official": [
+   "fr"
+  ],
+  "widespread": [
+   "dyu",
+   "bci"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2,
+ "fact": "من أكبر منتجي الكاكاو في العالم."
+}

@@ -1,0 +1,41 @@
+{
+ "capital": {
+  "ar": "واغادوغو",
+  "en": "Ouagadougou",
+  "zh": "瓦加杜古"
+ },
+ "landmark": {
+  "ar": "أطلال لوروبيني",
+  "en": "Ruins of Loropéni",
+  "zh": "洛罗佩尼遗址"
+ },
+ "languages": {
+  "official": [
+   "mos",
+   "dyu",
+   "ff"
+  ],
+  "officialNote": "منذ تعديل الدستور (ديسمبر ٢٠٢٣) صارت اللغات الوطنية هي الرسمية، وهذه أكبرها",
+  "working": [
+   "fr",
+   "en"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "تعديل دستور بوركينا فاسو: اللغات الوطنية رسمية والفرنسية والإنجليزية لغتا عمل",
+   "url": "https://constitutionnet.org/node/19357"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2,
+ "fact": "اسمها يعني «أرض الناس الشرفاء»."
+}

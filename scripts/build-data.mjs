@@ -11,7 +11,7 @@ import { presimplify, simplify, quantile } from 'topojson-simplify';
 import { geoNaturalEarth1, geoPath, geoCentroid } from 'd3-geo';
 import { pinyin, customPinyin } from 'pinyin-pro';
 // قراءات صحيحة لحروف متعددة النطق في أسماء الأعلام
-customPinyin({ 藏语: 'zàng yǔ', 西藏: 'xī zàng', 什: 'shí' });
+customPinyin({ 藏语: 'zàng yǔ', 西藏: 'xī zàng', 什: 'shí', 的黎波里: 'dì lí bō lǐ', 麦纳麦: 'mài nà mài', 柏柏尔: 'bó bó ěr' });
 import * as C from './content.mjs';
 import { policy } from './policy.mjs';
 
@@ -82,19 +82,28 @@ const curNames = Object.fromEntries(['ar', 'en', 'zh'].map((l) => [l, JSON.parse
 const territory = JSON.parse(fs.readFileSync(require.resolve('cldr-core/supplemental/territoryInfo.json'), 'utf8')).supplemental.territoryInfo;
 const lexicon = JSON.parse(fs.readFileSync(path.join(root, 'content/languages.json'), 'utf8'));
 const curFix = { INR: { ar: 'روبية هندية' } };
+const eth = JSON.parse(fs.readFileSync(path.join(root, 'content/ethnologue-2019.json'), 'utf8'));
+const curData = JSON.parse(fs.readFileSync(require.resolve('cldr-core/supplemental/currencyData.json'), 'utf8')).supplemental.currencyData.region;
+const currentCurrency = (cc2) => (curData[cc2] || []).map((o) => Object.entries(o)[0]).filter(([, v]) => !v._to && v._tender !== 'false').map(([k]) => k)[0];
 const usedLangs = new Set();
 const cdir = path.join(root, 'content/countries');
+let pendingCount = 0;
 for (const c of out) {
   const f = path.join(cdir, c.id + '.json');
   if (!fs.existsSync(f)) continue;
   const d = JSON.parse(fs.readFileSync(f, 'utf8'));
+  // بوابة الجودة: المحتوى الذي لم يُراجَع لا يدخل التطبيق إلا في وضع المعاينة
+  if (d.review === 'pending' && !process.env.PREVIEW) { pendingCount++; continue; }
   c.v2 = true;
   c.cap3 = d.capital; c.capAr = d.capital.ar; c.capEn = d.capital.en;
   if (d.capitalNote) c.capNote = d.capitalNote;
   if (d.landmark) { c.lm3 = d.landmark; c.landmark = d.landmark.ar; }
   if (d.fact) c.fact = d.fact;
   c.langs = d.languages;
-  for (const k of ['official', 'regional', 'widespread']) for (const l of d.languages[k] || []) usedLangs.add(l);
+  if (c.langs.others == null && eth[c.id] != null) c.langs.others = eth[c.id];
+  if (!d.currency) d.currency = currentCurrency(c.f.toUpperCase());
+  if (d.review) c.review = d.review;
+  for (const k of ['official', 'regional', 'widespread', 'working', 'second']) for (const l of d.languages[k] || []) usedLangs.add(l);
   if (d.currency) {
     const code = typeof d.currency === 'string' ? d.currency : null;
     c.cur = code ? { code, ar: curFix[code]?.ar || curNames.ar[code].displayName, en: curNames.en[code].displayName, zh: curNames.zh[code].displayName } : d.currency;
@@ -204,7 +213,7 @@ for (const c of out) {
 }
 
 const states = out.filter((c) => c.kind === 'state');
-console.log(`محتوى موثّق: ${out.filter((c) => c.v2).length} دولة | لغات: ${Object.keys(languages).length}`);
+console.log(`محتوى موثّق: ${out.filter((c) => c.v2).length} دولة | بانتظار المراجعة: ${pendingCount} | لغات: ${Object.keys(languages).length}`);
 console.log(`دول: ${states.length} | أقاليم: ${out.length - states.length} | أشكال: ${shapes.length}`);
 console.log('بلا شكل على الخريطة (نقطة):', out.filter((c) => c.dotOnly).map((c) => c.id).join(' '));
 console.log('أشكال غير مطابقة:', unmatched.join(', ') || '—');

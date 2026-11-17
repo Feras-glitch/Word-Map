@@ -1,0 +1,35 @@
+{
+ "capital": {
+  "ar": "دوشنبه",
+  "en": "Dushanbe",
+  "zh": "杜尚别"
+ },
+ "landmark": {
+  "ar": "جبال البامير",
+  "en": "Pamir Mountains",
+  "zh": "帕米尔高原"
+ },
+ "languages": {
+  "official": [
+   "tg"
+  ],
+  "widespread": [
+   "ru",
+   "uz"
+  ],
+  "widespreadNote": "الروسية في الدستور «لغة التواصل بين القوميات»"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2,
+ "fact": "أكثر من ٩٠٪ من أرضها جبال، ومنها جبال البامير التي تسمى «سقف العالم»."
+}

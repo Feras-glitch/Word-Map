@@ -1,0 +1,32 @@
+{
+ "capital": {
+  "ar": "بشكيك",
+  "en": "Bishkek",
+  "zh": "比什凯克"
+ },
+ "landmark": {
+  "ar": "بحيرة إيسيك كول",
+  "en": "Issyk-Kul",
+  "zh": "伊塞克湖"
+ },
+ "languages": {
+  "official": [
+   "ky",
+   "ru"
+  ],
+  "officialNote": "القيرغيزية «لغة الدولة»، والروسية لغة رسمية"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2,
+ "fact": "أكثر من ٩٠٪ من أرضها جبال."
+}

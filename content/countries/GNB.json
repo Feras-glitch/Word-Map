@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "بيساو",
+  "en": "Bissau",
+  "zh": "比绍"
+ },
+ "landmark": {
+  "ar": "جزر بيجاغوس",
+  "en": "Bijagós Archipelago",
+  "zh": "比热戈斯群岛"
+ },
+ "languages": {
+  "official": [
+   "pt"
+  ],
+  "widespread": [
+   "pov"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2,
+ "fact": "فيها أرخبيل بيجاغوس، وهو عشرات الجزر تعيش حولها السلاحف البحرية."
+}

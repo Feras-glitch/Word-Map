@@ -1,0 +1,35 @@
+{
+ "capital": {
+  "ar": "نواكشوط",
+  "en": "Nouakchott",
+  "zh": "努瓦克肖特"
+ },
+ "landmark": {
+  "ar": "مدينة شنقيط القديمة",
+  "en": "Chinguetti",
+  "zh": "欣盖提古城"
+ },
+ "languages": {
+  "official": [
+   "ar"
+  ],
+  "widespread": [
+   "ff",
+   "snk",
+   "wo"
+  ],
+  "widespreadNote": "وهي لغات وطنية في الدستور"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "reviewed-1",
+ "batch": 1
+}

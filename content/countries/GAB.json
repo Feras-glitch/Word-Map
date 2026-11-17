@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "ليبرفيل",
+  "en": "Libreville",
+  "zh": "利伯维尔"
+ },
+ "landmark": {
+  "ar": "منتزه لوبي الوطني",
+  "en": "Lopé National Park",
+  "zh": "洛佩国家公园"
+ },
+ "languages": {
+  "official": [
+   "fr"
+  ],
+  "widespread": [
+   "fan"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2,
+ "fact": "تغطي الغابات الاستوائية أغلب أرضها."
+}

@@ -1,0 +1,35 @@
+{
+ "capital": {
+  "ar": "جيبوتي",
+  "en": "Djibouti",
+  "zh": "吉布提市"
+ },
+ "landmark": {
+  "ar": "بحيرة عسل",
+  "en": "Lake Assal",
+  "zh": "阿萨勒湖"
+ },
+ "languages": {
+  "official": [
+   "ar",
+   "fr"
+  ],
+  "widespread": [
+   "so",
+   "aa"
+  ],
+  "widespreadNote": "الصومالية والعفرية لغتا أغلب السكان"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "reviewed-1",
+ "batch": 1
+}

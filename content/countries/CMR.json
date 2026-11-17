@@ -1,0 +1,35 @@
+{
+ "capital": {
+  "ar": "ياوندي",
+  "en": "Yaoundé",
+  "zh": "雅温得"
+ },
+ "landmark": {
+  "ar": "جبل الكاميرون",
+  "en": "Mount Cameroon",
+  "zh": "喀麦隆火山"
+ },
+ "languages": {
+  "official": [
+   "fr",
+   "en"
+  ],
+  "widespread": [
+   "ff",
+   "ewo"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2,
+ "fact": "تسمى «أفريقيا الصغيرة» لأن فيها صحارى وغابات وجبالاً وشواطئ، مثل القارة كلها."
+}

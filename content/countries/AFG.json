@@ -1,0 +1,35 @@
+{
+ "capital": {
+  "ar": "كابل",
+  "en": "Kabul",
+  "zh": "喀布尔"
+ },
+ "landmark": {
+  "ar": "المسجد الأزرق في مزار شريف",
+  "en": "Blue Mosque of Mazar-i-Sharif",
+  "zh": "马扎里沙里夫蓝色清真寺"
+ },
+ "languages": {
+  "official": [
+   "ps",
+   "prs"
+  ],
+  "regional": [
+   "uz",
+   "tk"
+  ],
+  "regionalNote": "بنص دستور ٢٠٠٤ تكون الأوزبكية والتركمانية وغيرهما لغة رسمية ثالثة في المناطق التي يتكلمها أغلب أهلها"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2
+}

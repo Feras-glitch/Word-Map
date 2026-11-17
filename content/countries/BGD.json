@@ -1,0 +1,29 @@
+{
+ "capital": {
+  "ar": "دكا",
+  "en": "Dhaka",
+  "zh": "达卡"
+ },
+ "landmark": {
+  "ar": "غابات سونداربان",
+  "en": "Sundarbans",
+  "zh": "孙德尔本斯"
+ },
+ "languages": {
+  "official": [
+   "bn"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2
+}

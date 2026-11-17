@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "الرباط",
+  "en": "Rabat",
+  "zh": "拉巴特"
+ },
+ "landmark": {
+  "ar": "جامع القرويين في فاس",
+  "en": "Al-Qarawiyyin Mosque",
+  "zh": "卡鲁因清真寺"
+ },
+ "languages": {
+  "official": [
+   "ar",
+   "ber"
+  ],
+  "widespread": [
+   "fr"
+  ],
+  "widespreadNote": "الفرنسية لغة أجنبية واسعة الاستعمال في التعليم والإدارة"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "reviewed-1",
+ "batch": 1
+}

@@ -1,0 +1,41 @@
+{
+ "capital": {
+  "ar": "باماكو",
+  "en": "Bamako",
+  "zh": "巴马科"
+ },
+ "landmark": {
+  "ar": "جامع جينيه الكبير",
+  "en": "Great Mosque of Djenné",
+  "zh": "杰内大清真寺"
+ },
+ "languages": {
+  "official": [
+   "bm",
+   "ff",
+   "son",
+   "snk",
+   "tmh"
+  ],
+  "officialNote": "منذ دستور ٢٠٢٣ صارت ١٣ لغة وطنية رسمية، وهذه أشهرها، والبمبارية يتكلمها أغلب السكان",
+  "working": [
+   "fr"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "دستور مالي ٢٠٢٣: ١٣ لغة وطنية رسمية والفرنسية لغة عمل",
+   "url": "https://aa.com.tr/en/africa/mali-drops-french-as-its-official-language/2953490"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2
+}

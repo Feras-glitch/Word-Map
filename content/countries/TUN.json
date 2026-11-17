@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "تونس",
+  "en": "Tunis",
+  "zh": "突尼斯市"
+ },
+ "landmark": {
+  "ar": "جامع عقبة بن نافع في القيروان",
+  "en": "Great Mosque of Kairouan",
+  "zh": "凯鲁万大清真寺"
+ },
+ "languages": {
+  "official": [
+   "ar"
+  ],
+  "widespread": [
+   "fr"
+  ],
+  "widespreadNote": "الفرنسية لغة أجنبية واسعة الاستعمال في التعليم والإدارة"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "reviewed-1",
+ "batch": 1
+}

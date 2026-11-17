@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "الجزائر",
+  "en": "Algiers",
+  "zh": "阿尔及尔"
+ },
+ "landmark": {
+  "ar": "مقام الشهيد",
+  "en": "Maqam Echahid (Martyrs' Memorial)",
+  "zh": "阿尔及尔烈士纪念碑"
+ },
+ "languages": {
+  "official": [
+   "ar",
+   "ber"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "reviewed-1",
+ "batch": 1
+}

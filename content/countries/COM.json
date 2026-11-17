@@ -1,0 +1,36 @@
+{
+ "capital": {
+  "ar": "موروني",
+  "en": "Moroni",
+  "zh": "莫罗尼"
+ },
+ "landmark": {
+  "ar": "بركان كارثالا",
+  "en": "Mount Karthala",
+  "zh": "卡尔塔拉火山"
+ },
+ "languages": {
+  "official": [
+   "zdj",
+   "ar",
+   "fr"
+  ],
+  "officialNote": "القمرية لغة أغلب السكان، ولكل جزيرة لهجتها"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "لغات جزر القمر الرسمية وتحية Jeje",
+   "url": "https://www.intrepidtravel.com/comoros-islands/what-language-is-spoken-on-the-comoros-islands"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "reviewed-1",
+ "batch": 1
+}

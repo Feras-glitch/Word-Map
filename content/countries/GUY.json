@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "جورجتاون",
+  "en": "Georgetown",
+  "zh": "乔治敦"
+ },
+ "landmark": {
+  "ar": "شلالات كايتور",
+  "en": "Kaieteur Falls",
+  "zh": "凯厄图尔瀑布"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ],
+  "widespread": [
+   "gyn"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2,
+ "fact": "الدولة الوحيدة في أمريكا الجنوبية لغتها الرسمية الإنجليزية."
+}

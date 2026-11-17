@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "أبوظبي",
+  "en": "Abu Dhabi",
+  "zh": "阿布扎比"
+ },
+ "landmark": {
+  "ar": "برج خليفة",
+  "en": "Burj Khalifa",
+  "zh": "哈利法塔"
+ },
+ "languages": {
+  "official": [
+   "ar"
+  ],
+  "widespread": [
+   "en"
+  ],
+  "widespreadNote": "الإنجليزية لغة العمل والتجارة لكثرة المقيمين"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "reviewed-1",
+ "batch": 1
+}

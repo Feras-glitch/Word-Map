@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "عشق آباد",
+  "en": "Ashgabat",
+  "zh": "阿什哈巴德"
+ },
+ "landmark": {
+  "ar": "مدينة مرو القديمة",
+  "en": "Ancient Merv",
+  "zh": "梅尔夫古城"
+ },
+ "languages": {
+  "official": [
+   "tk"
+  ],
+  "widespread": [
+   "ru",
+   "uz"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2,
+ "fact": "معظم أرضها صحراء قره قوم، وفيها مدينة مرو التي كانت من أعظم مدن العالم الإسلامي."
+}

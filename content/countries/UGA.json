@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "كمبالا",
+  "en": "Kampala",
+  "zh": "坎帕拉"
+ },
+ "landmark": {
+  "ar": "منابع النيل في جينجا",
+  "en": "Source of the Nile, Jinja",
+  "zh": "尼罗河源头"
+ },
+ "languages": {
+  "official": [
+   "en",
+   "sw"
+  ],
+  "widespread": [
+   "lg"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2
+}

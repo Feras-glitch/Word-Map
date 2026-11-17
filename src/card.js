@@ -91,15 +91,20 @@ function languagesTab(c) {
   const off = (L.official || []).map((k) => [k, languages[k]]).filter(([, l]) => l);
   const reg = (L.regional || []).map((k) => languages[k]).filter(Boolean);
   const wide = (L.widespread || []).map((k) => languages[k]).filter(Boolean);
-  const shown = off.filter(([, l]) => !l.sign).length + reg.length + wide.length;
+  const work = (L.working || []).map((k) => languages[k]).filter(Boolean);
+  const second = (L.second || []).map((k) => [k, languages[k]]).filter(([, l]) => l);
+  const shown = off.filter(([, l]) => !l.sign).length + reg.length + wide.length + second.length + (off.length ? 0 : work.length);
   let others = (L.others || 0) - shown;
   if (others > 20) others = Math.round(others / 10) * 10;
   return h('div', {},
-    h('div', { class: 'sec' }, h('span', { class: 'st-label' }, off.length > 1 ? `🗣️ اللغات الرسمية (${off.length.toLocaleString('ar-EG')})` : '🗣️ اللغة الرسمية'),
-      off.map(([k, l]) => h('div', { class: 'lang-item' }, langName(l), l.sign ? h('small', { class: 'muted' }, '🤟 لغة يتكلمها الصمّ بحركات اليدين') : greetBox(ov[k] || l.greet)))),
+    h('div', { class: 'sec' }, h('span', { class: 'st-label' }, off.length > 1 ? `🗣️ اللغات الرسمية (${off.length.toLocaleString('ar-EG')})` : off.length ? '🗣️ اللغة الرسمية' : '🗣️ اللغات'),
+      off.map(([k, l]) => h('div', { class: 'lang-item' }, langName(l), l.sign ? h('small', { class: 'muted' }, '🤟 لغة يتكلمها الصمّ بحركات اليدين') : greetBox(ov[k] || l.greet))),
+      L.officialNote ? h('p', { class: 'note' }, L.officialNote) : null),
+    second.length ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '📜 لغة ثانية بنص الدستور'), second.map(([k, l]) => h('div', { class: 'lang-item' }, langName(l), greetBox(ov[k] || l.greet)))) : null,
+    work.length ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '🏢 لغات العمل في الحكومة'), work.map((l) => h('div', { class: 'lang-item' }, langName(l), !off.length ? greetBox(l.greet) : null))) : null,
     reg.length ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '📍 لغات رسمية في بعض المناطق فقط'), h('div', { class: 'lang-chips' }, reg.map(langName)), L.regionalNote ? h('p', { class: 'note' }, L.regionalNote) : null) : null,
     wide.length ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '💬 لغات محلية متداولة واسعة الانتشار (ليست رسمية)'), h('div', { class: 'lang-chips' }, wide.map(langName)), L.widespreadNote ? h('p', { class: 'note' }, L.widespreadNote) : null) : null,
-    others > 0 ? h('p', { class: 'note' }, `ويتحدث الناس فيها أيضاً نحو ${others.toLocaleString('ar-EG')} لغة محلية أخرى.`) : null,
+    others > 0 ? h('p', { class: 'note' }, `ويتحدث الناس فيها أيضاً نحو ${others.toLocaleString('ar-EG')} لغة محلية أخرى.` + (L.langNote ? ' ' + L.langNote + '.' : '')) : null,
   );
 }
 

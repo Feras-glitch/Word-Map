@@ -1,0 +1,29 @@
+{
+ "capital": {
+  "ar": "ماليه",
+  "en": "Malé",
+  "zh": "马累"
+ },
+ "landmark": {
+  "ar": "الجزر المرجانية",
+  "en": "Coral atolls",
+  "zh": "珊瑚环礁"
+ },
+ "languages": {
+  "official": [
+   "dv"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2
+}

@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "باراماريبو",
+  "en": "Paramaribo",
+  "zh": "帕拉马里博"
+ },
+ "landmark": {
+  "ar": "وسط باراماريبو التاريخي",
+  "en": "Historic Inner City of Paramaribo",
+  "zh": "帕拉马里博历史城区"
+ },
+ "languages": {
+  "official": [
+   "nl"
+  ],
+  "widespread": [
+   "srn"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2,
+ "fact": "أصغر دولة في أمريكا الجنوبية، وتغطي الغابات معظم أرضها."
+}

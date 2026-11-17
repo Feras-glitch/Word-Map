@@ -1,0 +1,36 @@
+{
+ "capital": {
+  "ar": "الخرطوم",
+  "en": "Khartoum",
+  "zh": "喀土穆"
+ },
+ "landmark": {
+  "ar": "أهرامات مروي",
+  "en": "Meroë Pyramids",
+  "zh": "麦罗埃金字塔"
+ },
+ "languages": {
+  "official": [],
+  "working": [
+   "ar",
+   "en"
+  ],
+  "officialNote": "لا ينص الميثاق الدستوري الحالي (٢٠١٩) على لغة رسمية، والعربية والإنجليزية هما لغتا العمل في الدولة، وكل لغات السودان المحلية لغات وطنية"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "دستور السودان (الميثاق الدستوري ٢٠١٩ وتعديلاته)",
+   "url": "https://www.constituteproject.org/constitution/Sudan_2020"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "reviewed-1",
+ "batch": 1
+}

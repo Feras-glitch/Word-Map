@@ -1,0 +1,31 @@
+{
+ "capital": {
+  "ar": "صنعاء",
+  "en": "Sanaa",
+  "zh": "萨那"
+ },
+ "landmark": {
+  "ar": "مدينة شبام القديمة",
+  "en": "Shibam",
+  "zh": "希巴姆古城"
+ },
+ "languages": {
+  "official": [
+   "ar"
+  ],
+  "langNote": "ومن لغات اليمن القديمة الباقية: المهرية والسقطرية"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "reviewed-1",
+ "batch": 1,
+ "capitalNote": "صنعاء هي العاصمة بنص الدستور، وتتخذ الحكومة المعترف بها دولياً مدينة عدن عاصمة مؤقتة منذ عام ٢٠١٥"
+}

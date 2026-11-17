@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "الدوحة",
+  "en": "Doha",
+  "zh": "多哈"
+ },
+ "landmark": {
+  "ar": "متحف الفن الإسلامي",
+  "en": "Museum of Islamic Art",
+  "zh": "伊斯兰艺术博物馆"
+ },
+ "languages": {
+  "official": [
+   "ar"
+  ],
+  "widespread": [
+   "en"
+  ],
+  "widespreadNote": "الإنجليزية لغة العمل والتجارة لكثرة المقيمين"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "reviewed-1",
+ "batch": 1
+}

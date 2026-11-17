@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "مسقط",
+  "en": "Muscat",
+  "zh": "马斯喀特"
+ },
+ "landmark": {
+  "ar": "قلعة نزوى",
+  "en": "Nizwa Fort",
+  "zh": "尼兹瓦城堡"
+ },
+ "languages": {
+  "official": [
+   "ar"
+  ],
+  "langNote": "ومن لغات عُمان المحلية القديمة: المهرية والجبالية (الشحرية)"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "reviewed-1",
+ "batch": 1
+}

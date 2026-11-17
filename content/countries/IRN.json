@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "طهران",
+  "en": "Tehran",
+  "zh": "德黑兰"
+ },
+ "landmark": {
+  "ar": "ميدان نقش جهان في أصفهان",
+  "en": "Naqsh-e Jahan Square",
+  "zh": "伊玛目广场"
+ },
+ "languages": {
+  "official": [
+   "fa"
+  ],
+  "widespread": [
+   "az",
+   "ckb"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2
+}

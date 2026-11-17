@@ -1,0 +1,35 @@
+{
+ "capital": {
+  "ar": "بانجول",
+  "en": "Banjul",
+  "zh": "班珠尔"
+ },
+ "landmark": {
+  "ar": "جزيرة كونتا كينتي",
+  "en": "Kunta Kinteh Island",
+  "zh": "昆塔肯特岛"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ],
+  "widespread": [
+   "mnk",
+   "wo",
+   "ff"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2,
+ "fact": "أصغر دولة في البر الأفريقي، وتحيط بها السنغال من كل الجهات إلا البحر."
+}

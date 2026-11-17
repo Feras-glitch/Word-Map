@@ -1,0 +1,37 @@
+{
+ "capital": {
+  "ar": "دمشق",
+  "en": "Damascus",
+  "zh": "大马士革"
+ },
+ "landmark": {
+  "ar": "الجامع الأموي",
+  "en": "Umayyad Mosque",
+  "zh": "倭马亚大清真寺"
+ },
+ "languages": {
+  "official": [
+   "ar"
+  ],
+  "widespread": [
+   "kmr"
+  ],
+  "widespreadNote": "اعترف مرسوم صدر في يناير ٢٠٢٦ بالكردية «لغةً وطنية» يجوز تعليمها في المدارس، وتبقى العربية وحدها اللغة الرسمية"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "الجزيرة: مرسوم سوري يعترف باللغة الكردية (يناير ٢٠٢٦)",
+   "url": "https://www.aljazeera.com/news/2026/1/17/syria-decree-grants-kurds-new-rights-formally-recognising-kurdish-language"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "reviewed-1",
+ "batch": 1
+}

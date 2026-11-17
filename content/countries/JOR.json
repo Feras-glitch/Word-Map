@@ -1,0 +1,29 @@
+{
+ "capital": {
+  "ar": "عمّان",
+  "en": "Amman",
+  "zh": "安曼"
+ },
+ "landmark": {
+  "ar": "مدينة البتراء",
+  "en": "Petra",
+  "zh": "佩特拉"
+ },
+ "languages": {
+  "official": [
+   "ar"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "reviewed-1",
+ "batch": 1
+}

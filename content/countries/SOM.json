@@ -1,0 +1,37 @@
+{
+ "capital": {
+  "ar": "مقديشو",
+  "en": "Mogadishu",
+  "zh": "摩加迪沙"
+ },
+ "landmark": {
+  "ar": "رسوم كهوف لاس غيل",
+  "en": "Laas Geel cave paintings",
+  "zh": "拉斯·吉尔岩画"
+ },
+ "languages": {
+  "official": [
+   "so"
+  ],
+  "second": [
+   "ar"
+  ],
+  "officialNote": "ينص الدستور على أن الصومالية (بلهجتيها المايّ والمحاتيري) هي اللغة الرسمية، والعربية «اللغة الثانية»"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "الدستور الصومالي المؤقت ٢٠١٢، المادة ٥",
+   "url": "https://ictpolicyafrica.org/en/document/qr0vesdi7vp?page=10"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "reviewed-1",
+ "batch": 1
+}

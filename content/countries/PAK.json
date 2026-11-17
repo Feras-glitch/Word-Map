@@ -1,0 +1,39 @@
+{
+ "capital": {
+  "ar": "إسلام آباد",
+  "en": "Islamabad",
+  "zh": "伊斯兰堡"
+ },
+ "landmark": {
+  "ar": "مسجد الملك فيصل",
+  "en": "Faisal Mosque",
+  "zh": "费萨尔清真寺"
+ },
+ "languages": {
+  "official": [
+   "ur",
+   "en"
+  ],
+  "officialNote": "الأردية «اللغة الوطنية»، والإنجليزية لغة رسمية",
+  "regional": [
+   "sd"
+  ],
+  "regionalNote": "السندية رسمية في إقليم السند",
+  "widespread": [
+   "pa",
+   "ps"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2
+}

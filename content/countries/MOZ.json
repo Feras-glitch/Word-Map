@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "مابوتو",
+  "en": "Maputo",
+  "zh": "马普托"
+ },
+ "landmark": {
+  "ar": "جزيرة موزمبيق",
+  "en": "Island of Mozambique",
+  "zh": "莫桑比克岛"
+ },
+ "languages": {
+  "official": [
+   "pt"
+  ],
+  "widespread": [
+   "vmw",
+   "ts"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2,
+ "fact": "ساحلها على المحيط الهندي طويل جداً، أطول من ٢٤٠٠ كيلومتر."
+}

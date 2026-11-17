@@ -1,0 +1,45 @@
+{
+ "capital": {
+  "ar": "نيامي",
+  "en": "Niamey",
+  "zh": "尼亚美"
+ },
+ "landmark": {
+  "ar": "الجامع الكبير في أغاديز",
+  "en": "Grand Mosque of Agadez",
+  "zh": "阿加德兹大清真寺"
+ },
+ "languages": {
+  "official": [
+   "ha"
+  ],
+  "officialNote": "منذ ميثاق مارس ٢٠٢٥ صارت الهوسا «اللغة الوطنية»",
+  "working": [
+   "fr",
+   "en"
+  ],
+  "widespread": [
+   "dje",
+   "ff",
+   "kr",
+   "ar"
+  ],
+  "widespreadNote": "يذكرها الميثاق ضمن «اللغات المحكية في النيجر»"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "ميثاق النيجر ٢٠٢٥: الهوسا لغة وطنية، والفرنسية والإنجليزية لغتا عمل",
+   "url": "https://www.channelstv.com/?p=913453"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2
+}

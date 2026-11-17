@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "لومي",
+  "en": "Lomé",
+  "zh": "洛美"
+ },
+ "landmark": {
+  "ar": "بحيرة توغو",
+  "en": "Lake Togo",
+  "zh": "多哥湖"
+ },
+ "languages": {
+  "official": [
+   "fr"
+  ],
+  "widespread": [
+   "ee",
+   "kbp"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 2,
+ "fact": "أرضها شريط طويل ضيق بين غانا وبنين."
+}
