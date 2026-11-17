@@ -3,7 +3,7 @@ import '@fontsource/cairo/arabic-700.css';
 import '@fontsource/cairo/arabic-900.css';
 import '@fontsource/cairo/latin-700.css';
 import './style.css';
-import { h } from './ui.js';
+import { h, consumeSkipPop, closeTopModal, clearModals } from './ui.js';
 import { store } from './store.js';
 import { stopSpeech } from './speech.js';
 import { profilesScreen } from './screens/profiles.js';
@@ -49,6 +49,7 @@ function render() {
   if (!store.me && name !== 'profiles') { history.replaceState(null, '', '#profiles'); name = 'profiles'; }
   const sc = screens[name];
   stopSpeech();
+  clearModals();
   document.querySelectorAll('.modal-back').forEach((m) => m.remove());
   if (typeof cleanup === 'function') cleanup();
   cleanup = null;
@@ -65,5 +66,9 @@ function render() {
   window.scrollTo(0, 0);
 }
 
-window.addEventListener('popstate', render);
+window.addEventListener('popstate', () => {
+  if (consumeSkipPop()) return;      // رجوع ناتج عن إغلاق نافذة بزر ✕
+  if (closeTopModal()) return;       // زر الرجوع يغلق النافذة المفتوحة أولاً
+  render();
+});
 render();

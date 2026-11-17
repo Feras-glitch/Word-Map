@@ -1,4 +1,4 @@
-import { h } from '../ui.js';
+import { h, toast } from '../ui.js';
 import { createMap, defaultFill, lighten } from '../map.js';
 import { contOrder, continents, contEmoji, contBox, contColors, search, flagUrl, byId } from '../data.js';
 import { openCard } from '../card.js';
@@ -11,8 +11,8 @@ export function exploreScreen(root) {
   const fill = (c) => (c.kind === 'state' && !me.stamps[c.id] ? lighten(contColors[c.cont], 0.25) : defaultFill(c));
   const m = createMap({
     fill,
+    onMiss: () => toast('🌊 هذا ماء: بحر أو محيط. المس اليابسة لتكتشف دولة'),
     onTap: (id, sub) => {
-      if (id === 'ATA') return;
       openCard(id, { sub, onShowOnMap: show });
       setTimeout(() => m.setFill(fill), 1200);
     },

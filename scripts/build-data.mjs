@@ -55,7 +55,7 @@ for (const c of countries) {
     id,
     f: (id === 'XKX' ? 'xk' : (ov.flag || c.cca2).toLowerCase()),
     ar, en: ov.en || c.name.common, zh,
-    py: zh ? pinyin(zh, { toneType: 'symbol' }) : '',
+    py: zh ? pinyin(zh, { toneType: 'symbol', type: 'array' }).join(' ') : '',
     capAr: ov.capAr || C.capitalsAr[id] || '',
     capEn: ov.capEn || C.capitalsEnFix[id] || (c.capital || [])[0] || '',
     cont: c.cca3 === 'ATA' ? 'antarctica' : contOf(c),
@@ -98,21 +98,33 @@ for (const f of fc.features) {
   shapes.push({ id, d, ...(sub ? { sub } : {}) });
 }
 
-// مربع الإحاطة والمركز لكل كيان
-const geo = {};
+// مربع الإحاطة والمركز لكل كيان: نعتمد "الأرض الأم" (أكبر جزء وما قرب منه أو كبر)
+// حتى لا يبتعد التكبير إلى جزر بعيدة مثل غويانا الفرنسية أو سفالبارد
+const parts = {};
 for (const f of fc.features) {
   const c = f.id ? byNum[f.id] : null;
   let id = c ? ID(c) : policy.nameToId[f.properties.name];
   if (!id) continue;
   if (policy.mergeInto[id]) id = policy.mergeInto[id];
   if (!ids.has(id)) continue;
-  const b = gp.bounds(f);
-  const a = gp.area(f);
-  const g = (geo[id] ||= { b: [[Infinity, Infinity], [-Infinity, -Infinity]], a: 0, cen: null, ca: 0 });
-  g.b = [[Math.min(g.b[0][0], b[0][0]), Math.min(g.b[0][1], b[0][1])], [Math.max(g.b[1][0], b[1][0]), Math.max(g.b[1][1], b[1][1])]];
-  g.a += a;
-  if (a > g.ca || !g.cen) { g.ca = Math.max(a, g.ca); g.cen = gp.centroid(f); }
-  if (!isFinite(g.cen[0])) g.cen = [(b[0][0] + b[1][0]) / 2, (b[0][1] + b[1][1]) / 2];
+  const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
+  for (const coords of polys) {
+    const g = { type: 'Polygon', coordinates: coords };
+    (parts[id] ||= []).push({ a: gp.area(g), b: gp.bounds(g), c: gp.centroid(g) });
+  }
+}
+const geo = {};
+for (const [id, ps] of Object.entries(parts)) {
+  ps.sort((x, y) => y.a - x.a);
+  const L = ps[0];
+  const near = (p) => Math.hypot(p.c[0] - L.c[0], p.c[1] - L.c[1]) < 60;
+  const main = ps.filter((p) => p === L || p.a >= L.a * 0.35 || near(p));
+  const b = [[Math.min(...main.map((p) => p.b[0][0])), Math.min(...main.map((p) => p.b[0][1]))], [Math.max(...main.map((p) => p.b[1][0])), Math.max(...main.map((p) => p.b[1][1]))]];
+  let cen = L.c;
+  if (!isFinite(cen[0])) cen = [(L.b[0][0] + L.b[1][0]) / 2, (L.b[0][1] + L.b[1][1]) / 2];
+  // روسيا تعبر خط الطول ١٨٠ فيظهر طرفها الشرقي في أقصى يسار الخريطة
+  if (id === 'RUS') b[0][0] = Math.max(b[0][0], 950);
+  geo[id] = { b, a: ps.reduce((s, p) => s + p.a, 0), cen };
 }
 const r1 = (v) => Math.round(v * 10) / 10;
 for (const c of out) {

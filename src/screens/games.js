@@ -117,7 +117,7 @@ export function whereGame(root) {
   const qs = pick(candidates, ROUNDS);
   let i = 0, score = 0, tries = 0, locked = false;
   const fill = (c) => (c.kind === 'state' ? contColors[c.cont] : lighten(contColors[c.cont] || '#ccc', 0.5));
-  const m = createMap({ fill, labels: level === 1, onTap: (id) => tap(id) });
+  const m = createMap({ fill, labels: level === 1, onTap: (id) => tap(id), onMiss: () => { if (!locked) speak('هذا في البحر. المس اليابسة', LANG.ar); } });
   const top = h('div', { class: 'where-top' });
   const fb = h('div', { class: 'feedback floating' });
   root.append(top, m.el, fb);

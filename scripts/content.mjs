@@ -6,7 +6,7 @@ export const nameFixes = {
   COD: 'الكونغو الديمقراطية', COG: 'الكونغو', UZB: 'أوزبكستان', THA: 'تايلاند',
   ATA: 'القارة القطبية الجنوبية', VAT: 'الفاتيكان', TLS: 'تيمور الشرقية', ARE: 'الإمارات', USA: 'الولايات المتحدة',
   GBR: 'بريطانيا', CZE: 'التشيك', SWZ: 'إسواتيني', MKD: 'مقدونيا الشمالية',
-  CAF: 'أفريقيا الوسطى', DOM: 'الدومينيكان', FSM: 'ميكرونيزيا', BLR: 'بيلاروسيا',
+  CAF: 'أفريقيا الوسطى', DOM: 'الدومينيكان', FSM: 'ميكرونيزيا', BLR: 'بيلاروسيا', OMN: 'عُمان',
 };
 
 export const capitalsAr = {
@@ -24,7 +24,7 @@ export const capitalsAr = {
   HUN:'بودابست', IDN:'جاكرتا', IND:'نيودلهي', IRL:'دبلن', IRN:'طهران', IRQ:'بغداد', ISL:'ريكيافيك',
   ISR:'القدس', ITA:'روما', JAM:'كينغستون', JOR:'عمّان', JPN:'طوكيو', KAZ:'أستانا', KEN:'نيروبي',
   KGZ:'بشكيك', KHM:'بنوم بنه', KIR:'تاراوا', KNA:'باستير', KOR:'سول', XKX:'بريشتينا', KWT:'الكويت',
-  LAO:'فيينتيان', LBN:'بيروت', LBR:'مونروفيا', LBY:'طرابلس', LCA:'كاستريس', LIE:'فادوتس', LKA:'كولومبو',
+  LAO:'فيينتيان', LBN:'بيروت', LBR:'مونروفيا', LBY:'طرابلس', LCA:'كاستريس', LIE:'فادوتس', LKA:'سري جاياواردنابورا كوتي',
   LSO:'ماسيرو', LTU:'فيلنيوس', LUX:'لوكسمبورغ', LVA:'ريغا', MAR:'الرباط', MCO:'موناكو', MDA:'كيشيناو',
   MDG:'أنتاناناريفو', MDV:'ماليه', MEX:'مكسيكو سيتي', MHL:'ماجورو', MKD:'سكوبيه', MLI:'باماكو',
   MLT:'فاليتا', MMR:'نايبيداو', MNE:'بودغوريتسا', MNG:'أولان باتور', MOZ:'مابوتو', MRT:'نواكشوط',
@@ -43,11 +43,11 @@ export const capitalsAr = {
 };
 
 // العاصمة بالإنجليزية عند الحاجة إلى تعديل ما في قاعدة البيانات
-export const capitalsEnFix = { ZAF: 'Pretoria', SWZ: 'Mbabane', PSE: 'Jerusalem' };
+export const capitalsEnFix = { ZAF: 'Pretoria', SWZ: 'Mbabane', PSE: 'Jerusalem', LKA: 'Sri Jayawardenepura Kotte' };
 
 export const continents = {
   asia: 'آسيا', africa: 'أفريقيا', europe: 'أوروبا',
-  namerica: 'أمريكا الشمالية', samerica: 'أمريكا الجنوبية', oceania: 'أوقيانوسيا',
+  namerica: 'أمريكا الشمالية', samerica: 'أمريكا الجنوبية', oceania: 'أوقيانوسيا', antarctica: 'القارة القطبية الجنوبية',
 };
 
 export const subregionsAr = {
@@ -180,9 +180,9 @@ export const greetings = {
   pus: { t: 'سلام', ar: 'سلام', lang: 'ps-AF' },
   urd: { t: 'السلام علیکم', ar: 'السلام عليكم', lang: 'ur-PK' },
   hin: { t: 'नमस्ते', ar: 'نَمَستي', lang: 'hi-IN' },
-  ben: { t: 'নমস্কার', ar: 'نوموشكار', lang: 'bn-BD' },
-  ind: { t: 'Halo', ar: 'هالو', lang: 'id-ID' },
-  msa: { t: 'Salam', ar: 'سلام', lang: 'ms-MY' },
+  ben: { t: 'আসসালামু আলাইকুম', ar: 'السلام عليكم', lang: 'bn-BD' },
+  ind: { t: 'Apa kabar', ar: 'أبا كابار', lang: 'id-ID' },
+  msa: { t: 'Apa khabar', ar: 'أبا خابار', lang: 'ms-MY' },
   swa: { t: 'Jambo', ar: 'جامبو', lang: 'sw-KE' },
   amh: { t: 'ሰላም', ar: 'سلام', lang: 'am-ET' },
   som: { t: 'Nabad', ar: 'نَبَد', lang: 'so-SO' },
@@ -211,7 +211,7 @@ export const greetings = {
   hye: { t: 'Բարեւ', ar: 'باريف', lang: 'hy-AM' },
   aze: { t: 'Salam', ar: 'سلام', lang: 'az-AZ' },
   kaz: { t: 'Сәлем', ar: 'سالَم', lang: 'kk-KZ' },
-  uzb: { t: 'Salom', ar: 'سالوم', lang: 'uz-UZ' },
+  uzb: { t: 'Assalomu alaykum', ar: 'السلام عليكم', lang: 'uz-UZ' },
   kir: { t: 'Салам', ar: 'سلام', lang: 'ky-KG' },
   tgk: { t: 'Салом', ar: 'سالوم', lang: 'tg-TJ' },
   tuk: { t: 'Salam', ar: 'سلام', lang: 'tk-TM' },
@@ -260,7 +260,7 @@ export const greetings = {
 };
 
 // لغات تُفضَّل تحيتها حين تكون الدولة متعددة اللغات
-export const greetPriority = { AUT: 'deu', MNE: 'srp', PAK: 'urd', IND: 'hin', CHE: 'deu', BEL: 'nld', CAN: 'eng', SGP: 'msa', LKA: 'sin', PHL: 'fil', MYS: 'msa', TZA: 'swa', KEN: 'swa', ZAF: 'zul', NZL: 'mri', PRY: 'grn', BOL: 'spa', PER: 'spa', CYP: 'ell', LUX: 'ltz', MLT: 'mlt', IRL: 'gle', AFG: 'prs', BIH: 'bos', ETH: 'amh', ERI: 'tir', SOM: 'som', DJI: 'ara', COM: 'ara', MDV: 'div', HTI: 'hat', TLS: 'tet', SEN: 'fra', NGA: 'hau', RWA: 'kin', BDI: 'run', MDG: 'mlg', ZWE: 'sna', MWI: 'nya', LSO: 'sot', BWA: 'tsn', SWZ: 'ssw', FJI: 'fij', WSM: 'smo', TON: 'ton', KAZ: 'kaz', KGZ: 'kir', TJK: 'tgk', BLR: 'bel', MNG: 'mon', NPL: 'nep', BTN: 'dzo' };
+export const greetPriority = { UZB: 'uzb', TKM: 'tuk', BGD: 'ben', AUT: 'deu', MNE: 'srp', PAK: 'urd', IND: 'hin', CHE: 'deu', BEL: 'nld', CAN: 'eng', SGP: 'msa', LKA: 'sin', PHL: 'fil', MYS: 'msa', TZA: 'swa', KEN: 'swa', ZAF: 'zul', NZL: 'mri', PRY: 'grn', BOL: 'spa', PER: 'spa', CYP: 'ell', LUX: 'ltz', MLT: 'mlt', IRL: 'gle', AFG: 'prs', BIH: 'bos', ETH: 'amh', ERI: 'tir', SOM: 'som', DJI: 'ara', COM: 'ara', MDV: 'div', HTI: 'hat', TLS: 'tet', SEN: 'fra', NGA: 'hau', RWA: 'kin', BDI: 'run', MDG: 'mlg', ZWE: 'sna', MWI: 'nya', LSO: 'sot', BWA: 'tsn', SWZ: 'ssw', FJI: 'fij', WSM: 'smo', TON: 'ton', KAZ: 'kaz', KGZ: 'kir', TJK: 'tgk', BLR: 'bel', MNG: 'mon', NPL: 'nep', BTN: 'dzo' };
 
 // دول منظمة التعاون الإسلامي (٥٧ دولة)
 export const oic = ['AFG','ALB','DZA','AZE','BHR','BGD','BEN','BRN','BFA','CMR','TCD','COM','DJI','EGY','GAB','GMB','GIN','GNB','GUY','IDN','IRN','IRQ','CIV','JOR','KAZ','KWT','KGZ','LBN','LBY','MYS','MDV','MLI','MRT','MAR','MOZ','NER','NGA','OMN','PAK','PSE','QAT','SAU','SEN','SLE','SOM','SDN','SUR','SYR','TJK','TGO','TUN','TUR','TKM','UGA','ARE','UZB','YEM'];

@@ -5,6 +5,15 @@ import { speak, LANG } from './speech.js';
 import { sfx } from './sfx.js';
 import { store } from './store.js';
 
+// كل حرف صيني وفوقه نطقه (البينين) كما في كتب الأطفال
+export function zhRuby(zh, py) {
+  const chars = [...zh]; const sy = (py || '').split(' ');
+  const r = h('b', { class: 'zh-ruby', lang: 'zh' });
+  chars.forEach((ch, i) => r.append(h('ruby', {}, ch, h('rt', {}, sy.length === chars.length ? sy[i] : ''))));
+  if (sy.length !== chars.length) r.append(h('small', { class: 'py-line' }, py));
+  return r;
+}
+
 const say = (text, lang) => h('button', { class: 'say', 'aria-label': 'استمع', onclick: (e) => { e.stopPropagation(); speak(text, lang); } }, '🔊');
 
 function storySpeech(c) {
@@ -14,7 +23,7 @@ function storySpeech(c) {
   return parts.join(' ');
 }
 
-export function openCard(id, { sub, onShowOnMap, stamp = true } = {}) {
+export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false } = {}) {
   const c = byId[id];
   if (!c) return;
   sfx('tap');
@@ -30,11 +39,11 @@ export function openCard(id, { sub, onShowOnMap, stamp = true } = {}) {
       h('div', { class: 'name-row ar' }, h('span', { class: 'lang-tag' }, 'عربي'), h('b', {}, c.ar), say(c.ar, LANG.ar)),
       h('div', { class: 'name-row en', dir: 'ltr' }, h('span', { class: 'lang-tag' }, 'EN'), h('b', {}, c.en), say(c.en, LANG.en)),
       c.zh ? h('div', { class: 'name-row zh', dir: 'ltr' }, h('span', { class: 'lang-tag' }, '中文'),
-        h('span', { class: 'zh-wrap' }, h('b', {}, c.zh), h('small', {}, c.py)), say(c.zh, LANG.zh)) : null,
+        zhRuby(c.zh, c.py), say(c.zh, LANG.zh)) : null,
     ),
     h('div', { class: 'facts-grid' },
       c.capAr ? h('div', { class: 'fact cap' }, h('span', {}, '🏛️ العاصمة'), h('b', {}, c.capAr), say('عاصمة ' + c.ar + ' هي ' + c.capAr, LANG.ar)) : null,
-      c.cont && continents[c.cont] ? h('div', { class: 'fact' }, h('span', {}, (contEmoji[c.cont] || '🌍') + ' القارة'), h('b', {}, continents[c.cont]), c.sub ? h('small', {}, c.sub) : null) : null,
+      c.cont && c.cont !== 'antarctica' && continents[c.cont] ? h('div', { class: 'fact' }, h('span', {}, (contEmoji[c.cont] || '🌍') + ' القارة'), h('b', {}, continents[c.cont]), c.sub ? h('small', {}, c.sub) : null) : null,
       c.area ? h('div', { class: 'fact' }, h('span', {}, '📏 المساحة'), h('b', {}, num(c.area) + ' كم²')) : null,
       !isState && c.parent ? h('div', { class: 'fact' }, h('span', {}, '🔗 تتبع'), h('b', {}, c.parent)) : null,
     ),
@@ -48,14 +57,14 @@ export function openCard(id, { sub, onShowOnMap, stamp = true } = {}) {
       h('b', { dir: 'auto' }, g.t), g.t !== g.ar ? h('small', {}, '(' + g.ar + ')') : null,
       say(g.t, g.lang)) : null,
     neighbors.length ? h('div', { class: 'neighbors' }, h('span', {}, '🤝 الجيران:'),
-      neighbors.map((n) => h('button', { class: 'chip', onclick: () => { m.close(); openCard(n.id, { onShowOnMap, stamp }); } },
+      neighbors.map((n) => h('button', { class: 'chip', onclick: () => openCard(n.id, { onShowOnMap, stamp, replace: true }) },
         h('img', { src: flagUrl(n.f), alt: '' }), n.ar))) : null,
     h('div', { class: 'card-actions' },
-      onShowOnMap ? h('button', { class: 'btn', onclick: () => { m.close(); onShowOnMap(c.id); } }, '📍 أرني على الخريطة') : null,
+      onShowOnMap && c.bb ? h('button', { class: 'btn', onclick: () => { m.close(); onShowOnMap(c.id); } }, '📍 أرني على الخريطة') : null,
     ),
   );
 
-  const m = modal(body, { cls: 'card-modal' });
+  const m = modal(body, { cls: 'card-modal', replace });
   setTimeout(() => speak(c.ar, LANG.ar), 250);
 
   if (isState && stamp && store.me) {

@@ -2,7 +2,7 @@
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "World Explorer",
   "mainBinaryName": "WorldExplorer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "identifier": "com.feras.worldexplorer",
   "build": {
     "frontendDist": "../dist",

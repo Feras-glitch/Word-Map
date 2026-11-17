@@ -53,5 +53,5 @@ export function search(q) {
   q = q.trim().toLowerCase().replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي');
   if (!q) return [];
   const norm = (s) => (s || '').toLowerCase().replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي');
-  return countries.filter((c) => c.id !== 'ATA' && (norm(c.ar).includes(q) || norm(c.en).includes(q) || (c.zh || '').includes(q) || norm(c.capAr).includes(q))).slice(0, 8);
+  return countries.filter((c) => (norm(c.ar).includes(q) || norm(c.en).includes(q) || (c.zh || '').includes(q) || norm(c.capAr).includes(q))).slice(0, 8);
 }

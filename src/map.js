@@ -16,7 +16,7 @@ export function lighten(hex, amt) {
 }
 export const defaultFill = (c) => (c.kind === 'territory' && c.id !== 'ATA' ? lighten(contColors[c.cont] || '#ccc', 0.45) : contColors[c.cont] || '#ddd');
 
-export function createMap({ fill = defaultFill, onTap, labels = true, minW = 30, onView } = {}) {
+export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, minW = 30, onView } = {}) {
   const wrap = document.createElement('div');
   wrap.className = 'map-wrap';
   const svg = S('svg', { class: 'map', viewBox: `0 0 ${M.w} ${M.h}`, preserveAspectRatio: 'xMidYMid meet' });
@@ -55,6 +55,7 @@ export function createMap({ fill = defaultFill, onTap, labels = true, minW = 30,
       t.textContent = c.ar; t.style.display = 'none';
       gLabels.append(t); labelEls.push({ t, c, w: c.bb[2] - c.bb[0] });
     }
+    labelEls.sort((a, b) => b.w - a.w);
   }
 
   // ---------- العرض والتكبير ----------
@@ -70,12 +71,21 @@ export function createMap({ fill = defaultFill, onTap, labels = true, minW = 30,
     svg.style.setProperty('--k', k);
     onView?.(k);
     if (labels) {
+      // الأكبر أولاً، ولا نعرض اسماً يتداخل مع اسم ظاهر
       const fs = 12 * k;
+      const placed = [];
       let shown = 0;
       for (const L of labelEls) {
         const px = L.w / k;
-        const inView = L.c.cen[0] > vb.x && L.c.cen[0] < vb.x + vb.w && L.c.cen[1] > vb.y && L.c.cen[1] < vb.y + vb.h;
-        const show = inView && (px > 55 || (L.c.small && 1 / k > 3.5)) && shown < 140;
+        const [cx, cy] = L.c.cen;
+        const inView = cx > vb.x && cx < vb.x + vb.w && cy > vb.y && cy < vb.y + vb.h;
+        let show = inView && (px > 55 || (L.c.small && 1 / k > 3.5)) && shown < 140;
+        if (show) {
+          const hw = L.t.textContent.length * fs * 0.3 + fs * 0.3, hh = fs * 0.75;
+          const box = [cx - hw, cy - hh, cx + hw, cy + hh];
+          if (placed.some((b) => box[0] < b[2] && box[2] > b[0] && box[1] < b[3] && box[3] > b[1])) show = false;
+          else placed.push(box);
+        }
         L.t.style.display = show ? '' : 'none';
         if (show) { L.t.setAttribute('font-size', fs); shown++; }
       }
@@ -163,6 +173,7 @@ export function createMap({ fill = defaultFill, onTap, labels = true, minW = 30,
       svg.releasePointerCapture?.(e.pointerId);
       const el = document.elementFromPoint(e.clientX, e.clientY)?.closest?.('[data-id]');
       if (el && onTap) onTap(el.dataset.id, el.dataset.sub, el);
+      else if (!el && onMiss) onMiss();
     }
   };
   svg.addEventListener('pointerup', end);

@@ -20,13 +20,33 @@ export function toast(msg, ms = 2600) {
   setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 400); }, ms);
 }
 
-export function modal(content, { onClose, cls = '' } = {}) {
+// النوافذ مرتبطة بسجل التصفح: زر الرجوع في الهاتف يغلق النافذة أولاً
+const stack = [];
+let skipPop = 0;
+export function consumeSkipPop() { if (skipPop > 0) { skipPop--; return true; } return false; }
+export function closeTopModal() { const t = stack[stack.length - 1]; if (!t) return false; t.dismiss(); return true; }
+export function clearModals() { while (stack.length) stack.pop().dismiss(); }
+
+export function modal(content, { onClose, cls = '', replace = false } = {}) {
   const back = h('div', { class: 'modal-back' });
   const box = h('div', { class: 'modal ' + cls });
-  const close = () => { back.classList.remove('show'); setTimeout(() => back.remove(), 250); onClose?.(); };
+  let done = false;
+  const remove = () => { back.classList.remove('show'); setTimeout(() => back.remove(), 250); };
+  const entry = {
+    // إغلاق بلا لمس السجل (عند الرجوع أو الاستبدال أو الانتقال)
+    dismiss() { if (done) return; done = true; const i = stack.indexOf(entry); if (i >= 0) stack.splice(i, 1); remove(); onClose?.(); },
+  };
+  const close = () => {
+    if (done) return;
+    entry.dismiss();
+    if (history.state && history.state.modal) { skipPop++; history.back(); }
+  };
   box.append(h('button', { class: 'modal-x', 'aria-label': 'إغلاق', onclick: close }, '✕'), content);
   back.append(box);
   back.addEventListener('click', (e) => { if (e.target === back) close(); });
+  if (replace && stack.length) { stack[stack.length - 1].dismiss(); history.replaceState({ modal: 1 }, '', location.hash); }
+  else history.pushState({ modal: 1 }, '', location.hash);
+  stack.push(entry);
   document.body.append(back);
   requestAnimationFrame(() => back.classList.add('show'));
   return { close, box };
