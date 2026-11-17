@@ -12,7 +12,7 @@ export function passportScreen(root, { go }) {
     h('div', { class: 'pc-emblem' }, '🌍'),
     h('div', {}, h('small', {}, 'جواز سفر المستكشف'), h('h2', {}, me.avatar + ' ' + me.name),
       h('div', { class: 'pc-count' }, 'الأختام: ' + got.length.toLocaleString('ar-EG') + ' من ' + states.length.toLocaleString('ar-EG'))));
-  const showOnMap = (id) => { sessionStorage.setItem('openCountry', id); go('explore'); };
+  const showOnMap = (id) => { try { sessionStorage.setItem('openCountry', id); } catch { /* */ } go('explore'); };
 
   const progress = h('div', { class: 'cont-progress' }, contOrder.map((k) => {
     const all = states.filter((s) => s.cont === k);

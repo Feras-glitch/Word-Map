@@ -22,7 +22,7 @@ export function homeScreen(root, { go }) {
     h('div', { class: 'home-top' },
       h('button', { class: 'me', onclick: () => go('profiles') }, h('span', { class: 'av' }, me.avatar), h('span', {}, h('b', {}, me.name), h('small', {}, LEVELS[me.level].emoji + ' ' + LEVELS[me.level].name))),
       h('div', { class: 'me-stats' }, h('span', {}, '🛂 ' + got.toLocaleString('ar-EG') + ' من ' + states.length.toLocaleString('ar-EG')),
-        h('button', { class: 'icon-btn', 'aria-label': 'الإعدادات', onclick: () => go('settings') }, '⚙️'))),
+        h('button', { class: 'icon-btn', 'aria-label': 'الإعدادات', onclick: () => go('options') }, '⚙️'))),
     h('h1', { class: 'brand' }, '🌍 مستكشف العالم'),
     owl(`${greet} يا ${me.name}! ${got ? 'في جوازك ' + got.toLocaleString('ar-EG') + ' من الأختام. ' : ''}إلى أين نسافر اليوم؟`, { size: 84 }),
     h('div', { class: 'tiles' }, TILES.map((t) => h('button', { class: 'tile', style: { '--c': t.c }, onclick: () => { sfx('tap'); go(t.k); } },

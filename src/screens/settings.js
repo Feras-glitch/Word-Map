@@ -1,4 +1,4 @@
-import { h } from '../ui.js';
+import { h, modal } from '../ui.js';
 import { store } from '../store.js';
 import { LEVELS } from '../data.js';
 import { speak } from '../speech.js';
@@ -8,14 +8,14 @@ export function settingsScreen(root, { go }) {
   const s = store.settings;
   const sound = h('input', { type: 'checkbox', checked: s.sound !== false, onchange: (e) => store.setSetting('sound', e.target.checked) });
   const rate = h('input', { type: 'range', min: 0.6, max: 1.2, step: 0.1, value: s.rate || 0.9, onchange: (e) => { store.setSetting('rate', +e.target.value); speak('هذه سرعة الكلام', 'ar-SA'); } });
-  const lv = h('div', { class: 'levels' }, Object.entries(LEVELS).map(([k, L]) => h('button', { class: 'lv-btn' + (+k === me.level ? ' on' : ''), onclick: () => { store.updateProfile(me.id, { level: +k }); go('settings', { replace: true }); } },
+  const lv = h('div', { class: 'levels' }, Object.entries(LEVELS).map(([k, L]) => h('button', { class: 'lv-btn' + (+k === me.level ? ' on' : ''), onclick: () => { store.updateProfile(me.id, { level: +k }); go('options', { replace: true }); } },
     h('span', {}, L.emoji), h('b', {}, L.name), h('small', {}, L.ages))));
   root.append(
     h('div', { class: 'panel' },
       h('h3', {}, me.avatar + ' ' + me.name),
       h('label', {}, 'المستوى'), lv,
       h('div', { class: 'row' }, h('button', { class: 'btn soft', onclick: () => go('profiles') }, '👥 تبديل المستكشف'),
-        h('button', { class: 'btn danger', onclick: () => { if (confirm(`حذف ${me.name} وكل أختامه؟ لا يمكن التراجع.`)) { store.removeProfile(me.id); go(store.me ? 'home' : 'profiles', { replace: true }); } } }, '🗑️ حذف هذا المستكشف'))),
+        h('button', { class: 'btn danger', onclick: () => { const d = modal(h('div', { class: 'panel' }, h('h3', {}, `حذف ${me.name} وكل أختامه؟`), h('p', {}, 'لا يمكن التراجع عن هذا.'), h('div', { class: 'row' }, h('button', { class: 'btn danger', onclick: () => { d.close(); store.removeProfile(me.id); go(store.me ? 'home' : 'profiles', { replace: true }); } }, 'نعم، احذف'), h('button', { class: 'btn soft', onclick: () => d.close() }, 'إلغاء')))); } }, '🗑️ حذف هذا المستكشف'))),
     h('div', { class: 'panel' },
       h('label', { class: 'switch' }, sound, ' المؤثرات الصوتية'),
       h('label', {}, '🗣️ سرعة النطق'), rate,

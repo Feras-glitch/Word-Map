@@ -36,6 +36,6 @@ export function exploreScreen(root) {
     if (r.height > r.width * 1.1) m.zoomTo([820, 150, 1420, 560], 0, 0); else m.refresh();
   });
   // فتح مباشر لدولة من شاشة أخرى
-  const want = sessionStorage.getItem('openCountry');
-  if (want && byId[want]) { sessionStorage.removeItem('openCountry'); setTimeout(() => { show(want); openCard(want, { onShowOnMap: show }); }, 300); }
+  let want = null; try { want = sessionStorage.getItem('openCountry'); sessionStorage.removeItem('openCountry'); } catch { /* */ }
+  if (want && byId[want]) { setTimeout(() => { show(want); openCard(want, { onShowOnMap: show }); }, 300); }
 }

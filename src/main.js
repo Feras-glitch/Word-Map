@@ -31,7 +31,7 @@ const screens = {
   islamic: { title: '🕋 العالم الإسلامي', fn: islamicScreen, full: true },
   hello: { title: '👋 قل مرحباً', fn: helloScreen },
   daily: { title: '✈️ رحلة اليوم', fn: dailyScreen, full: true },
-  settings: { title: '⚙️ الإعدادات', fn: settingsScreen },
+  options: { title: '⚙️ الإعدادات', fn: settingsScreen },
 };
 
 const app = document.getElementById('app');
