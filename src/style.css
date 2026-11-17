@@ -283,3 +283,33 @@ input[type=range] { width: 100%; }
 .story-sec h3 { margin: 0 0 4px; font-size: 1.05rem; color: #a0522d; }
 .story-sec p { margin: 0; line-height: 1.9; font-size: 1.05rem; }
 .story-sec .say { position: absolute; left: 8px; top: 10px; width: 42px; height: 42px; font-size: 1.1rem; }
+
+/* ---------- الختمان والامتحان (الإصدار ١٫٣) ---------- */
+.stamp-box { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+.stamp-status { display: flex; gap: 8px; justify-content: center; }
+.chip-st { background: #fff; border-radius: 999px; padding: 6px 14px; font-weight: 700; color: var(--muted); box-shadow: 0 2px 0 #dde4ee; }
+.chip-st.on { color: var(--green); }
+.chip-st.gold.on { color: #b07800; background: #fff6d6; }
+.btn.gold-btn { background: linear-gradient(135deg, #f5c518, #e0a800); color: #4a3400; box-shadow: 0 4px 0 #b88a00; }
+.stamp.gold { border-color: #d4a017; color: #8a6200; background: #fff6d6; }
+.note.strong { color: var(--ink); font-weight: 700; }
+.sec.gov { background: #f4f0ff; }
+.quiz-modal .modal { max-width: 620px; }
+.quiz .question { margin-top: 8px; }
+.quiz .q-head { flex-wrap: wrap; }
+.q-dots i.miss { background: var(--red); }
+.flag-opts .opt { padding: 10px; }
+.qo-big-flag { width: 100%; max-height: 90px; object-fit: contain; border-radius: 6px; box-shadow: 0 0 0 1px #0002; }
+.qo-flag { display: flex; align-items: center; gap: 8px; justify-content: center; } .qo-flag img { width: 40px; border-radius: 4px; box-shadow: 0 0 0 1px #0002; }
+.q-word { font-size: 1.8rem; font-weight: 900; margin-top: 10px; display: flex; flex-direction: column; align-items: center; } .q-word small { font-size: 1rem; color: #b33; }
+.quiz-map { height: 46vh; min-height: 260px; border-radius: 18px; margin-top: 10px; }
+.quiz-end { text-align: center; padding: 10px; } .big-emoji { font-size: 3.4rem; } .quiz-end h3 { margin: 6px; }
+.review-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.review-item { background: #fff; border-radius: 18px; padding: 12px; box-shadow: var(--shadow); display: flex; flex-direction: column; align-items: center; gap: 6px; font-weight: 700; }
+.review-item img { width: 70px; border-radius: 5px; box-shadow: 0 0 0 1px #0002; }
+.tile .badge-dot { position: absolute; top: 10px; left: 10px; background: var(--red); color: #fff; border-radius: 999px; padding: 2px 9px; font-size: .85rem; font-weight: 900; }
+.tile { position: relative; }
+.cp .bars { display: flex; flex-direction: column; gap: 4px; }
+.cp .bar.gold i { background: #e0a800 !important; }
+
+.quiz .q-head { padding-left: 54px; }

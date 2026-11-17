@@ -16,6 +16,7 @@ import { islamicScreen } from './screens/islamic.js';
 import { helloScreen } from './screens/hello.js';
 import { dailyScreen } from './screens/daily.js';
 import { settingsScreen } from './screens/settings.js';
+import { reviewScreen } from './screens/review.js';
 
 const screens = {
   profiles: { title: 'من يلعب؟', fn: profilesScreen, noBack: true },
@@ -32,6 +33,7 @@ const screens = {
   hello: { title: '👋 قل مرحباً', fn: helloScreen },
   daily: { title: '✈️ رحلة اليوم', fn: dailyScreen, full: true },
   options: { title: '⚙️ الإعدادات', fn: settingsScreen },
+  review: { title: '🔔 المراجعة', fn: reviewScreen },
 };
 
 const app = document.getElementById('app');

@@ -3,6 +3,7 @@ import { store } from '../store.js';
 import { LEVELS } from '../data.js';
 import { speak } from '../speech.js';
 import { sfx } from '../sfx.js';
+import { placementTest } from '../quiz.js';
 
 const AVATARS = ['🦁', '🐯', '🐼', '🦊', '🐸', '🐧', '🦄', '🐢', '🐬', '🦉', '🐫', '🦋'];
 
@@ -39,14 +40,17 @@ function newProfile(root, go) {
     h('label', {}, 'ما اسمك؟'), name,
     h('label', {}, 'اختر صورتك'), avs,
     h('label', {}, 'اختر مستواك'), lv,
-    h('button', { class: 'btn big', onclick: () => {
-      const n = name.value.trim();
-      if (!n) { name.focus(); name.classList.add('shake'); setTimeout(() => name.classList.remove('shake'), 500); return; }
-      store.addProfile({ name: n, avatar, level });
-      sfx('win'); speak(`أهلاً يا ${n}! هيا نستكشف العالم`, 'ar-SA');
-      go('home', { replace: true });
-    } }, 'هيا نبدأ! 🚀'),
+    h('button', { class: 'btn big', onclick: () => create(false) }, 'هيا نبدأ! 🚀'),
+    h('button', { class: 'btn big soft', onclick: () => create(true) }, '🧭 اختبر مستواي أولاً (١٠ أسئلة)'),
   );
+  function create(test) {
+    const n = name.value.trim();
+    if (!n) { name.focus(); name.classList.add('shake'); setTimeout(() => name.classList.remove('shake'), 500); return; }
+    const p = store.addProfile({ name: n, avatar, level });
+    sfx('win');
+    if (test) placementTest((lv) => { store.updateProfile(p.id, { level: lv, placement: lv }); go('home', { replace: true }); });
+    else { speak(`أهلاً يا ${n}! هيا نستكشف العالم`, 'ar-SA'); go('home', { replace: true }); }
+  }
   root.querySelector('.new-profile')?.remove();
   root.append(form);
   form.scrollIntoView({ behavior: 'smooth' });

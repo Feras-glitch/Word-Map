@@ -1,0 +1,666 @@
+{
+ "AGO": {
+  "type": "presidential"
+ },
+ "ARG": {
+  "type": "presidential",
+  "federal": true
+ },
+ "BLR": {
+  "type": "presidential"
+ },
+ "BEN": {
+  "type": "presidential"
+ },
+ "BOL": {
+  "type": "presidential"
+ },
+ "BRA": {
+  "type": "presidential",
+  "federal": true
+ },
+ "BDI": {
+  "type": "presidential"
+ },
+ "CMR": {
+  "type": "presidential"
+ },
+ "CHL": {
+  "type": "presidential"
+ },
+ "COL": {
+  "type": "presidential"
+ },
+ "COM": {
+  "type": "presidential"
+ },
+ "CRI": {
+  "type": "presidential"
+ },
+ "CIV": {
+  "type": "presidential"
+ },
+ "CYP": {
+  "type": "presidential"
+ },
+ "DJI": {
+  "type": "presidential"
+ },
+ "DOM": {
+  "type": "presidential"
+ },
+ "ECU": {
+  "type": "presidential"
+ },
+ "SLV": {
+  "type": "presidential"
+ },
+ "GNQ": {
+  "type": "presidential"
+ },
+ "GAB": {
+  "type": "presidential"
+ },
+ "GMB": {
+  "type": "presidential"
+ },
+ "GHA": {
+  "type": "presidential"
+ },
+ "GTM": {
+  "type": "presidential"
+ },
+ "GIN": {
+  "type": "presidential"
+ },
+ "HND": {
+  "type": "presidential"
+ },
+ "IDN": {
+  "type": "presidential"
+ },
+ "KAZ": {
+  "type": "presidential"
+ },
+ "KEN": {
+  "type": "presidential"
+ },
+ "KGZ": {
+  "type": "presidential"
+ },
+ "KOR": {
+  "type": "presidential"
+ },
+ "LBR": {
+  "type": "presidential"
+ },
+ "MWI": {
+  "type": "presidential"
+ },
+ "MDV": {
+  "type": "presidential"
+ },
+ "MEX": {
+  "type": "presidential",
+  "federal": true
+ },
+ "NIC": {
+  "type": "presidential",
+  "note": "يقودها منذ ٢٠٢٥ رئيس ورئيسة مشاركة"
+ },
+ "NGA": {
+  "type": "presidential",
+  "federal": true
+ },
+ "PLW": {
+  "type": "presidential"
+ },
+ "PAN": {
+  "type": "presidential"
+ },
+ "PRY": {
+  "type": "presidential"
+ },
+ "PER": {
+  "type": "presidential"
+ },
+ "PHL": {
+  "type": "presidential"
+ },
+ "RWA": {
+  "type": "presidential"
+ },
+ "SYC": {
+  "type": "presidential"
+ },
+ "SLE": {
+  "type": "presidential"
+ },
+ "TJK": {
+  "type": "presidential"
+ },
+ "TZA": {
+  "type": "presidential"
+ },
+ "TCD": {
+  "type": "presidential"
+ },
+ "TUR": {
+  "type": "presidential"
+ },
+ "TKM": {
+  "type": "presidential"
+ },
+ "UGA": {
+  "type": "presidential"
+ },
+ "USA": {
+  "type": "presidential",
+  "federal": true
+ },
+ "URY": {
+  "type": "presidential"
+ },
+ "UZB": {
+  "type": "presidential"
+ },
+ "VEN": {
+  "type": "presidential",
+  "federal": true,
+  "note": "تقودها رئيسة بالنيابة منذ يناير ٢٠٢٦"
+ },
+ "ZMB": {
+  "type": "presidential"
+ },
+ "ZWE": {
+  "type": "presidential"
+ },
+ "AZE": {
+  "type": "semi"
+ },
+ "TUN": {
+  "type": "presidential"
+ },
+ "COG": {
+  "type": "semi"
+ },
+ "CAF": {
+  "type": "presidential"
+ },
+ "MOZ": {
+  "type": "semi"
+ },
+ "GUY": {
+  "type": "parliamentary",
+  "note": "يختار البرلمانُ الرئيسَ، والرئيس هو الذي يقود الحكومة"
+ },
+ "SUR": {
+  "type": "parliamentary",
+  "note": "يختار البرلمانُ الرئيسَ، والرئيس هو الذي يقود الحكومة"
+ },
+ "DZA": {
+  "type": "semi"
+ },
+ "EGY": {
+  "type": "semi"
+ },
+ "FRA": {
+  "type": "semi"
+ },
+ "PRT": {
+  "type": "semi"
+ },
+ "ROU": {
+  "type": "semi"
+ },
+ "UKR": {
+  "type": "semi"
+ },
+ "RUS": {
+  "type": "semi",
+  "federal": true
+ },
+ "LKA": {
+  "type": "semi"
+ },
+ "TLS": {
+  "type": "semi"
+ },
+ "LTU": {
+  "type": "semi"
+ },
+ "SEN": {
+  "type": "semi"
+ },
+ "MRT": {
+  "type": "semi"
+ },
+ "NAM": {
+  "type": "semi"
+ },
+ "CPV": {
+  "type": "semi"
+ },
+ "STP": {
+  "type": "semi"
+ },
+ "COD": {
+  "type": "semi"
+ },
+ "MNG": {
+  "type": "semi"
+ },
+ "ALB": {
+  "type": "parliamentary"
+ },
+ "ARM": {
+  "type": "parliamentary"
+ },
+ "AUT": {
+  "type": "parliamentary",
+  "federal": true
+ },
+ "BGD": {
+  "type": "parliamentary"
+ },
+ "BGR": {
+  "type": "parliamentary"
+ },
+ "HRV": {
+  "type": "parliamentary"
+ },
+ "CZE": {
+  "type": "parliamentary"
+ },
+ "DMA": {
+  "type": "parliamentary"
+ },
+ "EST": {
+  "type": "parliamentary"
+ },
+ "ETH": {
+  "type": "parliamentary",
+  "federal": true
+ },
+ "FIN": {
+  "type": "parliamentary"
+ },
+ "DEU": {
+  "type": "parliamentary",
+  "federal": true
+ },
+ "GRC": {
+  "type": "parliamentary"
+ },
+ "HUN": {
+  "type": "parliamentary"
+ },
+ "IND": {
+  "type": "parliamentary",
+  "federal": true
+ },
+ "IRQ": {
+  "type": "parliamentary",
+  "federal": true
+ },
+ "ITA": {
+  "type": "parliamentary"
+ },
+ "XKX": {
+  "type": "parliamentary"
+ },
+ "LVA": {
+  "type": "parliamentary"
+ },
+ "LBN": {
+  "type": "parliamentary"
+ },
+ "MLT": {
+  "type": "parliamentary"
+ },
+ "MUS": {
+  "type": "parliamentary"
+ },
+ "MDA": {
+  "type": "parliamentary"
+ },
+ "MNE": {
+  "type": "parliamentary"
+ },
+ "NPL": {
+  "type": "parliamentary",
+  "federal": true
+ },
+ "MKD": {
+  "type": "parliamentary"
+ },
+ "PAK": {
+  "type": "parliamentary",
+  "federal": true
+ },
+ "POL": {
+  "type": "parliamentary"
+ },
+ "SRB": {
+  "type": "parliamentary"
+ },
+ "SGP": {
+  "type": "parliamentary"
+ },
+ "SVK": {
+  "type": "parliamentary"
+ },
+ "SVN": {
+  "type": "parliamentary"
+ },
+ "SOM": {
+  "type": "presidential",
+  "federal": true,
+  "note": "جعلها دستور ٢٠٢٦ جمهورية رئاسية، وما زالت بعض ولاياتها ترفضه"
+ },
+ "TTO": {
+  "type": "parliamentary"
+ },
+ "VUT": {
+  "type": "parliamentary"
+ },
+ "IRL": {
+  "type": "parliamentary"
+ },
+ "ISL": {
+  "type": "parliamentary"
+ },
+ "BRB": {
+  "type": "parliamentary"
+ },
+ "GEO": {
+  "type": "parliamentary"
+ },
+ "FJI": {
+  "type": "parliamentary"
+ },
+ "WSM": {
+  "type": "parliamentary"
+ },
+ "BIH": {
+  "type": "parliamentary",
+  "federal": true
+ },
+ "ZAF": {
+  "type": "parliamentary",
+  "note": "يختار البرلمانُ الرئيسَ، والرئيس هو الذي يقود الحكومة"
+ },
+ "BWA": {
+  "type": "parliamentary",
+  "note": "يختار البرلمانُ الرئيسَ، والرئيس هو الذي يقود الحكومة"
+ },
+ "KIR": {
+  "type": "parliamentary",
+  "note": "يختار البرلمانُ الرئيسَ، والرئيس هو الذي يقود الحكومة"
+ },
+ "MHL": {
+  "type": "parliamentary",
+  "note": "يختار البرلمانُ الرئيسَ، والرئيس هو الذي يقود الحكومة"
+ },
+ "FSM": {
+  "type": "parliamentary",
+  "federal": true,
+  "note": "يختار البرلمانُ الرئيسَ، ولا يستطيع عزله"
+ },
+ "NRU": {
+  "type": "parliamentary",
+  "note": "يختار البرلمانُ الرئيسَ، والرئيس هو الذي يقود الحكومة"
+ },
+ "TGO": {
+  "type": "parliamentary"
+ },
+ "CHE": {
+  "type": "directorial",
+  "federal": true,
+  "note": "يحكمها «المجلس الاتحادي» من سبعة وزراء، ويتناوبون على الرئاسة كل سنة"
+ },
+ "SMR": {
+  "type": "parliamentary",
+  "note": "يرأسها «قائدان» معاً يتغيران كل ستة أشهر"
+ },
+ "AND": {
+  "type": "const_monarchy",
+  "note": "يرأسها أميران معاً: رئيس فرنسا وأسقف أورغيل في إسبانيا"
+ },
+ "ATG": {
+  "type": "const_monarchy",
+  "note": "ملكها هو ملك بريطانيا، ويمثله فيها حاكم عام"
+ },
+ "AUS": {
+  "type": "const_monarchy",
+  "federal": true,
+  "note": "ملكها هو ملك بريطانيا، ويمثله فيها حاكم عام"
+ },
+ "BHS": {
+  "type": "const_monarchy",
+  "note": "ملكها هو ملك بريطانيا، ويمثله فيها حاكم عام"
+ },
+ "BEL": {
+  "type": "const_monarchy",
+  "federal": true
+ },
+ "BLZ": {
+  "type": "const_monarchy",
+  "note": "ملكها هو ملك بريطانيا، ويمثله فيها حاكم عام"
+ },
+ "CAN": {
+  "type": "const_monarchy",
+  "federal": true,
+  "note": "ملكها هو ملك بريطانيا، ويمثله فيها حاكم عام"
+ },
+ "DNK": {
+  "type": "const_monarchy"
+ },
+ "GRD": {
+  "type": "const_monarchy",
+  "note": "ملكها هو ملك بريطانيا، ويمثله فيها حاكم عام"
+ },
+ "JAM": {
+  "type": "const_monarchy",
+  "note": "ملكها هو ملك بريطانيا، ويمثله فيها حاكم عام"
+ },
+ "JPN": {
+  "type": "const_monarchy"
+ },
+ "LSO": {
+  "type": "const_monarchy"
+ },
+ "LUX": {
+  "type": "const_monarchy"
+ },
+ "MYS": {
+  "type": "const_monarchy",
+  "federal": true,
+  "note": "يُنتخب ملكها كل خمس سنوات من بين حكّام الولايات التسع"
+ },
+ "NLD": {
+  "type": "const_monarchy"
+ },
+ "NZL": {
+  "type": "const_monarchy",
+  "note": "ملكها هو ملك بريطانيا، ويمثله فيها حاكم عام"
+ },
+ "NOR": {
+  "type": "const_monarchy"
+ },
+ "PNG": {
+  "type": "const_monarchy",
+  "note": "ملكها هو ملك بريطانيا، ويمثله فيها حاكم عام"
+ },
+ "KNA": {
+  "type": "const_monarchy",
+  "federal": true,
+  "note": "ملكها هو ملك بريطانيا، ويمثله فيها حاكم عام"
+ },
+ "LCA": {
+  "type": "const_monarchy",
+  "note": "ملكها هو ملك بريطانيا، ويمثله فيها حاكم عام"
+ },
+ "VCT": {
+  "type": "const_monarchy",
+  "note": "ملكها هو ملك بريطانيا، ويمثله فيها حاكم عام"
+ },
+ "SLB": {
+  "type": "const_monarchy",
+  "note": "ملكها هو ملك بريطانيا، ويمثله فيها حاكم عام"
+ },
+ "ESP": {
+  "type": "const_monarchy"
+ },
+ "SWE": {
+  "type": "const_monarchy"
+ },
+ "TUV": {
+  "type": "const_monarchy",
+  "note": "ملكها هو ملك بريطانيا، ويمثله فيها حاكم عام"
+ },
+ "GBR": {
+  "type": "const_monarchy"
+ },
+ "KHM": {
+  "type": "const_monarchy"
+ },
+ "THA": {
+  "type": "const_monarchy"
+ },
+ "BTN": {
+  "type": "semi_monarchy"
+ },
+ "BHR": {
+  "type": "semi_monarchy"
+ },
+ "JOR": {
+  "type": "semi_monarchy"
+ },
+ "KWT": {
+  "type": "semi_monarchy",
+  "note": "علّق الأمير عمل مجلس الأمة عام ٢٠٢٤"
+ },
+ "LIE": {
+  "type": "semi_monarchy"
+ },
+ "MCO": {
+  "type": "semi_monarchy"
+ },
+ "MAR": {
+  "type": "semi_monarchy"
+ },
+ "TON": {
+  "type": "semi_monarchy"
+ },
+ "ARE": {
+  "type": "semi_monarchy",
+  "federal": true,
+  "note": "اتحاد سبع إمارات، ويختار حكامها رئيس الدولة"
+ },
+ "QAT": {
+  "type": "semi_monarchy"
+ },
+ "SAU": {
+  "type": "absolute_monarchy"
+ },
+ "OMN": {
+  "type": "absolute_monarchy"
+ },
+ "BRN": {
+  "type": "absolute_monarchy"
+ },
+ "SWZ": {
+  "type": "absolute_monarchy"
+ },
+ "VAT": {
+  "type": "absolute_monarchy",
+  "note": "يحكمها البابا، ويختاره الكرادلة"
+ },
+ "CHN": {
+  "type": "one_party",
+  "note": "يحكمها الحزب الشيوعي الصيني"
+ },
+ "CUB": {
+  "type": "one_party",
+  "note": "يحكمها الحزب الشيوعي الكوبي"
+ },
+ "ERI": {
+  "type": "one_party",
+  "note": "يحكمها حزب واحد، ولم تُجرَ فيها انتخابات وطنية منذ استقلالها"
+ },
+ "PRK": {
+  "type": "one_party",
+  "note": "يحكمها حزب العمال الكوري"
+ },
+ "LAO": {
+  "type": "one_party",
+  "note": "يحكمها حزب الشعب الثوري اللاوي"
+ },
+ "VNM": {
+  "type": "one_party",
+  "note": "يحكمها الحزب الشيوعي الفيتنامي"
+ },
+ "IRN": {
+  "type": "theocratic",
+  "note": "جمهورية إسلامية يقودها «المرشد الأعلى»، ومعه رئيس وبرلمان منتخبان"
+ },
+ "AFG": {
+  "type": "theocratic",
+  "note": "تحكمها حركة طالبان منذ ٢٠٢١ باسم «الإمارة الإسلامية»، ولا تعترف بها أغلب دول العالم"
+ },
+ "BFA": {
+  "type": "military",
+  "note": "يحكمها الجيش منذ ٢٠٢٢"
+ },
+ "MLI": {
+  "type": "military",
+  "note": "يحكمها الجيش منذ ٢٠٢٠"
+ },
+ "NER": {
+  "type": "military",
+  "note": "يحكمها الجيش منذ ٢٠٢٣"
+ },
+ "GNB": {
+  "type": "military",
+  "note": "تولّى الجيش الحكم في نوفمبر ٢٠٢٥"
+ },
+ "SDN": {
+  "type": "military",
+  "federal": true,
+  "note": "يقودها الجيش منذ ٢٠٢١، وتدور فيها حرب منذ ٢٠٢٣"
+ },
+ "MDG": {
+  "type": "military",
+  "note": "تولّى الجيش الحكم في أكتوبر ٢٠٢٥"
+ },
+ "MMR": {
+  "type": "presidential",
+  "note": "منذ ٢٠٢٦ يرأسها قائد الجيش السابق بعد انتخابات انتقدتها دول كثيرة، وللجيش دور كبير في الحكم"
+ },
+ "SYR": {
+  "type": "provisional",
+  "note": "بعد سقوط النظام السابق في ديسمبر ٢٠٢٤ يحكمها رئيس انتقالي بإعلان دستوري مؤقت"
+ },
+ "LBY": {
+  "type": "provisional",
+  "note": "فيها حكومتان متنافستان منذ سنوات، في الغرب والشرق"
+ },
+ "YEM": {
+  "type": "provisional",
+  "note": "يقودها «مجلس القيادة الرئاسي» المعترف به دولياً، ويسيطر الحوثيون على صنعاء والشمال"
+ },
+ "HTI": {
+  "type": "provisional",
+  "note": "تحكمها حكومة انتقالية حتى تُجرى الانتخابات"
+ },
+ "SSD": {
+  "type": "provisional",
+  "federal": true,
+  "note": "تحكمها حكومة وحدة انتقالية منذ اتفاق السلام"
+ },
+ "PSE": {
+  "type": "provisional",
+  "note": "يجعلها القانون الأساسي جمهورية شبه رئاسية، وهي تحت الاحتلال، وتدير السلطة الفلسطينية أجزاء من الضفة الغربية"
+ }
+}

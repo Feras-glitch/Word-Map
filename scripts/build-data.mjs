@@ -114,6 +114,16 @@ for (const c of out) {
   if (d.currencyStory) c.curStory = d.currencyStory;
   c.sources = d.sources;
 }
+// نظام الحكم
+const govTypes = JSON.parse(fs.readFileSync(path.join(root, 'content/government-types.json'), 'utf8'));
+const govData = JSON.parse(fs.readFileSync(path.join(root, 'content/government.json'), 'utf8'));
+for (const c of out) {
+  const g = govData[c.id];
+  if (!g || !govTypes[g.type]) continue;
+  const T = govTypes[g.type];
+  c.gov = { type: g.type, ar: T.ar, en: T.en, zh: T.zh, py: pinyin(T.zh, { toneType: 'symbol', type: 'array' }).join(' '), kid: T.kid, icon: T.icon, federal: !!g.federal, note: g.note || '' };
+}
+
 const languages = {};
 for (const l of usedLangs) {
   const x = lexicon[l] || {};

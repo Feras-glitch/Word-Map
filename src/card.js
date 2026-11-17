@@ -4,6 +4,8 @@ import { byId, flagUrl, continents, continents3, greetings, languages, num, cont
 import { speak, LANG } from './speech.js';
 import { sfx } from './sfx.js';
 import { store } from './store.js';
+import { hasVisit, hasGold, canTakeExam, giveVisit, examResult, dueReviews, reviewResult } from './mastery.js';
+import { visitQuestion, masteryExam, reviewQuiz } from './quiz.js';
 
 const say = (text, lang, fb) => h('button', { class: 'say', 'aria-label': 'استمع', onclick: (e) => { e.stopPropagation(); speak(text, lang, fb); } }, '🔊');
 
@@ -114,6 +116,11 @@ function numbersTab(c, openNeighbor) {
   const neighbors = c.borders.map((b) => byId[b]).filter(Boolean);
   const pop = popText(c);
   return h('div', {},
+    c.gov ? h('div', { class: 'sec gov' }, h('span', { class: 'st-label' }, (c.gov.icon || '🏛️') + ' نظام الحكم'),
+      tri({ ar: c.gov.ar, en: c.gov.en, zh: c.gov.zh, py: c.gov.py }, { prefix: 'نظام الحكم في ' + c.ar + ': ' }),
+      h('p', { class: 'note' }, c.gov.kid),
+      c.gov.note ? h('p', { class: 'note strong' }, c.gov.note + '.') : null,
+      c.gov.federal ? h('p', { class: 'note' }, '🧩 دولة اتحادية: تتكون من ولايات أو أقاليم، لكل منها حكومة خاصة بها.') : null) : null,
     h('div', { class: 'facts-grid' },
       c.area ? h('div', { class: 'fact' }, h('span', {}, '📏 المساحة'), h('b', {}, num(c.area) + ' كم²')) : null,
       pop ? h('div', { class: 'fact' }, h('span', {}, '👨‍👩‍👧 السكان'), h('b', {}, pop.n), pop.cmp ? h('small', {}, pop.cmp) : null) : null,
@@ -137,18 +144,18 @@ function openStory(st) {
     st.sections.map(([t, p]) => h('div', { class: 'story-sec' }, h('h3', {}, t), h('p', {}, p), h('button', { class: 'say', 'aria-label': 'استمع', onclick: () => speak(t + '. ' + p, LANG.ar) }, '🔊')))));
 }
 
-export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false } = {}) {
+export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, onClose } = {}) {
   const c = byId[id];
   if (!c) return;
   sfx('tap');
   const isState = c.kind === 'state';
-  const openNeighbor = (nid) => openCard(nid, { onShowOnMap, stamp, replace: true });
+  const openNeighbor = (nid) => openCard(nid, { onShowOnMap, stamp, replace: true, onClose });
 
   const tabs = [
     ['🌍', 'الأسماء', () => namesTab(c)],
     ['🏛️', isState ? 'العاصمة والمعالم' : 'معلومات', () => capitalTab(c)],
     ...(isState ? [['🗣️', 'اللغات', () => languagesTab(c)]] : []),
-    ['📊', 'أرقام', () => numbersTab(c, openNeighbor)],
+    ['📊', isState ? 'الحكم والأرقام' : 'أرقام', () => numbersTab(c, openNeighbor)],
   ];
   const pane = h('div', { class: 'tab-pane' });
   const bar = h('div', { class: 'tab-bar' });
@@ -168,21 +175,33 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false }
   );
   show(0, true);
 
-  const m = modal(body, { cls: 'card-modal', replace });
+  const stampBox = h('div', { class: 'stamp-box' });
+  if (isState && store.me) body.insertBefore(stampBox, body.querySelector('.card-actions'));
+  const m = modal(body, { cls: 'card-modal', replace, onClose });
   setTimeout(() => speak(c.ar, LANG.ar), 250);
 
-  if (isState && stamp && store.me) {
-    const isNew = store.stamp(c.id);
-    if (isNew) {
-      setTimeout(() => {
-        const st = h('div', { class: 'stamp-anim' }, h('div', { class: 'stamp' }, h('img', { src: flagUrl(c.f), alt: '' }), h('span', {}, c.ar)), h('div', { class: 'stamp-txt' }, 'ختم جديد في جوازك!'));
-        m.box.append(st);
-        sfx('stamp');
-        setTimeout(() => st.classList.add('done'), 1600);
-        checkContinentBadge(c.cont);
-      }, 900);
-    }
-  }
+  const showStamp = (gold) => {
+    const st = h('div', { class: 'stamp-anim' }, h('div', { class: 'stamp' + (gold ? ' gold' : '') }, h('img', { src: flagUrl(c.f), alt: '' }), h('span', {}, c.ar)),
+      h('div', { class: 'stamp-txt' }, gold ? 'ختم ذهبي في جوازك! 🥇' : 'ختم جديد في جوازك!'));
+    m.box.append(st); sfx('stamp');
+    setTimeout(() => st.classList.add('done'), 1800);
+  };
+  const drawStamp = () => {
+    if (!isState || !store.me) return;
+    const visit = hasVisit(c.id), gold = hasGold(c.id), due = dueReviews().includes(c.id);
+    const ex = canTakeExam(c.id);
+    stampBox.replaceChildren(...[
+      h('div', { class: 'stamp-status' },
+        h('span', { class: 'chip-st' + (visit ? ' on' : '') }, visit ? '✅ ختم الزيارة' : '⬜ ختم الزيارة'),
+        h('span', { class: 'chip-st gold' + (gold ? ' on' : '') }, gold ? '🥇 الختم الذهبي' : '⬜ الختم الذهبي')),
+      !visit ? h('button', { class: 'btn big', onclick: () => visitQuestion(c, () => { giveVisit(c.id); showStamp(false); drawStamp(); checkContinentBadge(c.cont); }) }, '🛂 احصل على ختم الزيارة (سؤال واحد)') : null,
+      visit && !gold ? (ex.ok ? h('button', { class: 'btn big gold-btn', onclick: () => masteryExam(c, (score) => { if (examResult(c.id, score)) showStamp(true); drawStamp(); }) }, '⭐ امتحان الإتقان (٥ أسئلة)')
+        : h('p', { class: 'note' }, '⏳ ' + ex.why)) : null,
+      gold && due ? h('button', { class: 'btn big', onclick: () => reviewQuiz(c, (pass) => { reviewResult(c.id, pass); drawStamp(); }) }, '🔔 حان وقت المراجعة') : null,
+    ].filter(Boolean));
+  };
+  drawStamp();
+  void stamp;
   return m;
 }
 

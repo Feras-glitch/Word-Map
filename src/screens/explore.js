@@ -8,13 +8,14 @@ import { sfx } from '../sfx.js';
 export function exploreScreen(root) {
   const me = store.me;
   // الدول المزارة بلون كامل، والباقي بلون أفتح قليلاً
-  const fill = (c) => (c.kind === 'state' && !me.stamps[c.id] ? lighten(contColors[c.cont], 0.25) : defaultFill(c));
+  // خريطة التقدم: فاتح لما لم يُزَر، ملوّن بعد ختم الزيارة، ذهبي بعد الإتقان
+  const fill = (c) => c.kind !== 'state' ? defaultFill(c) : me.gold?.[c.id] ? '#f2c230' : me.stamps[c.id] ? contColors[c.cont] : lighten(contColors[c.cont], 0.55);
   const m = createMap({
     fill,
     onMiss: () => toast('🌊 هذا ماء: بحر أو محيط. المس اليابسة لتكتشف دولة'),
     onTap: (id, sub) => {
-      openCard(id, { sub, onShowOnMap: show });
-      setTimeout(() => m.setFill(fill), 1200);
+      openCard(id, { sub, onShowOnMap: show, onClose: () => m.setFill(fill) });
+
     },
   });
   const show = (id) => { m.zoomToCountry(id); m.flash(id, 'flash', 2400); };
@@ -23,7 +24,7 @@ export function exploreScreen(root) {
   const input = h('input', { class: 'input search', type: 'search', placeholder: '🔎 ابحث عن دولة أو عاصمة…', oninput: () => {
     results.innerHTML = '';
     for (const c of search(input.value)) results.append(h('button', { class: 'res', onclick: () => {
-      input.value = ''; results.innerHTML = ''; input.blur(); show(c.id); setTimeout(() => openCard(c.id, { onShowOnMap: show }), 750);
+      input.value = ''; results.innerHTML = ''; input.blur(); show(c.id); setTimeout(() => openCard(c.id, { onShowOnMap: show, onClose: () => m.setFill(fill) }), 750);
     } }, h('img', { src: flagUrl(c.f), alt: '' }), h('b', {}, c.ar), h('small', {}, c.en)));
   } });
 
@@ -37,5 +38,5 @@ export function exploreScreen(root) {
   });
   // فتح مباشر لدولة من شاشة أخرى
   let want = null; try { want = sessionStorage.getItem('openCountry'); sessionStorage.removeItem('openCountry'); } catch { /* */ }
-  if (want && byId[want]) { setTimeout(() => { show(want); openCard(want, { onShowOnMap: show }); }, 300); }
+  if (want && byId[want]) { setTimeout(() => { show(want); openCard(want, { onShowOnMap: show, onClose: () => m.setFill(fill) }); }, 300); }
 }
