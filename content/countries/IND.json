@@ -14,14 +14,15 @@
    "hi",
    "en"
   ],
-  "widespread": [
+  "regional": [
    "bn",
    "mr",
    "te",
    "ta",
    "ur"
   ],
-  "widespreadNote": "هذه اللغات رسمية في ولاياتها، والدستور يعترف بـ٢٢ لغة",
+  "regionalNote": "هذه أكبرها، وكل واحدة رسمية في ولايتها. ويعترف الدستور الهندي بـ٢٢ لغة",
+  "widespread": [],
   "others": 453
  },
  "currency": "INR",
