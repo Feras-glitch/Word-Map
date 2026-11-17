@@ -1,6 +1,6 @@
 {
  "capital": {
-  "ar": "غواتيمالا",
+  "ar": "مدينة غواتيمالا",
   "en": "Guatemala City",
   "zh": "危地马拉城"
  },
@@ -28,7 +28,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 6,
  "fact": "فيها مدينة تيكال الأثرية لحضارة المايا."
 }

@@ -2,7 +2,7 @@
  "capital": {
   "ar": "كينغستاون",
   "en": "Kingstown",
-  "zh": "金斯敦"
+  "zh": "金斯顿"
  },
  "landmark": {
   "ar": "بركان سوفرير",
@@ -24,7 +24,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 6,
  "fact": "تتكون من جزيرة سانت فنسنت وسلسلة جزر صغيرة اسمها غرينادين."
 }
