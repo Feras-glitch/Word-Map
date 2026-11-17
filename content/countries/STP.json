@@ -5,9 +5,9 @@
   "zh": "圣多美"
  },
  "landmark": {
-  "ar": "جبل كاو غراندي",
-  "en": "Pico Cão Grande",
-  "zh": "大狗峰"
+  "ar": "قمة ساو تومي",
+  "en": "Pico de São Tomé",
+  "zh": "圣多美峰"
  },
  "languages": {
   "official": [
@@ -27,7 +27,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 5,
  "fact": "يمر خط الاستواء بجزيرة صغيرة من جزرها."
 }

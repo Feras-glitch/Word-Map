@@ -7,7 +7,7 @@
  "landmark": {
   "ar": "صخرة سيبيبي",
   "en": "Sibebe Rock",
-  "zh": "西贝贝岩"
+  "zh": ""
  },
  "languages": {
   "official": [
@@ -25,7 +25,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 5,
  "capitalNote": "مباباني العاصمة الإدارية، ولوبامبا العاصمة الملكية والتشريعية",
  "fact": "من آخر الممالك في العالم التي يحكم فيها الملك حكماً كاملاً."

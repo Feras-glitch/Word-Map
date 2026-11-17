@@ -7,7 +7,7 @@
  "landmark": {
   "ar": "شلالات ماليتسونيان",
   "en": "Maletsunyane Falls",
-  "zh": "马莱楚尼亚内瀑布"
+  "zh": ""
  },
  "languages": {
   "official": [
@@ -18,7 +18,7 @@
    "st": {
     "t": "Lumela",
     "tr": "لوميلا",
-    "meaning": "",
+    "meaning": "مرحباً",
     "tts": "st-ZA"
    }
   }
@@ -33,7 +33,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 5,
  "fact": "كل أرضها مرتفعة، فأخفض نقطة فيها أعلى من ألف متر، وتحيط بها جنوب أفريقيا من كل جانب."
 }

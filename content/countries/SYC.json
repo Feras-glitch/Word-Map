@@ -7,7 +7,7 @@
  "landmark": {
   "ar": "محمية فالي دو ماي",
   "en": "Vallée de Mai",
-  "zh": "五月谷"
+  "zh": "马埃谷地自然保护区"
  },
  "languages": {
   "official": [
@@ -26,7 +26,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 5,
  "fact": "فيها جوز الهند البحري، صاحب أكبر بذرة في عالم النبات."
 }

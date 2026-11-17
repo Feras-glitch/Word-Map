@@ -16,10 +16,10 @@
   "widespread": [
    "ln",
    "sw",
-   "kg",
+   "ktu",
    "lua"
   ],
-  "widespreadNote": "هذه الأربع «لغات وطنية» بنص الدستور"
+  "widespreadNote": "هذه الأربع «لغات وطنية» بنص الدستور، ويقصد الدستور بالكيكونغو لغة الكيتوبا"
  },
  "sources": [
   {
@@ -31,7 +31,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 5,
  "fact": "ثاني أكبر دولة في أفريقيا، ويجري فيها نهر الكونغو، أعمق نهر في العالم."
 }

@@ -5,9 +5,9 @@
   "zh": "布拉柴维尔"
  },
  "landmark": {
-  "ar": "منتزه أوزالا كوكوا الوطني",
-  "en": "Odzala-Kokoua National Park",
-  "zh": "奥扎拉-科夸国家公园"
+  "ar": "منتزه أوزالا الوطني",
+  "en": "Odzala National Park",
+  "zh": "奥扎拉国家公园"
  },
  "languages": {
   "official": [
@@ -29,7 +29,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 5,
  "fact": "عاصمتها برازافيل تقابل كينشاسا على ضفتي نهر الكونغو، وهما من أقرب عاصمتين في العالم."
 }

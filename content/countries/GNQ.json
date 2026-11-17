@@ -1,13 +1,13 @@
 {
  "capital": {
-  "ar": "مالابو",
-  "en": "Malabo",
-  "zh": "马拉博"
+  "ar": "سيوداد دي لا باز (مدينة السلام)",
+  "en": "Ciudad de la Paz",
+  "zh": "拉帕斯"
  },
  "landmark": {
   "ar": "جبل باسيلي",
   "en": "Pico Basilé",
-  "zh": "巴西莱峰"
+  "zh": "巴希莱峰"
  },
  "languages": {
   "official": [
@@ -22,11 +22,16 @@
    "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
   },
   {
+   "title": "أفريكانيوز: غينيا الاستوائية تنقل عاصمتها (يناير ٢٠٢٦)",
+   "url": "https://www.africanews.com/2026/01/05/equatorial-guinea-relocates-capital/"
+  },
+  {
    "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 5,
- "fact": "الدولة الوحيدة في أفريقيا لغتها الرسمية الإسبانية."
+ "fact": "الدولة الوحيدة في أفريقيا لغتها الرسمية الإسبانية.",
+ "capitalNote": "نُقلت العاصمة من مالابو إلى مدينة السلام بمرسوم في يناير ٢٠٢٦، وانتقال الوزارات إليها جارٍ"
 }

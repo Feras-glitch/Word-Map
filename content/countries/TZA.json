@@ -11,10 +11,13 @@
  },
  "languages": {
   "official": [
-   "sw",
+   "sw"
+  ],
+  "officialNote": "السواحيلية «اللغة الوطنية» ولغة القوانين والمحاكم",
+  "widespread": [
    "en"
   ],
-  "officialNote": "السواحيلية «اللغة الوطنية»"
+  "widespreadNote": "الإنجليزية تُستعمل في التعليم العالي والتجارة"
  },
  "sources": [
   {
@@ -26,6 +29,6 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 5
 }
