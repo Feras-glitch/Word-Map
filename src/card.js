@@ -7,6 +7,13 @@ import { store } from './store.js';
 
 const say = (text, lang) => h('button', { class: 'say', 'aria-label': 'استمع', onclick: (e) => { e.stopPropagation(); speak(text, lang); } }, '🔊');
 
+function storySpeech(c) {
+  const parts = [];
+  if (c.landmark) parts.push(`من معالم ${c.ar} الشهيرة: ${c.landmark}.`);
+  if (c.fact || c.note) parts.push(`هل تعلم؟ ${c.fact || c.note}`);
+  return parts.join(' ');
+}
+
 export function openCard(id, { sub, onShowOnMap, stamp = true } = {}) {
   const c = byId[id];
   if (!c) return;
@@ -32,9 +39,9 @@ export function openCard(id, { sub, onShowOnMap, stamp = true } = {}) {
       !isState && c.parent ? h('div', { class: 'fact' }, h('span', {}, '🔗 تتبع'), h('b', {}, c.parent)) : null,
     ),
     c.landmark || c.fact || c.note ? h('div', { class: 'story' },
-      c.landmark ? h('div', { class: 'landmark' }, '⭐ ' + c.landmark) : null,
-      c.fact || c.note ? h('p', {}, c.fact || c.note) : null,
-      c.fact || c.note ? h('button', { class: 'btn small soft', onclick: () => speak((c.landmark ? c.landmark + '. ' : '') + (c.fact || c.note), LANG.ar) }, '🔊 اسمع المعلومة') : null,
+      c.landmark ? h('div', { class: 'landmark' }, h('span', { class: 'st-label' }, '🏛️ من معالمها الشهيرة:'), h('b', {}, c.landmark)) : null,
+      c.fact || c.note ? h('div', { class: 'didyou' }, h('span', { class: 'st-label' }, '💡 هل تعلم؟'), h('p', {}, c.fact || c.note)) : null,
+      h('button', { class: 'btn small soft', onclick: () => speak(storySpeech(c), LANG.ar) }, '🔊 اسمع المعلومة'),
     ) : null,
     isState && g ? h('div', { class: 'hello' },
       h('span', {}, '👋 قل مرحباً بلغتهم:'),

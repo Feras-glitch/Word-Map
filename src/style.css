@@ -128,7 +128,10 @@ svg.map { position: absolute; inset: 0; width: 100%; height: 100%; display: bloc
 .fact.cap { grid-column: 1 / -1; flex-direction: row; align-items: center; flex-wrap: wrap; gap: 8px; background: #fff7dc; }
 .fact.cap b { flex: 1; font-size: 1.3rem; }
 .story { background: #fff; border-radius: 18px; padding: 12px 14px; margin-top: 10px; border-right: 6px solid var(--gold); }
-.story .landmark { font-weight: 900; color: #b07800; } .story p { margin: 6px 0 10px; line-height: 1.8; font-size: 1.05rem; }
+.st-label { display: block; font-size: .85rem; font-weight: 700; color: var(--muted); }
+.story .landmark b { display: block; font-weight: 900; font-size: 1.15rem; color: #b07800; margin-bottom: 8px; }
+.story .didyou { border-top: 1px dashed #eadfbf; padding-top: 8px; }
+.story p { margin: 2px 0 10px; line-height: 1.8; font-size: 1.05rem; }
 .hello { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; background: #e8f8f5; border-radius: 18px; padding: 10px 12px; margin-top: 10px; }
 .hello b { font-size: 1.25rem; } .hello small { color: var(--muted); } .hello .say { margin-inline-start: auto; }
 .neighbors { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 12px; }
