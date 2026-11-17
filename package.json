@@ -1,0 +1,36 @@
+{
+  "name": "world-explorer-kids",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "data": "node scripts/build-data.mjs",
+    "dev": "vite",
+    "build": "npm run data && vite build",
+    "build:single": "npm run data && vite build --mode single",
+    "preview": "vite preview",
+    "icons": "node scripts/make-icons.mjs",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.6.2",
+    "@tauri-apps/cli": "^2.12.5",
+    "d3-geo": "^3.1.2",
+    "flag-icons": "^7.6.0",
+    "pinyin-pro": "^3.29.5",
+    "sharp": "^0.35.5",
+    "topojson-client": "^3.1.0",
+    "topojson-simplify": "^3.0.3",
+    "vite": "^8.3.8",
+    "vite-plugin-singlefile": "^2.3.4",
+    "world-atlas": "^2.0.2",
+    "world-countries": "^5.1.0"
+  },
+  "dependencies": {
+    "@capacitor-community/text-to-speech": "^8.0.2",
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/core": "^8.6.2",
+    "@fontsource/cairo": "^5.3.0"
+  },
+  "description": "مستكشف العالم — خريطة تفاعلية للأطفال"
+}

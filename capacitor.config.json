@@ -1,0 +1,6 @@
+{
+  "appId": "com.feras.worldexplorer",
+  "appName": "مستكشف العالم",
+  "webDir": "dist",
+  "android": { "backgroundColor": "#2b7fd4" }
+}

@@ -1,0 +1,109 @@
+name: بناء التطبيق (ويب + أندرويد + ويندوز)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web:
+    name: نسخة الويب
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: npm run build
+      - run: npx vite build --mode single && cp dist-single/index.html WorldExplorer-web.html
+      - uses: actions/upload-artifact@v4
+        with: { name: web-single, path: WorldExplorer-web.html }
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: dist }
+
+  pages:
+    name: نشر على GitHub Pages
+    needs: web
+    runs-on: ubuntu-latest
+    continue-on-error: true   # يعمل بعد تفعيل Pages من إعدادات المستودع
+    environment: { name: github-pages, url: '${{ steps.deploy.outputs.page_url }}' }
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+  android:
+    name: أندرويد APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 21 }
+      - uses: android-actions/setup-android@v3
+      - run: npm ci
+      - run: npm run build
+      - run: npx cap add android
+      - name: الأيقونات وشاشة البداية
+        run: npx --yes @capacitor/assets@4 generate --android --iconBackgroundColor '#2b7fd4' --splashBackgroundColor '#2b7fd4'
+      - run: npx cap sync android
+      - name: مفتاح توقيع ثابت (حتى تعمل التحديثات دون حذف التطبيق)
+        run: mkdir -p ~/.android && cp ci/debug.keystore ~/.android/debug.keystore
+      - name: رقم الإصدار
+        run: |
+          sed -i "s/versionCode 1$/versionCode ${{ github.run_number }}/; s/versionName \"1.0\"/versionName \"1.0.${{ github.run_number }}\"/" android/app/build.gradle
+      - name: بناء APK
+        working-directory: android
+        run: chmod +x gradlew && ./gradlew assembleDebug --no-daemon
+      - run: cp android/app/build/outputs/apk/debug/app-debug.apk WorldExplorer.apk
+      - uses: actions/upload-artifact@v4
+        with: { name: android-apk, path: WorldExplorer.apk }
+
+  windows:
+    name: ويندوز EXE
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: swatinem/rust-cache@v2
+        with: { workspaces: src-tauri }
+      - run: npm ci
+      - run: npx tauri build
+      - name: نسخ ملف التثبيت
+        shell: bash
+        run: cp src-tauri/target/release/bundle/nsis/*.exe WorldExplorer-Setup.exe
+      - uses: actions/upload-artifact@v4
+        with: { name: windows-exe, path: WorldExplorer-Setup.exe }
+
+  release:
+    name: إصدار للتحميل
+    needs: [web, android, windows]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { merge-multiple: true }
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: مستكشف العالم 1.0.${{ github.run_number }}
+          make_latest: true
+          body: |
+            ## التحميل
+            - **أندرويد:** `WorldExplorer.apk` — افتحه على الهاتف واسمح بالتثبيت من هذا المصدر.
+            - **ويندوز:** `WorldExplorer-Setup.exe` — عند ظهور تحذير Windows اضغط "مزيد من المعلومات" ثم "تشغيل على أي حال".
+            - **ويب (بلا إنترنت):** `WorldExplorer-web.html` — ملف واحد يفتح في أي متصفح.
+          files: |
+            WorldExplorer.apk
+            WorldExplorer-Setup.exe
+            WorldExplorer-web.html

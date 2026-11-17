@@ -1,0 +1,75 @@
+// بطاقة الدولة
+import { h, modal, confetti, toast } from './ui.js';
+import { byId, flagUrl, continents, greetings, num, contEmoji, states } from './data.js';
+import { speak, LANG } from './speech.js';
+import { sfx } from './sfx.js';
+import { store } from './store.js';
+
+const say = (text, lang) => h('button', { class: 'say', 'aria-label': 'استمع', onclick: (e) => { e.stopPropagation(); speak(text, lang); } }, '🔊');
+
+export function openCard(id, { sub, onShowOnMap, stamp = true } = {}) {
+  const c = byId[id];
+  if (!c) return;
+  sfx('tap');
+  const isState = c.kind === 'state';
+  const g = greetings[c.greet] || greetings.eng;
+  const neighbors = c.borders.map((b) => byId[b]).filter(Boolean);
+
+  const body = h('div', { class: 'card' },
+    h('div', { class: 'card-flag' + (isState ? '' : ' terr') },
+      h('img', { src: flagUrl(c.f), alt: 'علم ' + c.ar })),
+    sub ? h('div', { class: 'sub-note' }, '📌 ' + sub) : null,
+    h('div', { class: 'names' },
+      h('div', { class: 'name-row ar' }, h('span', { class: 'lang-tag' }, 'عربي'), h('b', {}, c.ar), say(c.ar, LANG.ar)),
+      h('div', { class: 'name-row en', dir: 'ltr' }, h('span', { class: 'lang-tag' }, 'EN'), h('b', {}, c.en), say(c.en, LANG.en)),
+      c.zh ? h('div', { class: 'name-row zh', dir: 'ltr' }, h('span', { class: 'lang-tag' }, '中文'),
+        h('span', { class: 'zh-wrap' }, h('b', {}, c.zh), h('small', {}, c.py)), say(c.zh, LANG.zh)) : null,
+    ),
+    h('div', { class: 'facts-grid' },
+      c.capAr ? h('div', { class: 'fact cap' }, h('span', {}, '🏛️ العاصمة'), h('b', {}, c.capAr), say('عاصمة ' + c.ar + ' هي ' + c.capAr, LANG.ar)) : null,
+      c.cont && continents[c.cont] ? h('div', { class: 'fact' }, h('span', {}, (contEmoji[c.cont] || '🌍') + ' القارة'), h('b', {}, continents[c.cont]), c.sub ? h('small', {}, c.sub) : null) : null,
+      c.area ? h('div', { class: 'fact' }, h('span', {}, '📏 المساحة'), h('b', {}, num(c.area) + ' كم²')) : null,
+      !isState && c.parent ? h('div', { class: 'fact' }, h('span', {}, '🔗 تتبع'), h('b', {}, c.parent)) : null,
+    ),
+    c.landmark || c.fact || c.note ? h('div', { class: 'story' },
+      c.landmark ? h('div', { class: 'landmark' }, '⭐ ' + c.landmark) : null,
+      c.fact || c.note ? h('p', {}, c.fact || c.note) : null,
+      c.fact || c.note ? h('button', { class: 'btn small soft', onclick: () => speak((c.landmark ? c.landmark + '. ' : '') + (c.fact || c.note), LANG.ar) }, '🔊 اسمع المعلومة') : null,
+    ) : null,
+    isState && g ? h('div', { class: 'hello' },
+      h('span', {}, '👋 قل مرحباً بلغتهم:'),
+      h('b', { dir: 'auto' }, g.t), g.t !== g.ar ? h('small', {}, '(' + g.ar + ')') : null,
+      say(g.t, g.lang)) : null,
+    neighbors.length ? h('div', { class: 'neighbors' }, h('span', {}, '🤝 الجيران:'),
+      neighbors.map((n) => h('button', { class: 'chip', onclick: () => { m.close(); openCard(n.id, { onShowOnMap, stamp }); } },
+        h('img', { src: flagUrl(n.f), alt: '' }), n.ar))) : null,
+    h('div', { class: 'card-actions' },
+      onShowOnMap ? h('button', { class: 'btn', onclick: () => { m.close(); onShowOnMap(c.id); } }, '📍 أرني على الخريطة') : null,
+    ),
+  );
+
+  const m = modal(body, { cls: 'card-modal' });
+  setTimeout(() => speak(c.ar, LANG.ar), 250);
+
+  if (isState && stamp && store.me) {
+    const isNew = store.stamp(c.id);
+    if (isNew) {
+      setTimeout(() => {
+        const st = h('div', { class: 'stamp-anim' }, h('div', { class: 'stamp' }, h('img', { src: flagUrl(c.f), alt: '' }), h('span', {}, c.ar)), h('div', { class: 'stamp-txt' }, 'ختم جديد في جوازك!'));
+        m.box.append(st);
+        sfx('stamp');
+        setTimeout(() => st.classList.add('done'), 1600);
+        checkContinentBadge(c.cont);
+      }, 900);
+    }
+  }
+  return m;
+}
+
+function checkContinentBadge(cont) {
+  const me = store.me; if (!me) return;
+  const inCont = states.filter((s) => s.cont === cont);
+  if (inCont.every((s) => me.stamps[s.id]) && store.badge('cont-' + cont)) {
+    setTimeout(() => { confetti(); sfx('win'); toast(`🎉 أكملت قارة ${continents[cont]} كلها!`, 4000); speak(`مبارك! أكملت قارة ${continents[cont]} كلها`, LANG.ar); }, 2200);
+  }
+}
