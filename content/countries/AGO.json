@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "لواندا",
+  "en": "Luanda",
+  "zh": "罗安达"
+ },
+ "landmark": {
+  "ar": "شلالات كالاندولا",
+  "en": "Kalandula Falls",
+  "zh": "卡兰杜拉瀑布"
+ },
+ "languages": {
+  "official": [
+   "pt"
+  ],
+  "widespread": [
+   "umb",
+   "kmb"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5,
+ "fact": "فيها شلالات كالاندولا، من أكبر شلالات أفريقيا."
+}

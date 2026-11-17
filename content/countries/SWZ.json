@@ -1,0 +1,32 @@
+{
+ "capital": {
+  "ar": "مباباني",
+  "en": "Mbabane",
+  "zh": "姆巴巴内"
+ },
+ "landmark": {
+  "ar": "صخرة سيبيبي",
+  "en": "Sibebe Rock",
+  "zh": "西贝贝岩"
+ },
+ "languages": {
+  "official": [
+   "ss",
+   "en"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5,
+ "capitalNote": "مباباني العاصمة الإدارية، ولوبامبا العاصمة الملكية والتشريعية",
+ "fact": "من آخر الممالك في العالم التي يحكم فيها الملك حكماً كاملاً."
+}

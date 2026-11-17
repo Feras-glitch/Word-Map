@@ -1,0 +1,31 @@
+{
+ "capital": {
+  "ar": "دودوما",
+  "en": "Dodoma",
+  "zh": "多多马"
+ },
+ "landmark": {
+  "ar": "جبل كليمنجارو",
+  "en": "Mount Kilimanjaro",
+  "zh": "乞力马扎罗山"
+ },
+ "languages": {
+  "official": [
+   "sw",
+   "en"
+  ],
+  "officialNote": "السواحيلية «اللغة الوطنية»"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5
+}

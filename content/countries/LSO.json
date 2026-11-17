@@ -1,0 +1,39 @@
+{
+ "capital": {
+  "ar": "ماسيرو",
+  "en": "Maseru",
+  "zh": "马塞卢"
+ },
+ "landmark": {
+  "ar": "شلالات ماليتسونيان",
+  "en": "Maletsunyane Falls",
+  "zh": "马莱楚尼亚内瀑布"
+ },
+ "languages": {
+  "official": [
+   "st",
+   "en"
+  ],
+  "greetOverride": {
+   "st": {
+    "t": "Lumela",
+    "tr": "لوميلا",
+    "meaning": "",
+    "tts": "st-ZA"
+   }
+  }
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5,
+ "fact": "كل أرضها مرتفعة، فأخفض نقطة فيها أعلى من ألف متر، وتحيط بها جنوب أفريقيا من كل جانب."
+}

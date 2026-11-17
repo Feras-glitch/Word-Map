@@ -1,0 +1,32 @@
+{
+ "capital": {
+  "ar": "بانغي",
+  "en": "Bangui",
+  "zh": "班吉"
+ },
+ "landmark": {
+  "ar": "شلالات بوالي",
+  "en": "Boali Falls",
+  "zh": "博阿利瀑布"
+ },
+ "languages": {
+  "official": [
+   "fr",
+   "sg"
+  ],
+  "officialNote": "السانغو «اللغة الوطنية» ويتكلمها أغلب السكان"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5,
+ "fact": "تقع في قلب قارة أفريقيا."
+}

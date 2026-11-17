@@ -1,0 +1,31 @@
+{
+ "capital": {
+  "ar": "أنتاناناريفو",
+  "en": "Antananarivo",
+  "zh": "塔那那利佛"
+ },
+ "landmark": {
+  "ar": "شارع أشجار الباوباب",
+  "en": "Avenue of the Baobabs",
+  "zh": "猴面包树大道"
+ },
+ "languages": {
+  "official": [
+   "mg",
+   "fr"
+  ],
+  "officialNote": "الملغاشية «اللغة الوطنية»"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5
+}

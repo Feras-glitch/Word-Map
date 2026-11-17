@@ -1,0 +1,32 @@
+{
+ "capital": {
+  "ar": "مالابو",
+  "en": "Malabo",
+  "zh": "马拉博"
+ },
+ "landmark": {
+  "ar": "جبل باسيلي",
+  "en": "Pico Basilé",
+  "zh": "巴西莱峰"
+ },
+ "languages": {
+  "official": [
+   "es",
+   "fr",
+   "pt"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5,
+ "fact": "الدولة الوحيدة في أفريقيا لغتها الرسمية الإسبانية."
+}

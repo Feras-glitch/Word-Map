@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "برايا",
+  "en": "Praia",
+  "zh": "普拉亚"
+ },
+ "landmark": {
+  "ar": "بركان فوغو",
+  "en": "Pico do Fogo",
+  "zh": "福古火山"
+ },
+ "languages": {
+  "official": [
+   "pt"
+  ],
+  "widespread": [
+   "kea"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5,
+ "fact": "تتكون من عشر جزر بركانية في المحيط الأطلسي."
+}

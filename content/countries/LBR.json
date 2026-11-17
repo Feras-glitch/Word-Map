@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "مونروفيا",
+  "en": "Monrovia",
+  "zh": "蒙罗维亚"
+ },
+ "landmark": {
+  "ar": "منتزه سابو الوطني",
+  "en": "Sapo National Park",
+  "zh": "萨波国家公园"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5,
+ "fact": "أقدم جمهورية في أفريقيا، تأسست عام ١٨٤٧."
+}

@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "ساو تومي",
+  "en": "São Tomé",
+  "zh": "圣多美"
+ },
+ "landmark": {
+  "ar": "جبل كاو غراندي",
+  "en": "Pico Cão Grande",
+  "zh": "大狗峰"
+ },
+ "languages": {
+  "official": [
+   "pt"
+  ],
+  "widespread": [
+   "cri"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5,
+ "fact": "يمر خط الاستواء بجزيرة صغيرة من جزرها."
+}

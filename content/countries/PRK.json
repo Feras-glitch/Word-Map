@@ -7,7 +7,7 @@
  "landmark": {
   "ar": "جبل بايكتو",
   "en": "Paektu Mountain",
-  "zh": "长白山"
+  "zh": "白头山"
  },
  "languages": {
   "official": [
@@ -24,6 +24,6 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 3
 }

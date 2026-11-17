@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "غابورون",
+  "en": "Gaborone",
+  "zh": "哈博罗内"
+ },
+ "landmark": {
+  "ar": "دلتا أوكافانغو",
+  "en": "Okavango Delta",
+  "zh": "奥卡万戈三角洲"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ],
+  "widespread": [
+   "tn"
+  ],
+  "widespreadNote": "الستسوانا «اللغة الوطنية» ويتكلمها أغلب السكان"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5,
+ "fact": "فيها دلتا أوكافانغو، نهر يصب في الصحراء بدل البحر."
+}

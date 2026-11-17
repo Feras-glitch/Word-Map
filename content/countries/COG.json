@@ -1,0 +1,35 @@
+{
+ "capital": {
+  "ar": "برازافيل",
+  "en": "Brazzaville",
+  "zh": "布拉柴维尔"
+ },
+ "landmark": {
+  "ar": "منتزه أوزالا كوكوا الوطني",
+  "en": "Odzala-Kokoua National Park",
+  "zh": "奥扎拉-科夸国家公园"
+ },
+ "languages": {
+  "official": [
+   "fr"
+  ],
+  "widespread": [
+   "ln",
+   "ktu"
+  ],
+  "widespreadNote": "وهما «لغتان وطنيتان» بنص الدستور"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5,
+ "fact": "عاصمتها برازافيل تقابل كينشاسا على ضفتي نهر الكونغو، وهما من أقرب عاصمتين في العالم."
+}

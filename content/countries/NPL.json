@@ -13,11 +13,15 @@
   "official": [
    "ne"
   ],
+  "regional": [
+   "taj",
+   "new"
+  ],
+  "regionalNote": "التامانغية والنيوارية رسميتان في ولاية باغماتي منذ ٢٠٢٤",
   "widespread": [
    "mai",
    "bho"
-  ],
-  "widespreadNote": "يسمح الدستور لكل ولاية أن تعتمد لغات رسمية إضافية"
+  ]
  },
  "sources": [
   {
@@ -25,10 +29,14 @@
    "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
   },
   {
+   "title": "كاتماندو بوست: لغات رسمية في ولاية باغماتي (٢٠٢٤)",
+   "url": "https://kathmandupost.com/province-no-3/2024/04/24/nepali-tamang-nepal-bhasha-official-languages-of-bagmati"
+  },
+  {
    "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 3
 }

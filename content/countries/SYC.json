@@ -1,0 +1,32 @@
+{
+ "capital": {
+  "ar": "فيكتوريا",
+  "en": "Victoria",
+  "zh": "维多利亚"
+ },
+ "landmark": {
+  "ar": "محمية فالي دو ماي",
+  "en": "Vallée de Mai",
+  "zh": "五月谷"
+ },
+ "languages": {
+  "official": [
+   "crs",
+   "en",
+   "fr"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5,
+ "fact": "فيها جوز الهند البحري، صاحب أكبر بذرة في عالم النبات."
+}

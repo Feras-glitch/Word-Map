@@ -10,9 +10,10 @@
   "zh": "大皇宫"
  },
  "languages": {
-  "official": [
+  "defacto": [
    "th"
-  ]
+  ],
+  "officialNote": "لا ينص القانون التايلاندي على لغة رسمية، والتايلاندية لغة الدولة والتعليم"
  },
  "sources": [
   {
@@ -24,6 +25,6 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 3
 }

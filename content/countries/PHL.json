@@ -14,9 +14,10 @@
    "fil",
    "en"
   ],
-  "widespread": [
+  "regional": [
    "ceb"
-  ]
+  ],
+  "regionalNote": "اللغات الإقليمية مثل السيبوانية «لغات رسمية مساعدة» في مناطقها بنص الدستور"
  },
  "sources": [
   {
@@ -28,7 +29,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 3,
  "fact": "تتكون من أكثر من ٧٠٠٠ جزيرة."
 }

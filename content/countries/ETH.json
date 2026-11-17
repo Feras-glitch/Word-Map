@@ -1,0 +1,35 @@
+{
+ "capital": {
+  "ar": "أديس أبابا",
+  "en": "Addis Ababa",
+  "zh": "亚的斯亚贝巴"
+ },
+ "landmark": {
+  "ar": "كنائس لاليبيلا المنحوتة في الصخر",
+  "en": "Rock-Hewn Churches of Lalibela",
+  "zh": "拉利贝拉岩石教堂"
+ },
+ "languages": {
+  "official": [],
+  "working": [
+   "am",
+   "om",
+   "ti",
+   "so",
+   "aa"
+  ],
+  "officialNote": "لا ينص الدستور على لغة رسمية؛ الأمهرية لغة عمل الحكومة الاتحادية، وأُضيفت إليها أربع لغات عام ٢٠٢٠"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5
+}

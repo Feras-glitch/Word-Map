@@ -1,0 +1,37 @@
+{
+ "capital": {
+  "ar": "كينشاسا",
+  "en": "Kinshasa",
+  "zh": "金沙萨"
+ },
+ "landmark": {
+  "ar": "منتزه فيرونغا الوطني",
+  "en": "Virunga National Park",
+  "zh": "维龙加国家公园"
+ },
+ "languages": {
+  "official": [
+   "fr"
+  ],
+  "widespread": [
+   "ln",
+   "sw",
+   "kg",
+   "lua"
+  ],
+  "widespreadNote": "هذه الأربع «لغات وطنية» بنص الدستور"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5,
+ "fact": "ثاني أكبر دولة في أفريقيا، ويجري فيها نهر الكونغو، أعمق نهر في العالم."
+}

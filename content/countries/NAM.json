@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "ويندهوك",
+  "en": "Windhoek",
+  "zh": "温得和克"
+ },
+ "landmark": {
+  "ar": "كثبان سوسوفلي",
+  "en": "Sossusvlei",
+  "zh": "索苏斯盐沼"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ],
+  "widespread": [
+   "ng",
+   "af"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5,
+ "fact": "فيها صحراء ناميب، من أقدم صحارى العالم."
+}

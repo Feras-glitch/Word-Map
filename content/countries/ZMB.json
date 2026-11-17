@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "لوساكا",
+  "en": "Lusaka",
+  "zh": "卢萨卡"
+ },
+ "landmark": {
+  "ar": "شلالات فيكتوريا",
+  "en": "Victoria Falls",
+  "zh": "维多利亚瀑布"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ],
+  "widespread": [
+   "bem",
+   "ny"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5,
+ "fact": "تشترك مع زيمبابوي في شلالات فيكتوريا، ويسميها أهلها «الدخان الذي يرعد»."
+}

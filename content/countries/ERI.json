@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "أسمرة",
+  "en": "Asmara",
+  "zh": "阿斯马拉"
+ },
+ "landmark": {
+  "ar": "مدينة أسمرة الحديثة",
+  "en": "Asmara: A Modernist African City",
+  "zh": "阿斯马拉"
+ },
+ "languages": {
+  "official": [],
+  "working": [
+   "ti",
+   "ar",
+   "en"
+  ],
+  "officialNote": "لا ينص الدستور على لغة رسمية، وتستعمل الدولة التغرينية والعربية والإنجليزية"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 5,
+ "fact": "تطل على البحر الأحمر بساحل طويل."
+}
