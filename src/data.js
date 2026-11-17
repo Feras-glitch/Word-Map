@@ -1,8 +1,9 @@
 import countries from './data/countries.json';
 import map from './data/map.json';
-import { continents, greetings, ibnBattuta, hajjRoutes, holyPlaces } from '../scripts/content.mjs';
+import { continents, continents3, greetings, ibnBattuta, hajjRoutes, holyPlaces } from '../scripts/content.mjs';
+import languages from './data/languages.json';
 
-export { map, continents, greetings, ibnBattuta, hajjRoutes, holyPlaces };
+export { map, continents, continents3, greetings, ibnBattuta, hajjRoutes, holyPlaces, languages };
 
 const flags = import.meta.glob('./flags/*.svg', { eager: true, query: '?url', import: 'default' });
 export const flagUrl = (f) => flags[`./flags/${f}.svg`] || '';

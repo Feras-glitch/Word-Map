@@ -246,3 +246,34 @@ input[type=range] { width: 100%; }
   .opt { font-size: 1.1rem; padding: 14px 6px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+/* ---------- البطاقة: الأقسام (الإصدار ١٫٢) ---------- */
+.tab-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 6px; background: #fff; border-radius: 18px; padding: 5px; margin-bottom: 12px; box-shadow: 0 3px 0 #e5ebf3; position: sticky; top: -18px; z-index: 3; }
+.tab-bar button { display: flex; flex-direction: column; align-items: center; padding: 6px 2px; border-radius: 14px; font-weight: 700; color: var(--muted); }
+.tab-bar button span { font-size: 1.3rem; } .tab-bar button small { font-size: .78rem; line-height: 1.3; }
+.tab-bar button.on { background: var(--blue); color: #fff; }
+.tab-pane { animation: pop .25s; }
+.tri { display: flex; flex-direction: column; gap: 6px; }
+.tri .name-row { padding: 6px 10px 6px 6px; }
+.tri .name-row b { font-size: 1.15rem; }
+.tri.big .name-row b { font-size: 1.45rem; }
+.tri .zh-ruby { font-size: 1.35rem !important; }
+.tri.big .zh-ruby { font-size: 1.6rem !important; }
+.sec { background: #fff; border-radius: 18px; padding: 10px 12px; margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+.sec .tri .name-row { box-shadow: none; }
+.note { color: #5d6782; font-size: .95rem; line-height: 1.7; margin: 6px 2px; }
+.muted { color: var(--muted); }
+.lang-item { border-top: 1px dashed #e3e9f2; padding-top: 8px; display: flex; flex-direction: column; gap: 6px; }
+.lang-item:first-of-type { border-top: 0; padding-top: 0; }
+.lname { display: flex; flex-direction: column; } .lname b { font-size: 1.1rem; } .lname small { color: var(--muted); text-align: right; }
+.lang-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.lang-chips .lname { background: #f3f6fb; border-radius: 12px; padding: 4px 10px; }
+.lang-chips .lname b { font-size: 1rem; }
+.greet { background: #e8f8f5; border-radius: 14px; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; }
+.greet .gt { display: flex; align-items: center; gap: 8px; } .greet .gt b { flex: 1; font-size: 1.35rem; }
+.greet .say { width: 42px; height: 42px; font-size: 1.2rem; }
+.greet small { color: #3d5a55; }
+.sources { margin-top: 14px; color: var(--muted); font-size: .85rem; }
+.sources a { color: var(--blue-d); word-break: break-word; }
+.sources summary { cursor: pointer; }
+.stamp-anim.done { display: none; }

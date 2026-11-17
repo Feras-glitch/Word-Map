@@ -1,20 +1,48 @@
-// بطاقة الدولة
+// بطاقة الدولة: أربعة أقسام (الأسماء، العاصمة والمعالم، اللغات، أرقام)
 import { h, modal, confetti, toast } from './ui.js';
-import { byId, flagUrl, continents, greetings, num, contEmoji, states } from './data.js';
+import { byId, flagUrl, continents, continents3, greetings, languages, num, contEmoji, states } from './data.js';
 import { speak, LANG } from './speech.js';
 import { sfx } from './sfx.js';
 import { store } from './store.js';
+
+const say = (text, lang, fb) => h('button', { class: 'say', 'aria-label': 'استمع', onclick: (e) => { e.stopPropagation(); speak(text, lang, fb); } }, '🔊');
 
 // كل حرف صيني وفوقه نطقه (البينين) كما في كتب الأطفال
 export function zhRuby(zh, py) {
   const chars = [...zh]; const sy = (py || '').split(' ');
   const r = h('b', { class: 'zh-ruby', lang: 'zh' });
   chars.forEach((ch, i) => r.append(h('ruby', {}, ch, h('rt', {}, sy.length === chars.length ? sy[i] : ''))));
-  if (sy.length !== chars.length) r.append(h('small', { class: 'py-line' }, py));
+  if (sy.length !== chars.length && py) r.append(h('small', { class: 'py-line' }, py));
   return r;
 }
 
-const say = (text, lang) => h('button', { class: 'say', 'aria-label': 'استمع', onclick: (e) => { e.stopPropagation(); speak(text, lang); } }, '🔊');
+// اسم بثلاث لغات، كل سطر بزر نطق
+function tri(o, { big = false, prefix = '' } = {}) {
+  return h('div', { class: 'tri' + (big ? ' big' : '') },
+    h('div', { class: 'name-row ar' }, h('span', { class: 'lang-tag' }, 'عربي'), h('b', {}, o.ar), say(prefix + o.ar, LANG.ar)),
+    o.en ? h('div', { class: 'name-row en', dir: 'ltr' }, h('span', { class: 'lang-tag' }, 'EN'), h('b', {}, o.en), say(o.en, LANG.en)) : null,
+    o.zh ? h('div', { class: 'name-row zh', dir: 'ltr' }, h('span', { class: 'lang-tag' }, '中文'), zhRuby(o.zh, o.py), say(o.zh, LANG.zh)) : null);
+}
+const langName = (l) => h('span', { class: 'lname' }, h('b', {}, l.ar), h('small', { dir: 'ltr' }, l.en, ' · ', h('span', { lang: 'zh' }, l.zh), l.py ? ` (${l.py})` : ''));
+// التمييز العددي: مرتين، ٣–١٠ مرات، ١١ فأكثر مرة
+const times = (n) => (n === 2 ? 'مرتين' : n.toLocaleString('ar-EG') + (n >= 3 && n <= 10 ? ' مرات' : ' مرة'));
+
+function popText(c) {
+  if (!c.pop) return null;
+  const p = c.pop;
+  const n = p >= 1e9 ? (Math.round(p / 1e8) / 10).toLocaleString('ar-EG') + ' مليار'
+    : p >= 1e6 ? (p >= 1e7 ? Math.round(p / 1e6) : Math.round(p / 1e5) / 10).toLocaleString('ar-EG') + ' مليون'
+    : Math.round(p / 1e3).toLocaleString('ar-EG') + ' ألف';
+  let cmp = '';
+  const eg = byId.EGY?.pop;
+  if (eg && c.id !== 'EGY') {
+    const r = p / eg;
+    if (r >= 1.5) cmp = `أي أكثر من سكان مصر بنحو ${times(Math.round(r))}`;
+    else if (r >= 0.67) cmp = 'قريب من عدد سكان مصر';
+    else cmp = `وسكان مصر أكثر منها بنحو ${times(Math.round(1 / r))}`;
+  }
+  return { n: `نحو ${n} نسمة`, cmp };
+}
 
 function storySpeech(c) {
   const parts = [];
@@ -23,46 +51,105 @@ function storySpeech(c) {
   return parts.join(' ');
 }
 
+function namesTab(c) {
+  const cont = continents3[c.cont];
+  return h('div', {},
+    tri({ ar: c.ar, en: c.en, zh: c.zh, py: c.py }, { big: true }),
+    cont && c.cont !== 'antarctica' ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, (contEmoji[c.cont] || '🌍') + ' تقع في قارة'), tri(cont, { prefix: 'قارة ' }), c.sub ? h('small', { class: 'muted' }, c.sub) : null) : null,
+  );
+}
+
+function capitalTab(c) {
+  const cap = c.cap3 || (c.capAr ? { ar: c.capAr, en: c.capEn } : null);
+  return h('div', {},
+    cap ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '🏛️ العاصمة'), tri(cap, { prefix: 'عاصمة ' + c.ar + ' هي ' }), c.capNote ? h('p', { class: 'note' }, c.capNote) : null) : null,
+    c.landmark || c.fact || c.note ? h('div', { class: 'story' },
+      c.landmark ? h('div', { class: 'landmark' }, h('span', { class: 'st-label' }, '⭐ من معالمها الشهيرة:'), c.lm3 ? tri(c.lm3) : h('b', {}, c.landmark)) : null,
+      c.fact || c.note ? h('div', { class: 'didyou' }, h('span', { class: 'st-label' }, '💡 هل تعلم؟'), h('p', {}, c.fact || c.note)) : null,
+      h('button', { class: 'btn small soft', onclick: () => speak(storySpeech(c), LANG.ar) }, '🔊 اسمع المعلومة'),
+    ) : null,
+  );
+}
+
+function greetBox(g) {
+  if (!g) return null;
+  return h('div', { class: 'greet' },
+    h('div', { class: 'gt' }, h('span', {}, '👋'), h('b', { dir: 'auto' }, g.t), say(g.t, g.tts, g.tr)),
+    g.t !== g.tr ? h('small', {}, 'تُنطق: ', h('b', {}, g.tr)) : null,
+    g.meaning ? h('small', {}, 'معناها: ', g.meaning) : null);
+}
+
+function languagesTab(c) {
+  if (!c.langs) {
+    const g = greetings[c.greet] || greetings.eng;
+    return h('div', {}, c.kind === 'state' ? h('div', { class: 'hello' },
+      h('span', {}, '👋 قل مرحباً بلغتهم:'), h('b', { dir: 'auto' }, g.t), g.t !== g.ar ? h('small', {}, '(' + g.ar + ')') : null, say(g.t, g.lang, g.ar)) : null,
+      h('p', { class: 'note' }, 'تفاصيل اللغات الرسمية لهذه الدولة قادمة في التحديث القادم.'));
+  }
+  const L = c.langs;
+  const ov = L.greetOverride || {};
+  const off = (L.official || []).map((k) => [k, languages[k]]).filter(([, l]) => l);
+  const reg = (L.regional || []).map((k) => languages[k]).filter(Boolean);
+  const wide = (L.widespread || []).map((k) => languages[k]).filter(Boolean);
+  const shown = off.filter(([, l]) => !l.sign).length + reg.length + wide.length;
+  let others = (L.others || 0) - shown;
+  if (others > 20) others = Math.round(others / 10) * 10;
+  return h('div', {},
+    h('div', { class: 'sec' }, h('span', { class: 'st-label' }, off.length > 1 ? `🗣️ اللغات الرسمية (${off.length.toLocaleString('ar-EG')})` : '🗣️ اللغة الرسمية'),
+      off.map(([k, l]) => h('div', { class: 'lang-item' }, langName(l), l.sign ? h('small', { class: 'muted' }, '🤟 لغة يتكلمها الصمّ بحركات اليدين') : greetBox(ov[k] || l.greet)))),
+    reg.length ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '📍 لغات رسمية في بعض المناطق فقط'), h('div', { class: 'lang-chips' }, reg.map(langName))) : null,
+    wide.length ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '💬 لغات محلية متداولة واسعة الانتشار (ليست رسمية)'), h('div', { class: 'lang-chips' }, wide.map(langName)), L.widespreadNote ? h('p', { class: 'note' }, L.widespreadNote) : null) : null,
+    others > 0 ? h('p', { class: 'note' }, `ويتحدث الناس فيها أيضاً نحو ${others.toLocaleString('ar-EG')} لغة محلية أخرى.`) : null,
+  );
+}
+
+function numbersTab(c, openNeighbor) {
+  const neighbors = c.borders.map((b) => byId[b]).filter(Boolean);
+  const pop = popText(c);
+  return h('div', {},
+    h('div', { class: 'facts-grid' },
+      c.area ? h('div', { class: 'fact' }, h('span', {}, '📏 المساحة'), h('b', {}, num(c.area) + ' كم²')) : null,
+      pop ? h('div', { class: 'fact' }, h('span', {}, '👨‍👩‍👧 السكان'), h('b', {}, pop.n), pop.cmp ? h('small', {}, pop.cmp) : null) : null,
+      c.kind !== 'state' && c.parent ? h('div', { class: 'fact' }, h('span', {}, '🔗 تتبع'), h('b', {}, c.parent)) : null,
+    ),
+    c.cur ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '💰 العملة'), tri(c.cur)) : null,
+    neighbors.length ? h('div', { class: 'neighbors' }, h('span', {}, '🤝 الجيران:'),
+      neighbors.map((n) => h('button', { class: 'chip', onclick: () => openNeighbor(n.id) }, h('img', { src: flagUrl(n.f), alt: '' }), n.ar))) : null,
+    c.sources?.length ? h('details', { class: 'sources' }, h('summary', {}, '📚 المصادر (للوالدين)'),
+      h('ul', {}, c.sources.map((s) => h('li', {}, h('a', { href: s.url, target: '_blank', rel: 'noopener' }, s.title))))) : null,
+  );
+}
+
 export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false } = {}) {
   const c = byId[id];
   if (!c) return;
   sfx('tap');
   const isState = c.kind === 'state';
-  const g = greetings[c.greet] || greetings.eng;
-  const neighbors = c.borders.map((b) => byId[b]).filter(Boolean);
+  const openNeighbor = (nid) => openCard(nid, { onShowOnMap, stamp, replace: true });
+
+  const tabs = [
+    ['🌍', 'الأسماء', () => namesTab(c)],
+    ['🏛️', isState ? 'العاصمة والمعالم' : 'معلومات', () => capitalTab(c)],
+    ...(isState ? [['🗣️', 'اللغات', () => languagesTab(c)]] : []),
+    ['📊', 'أرقام', () => numbersTab(c, openNeighbor)],
+  ];
+  const pane = h('div', { class: 'tab-pane' });
+  const bar = h('div', { class: 'tab-bar' });
+  const show = (i, quiet) => {
+    bar.querySelectorAll('button').forEach((b, k) => b.classList.toggle('on', k === i));
+    pane.replaceChildren(tabs[i][2]());
+    if (!quiet) sfx('tap');
+  };
+  tabs.forEach(([e, t], i) => bar.append(h('button', { onclick: () => show(i) }, h('span', {}, e), h('small', {}, t))));
 
   const body = h('div', { class: 'card' },
-    h('div', { class: 'card-flag' + (isState ? '' : ' terr') },
-      h('img', { src: flagUrl(c.f), alt: 'علم ' + c.ar })),
+    h('div', { class: 'card-flag' + (isState ? '' : ' terr') }, h('img', { src: flagUrl(c.f), alt: 'علم ' + c.ar })),
     sub ? h('div', { class: 'sub-note' }, '📌 ' + sub) : null,
-    h('div', { class: 'names' },
-      h('div', { class: 'name-row ar' }, h('span', { class: 'lang-tag' }, 'عربي'), h('b', {}, c.ar), say(c.ar, LANG.ar)),
-      h('div', { class: 'name-row en', dir: 'ltr' }, h('span', { class: 'lang-tag' }, 'EN'), h('b', {}, c.en), say(c.en, LANG.en)),
-      c.zh ? h('div', { class: 'name-row zh', dir: 'ltr' }, h('span', { class: 'lang-tag' }, '中文'),
-        zhRuby(c.zh, c.py), say(c.zh, LANG.zh)) : null,
-    ),
-    h('div', { class: 'facts-grid' },
-      c.capAr ? h('div', { class: 'fact cap' }, h('span', {}, '🏛️ العاصمة'), h('b', {}, c.capAr), say('عاصمة ' + c.ar + ' هي ' + c.capAr, LANG.ar)) : null,
-      c.cont && c.cont !== 'antarctica' && continents[c.cont] ? h('div', { class: 'fact' }, h('span', {}, (contEmoji[c.cont] || '🌍') + ' القارة'), h('b', {}, continents[c.cont]), c.sub ? h('small', {}, c.sub) : null) : null,
-      c.area ? h('div', { class: 'fact' }, h('span', {}, '📏 المساحة'), h('b', {}, num(c.area) + ' كم²')) : null,
-      !isState && c.parent ? h('div', { class: 'fact' }, h('span', {}, '🔗 تتبع'), h('b', {}, c.parent)) : null,
-    ),
-    c.landmark || c.fact || c.note ? h('div', { class: 'story' },
-      c.landmark ? h('div', { class: 'landmark' }, h('span', { class: 'st-label' }, '🏛️ من معالمها الشهيرة:'), h('b', {}, c.landmark)) : null,
-      c.fact || c.note ? h('div', { class: 'didyou' }, h('span', { class: 'st-label' }, '💡 هل تعلم؟'), h('p', {}, c.fact || c.note)) : null,
-      h('button', { class: 'btn small soft', onclick: () => speak(storySpeech(c), LANG.ar) }, '🔊 اسمع المعلومة'),
-    ) : null,
-    isState && g ? h('div', { class: 'hello' },
-      h('span', {}, '👋 قل مرحباً بلغتهم:'),
-      h('b', { dir: 'auto' }, g.t), g.t !== g.ar ? h('small', {}, '(' + g.ar + ')') : null,
-      say(g.t, g.lang)) : null,
-    neighbors.length ? h('div', { class: 'neighbors' }, h('span', {}, '🤝 الجيران:'),
-      neighbors.map((n) => h('button', { class: 'chip', onclick: () => openCard(n.id, { onShowOnMap, stamp, replace: true }) },
-        h('img', { src: flagUrl(n.f), alt: '' }), n.ar))) : null,
+    bar, pane,
     h('div', { class: 'card-actions' },
-      onShowOnMap && c.bb ? h('button', { class: 'btn', onclick: () => { m.close(); onShowOnMap(c.id); } }, '📍 أرني على الخريطة') : null,
-    ),
+      onShowOnMap && c.bb ? h('button', { class: 'btn', onclick: () => { m.close(); onShowOnMap(c.id); } }, '📍 أرني على الخريطة') : null),
   );
+  show(0, true);
 
   const m = modal(body, { cls: 'card-modal', replace });
   setTimeout(() => speak(c.ar, LANG.ar), 250);

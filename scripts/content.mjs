@@ -50,6 +50,16 @@ export const continents = {
   namerica: 'أمريكا الشمالية', samerica: 'أمريكا الجنوبية', oceania: 'أوقيانوسيا', antarctica: 'القارة القطبية الجنوبية',
 };
 
+export const continents3 = {
+  asia: { ar: 'آسيا', en: 'Asia', zh: '亚洲', py: 'yà zhōu' },
+  africa: { ar: 'أفريقيا', en: 'Africa', zh: '非洲', py: 'fēi zhōu' },
+  europe: { ar: 'أوروبا', en: 'Europe', zh: '欧洲', py: 'ōu zhōu' },
+  namerica: { ar: 'أمريكا الشمالية', en: 'North America', zh: '北美洲', py: 'běi měi zhōu' },
+  samerica: { ar: 'أمريكا الجنوبية', en: 'South America', zh: '南美洲', py: 'nán měi zhōu' },
+  oceania: { ar: 'أوقيانوسيا', en: 'Oceania', zh: '大洋洲', py: 'dà yáng zhōu' },
+  antarctica: { ar: 'القارة القطبية الجنوبية', en: 'Antarctica', zh: '南极洲', py: 'nán jí zhōu' },
+};
+
 export const subregionsAr = {
   'Northern Africa':'شمال أفريقيا', 'Eastern Africa':'شرق أفريقيا', 'Middle Africa':'وسط أفريقيا',
   'Southern Africa':'جنوب أفريقيا', 'Western Africa':'غرب أفريقيا',

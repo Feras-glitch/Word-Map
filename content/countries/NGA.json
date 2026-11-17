@@ -1,0 +1,40 @@
+{
+ "capital": {
+  "ar": "أبوجا",
+  "en": "Abuja",
+  "zh": "阿布贾"
+ },
+ "landmark": {
+  "ar": "صخرة زوما",
+  "en": "Zuma Rock",
+  "zh": "祖玛岩"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ],
+  "widespread": [
+   "ha",
+   "yo",
+   "ig",
+   "pcm"
+  ],
+  "widespreadNote": "الهوسا واليوروبا والإيغبو يذكرها الدستور لغاتٍ لعمل البرلمان إلى جانب الإنجليزية",
+  "others": 525
+ },
+ "currency": "NGN",
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Linguasphere: لغات نيجيريا",
+   "url": "https://linguasphere.info/guides/countries-and-speech/languages-spoken-in-nigeria/"
+  },
+  {
+   "title": "Unicode CLDR: السكان ونسب المتحدثين والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ]
+}

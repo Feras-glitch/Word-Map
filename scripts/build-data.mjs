@@ -9,7 +9,9 @@ import { fileURLToPath } from 'node:url';
 import { feature } from 'topojson-client';
 import { presimplify, simplify, quantile } from 'topojson-simplify';
 import { geoNaturalEarth1, geoPath, geoCentroid } from 'd3-geo';
-import { pinyin } from 'pinyin-pro';
+import { pinyin, customPinyin } from 'pinyin-pro';
+// قراءات صحيحة لحروف متعددة النطق في أسماء الأعلام
+customPinyin({ 藏语: 'zàng yǔ', 西藏: 'xī zàng', 什: 'shí' });
 import * as C from './content.mjs';
 import { policy } from './policy.mjs';
 
@@ -73,6 +75,46 @@ for (const c of countries) {
     ll: c.latlng,
   });
 }
+// ---------- المحتوى الموثّق (الإصدار ١٫٢) ----------
+const cldrMain = (loc, file, pick) => pick(JSON.parse(fs.readFileSync(require.resolve(`cldr-localenames-full/main/${loc}/${file}.json`), 'utf8')).main[loc]);
+const langNames = Object.fromEntries(['ar', 'en', 'zh'].map((l) => [l, cldrMain(l, 'languages', (m) => m.localeDisplayNames.languages)]));
+const curNames = Object.fromEntries(['ar', 'en', 'zh'].map((l) => [l, JSON.parse(fs.readFileSync(require.resolve(`cldr-numbers-full/main/${l}/currencies.json`), 'utf8')).main[l].numbers.currencies]));
+const territory = JSON.parse(fs.readFileSync(require.resolve('cldr-core/supplemental/territoryInfo.json'), 'utf8')).supplemental.territoryInfo;
+const lexicon = JSON.parse(fs.readFileSync(path.join(root, 'content/languages.json'), 'utf8'));
+const curFix = { INR: { ar: 'روبية هندية' } };
+const usedLangs = new Set();
+const cdir = path.join(root, 'content/countries');
+for (const c of out) {
+  const f = path.join(cdir, c.id + '.json');
+  if (!fs.existsSync(f)) continue;
+  const d = JSON.parse(fs.readFileSync(f, 'utf8'));
+  c.v2 = true;
+  c.cap3 = d.capital; c.capAr = d.capital.ar; c.capEn = d.capital.en;
+  if (d.capitalNote) c.capNote = d.capitalNote;
+  if (d.landmark) { c.lm3 = d.landmark; c.landmark = d.landmark.ar; }
+  if (d.fact) c.fact = d.fact;
+  c.langs = d.languages;
+  for (const k of ['official', 'regional', 'widespread']) for (const l of d.languages[k] || []) usedLangs.add(l);
+  if (d.currency) {
+    const code = typeof d.currency === 'string' ? d.currency : null;
+    c.cur = code ? { code, ar: curFix[code]?.ar || curNames.ar[code].displayName, en: curNames.en[code].displayName, zh: curNames.zh[code].displayName } : d.currency;
+  }
+  const t = territory[c.f.toUpperCase()];
+  if (t) c.pop = +t._population;
+  c.sources = d.sources;
+}
+const languages = {};
+for (const l of usedLangs) {
+  const x = lexicon[l] || {};
+  languages[l] = { ar: x.ar || langNames.ar[l] || l, en: x.en || langNames.en[l] || l, zh: x.zh || langNames.zh[l] || '', greet: x.greet || null, sign: !!x.sign };
+  if (languages[l].zh) languages[l].py = pinyin(languages[l].zh, { toneType: 'symbol', type: 'array' }).join(' ');
+}
+for (const c of out) {
+  if (c.cap3?.zh) c.cap3.py = pinyin(c.cap3.zh, { toneType: 'symbol', type: 'array' }).join(' ');
+  if (c.cur?.zh) c.cur.py = pinyin(c.cur.zh, { toneType: 'symbol', type: 'array' }).join(' ');
+  if (c.lm3?.zh) c.lm3.py = pinyin(c.lm3.zh, { toneType: 'symbol', type: 'array' }).join(' ');
+}
+
 const ids = new Set(out.map((c) => c.id));
 for (const c of out) c.borders = c.borders.filter((b) => ids.has(b));
 
@@ -146,6 +188,7 @@ const pr = { scale: proj.scale(), translate: proj.translate() };
 fs.mkdirSync(path.join(root, 'src/data'), { recursive: true });
 fs.writeFileSync(path.join(root, 'src/data/countries.json'), JSON.stringify(out));
 fs.writeFileSync(path.join(root, 'src/data/map.json'), JSON.stringify({ w: W, h: H, proj: pr, shapes }));
+fs.writeFileSync(path.join(root, 'src/data/languages.json'), JSON.stringify(languages));
 
 // ---------- الأعلام ----------
 const flagDir = path.join(root, 'src/flags');
@@ -159,6 +202,7 @@ for (const c of out) {
 }
 
 const states = out.filter((c) => c.kind === 'state');
+console.log(`محتوى موثّق: ${out.filter((c) => c.v2).length} دولة | لغات: ${Object.keys(languages).length}`);
 console.log(`دول: ${states.length} | أقاليم: ${out.length - states.length} | أشكال: ${shapes.length}`);
 console.log('بلا شكل على الخريطة (نقطة):', out.filter((c) => c.dotOnly).map((c) => c.id).join(' '));
 console.log('أشكال غير مطابقة:', unmatched.join(', ') || '—');

@@ -23,14 +23,20 @@ function findVoice(lang) {
 }
 
 const warned = new Set();
-export async function speak(text, lang = 'ar-SA') {
+// fallbackAr: نطق تقريبي بالحروف العربية يُقرأ بالصوت العربي إن لم يوجد صوت للغة
+export async function speak(text, lang = 'ar-SA', fallbackAr = null) {
   if (!text) return;
   const rate = store.settings.rate || 0.9;
   if (native) {
     try {
+      if (fallbackAr) {
+        const { supported } = await TextToSpeech.isLanguageSupported({ lang }).catch(() => ({ supported: true }));
+        if (!supported) { toast('🔈 نطق تقريبي: لا يوجد صوت لهذه اللغة على الجهاز'); return speak(fallbackAr, 'ar-SA'); }
+      }
       await TextToSpeech.stop();
       await TextToSpeech.speak({ text, lang, rate, pitch: 1.05, volume: 1, category: 'playback' });
     } catch {
+      if (fallbackAr) { toast('🔈 نطق تقريبي: لا يوجد صوت لهذه اللغة على الجهاز'); return speak(fallbackAr, 'ar-SA'); }
       if (!warned.has(lang)) { warned.add(lang); toast('لا يوجد صوت لهذه اللغة على الجهاز. يمكن تثبيته من إعدادات "تحويل النص إلى كلام".'); }
     }
     return;
@@ -41,6 +47,7 @@ export async function speak(text, lang = 'ar-SA') {
   const u = new SpeechSynthesisUtterance(text);
   u.lang = lang; u.rate = rate; u.pitch = 1.05;
   const v = findVoice(lang);
+  if (!v && fallbackAr && voices.length) { toast('🔈 نطق تقريبي: لا يوجد صوت لهذه اللغة على الجهاز'); return speak(fallbackAr, 'ar-SA'); }
   if (v) u.voice = v;
   else if (voices.length && !warned.has(lang)) { warned.add(lang); toast('قد لا يتوفر صوت لهذه اللغة على هذا الجهاز'); }
   s.speak(u);

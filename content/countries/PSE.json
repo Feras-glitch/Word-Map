@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "القدس الشريف (بيت المقدس)",
+  "en": "Jerusalem (Al-Quds)",
+  "zh": "耶路撒冷"
+ },
+ "landmark": {
+  "ar": "المسجد الأقصى وقبة الصخرة",
+  "en": "Al-Aqsa Mosque and the Dome of the Rock",
+  "zh": "阿克萨清真寺和圆顶清真寺"
+ },
+ "languages": {
+  "official": [
+   "ar"
+  ],
+  "widespread": [],
+  "others": 7
+ },
+ "currency": "JOD",
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان ونسب المتحدثين والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ]
+}
