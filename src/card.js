@@ -112,12 +112,22 @@ function numbersTab(c, openNeighbor) {
       pop ? h('div', { class: 'fact' }, h('span', {}, '👨‍👩‍👧 السكان'), h('b', {}, pop.n), pop.cmp ? h('small', {}, pop.cmp) : null) : null,
       c.kind !== 'state' && c.parent ? h('div', { class: 'fact' }, h('span', {}, '🔗 تتبع'), h('b', {}, c.parent)) : null,
     ),
-    c.cur ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '💰 العملة'), tri(c.cur)) : null,
+    c.cur ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '💰 العملة'), tri(c.cur),
+      c.curNote ? h('p', { class: 'note' }, c.curNote) : null,
+      c.curStory ? h('button', { class: 'btn small soft', onclick: () => openStory(c.curStory) }, '📜 ' + c.curStory.title) : null) : null,
     neighbors.length ? h('div', { class: 'neighbors' }, h('span', {}, '🤝 الجيران:'),
       neighbors.map((n) => h('button', { class: 'chip', onclick: () => openNeighbor(n.id) }, h('img', { src: flagUrl(n.f), alt: '' }), n.ar))) : null,
     c.sources?.length ? h('details', { class: 'sources' }, h('summary', {}, '📚 المصادر (للوالدين)'),
       h('ul', {}, c.sources.map((s) => h('li', {}, h('a', { href: s.url, target: '_blank', rel: 'noopener' }, s.title))))) : null,
   );
+}
+
+function openStory(st) {
+  const all = st.sections.map(([t, p]) => t + '. ' + p).join(' ');
+  modal(h('div', { class: 'story-modal' },
+    h('h2', {}, '📜 ' + st.title),
+    h('button', { class: 'btn small', onclick: () => speak(st.title + '. ' + all, LANG.ar) }, '🔊 استمع إلى القصة'),
+    st.sections.map(([t, p]) => h('div', { class: 'story-sec' }, h('h3', {}, t), h('p', {}, p), h('button', { class: 'say', 'aria-label': 'استمع', onclick: () => speak(t + '. ' + p, LANG.ar) }, '🔊')))));
 }
 
 export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false } = {}) {

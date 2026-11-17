@@ -101,6 +101,8 @@ for (const c of out) {
   }
   const t = territory[c.f.toUpperCase()];
   if (t) c.pop = +t._population;
+  if (d.currencyNote) c.curNote = d.currencyNote;
+  if (d.currencyStory) c.curStory = d.currencyStory;
   c.sources = d.sources;
 }
 const languages = {};

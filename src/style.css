@@ -277,3 +277,9 @@ input[type=range] { width: 100%; }
 .sources a { color: var(--blue-d); word-break: break-word; }
 .sources summary { cursor: pointer; }
 .stamp-anim.done { display: none; }
+
+.story-modal h2 { margin: 6px 40px 12px 0; }
+.story-sec { position: relative; background: #fff; border-radius: 16px; padding: 10px 14px 10px 60px; margin-top: 10px; border-right: 5px solid #a0522d; }
+.story-sec h3 { margin: 0 0 4px; font-size: 1.05rem; color: #a0522d; }
+.story-sec p { margin: 0; line-height: 1.9; font-size: 1.05rem; }
+.story-sec .say { position: absolute; left: 8px; top: 10px; width: 42px; height: 42px; font-size: 1.1rem; }
