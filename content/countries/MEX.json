@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "مكسيكو سيتي",
+  "en": "Mexico City",
+  "zh": "墨西哥城"
+ },
+ "landmark": {
+  "ar": "أهرامات تيوتيهواكان",
+  "en": "Teotihuacan",
+  "zh": "特奥蒂瓦坎"
+ },
+ "languages": {
+  "defacto": [
+   "es"
+  ],
+  "officialNote": "لا ينص الدستور على لغة رسمية، والقانون يجعل الإسبانية و٦٨ لغة أصلية «لغات وطنية» متساوية",
+  "widespread": [
+   "nah",
+   "yua"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6
+}

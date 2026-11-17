@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "ماناغوا",
+  "en": "Managua",
+  "zh": "马那瓜"
+ },
+ "landmark": {
+  "ar": "بحيرة نيكاراغوا",
+  "en": "Lake Nicaragua",
+  "zh": "尼加拉瓜湖"
+ },
+ "languages": {
+  "official": [
+   "es"
+  ],
+  "regional": [
+   "miq"
+  ],
+  "regionalNote": "لغات ساحل الكاريبي، مثل الميسكيتو، رسمية في مناطقها"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "فيها بحيرة نيكاراغوا، أكبر بحيرة في أمريكا الوسطى، وتعيش فيها أسماك قرش."
+}

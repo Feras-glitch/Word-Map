@@ -1,0 +1,37 @@
+{
+ "capital": {
+  "ar": "واشنطن",
+  "en": "Washington, D.C.",
+  "zh": "华盛顿"
+ },
+ "landmark": {
+  "ar": "تمثال الحرية",
+  "en": "Statue of Liberty",
+  "zh": "自由女神像"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ],
+  "officialNote": "صارت الإنجليزية اللغة الرسمية بأمر رئاسي في مارس ٢٠٢٥",
+  "widespread": [
+   "es"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "البيت الأبيض: الأمر التنفيذي بجعل الإنجليزية لغة رسمية (مارس ٢٠٢٥)",
+   "url": "https://www.whitehouse.gov/presidential-actions/2025/03/designating-english-as-the-official-language-of-the-united-states/"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6
+}

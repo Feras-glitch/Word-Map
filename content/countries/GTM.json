@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "غواتيمالا",
+  "en": "Guatemala City",
+  "zh": "危地马拉城"
+ },
+ "landmark": {
+  "ar": "مدينة تيكال الأثرية",
+  "en": "Tikal",
+  "zh": "蒂卡尔"
+ },
+ "languages": {
+  "official": [
+   "es"
+  ],
+  "widespread": [
+   "quc"
+  ],
+  "widespreadNote": "ويتكلم كثير من الناس لغات المايا، وأكبرها الكيتشي"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "فيها مدينة تيكال الأثرية لحضارة المايا."
+}

@@ -1,0 +1,31 @@
+{
+ "capital": {
+  "ar": "بورت أو برانس",
+  "en": "Port-au-Prince",
+  "zh": "太子港"
+ },
+ "landmark": {
+  "ar": "قلعة لافيريير",
+  "en": "Citadelle Laferrière",
+  "zh": "拉费里埃城堡"
+ },
+ "languages": {
+  "official": [
+   "ht",
+   "fr"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "أول دولة في أمريكا اللاتينية والكاريبي تنال استقلالها، عام ١٨٠٤."
+}

@@ -1,0 +1,35 @@
+{
+ "capital": {
+  "ar": "كيتو",
+  "en": "Quito",
+  "zh": "基多"
+ },
+ "landmark": {
+  "ar": "جزر غالاباغوس",
+  "en": "Galápagos Islands",
+  "zh": "加拉帕戈斯群岛"
+ },
+ "languages": {
+  "official": [
+   "es"
+  ],
+  "regional": [
+   "qu",
+   "jiv"
+  ],
+  "regionalNote": "الكيتشوا والشوار «لغتان رسميتان للعلاقات بين الثقافات» بنص الدستور"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "يمر بها خط الاستواء، واسمها بالإسبانية يعني «خط الاستواء»."
+}

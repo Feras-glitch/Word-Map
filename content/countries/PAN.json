@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "بنما",
+  "en": "Panama City",
+  "zh": "巴拿马城"
+ },
+ "landmark": {
+  "ar": "قناة بنما",
+  "en": "Panama Canal",
+  "zh": "巴拿马运河"
+ },
+ "languages": {
+  "official": [
+   "es"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "فيها قناة بنما التي تصل المحيط الأطلسي بالمحيط الهادئ."
+}

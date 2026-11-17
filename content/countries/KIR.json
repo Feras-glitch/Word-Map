@@ -1,0 +1,31 @@
+{
+ "capital": {
+  "ar": "تاراوا",
+  "en": "Tarawa",
+  "zh": "塔拉瓦"
+ },
+ "landmark": {
+  "ar": "محمية جزر فينكس",
+  "en": "Phoenix Islands Protected Area",
+  "zh": "菲尼克斯群岛保护区"
+ },
+ "languages": {
+  "official": [
+   "en",
+   "gil"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "الدولة الوحيدة التي تقع في أنصاف الكرة الأرضية الأربعة: الشمالي والجنوبي والشرقي والغربي."
+}

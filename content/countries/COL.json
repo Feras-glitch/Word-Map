@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "بوغوتا",
+  "en": "Bogotá",
+  "zh": "波哥大"
+ },
+ "landmark": {
+  "ar": "مدينة كارتاخينا القديمة",
+  "en": "Cartagena Old Town",
+  "zh": "卡塔赫纳古城"
+ },
+ "languages": {
+  "official": [
+   "es"
+  ],
+  "regionalNote": "ولغات الشعوب الأصلية رسمية في أراضيها بنص الدستور"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6
+}

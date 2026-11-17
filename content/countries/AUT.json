@@ -18,7 +18,7 @@
    "sl",
    "hu"
   ],
-  "regionalNote": "رسمية في بعض الولايات بجانب الألمانية"
+  "regionalNote": "رسمية في بعض البلديات في ولايتي بورغنلاند وكارينثيا"
  },
  "sources": [
   {
@@ -30,7 +30,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 4,
  "fact": "يمر نهر الدانوب بعاصمتها فيينا، واشتهرت بالموسيقى."
 }

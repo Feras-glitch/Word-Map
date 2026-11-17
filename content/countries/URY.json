@@ -1,0 +1,31 @@
+{
+ "capital": {
+  "ar": "مونتيفيديو",
+  "en": "Montevideo",
+  "zh": "蒙得维的亚"
+ },
+ "landmark": {
+  "ar": "مدينة كولونيا ديل ساكرامنتو",
+  "en": "Colonia del Sacramento",
+  "zh": "科洛尼亚-德尔萨克拉门托"
+ },
+ "languages": {
+  "defacto": [
+   "es"
+  ],
+  "officialNote": "لا ينص الدستور على لغة رسمية، والإسبانية لغة الدولة"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "فازت ببطولة كأس العالم الأولى لكرة القدم عام ١٩٣٠."
+}

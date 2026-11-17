@@ -10,10 +10,10 @@
   "zh": "圣彼得广场"
  },
  "languages": {
-  "official": [
+  "defacto": [
    "it"
   ],
-  "officialNote": "الإيطالية لغة الدولة، واللاتينية لغة الكنيسة الرسمية"
+  "officialNote": "لا ينص القانون الأساسي على لغة رسمية؛ الإيطالية لغة الدولة، واللاتينية لغة الكرسي الرسولي"
  },
  "sources": [
   {
@@ -25,6 +25,6 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 4
 }

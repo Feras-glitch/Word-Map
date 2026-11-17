@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "باليكير",
+  "en": "Palikir",
+  "zh": "帕利基尔"
+ },
+ "landmark": {
+  "ar": "مدينة نان مادول الأثرية",
+  "en": "Nan Madol",
+  "zh": "南马都尔"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ],
+  "widespread": [
+   "chk",
+   "pon"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "فيها مدينة نان مادول الأثرية، مبنية على جزر صغيرة صنعها الناس قديماً."
+}

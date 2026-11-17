@@ -5,7 +5,7 @@
   "zh": "基希讷乌"
  },
  "landmark": {
-  "ar": "دير أورهيول فيكي",
+  "ar": "مجمع أورهيول فيكي الأثري",
   "en": "Orheiul Vechi",
   "zh": "旧奥尔海伊"
  },
@@ -31,7 +31,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 4,
  "fact": "ليس لها بحر، ومشهورة بكروم العنب."
 }

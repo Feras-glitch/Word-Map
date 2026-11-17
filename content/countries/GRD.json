@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "سانت جورجز",
+  "en": "St. George's",
+  "zh": "圣乔治"
+ },
+ "landmark": {
+  "ar": "شاطئ غراند آنس",
+  "en": "Grand Anse Beach",
+  "zh": "大安斯海滩"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "تسمى «جزيرة التوابل» لكثرة جوزة الطيب فيها، وعلى علمها ثمرة جوزة الطيب."
+}

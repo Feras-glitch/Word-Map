@@ -7,7 +7,7 @@
  "landmark": {
   "ar": "تمثال حورية البحر الصغيرة",
   "en": "The Little Mermaid",
-  "zh": "小美人鱼雕像"
+  "zh": "美人鱼雕像"
  },
  "languages": {
   "defacto": [
@@ -25,7 +25,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 4,
  "fact": "منها جاءت مكعبات الليغو."
 }

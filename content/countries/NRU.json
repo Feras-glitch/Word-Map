@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "يارين",
+  "en": "Yaren",
+  "zh": "亚伦"
+ },
+ "landmark": {
+  "ar": "خليج أنيباري",
+  "en": "Anibare Bay",
+  "zh": "阿尼巴雷湾"
+ },
+ "languages": {
+  "defacto": [
+   "na",
+   "en"
+  ],
+  "officialNote": "لا ينص الدستور على لغة رسمية؛ الناورية لغة أهلها، والإنجليزية لغة الحكومة"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "capitalNote": "لا عاصمة رسمية لها، ومقر الحكومة في يارين",
+ "fact": "ثالث أصغر دولة في العالم، وهي جزيرة واحدة."
+}

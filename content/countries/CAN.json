@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "أوتاوا",
+  "en": "Ottawa",
+  "zh": "渥太华"
+ },
+ "landmark": {
+  "ar": "شلالات نياغارا",
+  "en": "Niagara Falls",
+  "zh": "尼亚加拉瀑布"
+ },
+ "languages": {
+  "official": [
+   "en",
+   "fr"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6
+}

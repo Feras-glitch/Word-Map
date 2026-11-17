@@ -1,0 +1,31 @@
+{
+ "capital": {
+  "ar": "آبيا",
+  "en": "Apia",
+  "zh": "阿皮亚"
+ },
+ "landmark": {
+  "ar": "خندق تو سوا البحري",
+  "en": "To Sua Ocean Trench",
+  "zh": "托苏阿海沟"
+ },
+ "languages": {
+  "official": [
+   "sm",
+   "en"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "من أوائل الدول التي ترى شروق الشمس كل يوم."
+}

@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "سان سلفادور",
+  "en": "San Salvador",
+  "zh": "圣萨尔瓦多"
+ },
+ "landmark": {
+  "ar": "موقع خويا دي سيرين الأثري",
+  "en": "Joya de Cerén",
+  "zh": "霍亚德赛伦"
+ },
+ "languages": {
+  "official": [
+   "es"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "أصغر دول أمريكا الوسطى مساحة."
+}

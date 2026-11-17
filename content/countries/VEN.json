@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "كاراكاس",
+  "en": "Caracas",
+  "zh": "加拉加斯"
+ },
+ "landmark": {
+  "ar": "شلالات أنجل",
+  "en": "Angel Falls",
+  "zh": "安赫尔瀑布"
+ },
+ "languages": {
+  "official": [
+   "es"
+  ],
+  "regionalNote": "ولغات الشعوب الأصلية رسمية لأهلها بنص الدستور"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6
+}

@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "روسو",
+  "en": "Roseau",
+  "zh": "罗索"
+ },
+ "landmark": {
+  "ar": "البحيرة المغلية",
+  "en": "Boiling Lake",
+  "zh": "沸湖"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ],
+  "widespread": [
+   "acf"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "فيها «البحيرة المغلية»، ثاني أكبر بحيرة حارة في العالم."
+}

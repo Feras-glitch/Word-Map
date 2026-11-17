@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "ليما",
+  "en": "Lima",
+  "zh": "利马"
+ },
+ "landmark": {
+  "ar": "ماتشو بيتشو",
+  "en": "Machu Picchu",
+  "zh": "马丘比丘"
+ },
+ "languages": {
+  "official": [
+   "es"
+  ],
+  "regional": [
+   "qu",
+   "ay"
+  ],
+  "regionalNote": "رسميتان في المناطق التي يغلب فيها أهلهما"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6
+}

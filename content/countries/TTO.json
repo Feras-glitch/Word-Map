@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "بورت أوف سبين",
+  "en": "Port of Spain",
+  "zh": "西班牙港"
+ },
+ "landmark": {
+  "ar": "بحيرة القار",
+  "en": "Pitch Lake",
+  "zh": "沥青湖"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "فيها «بحيرة القار»، أكبر بحيرة أسفلت طبيعية في العالم."
+}

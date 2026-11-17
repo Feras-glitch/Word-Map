@@ -12,7 +12,11 @@
  "languages": {
   "official": [
    "hr"
-  ]
+  ],
+  "regional": [
+   "it"
+  ],
+  "regionalNote": "الإيطالية رسمية في بعض مناطق شبه جزيرة إستريا"
  },
  "sources": [
   {
@@ -24,7 +28,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 4,
- "fact": "لها أكثر من ألف جزيرة في البحر الأدرياتيكي."
+ "fact": "لها أكثر من ألف جزيرة وصخرة صغيرة في البحر الأدرياتيكي."
 }

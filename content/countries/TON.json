@@ -1,0 +1,31 @@
+{
+ "capital": {
+  "ar": "نوكوالوفا",
+  "en": "Nukuʻalofa",
+  "zh": "努库阿洛法"
+ },
+ "landmark": {
+  "ar": "بوابة ماوي الحجرية",
+  "en": "Haʻamonga ʻa Maui",
+  "zh": "毛伊三石门"
+ },
+ "languages": {
+  "official": [
+   "to",
+   "en"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "المملكة الوحيدة بين جزر المحيط الهادئ."
+}

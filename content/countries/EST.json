@@ -7,7 +7,7 @@
  "landmark": {
   "ar": "مدينة تالين القديمة",
   "en": "Tallinn Old Town",
-  "zh": "塔林古城"
+  "zh": "塔林老城"
  },
  "languages": {
   "official": [
@@ -27,7 +27,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 4,
  "fact": "من أكثر دول العالم استعمالاً للإنترنت في خدمات الحكومة."
 }

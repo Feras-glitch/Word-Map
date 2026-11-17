@@ -1,0 +1,32 @@
+{
+ "capital": {
+  "ar": "بورت فيلا",
+  "en": "Port Vila",
+  "zh": "维拉港"
+ },
+ "landmark": {
+  "ar": "بركان ياسور",
+  "en": "Mount Yasur",
+  "zh": "亚苏尔火山"
+ },
+ "languages": {
+  "official": [
+   "bi",
+   "en",
+   "fr"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "فيها بركان ياسور الذي يثور بلا توقف منذ مئات السنين."
+}

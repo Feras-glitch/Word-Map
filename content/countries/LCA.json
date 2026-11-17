@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "كاستريس",
+  "en": "Castries",
+  "zh": "卡斯特里"
+ },
+ "landmark": {
+  "ar": "جبلا بيتونز",
+  "en": "The Pitons",
+  "zh": "皮通山"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ],
+  "widespread": [
+   "acf"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "الدولة الوحيدة في العالم التي سُمّيت باسم امرأة."
+}

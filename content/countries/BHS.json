@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "ناساو",
+  "en": "Nassau",
+  "zh": "拿骚"
+ },
+ "landmark": {
+  "ar": "ثقب دين الأزرق",
+  "en": "Dean's Blue Hole",
+  "zh": "迪恩蓝洞"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "تتكون من نحو ٧٠٠ جزيرة."
+}

@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "بوينس آيرس",
+  "en": "Buenos Aires",
+  "zh": "布宜诺斯艾利斯"
+ },
+ "landmark": {
+  "ar": "شلالات إيغوازو",
+  "en": "Iguazu Falls",
+  "zh": "伊瓜苏瀑布"
+ },
+ "languages": {
+  "defacto": [
+   "es"
+  ],
+  "officialNote": "لا ينص الدستور على لغة رسمية، والإسبانية لغة الدولة"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6
+}

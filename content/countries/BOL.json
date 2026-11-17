@@ -1,0 +1,35 @@
+{
+ "capital": {
+  "ar": "سوكري",
+  "en": "Sucre",
+  "zh": "苏克雷"
+ },
+ "landmark": {
+  "ar": "سهل أويوني الملحي",
+  "en": "Salar de Uyuni",
+  "zh": "乌尤尼盐沼"
+ },
+ "languages": {
+  "official": [
+   "es",
+   "qu",
+   "ay",
+   "gn"
+  ],
+  "officialNote": "يعترف الدستور بستٍّ وثلاثين لغة أصلية رسمية بجانب الإسبانية، وهذه أكبرها"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "capitalNote": "سوكري العاصمة بنص الدستور، ومقر الحكومة في مدينة لاباز",
+ "fact": "فيها أكبر سهل ملحي في العالم: سالار دي أويوني."
+}

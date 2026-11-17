@@ -1,0 +1,34 @@
+{
+ "capital": {
+  "ar": "بلموبان",
+  "en": "Belmopan",
+  "zh": "贝尔莫潘"
+ },
+ "landmark": {
+  "ar": "الثقب الأزرق العظيم",
+  "en": "Great Blue Hole",
+  "zh": "大蓝洞"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ],
+  "widespread": [
+   "es",
+   "bzj"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "الدولة الوحيدة في أمريكا الوسطى لغتها الرسمية الإنجليزية."
+}

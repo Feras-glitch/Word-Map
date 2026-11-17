@@ -12,7 +12,12 @@
  "languages": {
   "official": [
    "sr"
-  ]
+  ],
+  "regional": [
+   "hu",
+   "sk"
+  ],
+  "regionalNote": "رسميتان مع لغات أخرى في إقليم فويفودينا"
  },
  "sources": [
   {
@@ -24,7 +29,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 4,
  "fact": "في عاصمتها بلغراد يلتقي نهرا الدانوب والسافا."
 }

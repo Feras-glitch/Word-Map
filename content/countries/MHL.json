@@ -1,0 +1,31 @@
+{
+ "capital": {
+  "ar": "ماجورو",
+  "en": "Majuro",
+  "zh": "马朱罗"
+ },
+ "landmark": {
+  "ar": "جزيرة ماجورو المرجانية",
+  "en": "Majuro Atoll",
+  "zh": "马朱罗环礁"
+ },
+ "languages": {
+  "official": [
+   "mh",
+   "en"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "تتكون من ٢٩ جزيرة مرجانية حلقية وخمس جزر منفردة."
+}

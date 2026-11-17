@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "كينغستاون",
+  "en": "Kingstown",
+  "zh": "金斯敦"
+ },
+ "landmark": {
+  "ar": "بركان سوفرير",
+  "en": "La Soufrière",
+  "zh": "苏弗里耶尔火山"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "تتكون من جزيرة سانت فنسنت وسلسلة جزر صغيرة اسمها غرينادين."
+}

@@ -12,7 +12,13 @@
  "languages": {
   "official": [
    "sv"
-  ]
+  ],
+  "regional": [
+   "se",
+   "fi",
+   "fit"
+  ],
+  "regionalNote": "لغات أقليات معترف بها رسمياً، ولأهلها حقوق في مناطقهم"
  },
  "sources": [
   {
@@ -24,6 +30,6 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 4
 }

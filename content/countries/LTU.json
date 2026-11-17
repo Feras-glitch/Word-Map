@@ -7,7 +7,7 @@
  "landmark": {
   "ar": "قلعة تراكاي",
   "en": "Trakai Island Castle",
-  "zh": "特拉凯城堡"
+  "zh": "特拉凯岛城堡"
  },
  "languages": {
   "official": [
@@ -24,7 +24,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 4,
  "fact": "فيها مركز قارة أوروبا الجغرافي بحسب بعض الحسابات."
 }

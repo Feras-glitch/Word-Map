@@ -7,7 +7,7 @@
  "landmark": {
   "ar": "شلال غولفوس",
   "en": "Gullfoss",
-  "zh": "黄金瀑布"
+  "zh": "居德瀑布"
  },
  "languages": {
   "official": [
@@ -24,6 +24,6 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 4
 }

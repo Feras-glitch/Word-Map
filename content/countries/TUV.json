@@ -1,0 +1,31 @@
+{
+ "capital": {
+  "ar": "فونافوتي",
+  "en": "Funafuti",
+  "zh": "富纳富提"
+ },
+ "landmark": {
+  "ar": "محمية فونافوتي البحرية",
+  "en": "Funafuti Conservation Area",
+  "zh": "富纳富提保护区"
+ },
+ "languages": {
+  "official": [
+   "tvl",
+   "en"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "من أصغر دول العالم، وأعلى نقطة فيها نحو ٥ أمتار فقط فوق البحر."
+}

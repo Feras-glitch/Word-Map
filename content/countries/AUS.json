@@ -1,0 +1,30 @@
+{
+ "capital": {
+  "ar": "كانبرا",
+  "en": "Canberra",
+  "zh": "堪培拉"
+ },
+ "landmark": {
+  "ar": "دار أوبرا سيدني",
+  "en": "Sydney Opera House",
+  "zh": "悉尼歌剧院"
+ },
+ "languages": {
+  "defacto": [
+   "en"
+  ],
+  "officialNote": "لا ينص القانون على لغة رسمية، والإنجليزية لغة الدولة"
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6
+}

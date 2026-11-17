@@ -7,7 +7,7 @@
  "landmark": {
   "ar": "قلعة بران",
   "en": "Bran Castle",
-  "zh": "布朗城堡"
+  "zh": "布兰城堡"
  },
  "languages": {
   "official": [
@@ -24,7 +24,7 @@
    "url": "https://cldr.unicode.org/"
   }
  ],
- "review": "pending",
+ "review": "reviewed-1",
  "batch": 4,
  "fact": "يمر فيها نهر الدانوب ويصب في البحر الأسود."
 }

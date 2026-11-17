@@ -1,0 +1,31 @@
+{
+ "capital": {
+  "ar": "أسونسيون",
+  "en": "Asunción",
+  "zh": "亚松森"
+ },
+ "landmark": {
+  "ar": "سد إيتايبو",
+  "en": "Itaipu Dam",
+  "zh": "伊泰普水电站"
+ },
+ "languages": {
+  "official": [
+   "es",
+   "gn"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "أغلب أهلها يتكلمون الغوارانية، وهي لغة أصلية رسمية مع الإسبانية."
+}

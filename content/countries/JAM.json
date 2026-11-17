@@ -1,0 +1,33 @@
+{
+ "capital": {
+  "ar": "كينغستون",
+  "en": "Kingston",
+  "zh": "金斯敦"
+ },
+ "landmark": {
+  "ar": "شلالات نهر دَن",
+  "en": "Dunn's River Falls",
+  "zh": "邓斯河瀑布"
+ },
+ "languages": {
+  "official": [
+   "en"
+  ],
+  "widespread": [
+   "jam"
+  ]
+ },
+ "sources": [
+  {
+   "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
+   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+  },
+  {
+   "title": "Unicode CLDR: السكان والعملات وأسماء اللغات",
+   "url": "https://cldr.unicode.org/"
+  }
+ ],
+ "review": "pending",
+ "batch": 6,
+ "fact": "خرج منها عدد من أسرع العدّائين في العالم."
+}
