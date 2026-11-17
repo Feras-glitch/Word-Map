@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 import { feature } from 'topojson-client';
 import { presimplify, simplify, quantile } from 'topojson-simplify';
 import { geoNaturalEarth1, geoPath, geoCentroid } from 'd3-geo';
@@ -13,7 +14,7 @@ import * as C from './content.mjs';
 import { policy } from './policy.mjs';
 
 const require = createRequire(import.meta.url);
-const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const countries = require('world-countries');
 const topo = JSON.parse(fs.readFileSync(require.resolve('world-atlas/countries-50m.json'), 'utf8'));
 
