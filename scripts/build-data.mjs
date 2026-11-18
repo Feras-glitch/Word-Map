@@ -10,6 +10,7 @@ import { feature } from 'topojson-client';
 import { presimplify, simplify, quantile } from 'topojson-simplify';
 import { geoNaturalEarth1, geoPath, geoCentroid } from 'd3-geo';
 import { buildNature } from './nature.mjs';
+import polygonClipping from 'polygon-clipping';
 import { pinyin, customPinyin } from 'pinyin-pro';
 // قراءات صحيحة لحروف متعددة النطق في أسماء الأعلام
 customPinyin({ 藏语: 'zàng yǔ', 西藏: 'xī zàng', 什: 'shí', 的黎波里: 'dì lí bō lǐ', 麦纳麦: 'mài nà mài', 柏柏尔: 'bó bó ěr' });
@@ -144,6 +145,22 @@ for (const c of out) c.borders = c.borders.filter((b) => ids.has(b));
 let t = presimplify(topo);
 t = simplify(t, quantile(t, 0.55));
 const fc = feature(t, t.objects.countries);
+// الجولان أرض سورية محتلة، وليست من فلسطين التاريخية: نقتطعها من الشكل المسمى "إسرائيل" (الذي يُضمّ إلى فلسطين)
+// ونعيدها إلى سوريا. الحد الغربي هنا هو حد ١٩٢٣ بين فلسطين وسوريا تقريباً: شرق نهر الأردن وبحيرة طبريا ثم نهر اليرموك.
+{
+  const GOLAN = [[[35.67, 33.45], [36.1, 33.45], [36.1, 32.55], [35.75, 32.66], [35.70, 32.68], [35.66, 32.71], [35.648, 32.76], [35.648, 32.85], [35.638, 32.89], [35.628, 32.95], [35.63, 33.01], [35.645, 33.10], [35.66, 33.19], [35.672, 33.25], [35.67, 33.45]]];
+  const isr = fc.features.find((f) => f.properties.name === 'Israel');
+  const syr = fc.features.find((f) => f.properties.name === 'Syria');
+  const coords = (g) => (g.type === 'Polygon' ? [g.coordinates] : g.coordinates);
+  const cut = polygonClipping.intersection(coords(isr.geometry), [GOLAN]);
+  const rest = polygonClipping.difference(coords(isr.geometry), [GOLAN]);
+  const syrNew = polygonClipping.union(coords(syr.geometry), cut);
+  const area = (mp) => mp.reduce((s, p) => s + p[0].reduce((a, c, i, r) => a + (i ? (r[i - 1][0] * c[1] - c[0] * r[i - 1][1]) : 0), 0) / 2, 0);
+  console.log('الجولان: نُقل إلى سوريا ' + Math.abs(area(cut)).toFixed(3) + ' درجة مربعة');
+  // d3 يريد الحلقة الخارجية باتجاه عقارب الساعة؛ polygon-clipping يعطي العكس
+  const rw = (mp) => ({ type: 'MultiPolygon', coordinates: mp.map((p) => p.map((r) => r.slice().reverse())) });
+  isr.geometry = rw(rest); syr.geometry = rw(syrNew);
+}
 const W = 2000, H = 1000;
 const proj = geoNaturalEarth1().fitExtent([[10, 10], [W - 10, H - 10]], fc);
 const gp = geoPath(proj).digits(1);
