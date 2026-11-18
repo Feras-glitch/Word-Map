@@ -7,13 +7,18 @@ import { speak, LANG } from '../speech.js';
 import { sfx } from '../sfx.js';
 
 const ar = (n) => Number(n).toLocaleString('ar-EG');
-const GUESTS = [['👨', 'بابا'], ['👩', 'ماما'], ['🧑', 'ضيف']];
+// لاعبون من خارج الملفات: بابا، ماما، الأقارب، الأصدقاء... بأسماء يكتبها الأهل، وتُحفظ للمرات القادمة
+const QUICK = [['👨', 'بابا'], ['👩', 'ماما'], ['👴', 'جدّو'], ['👵', 'تيتة']];
+const FACES = ['🧑', '👦', '👧', '👨', '👩', '👴', '👵', '🧔', '👱', '🧕', '🧒', '🦸'];
 
 export function familyScreen(root, { go }) {
   const chosen = new Set(store.profiles.map((p) => p.id));
-  const guests = [];
+  // اللاعبون الضيوف المحفوظون (بلا تقدم ولا أختام)
+  const saved = () => store.settings.guests || [];
+  const guests = saved().filter((g) => g.on).map((g) => ({ ...g, guest: true }));
   let rounds = 5;
   let same = false;
+  let openAdd = false;
 
   function setup() {
     root.innerHTML = '';
@@ -21,13 +26,36 @@ export function familyScreen(root, { go }) {
     const drawList = () => list.replaceChildren(
       ...store.profiles.map((p) => h('button', { class: 'fam-p' + (chosen.has(p.id) ? ' on' : ''), onclick: () => { chosen.has(p.id) ? chosen.delete(p.id) : chosen.add(p.id); drawList(); } },
         h('span', { class: 'av' }, p.avatar), h('b', {}, p.name), h('small', {}, LEVELS[p.level].emoji + ' ' + LEVELS[p.level].name))),
-      ...guests.map((g, i) => h('button', { class: 'fam-p on guest', onclick: () => { guests.splice(i, 1); drawList(); } },
-        h('span', { class: 'av' }, g.avatar), h('b', {}, g.name), h('small', {}, LEVELS[g.level].emoji + ' ' + LEVELS[g.level].name + ' · ✕'))));
+      ...saved().map((g) => { const on = guests.some((x) => x.id === g.id); return h('button', { class: 'fam-p guest' + (on ? ' on' : ''), onclick: () => {
+        const k = guests.findIndex((x) => x.id === g.id);
+        if (k >= 0) guests.splice(k, 1); else guests.push({ ...g, guest: true });
+        store.setSetting('guests', saved().map((x) => (x.id === g.id ? { ...x, on: k < 0 } : x))); drawList();
+      } },
+        h('span', { class: 'av' }, g.avatar), h('b', {}, g.name), h('small', {}, LEVELS[g.level].emoji + ' ' + LEVELS[g.level].name),
+        h('span', { class: 'del-g', role: 'button', 'aria-label': 'حذف ' + g.name, onclick: (e) => { e.stopPropagation(); const k = guests.findIndex((x) => x.id === g.id); if (k >= 0) guests.splice(k, 1); store.setSetting('guests', saved().filter((x) => x.id !== g.id)); drawList(); } }, '🗑️')); }));
     drawList();
-    const addGuest = h('div', { class: 'row wrap' }, GUESTS.map(([a, n]) => h('button', { class: 'btn small soft', onclick: () => { if (guests.length < 4) { guests.push({ id: 'g' + Date.now() + guests.length, avatar: a, name: n, level: 3, guest: true }); drawList(); } } }, '+ ' + a + ' ' + n)));
+    // إضافة لاعب باسمه: أي فرد من العائلة أو الأقارب أو الأصدقاء
+    let face = '🧑', glv = 3;
+    const gname = h('input', { class: 'input', placeholder: 'اسم اللاعب (مثلاً: خالد ابن العم)', maxlength: 24 });
+    const faces = h('div', { class: 'faces' });
+    const drawFaces = () => faces.replaceChildren(...FACES.map((f) => h('button', { class: 'face' + (f === face ? ' on' : ''), onclick: () => { face = f; drawFaces(); } }, f)));
+    drawFaces();
+    const lvs = h('div', { class: 'row wrap' });
+    const drawLv = () => lvs.replaceChildren(...[1, 2, 3].map((k) => h('button', { class: 'btn small' + (k === glv ? '' : ' soft'), onclick: () => { glv = k; drawLv(); } }, LEVELS[k].emoji + ' ' + LEVELS[k].name)));
+    drawLv();
+    const addOne = (name, avatar, level) => {
+      name = (name || '').trim(); if (!name) { gname.focus(); return; }
+      if (store.profiles.some((p) => p.name === name) || saved().some((x) => x.name === name)) return toast('هذا الاسم موجود');
+      const g = { id: 'g' + Date.now(), avatar, name, level, on: true };
+      store.setSetting('guests', [...saved(), g]); guests.push({ ...g, guest: true }); openAdd = true; setup();
+    };
+    const addGuest = h('details', { class: 'add-guest', open: openAdd || null }, h('summary', {}, '➕ أضف لاعباً: بابا، ماما، الأقارب، الأصدقاء…'),
+      h('div', { class: 'row wrap' }, QUICK.filter(([, n]) => !saved().some((x) => x.name === n)).map(([a, n]) => h('button', { class: 'btn small soft', onclick: () => addOne(n, a, 3) }, '+ ' + a + ' ' + n))),
+      gname, h('p', { class: 'hint' }, 'اختر وجهاً:'), faces, h('p', { class: 'hint' }, 'المستوى:'), lvs,
+      h('button', { class: 'btn', onclick: () => addOne(gname.value, face, glv) }, 'إضافة'));
     const rsel = h('div', { class: 'row' }, [3, 5, 10].map((r) => h('button', { class: 'btn small' + (r === rounds ? '' : ' soft'), onclick: () => { rounds = r; setup(); } }, ar(r) + ' أسئلة لكل لاعب')));
     root.append(owl('تحدّي العائلة! كل لاعب يجيب بدوره. من يجمع نقاطاً أكثر؟'),
-      h('h3', {}, 'من سيلعب؟'), list, h('p', { class: 'hint' }, 'أضف الكبار ليلعبوا معكم (المستوى الكبير):'), addGuest,
+      h('h3', {}, 'من سيلعب؟'), list, addGuest,
       h('h3', {}, 'عدد الأسئلة'), rsel,
       h('h3', {}, 'نوع الأسئلة'),
       h('div', { class: 'row wrap' },
@@ -43,7 +71,8 @@ export function familyScreen(root, { go }) {
     const shared = shuffle(pool(2)).slice(0, rounds * players.length);
     players.forEach((pl, pi) => {
       const lvl = same ? 2 : pl.level;
-      const kinds = lvl === 1 ? ['flag', 'continent'] : lvl === 2 ? ['flag', 'capital', 'continent', 'names'] : ['flag', 'capital', 'names', 'landmark', 'map'];
+      // أسئلة من التمرين الشامل بالاتجاهين، فلا سياق يكشف الجواب
+      const kinds = shuffle(lvl === 1 ? ['flag', 'flagWho', 'continent', 'map', 'landmarkWho'] : lvl === 2 ? ['flag', 'flagWho', 'capital', 'capWho', 'continent', 'names', 'map', 'landmarkWho'] : ['flag', 'flagWho', 'capital', 'capWho', 'names', 'landmark', 'landmarkWho', 'map', 'natureWho', 'neighbor', 'language']);
       const n = lvl === 1 ? 3 : 4;
       // في وضع «مستوى واحد» يأخذ كل لاعب دولاً مختلفة من المجموعة نفسها وبالترتيب نفسه لأنواع الأسئلة
       const cs = same ? shared.filter((_, k) => k % players.length === pi) : shuffle(pool(pl.level)).slice(0, rounds);

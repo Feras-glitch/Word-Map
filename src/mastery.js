@@ -4,7 +4,7 @@
 // المراجعة: بعد الختم الذهبي تُستحق مراجعة بعد ٣ أيام، ثم ٧، ثم ٣٠. الخطأ في المراجعة يعيدها إلى ٣ أيام.
 import { store } from './store.js';
 
-export const SKILLS = { flag: 'العلم', capital: 'العاصمة', map: 'الموقع', names: 'الأسماء باللغات', landmark: 'المعالم', continent: 'القارة', language: 'اللغات', neighbor: 'الجيران' };
+export const SKILLS = { flag: 'العلم', capital: 'العاصمة', map: 'الموقع', names: 'الأسماء باللغات', landmark: 'المعالم', continent: 'القارة', language: 'اللغات', neighbor: 'الجيران', nature: 'الأنهار والجبال' };
 export const INTERVALS = [3, 7, 30];
 const DAY = 864e5;
 export const today = () => new Date().toLocaleDateString('en-CA');
@@ -129,4 +129,39 @@ export function weakest(n = 8, p = store.me) {
       return [id, (bad / (ok + bad)) * (days < 14 ? 1 : 0.6), ok + bad, bad];
     })
     .filter(([, r, n, bad]) => n >= 2 && bad > 0 && r >= 0.34).sort((a, b) => b[1] - a[1]).slice(0, n).map(([id]) => id);
+}
+
+// ---------- الختم الذهبي بالأدلة المتراكمة في التمرين الشامل ----------
+// الدليل: إجابة صحيحة من المحاولة الأولى عن مهارة لهذه الدولة، داخل جلسة مختلطة لا سياق فيها.
+// الإلزامي: العلم والموقع، والعاصمة إن كانت صالحة للسؤال. ومعها مهارتان أخريان.
+export const OTHER_SKILLS = ['names', 'landmark', 'language', 'neighbor', 'nature'];
+export const OTHER_NEEDED = 2;
+// يُحسب الدليل فقط من اليوم التالي للزيارة وبعد ٨ ساعات منها
+export function goldEligible(p, id) {
+  if (!p.stamps?.[id] || p.gold?.[id]) return false;
+  if (p.stamps[id] >= today()) return false;
+  const at = p.visitAt?.[id];
+  return !(at && Date.now() - at < 8 * 36e5);
+}
+export function goldProgress(p, id, required) {
+  const ev = p.evidence?.[id] || {};
+  const req = required.map((k) => [k, !!ev[k]]);
+  const others = OTHER_SKILLS.filter((k) => ev[k]).length;
+  return { req, others, done: req.every(([, v]) => v) && others >= OTHER_NEEDED };
+}
+// يسجّل الدليل ويمنح الذهبي عند اكتماله. يعيد true إن صار ذهبياً الآن
+export function addEvidence(pid, id, skill, ok, required) {
+  let became = false;
+  store.patchProfile(pid, (p) => {
+    ensure(p);
+    if (!goldEligible(p, id)) return;
+    const ev = ((p.evidence ||= {})[id] ||= {});
+    if (ok) ev[skill] = today(); else delete ev[skill];
+    if (goldProgress(p, id, required).done) {
+      p.gold[id] = today();
+      p.review[id] = { step: 0, due: addDays(today(), INTERVALS[0]) };
+      became = true;
+    }
+  });
+  return became;
 }

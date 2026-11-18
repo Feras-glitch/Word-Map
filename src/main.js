@@ -16,7 +16,7 @@ import { islamicScreen } from './screens/islamic.js';
 import { helloScreen } from './screens/hello.js';
 import { dailyScreen } from './screens/daily.js';
 import { settingsScreen } from './screens/settings.js';
-import { reviewScreen } from './screens/review.js';
+import { worldScreen } from './screens/world.js';
 import { parentScreen } from './screens/parent.js';
 import { familyScreen } from './screens/family.js';
 import { aboutScreen } from './screens/about.js';
@@ -37,7 +37,8 @@ const screens = {
   hello: { title: '👋 قل مرحباً', fn: helloScreen },
   daily: { title: '✈️ رحلة اليوم', fn: dailyScreen, full: true },
   options: { title: '⚙️ الإعدادات', fn: settingsScreen },
-  review: { title: '🔔 المراجعة', fn: reviewScreen },
+  world: { title: '🧠 التمرين الشامل', fn: worldScreen },
+  review: { title: '🧠 التمرين الشامل', fn: worldScreen },
   parent: { title: '🔒 لوحة الوالدين', fn: parentScreen },
   family: { title: '👨‍👩‍👧‍👦 تحدي العائلة', fn: familyScreen },
   about: { title: '🗺️ عن هذه الخريطة', fn: aboutScreen },

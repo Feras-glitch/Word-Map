@@ -4,7 +4,7 @@ import { states, byId, flagUrl, continents, contBox, shuffle, pick, contColors, 
 import { speak, LANG } from './speech.js';
 import { sfx } from './sfx.js';
 import { record } from './mastery.js';
-import { createMap, lighten } from './map.js';
+import { createMap, lighten, NAT } from './map.js';
 import { store } from './store.js';
 
 const capName = (c) => (c.capAr || '').replace(/\s*\(.*\)\s*/, '');
@@ -82,17 +82,47 @@ export const Q = {
     return { skill: 'neighbor', say: `أيّ هذه الدول جارة لـ${c.ar}؟`, prompt: h('p', {}, '🤝 أيّ هذه الدول جارة لـ', h('b', {}, c.ar), '؟'),
       options: opts.map((o) => ({ correct: o.id === right.id, el: flagOpt(o), label: o.ar })) };
   },
+  // ---------- الاتجاه المعاكس (للتمرين الشامل فقط، حيث لا سياق يكشف الجواب) ----------
+  flagWho(c, n) {
+    const opts = shuffle([c, ...others(c, n - 1, (s) => !look(c.id, s.id))]);
+    return { skill: 'flag', say: 'لأي دولة هذا العلم؟', prompt: h('div', {}, h('img', { class: 'q-flag', src: flagUrl(c.f), alt: 'علم' }), h('p', {}, 'لأي دولة هذا العلم؟')),
+      options: opts.map((o) => ({ correct: o.id === c.id, el: h('b', {}, o.ar), label: o.ar })) };
+  },
+  capWho(c, n) {
+    const opts = shuffle([c, ...others(c, n - 1, (s) => s.capAr && capName(s) !== capName(c))]);
+    return { skill: 'capital', say: `${capName(c)} عاصمة أي دولة؟`, prompt: h('p', {}, '🏛️ ', h('b', {}, capName(c)), ' عاصمة أي دولة؟'),
+      options: opts.map((o) => ({ correct: o.id === c.id, el: flagOpt(o), label: o.ar })) };
+  },
+  landmarkWho(c, n) {
+    const opts = shuffle([c, ...others(c, n - 1, (s) => s.landmark !== c.landmark)]);
+    return { skill: 'landmark', say: `${c.landmark}: في أي دولة؟`, prompt: h('p', {}, '⭐ ', h('b', {}, c.landmark), ': في أي دولة؟'),
+      options: opts.map((o) => ({ correct: o.id === c.id, el: flagOpt(o), label: o.ar })) };
+  },
+  natureWho(c, n) {
+    const its = NAT.items.filter((it) => it.countries?.includes(c.id) && ['river', 'desert', 'range', 'lake'].includes(it.kind));
+    const it = its[Math.floor(Math.random() * its.length)];
+    const verb = { river: 'يجري', lake: 'تقع', desert: 'تمتد', range: 'تمتد' }[it.kind];
+    const opts = shuffle([c, ...others(c, n - 1, (s) => !it.countries.includes(s.id))]);
+    return { skill: 'nature', say: `في أي دولة من هذه ${verb} ${it.ar}؟`, prompt: h('p', {}, NAT.kinds[it.kind].icon + ' في أي دولة من هذه ' + verb + ' ', h('b', {}, it.ar), '؟'),
+      options: opts.map((o) => ({ correct: o.id === c.id, el: flagOpt(o), label: o.ar })) };
+  },
   map(c) {
     return { skill: 'map', type: 'map', say: `المس ${c.ar} على الخريطة`, prompt: h('p', {}, '📍 المس ', h('b', {}, c.ar), ' على الخريطة') };
   },
 };
+
+// كل سؤال يحمل دولته (q.c) لتسجيل النتيجة لها حتى في الجلسات المختلطة
+for (const k of Object.keys(Q)) { const f = Q[k]; Q[k] = (c, ...a) => ({ ...f(c, ...a), c, kind: k }); }
 
 // هل يكشف السؤالُ الإجابةَ أو لا يصلح لهذه الدولة؟
 const nameIn = (c, t) => { const b = bare(c.ar); return b.length >= 3 && (t || '').includes(b.slice(0, Math.max(3, b.length - 1))); };
 export function usable(kind, c) {
   switch (kind) {
     case 'capital': return !!c.capAr && c.capQ !== null && !nameIn(c, capName(c)) && !c.ar.includes(bare(capName(c)).split(' ')[0]);
-    case 'landmark': return !!c.landmark && !nameIn(c, c.landmark);
+    case 'landmark': case 'landmarkWho': return !!c.landmark && !nameIn(c, c.landmark);
+    case 'capWho': return usable('capital', c);
+    case 'continent': return !c.ar.includes(bare(continents[c.cont]));
+    case 'natureWho': return !!NAT.countriesReviewed && NAT.items.some((it) => it.countries?.includes(c.id) && ['river', 'desert', 'range', 'lake'].includes(it.kind));
     case 'map': return !!(c.cen || c.bb);
     case 'neighbor': return c.borders.some((id) => byId[id]?.kind === 'state');
     case 'language': {
@@ -119,7 +149,7 @@ export function buildSet(c, kinds, n) {
 // onDecide(score, results, questions): يُستدعى فور الإجابة عن آخر سؤال، قبل إعلان النتيجة، ليُحفظ القرار مرة واحدة.
 // onAbort(score, answered): إن أُغلقت النافذة بعد إجابة سؤال واحد على الأقل وقبل القرار.
 // onDone(score, results, box, m): عرض النتيجة فقط. onClose: بعد إغلاق النافذة بأي طريقة.
-export function runQuiz({ title, country, questions, onDone, onDecide, onAbort, onClose, intro, level: lv, pid, record: rec = true, mapCountries }) {
+export function runQuiz({ title, country, questions, onDone, onDecide, onAbort, onClose, onAnswer, intro, level: lv, pid, record: rec = true, recordSrc = 'quiz', mapCountries }) {
   const level = lv || store.me?.level || 2;
   const box = h('div', { class: 'quiz', role: 'dialog', 'aria-label': title });
   let i = 0, score = 0, answered = 0, decided = false;
@@ -141,7 +171,9 @@ export function runQuiz({ title, country, questions, onDone, onDecide, onAbort, 
     const answer = (ok, el) => {
       if (locked) return; locked = true;
       results[i] = ok; if (ok) score++; answered++;
-      if (country && rec) record(country.id, q.skill, ok, { pid });
+      const qc = q.c || country;
+      if (qc && rec) record(qc.id, q.skill, ok, { pid, src: recordSrc });
+      onAnswer?.(q, ok);
       if (i + 1 >= questions.length && !decided) { decided = true; onDecide?.(score, results, questions); }
       sfx(ok ? 'correct' : 'wrong');
       speak(ok ? ['أحسنت!', 'رائع!', 'صحيح!'][i % 3] : 'ليست هذه', LANG.ar);
@@ -153,7 +185,7 @@ export function runQuiz({ title, country, questions, onDone, onDecide, onAbort, 
     const again = h('button', { class: 'say-again', 'aria-label': 'أعد قراءة السؤال', onclick: say }, '🔊');
     const qBox = h('div', { class: 'question', tabindex: '-1' }, again, q.prompt);
     if (q.type === 'map') {
-      const c = mapCountries?.[i] || country;
+      const c = mapCountries?.[i] || q.c || country;
       const tiny = c.small || !c.bb || (c.bb[2] - c.bb[0]) < 12;
       const mp = createMap({ labels: false, dotPx: tiny ? 13 : undefined, fill: (x) => lighten(contColors[x.cont] || '#ccc', x.kind === 'state' ? 0.1 : 0.5),
         onTap: (id) => { if (locked || id === 'ATA') return; const ok = id === c.id; mp.mark(id, ok ? 'right' : 'wrong'); if (!ok) mp.mark(c.id, 'right'); answer(ok); } });

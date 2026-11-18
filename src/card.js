@@ -4,6 +4,8 @@ import { byId, flagUrl, continents, continents3, greetings, languages, num, cont
 import { speak, LANG } from './speech.js';
 import { sfx } from './sfx.js';
 import { store } from './store.js';
+import { goldProgress, goldEligible, OTHER_NEEDED } from './mastery.js';
+import { requiredFor } from './screens/world.js';
 import { hasVisit, hasGold, canTakeExam, giveVisit, visitWait, visitFailed, examResult, dueReviews, reviewResult } from './mastery.js';
 import { visitQuestion, masteryExam, reviewQuiz } from './quiz.js';
 
@@ -197,7 +199,6 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
   const drawStamp = () => {
     if (!isState || !store.me) return;
     const visit = hasVisit(c.id), gold = hasGold(c.id), due = dueReviews().includes(c.id);
-    const ex = canTakeExam(c.id);
     stampBox.replaceChildren(...[
       h('div', { class: 'stamp-status' },
         h('span', { class: 'chip-st' + (visit ? ' on' : '') }, visit ? '✅ ختم الزيارة' : '⬜ ختم الزيارة'),
@@ -206,13 +207,25 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
         : h('button', { class: 'btn big', onclick: () => { let won = false;
           visitQuestion(c, { onPass: () => { won = giveVisit(c.id); }, onFail: () => visitFailed(c.id),
             onClose: () => { drawStamp(); if (won) { showStamp(false); checkContinentBadge(c.cont); } } }); } }, '🛂 احصل على ختم الزيارة (سؤال واحد)')) : null,
-      visit && !gold ? (ex.ok ? h('button', { class: 'btn big gold-btn', onclick: () => { let won = false;
-          masteryExam(c, { onResult: (pass) => { won = examResult(c.id, pass); },
-            onClose: () => { drawStamp(); if (won) { showStamp(true); checkGoldCert(c.cont); } } }); } }, '⭐ امتحان الإتقان (٥ أسئلة)')
-        : h('p', { class: 'note' }, '⏳ ' + ex.why)) : null,
-      gold && due ? h('button', { class: 'btn big', onclick: () => reviewQuiz(c, { onResult: (pass) => reviewResult(c.id, pass), onClose: drawStamp }) }, '🔔 حان وقت المراجعة') : null,
+      // الختم الذهبي لا يُمتحن هنا (البطاقة تكشف الجواب)، بل تُجمع أدلته في التمرين الشامل
+      visit && !gold ? goldBox() : null,
+      gold && due ? h('button', { class: 'btn big', onclick: () => { m.close(); setTimeout(() => (location.hash = '#world'), 250); } }, '🔔 حان وقت المراجعة: في التمرين الشامل') : null,
     ].filter(Boolean));
   };
+  function goldBox() {
+    const p = store.me;
+    const req = requiredFor(c);
+    const g = goldProgress(p, c.id, req);
+    const L = { flag: '🚩 العلم', map: '📍 الموقع', capital: '🏛️ العاصمة' };
+    const open = goldEligible(p, c.id);
+    return h('div', { class: 'gold-progress' },
+      h('p', { class: 'note strong' }, '🥇 أدلة الختم الذهبي:'),
+      h('div', { class: 'stamp-status' }, ...g.req.map(([k, v]) => h('span', { class: 'chip-st' + (v ? ' on' : '') }, (v ? '✅ ' : '⬜ ') + L[k])),
+        h('span', { class: 'chip-st' + (g.others >= OTHER_NEEDED ? ' on' : '') }, `➕ أخرى ${Math.min(g.others, OTHER_NEEDED).toLocaleString('ar-EG')}/${OTHER_NEEDED.toLocaleString('ar-EG')}`)),
+      h('p', { class: 'note' }, open ? 'تُجمع هذه الأدلة في «التمرين الشامل»، بين أسئلة من دول العالم كلها، حين تجيب صحيحاً من أول محاولة.'
+        : 'تبدأ أدلة الختم الذهبي من الغد في «التمرين الشامل». راجع البطاقة اليوم.'),
+      open ? h('button', { class: 'btn big gold-btn', onclick: () => { m.close(); setTimeout(() => (location.hash = '#world'), 250); } }, '🧠 إلى التمرين الشامل') : null);
+  }
   // عدّ تنازلي بعد خطأ في سؤال الزيارة
   function waitNote() {
     const el = h('p', { class: 'note wait' });
