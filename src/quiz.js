@@ -55,8 +55,8 @@ export const Q = {
 };
 
 // يعرض الأسئلة واحداً بعد الآخر، ويستدعي onDone(score, results) في النهاية
-export function runQuiz({ title, country, questions, passMark, onDone, intro }) {
-  const level = store.me?.level || 2;
+export function runQuiz({ title, country, questions, passMark, onDone, intro, level: lv, pid, record: rec = true }) {
+  const level = lv || store.me?.level || 2;
   const box = h('div', { class: 'quiz' });
   const m = modal(box, { cls: 'quiz-modal' });
   let i = 0, score = 0;
@@ -77,7 +77,7 @@ export function runQuiz({ title, country, questions, passMark, onDone, intro }) 
     const answer = (ok, el) => {
       if (locked) return; locked = true;
       results[i] = ok; if (ok) score++;
-      if (country) record(country.id, q.skill, ok);
+      if (country && rec) record(country.id, q.skill, ok, pid);
       sfx(ok ? 'correct' : 'wrong');
       speak(ok ? ['أحسنت!', 'رائع!', 'صحيح!'][i % 3] : 'ليست هذه', LANG.ar);
       el?.classList.add(ok ? 'right' : 'wrong');

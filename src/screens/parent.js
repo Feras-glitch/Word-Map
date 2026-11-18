@@ -1,0 +1,96 @@
+// لوحة الوالدين: تقدم كل طفل، تغيير المستوى، الحذف، النسخ الاحتياطي، الرقم السري
+import { h, modal, toast } from '../ui.js';
+import { store } from '../store.js';
+import { states, byId, flagUrl, LEVELS, continents, contEmoji } from '../data.js';
+import { skillSummary, weakest, dueReviews, SKILLS, today } from '../mastery.js';
+import { saveFile, pickTextFile, copyText } from '../save.js';
+import { parentLock, lockNow } from '../lock.js';
+import { certStatus } from '../certs.js';
+
+const ar = (n) => Number(n).toLocaleString('ar-EG');
+const DAY = 864e5;
+
+export function parentScreen(root, { go }) {
+  // الشاشة نفسها محمية: إن وصلها الطفل بالرابط نطلب الرقم
+  parentLock(draw, () => { if (location.hash.startsWith('#parent')) go('home', { replace: true }); });
+
+  function draw() {
+    root.innerHTML = '';
+    const ps = store.profiles;
+    root.append(h('div', { class: 'parent-top' },
+      h('p', { class: 'hint' }, 'هنا ترى ما تعلمه كل طفل وأين يخطئ، وتحفظ نسخة احتياطية من تقدمهم.'),
+      h('button', { class: 'btn small soft', onclick: () => { lockNow(); go('home'); } }, '🔒 قفل والخروج')));
+    if (!ps.length) root.append(h('p', { class: 'empty' }, 'لا يوجد مستكشفون بعد.'));
+    for (const p of ps) root.append(childPanel(p));
+    root.append(backupPanel(), pinPanel());
+  }
+
+  function childPanel(p) {
+    const visits = Object.keys(p.stamps || {}).length, gold = Object.keys(p.gold || {}).length;
+    const due = dueReviews(p).length;
+    const sum = skillSummary(p);
+    const weak = weakest(6, p);
+    const certs = certStatus(p).filter((c) => c.visit || c.gold);
+    // النشاط في آخر ١٤ يوماً
+    const act = p.activity || {};
+    const days = [...Array(14)].map((_, i) => new Date(Date.now() - (13 - i) * DAY).toLocaleDateString('en-CA'));
+    const maxQ = Math.max(5, ...days.map((d) => act[d]?.q || 0));
+    const active7 = days.slice(7).filter((d) => act[d]?.q).length;
+    const total = Object.values(act).reduce((s, a) => s + a.q, 0);
+    const lastDay = Object.keys(act).sort().pop();
+
+    return h('div', { class: 'panel child' },
+      h('div', { class: 'child-head' }, h('span', { class: 'big-av' }, p.avatar), h('div', {}, h('h3', {}, p.name),
+        h('small', {}, LEVELS[p.level].emoji + ' المستوى: ' + LEVELS[p.level].name + (p.placement ? ' · حدّده اختبار المستوى' : '')))),
+      h('div', { class: 'stat-row' },
+        stat('🛂', ar(visits), 'ختم زيارة'), stat('🥇', ar(gold), 'ختم ذهبي'), stat('🔔', ar(due), 'مراجعة مستحقة'), stat('🎓', ar(certs.length), 'شهادة')),
+      h('h4', {}, 'النشاط في آخر أسبوعين'),
+      h('div', { class: 'act-bars' }, days.map((d) => {
+        const a = act[d]; const q = a?.q || 0;
+        return h('div', { class: 'ab', title: d }, h('i', { style: { height: (q / maxQ) * 100 + '%', opacity: q ? 1 : 0.15 } }), h('small', {}, new Date(d).toLocaleDateString('ar-EG', { weekday: 'narrow' })));
+      })),
+      h('p', { class: 'hint' }, total ? `أجاب عن ${ar(total)} سؤالاً إجمالاً، ونشط ${ar(active7)} من آخر ٧ أيام. آخر نشاط: ${lastDay === today() ? 'اليوم' : new Date(lastDay).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long' })}.` : 'لم يُجب عن أسئلة بعد.'),
+      Object.keys(sum).length ? [h('h4', {}, 'المهارات (نسبة الإجابات الصحيحة)'), h('div', { class: 'skill-bars' }, Object.entries(SKILLS).filter(([k]) => sum[k]).map(([k, t]) => {
+        const x = sum[k]; const n = x.ok + x.bad; const pct = Math.round((x.ok / n) * 100);
+        return h('div', { class: 'sb' }, h('span', {}, t), h('div', { class: 'bar' }, h('i', { style: { width: pct + '%', background: pct >= 75 ? '#1a9b55' : pct >= 50 ? '#e0a800' : '#e5484d' } })), h('small', {}, `${ar(pct)}٪ من ${ar(n)}`));
+      }))] : null,
+      weak.length ? [h('h4', {}, 'دول يخطئ فيها كثيراً'), h('div', { class: 'neighbors' }, weak.map((id) => h('span', { class: 'chip' }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))] : null,
+      h('h4', {}, 'المستوى'),
+      h('div', { class: 'levels' }, Object.entries(LEVELS).map(([k, L]) => h('button', { class: 'lv-btn' + (+k === p.level ? ' on' : ''), onclick: () => { store.updateProfile(p.id, { level: +k }); draw(); } },
+        h('span', {}, L.emoji), h('b', {}, L.name), h('small', {}, L.ages)))),
+      h('div', { class: 'row' }, h('button', { class: 'btn small danger', onclick: () => confirmDelete(p) }, '🗑️ حذف ' + p.name)));
+  }
+  const stat = (e, n, t) => h('div', { class: 'stat' }, h('span', {}, e), h('b', {}, n), h('small', {}, t));
+
+  function confirmDelete(p) {
+    const d = modal(h('div', { class: 'panel' }, h('h3', {}, `حذف ${p.name} وكل أختامه؟`), h('p', {}, 'لا يمكن التراجع عن هذا، إلا من نسخة احتياطية.'),
+      h('div', { class: 'row' }, h('button', { class: 'btn danger', onclick: () => { d.close(); store.removeProfile(p.id); draw(); } }, 'نعم، احذف'), h('button', { class: 'btn soft', onclick: () => d.close() }, 'إلغاء'))));
+  }
+
+  function backupPanel() {
+    const last = store.parent.lastBackup;
+    return h('div', { class: 'panel' },
+      h('h3', {}, '💾 النسخة الاحتياطية'),
+      h('p', { class: 'hint' }, 'تحفظ كل الملفات والأختام والتقدم في ملف واحد. احفظها قبل تغيير الجهاز أو مسح بيانات التطبيق. ' + (last ? 'آخر نسخة: ' + new Date(last).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long', year: 'numeric' }) + '.' : 'لم تُحفظ نسخة بعد.')),
+      h('div', { class: 'row wrap' },
+        h('button', { class: 'btn', onclick: async () => {
+          try { await saveFile(`world-explorer-backup-${today()}.json`, store.exportData()); store.setParent({ lastBackup: Date.now() }); toast('جاهزة. احفظ الملف في مكان آمن'); draw(); }
+          catch { toast('تعذّر حفظ الملف؛ استخدم «نسخ رمز النسخة»'); }
+        } }, '📤 حفظ ملف نسخة'),
+        h('button', { class: 'btn soft', onclick: async () => { if (await copyText(store.exportData())) { store.setParent({ lastBackup: Date.now() }); toast('نُسخ الرمز. الصقه في رسالة لنفسك أو ملاحظة'); } else toast('تعذّر النسخ'); } }, '📋 نسخ رمز النسخة')),
+      h('div', { class: 'row wrap' },
+        h('button', { class: 'btn soft', onclick: async () => { const t = await pickTextFile(); if (t) restore(t); } }, '📥 استعادة من ملف'),
+        h('button', { class: 'btn soft', onclick: () => {
+          const ta = h('textarea', { class: 'paste', placeholder: 'الصق رمز النسخة هنا', dir: 'ltr' });
+          const d = modal(h('div', { class: 'panel' }, h('h3', {}, 'استعادة من رمز'), ta, h('button', { class: 'btn big', onclick: () => { d.close(); setTimeout(() => restore(ta.value), 260); } }, 'استعادة')));
+        } }, '📝 استعادة من رمز')));
+  }
+  function restore(text) {
+    const d = modal(h('div', { class: 'panel' }, h('h3', {}, 'استبدال البيانات الحالية؟'), h('p', {}, 'ستُستبدل كل الملفات والأختام الموجودة الآن بما في النسخة الاحتياطية.'),
+      h('div', { class: 'row' }, h('button', { class: 'btn danger', onclick: () => { d.close(); const err = store.importData(text); toast(err || 'تمت الاستعادة ✓'); if (!err) setTimeout(draw, 300); } }, 'نعم، استبدل'), h('button', { class: 'btn soft', onclick: () => d.close() }, 'إلغاء'))));
+  }
+  function pinPanel() {
+    return h('div', { class: 'panel' }, h('h3', {}, '🔑 الرقم السري'),
+      h('button', { class: 'btn soft', onclick: () => { store.setParent({ pin: null }); lockNow(); parentLock(draw); } }, 'تغيير الرقم السري'));
+  }
+}

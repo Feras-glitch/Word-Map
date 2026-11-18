@@ -35,4 +35,18 @@ export const store = {
   },
   badge(key) { const p = this.me; if (!p || p.badges[key]) return false; p.badges[key] = true; save(); return true; },
   patch(fn) { const p = this.me; if (!p) return; fn(p); save(); },
+  patchProfile(id, fn) { const p = load().profiles.find((x) => x.id === id); if (!p) return; fn(p); save(); },
+  // لوحة الوالدين
+  get parent() { return (load().parent ||= {}); },
+  setParent(patch) { Object.assign(this.parent, patch); save(); },
+  // النسخة الاحتياطية
+  exportData() { return JSON.stringify({ app: 'world-explorer', v: 1, at: new Date().toISOString(), data: load() }); },
+  importData(text) {
+    let o; try { o = JSON.parse(text.trim()); } catch { return 'الملف ليس نسخة احتياطية صالحة'; }
+    const d = o?.app === 'world-explorer' ? o.data : null;
+    if (!d || !Array.isArray(d.profiles)) return 'الملف ليس نسخة احتياطية من مستكشف العالم';
+    mem = d; mem.settings ||= { sound: true, rate: 0.9 };
+    if (!mem.profiles.some((p) => p.id === mem.current)) mem.current = mem.profiles[0]?.id || null;
+    save(); return null;
+  },
 };

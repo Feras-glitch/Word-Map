@@ -19,14 +19,19 @@ function ensure(p) {
 }
 
 // تسجيل محاولة في مهارة (من الألعاب والامتحانات والأسئلة)
-export function record(id, skill, ok) {
-  store.patch((p) => {
+export function record(id, skill, ok, pid) {
+  const fn = (p) => {
     ensure(p);
     const m = (p.mastery[id] ||= {});
     const s = (m[skill] ||= { ok: 0, bad: 0 });
     if (ok) s.ok++; else s.bad++;
     s.last = today();
-  });
+    // سجل النشاط اليومي للوحة الوالدين
+    p.activity ||= {};
+    const a = (p.activity[today()] ||= { q: 0, ok: 0 });
+    a.q++; if (ok) a.ok++;
+  };
+  if (pid) store.patchProfile(pid, fn); else store.patch(fn);
 }
 
 export const hasVisit = (id) => !!store.me?.stamps?.[id];
@@ -58,8 +63,8 @@ export function examResult(id, score) {
   return gold;
 }
 
-export function dueReviews() {
-  const p = store.me; if (!p) return [];
+export function dueReviews(p = store.me) {
+  if (!p) return [];
   ensure(p);
   const t = today();
   return Object.entries(p.review).filter(([, r]) => r.due <= t).map(([id]) => id);
@@ -82,8 +87,8 @@ export function reviewResult(id, passed) {
 }
 
 // ملخص مهارات الطفل (للوحة الوالد لاحقاً وللجواز)
-export function skillSummary() {
-  const p = store.me; if (!p) return {};
+export function skillSummary(p = store.me) {
+  if (!p) return {};
   ensure(p);
   const sum = {};
   for (const m of Object.values(p.mastery)) for (const [k, s] of Object.entries(m)) {
@@ -93,8 +98,8 @@ export function skillSummary() {
 }
 
 // الدول التي يخطئ فيها الطفل أكثر (للمراجعة)
-export function weakest(n = 8) {
-  const p = store.me; if (!p) return [];
+export function weakest(n = 8, p = store.me) {
+  if (!p) return [];
   ensure(p);
   return Object.entries(p.mastery)
     .map(([id, m]) => { let ok = 0, bad = 0; for (const s of Object.values(m)) { ok += s.ok; bad += s.bad; } return [id, bad - ok * 0.5, bad]; })

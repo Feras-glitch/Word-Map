@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url';
 import { feature } from 'topojson-client';
 import { presimplify, simplify, quantile } from 'topojson-simplify';
 import { geoNaturalEarth1, geoPath, geoCentroid } from 'd3-geo';
+import { buildNature } from './nature.mjs';
 import { pinyin, customPinyin } from 'pinyin-pro';
 // قراءات صحيحة لحروف متعددة النطق في أسماء الأعلام
 customPinyin({ 藏语: 'zàng yǔ', 西藏: 'xī zàng', 什: 'shí', 的黎波里: 'dì lí bō lǐ', 麦纳麦: 'mài nà mài', 柏柏尔: 'bó bó ěr' });
@@ -121,7 +122,7 @@ for (const c of out) {
   const g = govData[c.id];
   if (!g || !govTypes[g.type]) continue;
   const T = govTypes[g.type];
-  c.gov = { type: g.type, ar: T.ar, en: T.en, zh: T.zh, py: pinyin(T.zh, { toneType: 'symbol', type: 'array' }).join(' '), kid: T.kid, icon: T.icon, federal: !!g.federal, note: g.note || '' };
+  c.gov = { type: g.type, ar: T.ar, en: T.en, zh: T.zh, py: pinyin(T.zh, { toneType: 'symbol', type: 'array' }).join(' '), kid: T.kid, icon: T.icon, special: !!T.special, federal: !!g.federal, note: g.note || '' };
 }
 
 const languages = {};
@@ -146,6 +147,10 @@ const fc = feature(t, t.objects.countries);
 const W = 2000, H = 1000;
 const proj = geoNaturalEarth1().fitExtent([[10, 10], [W - 10, H - 10]], fc);
 const gp = geoPath(proj).digits(1);
+// الطبقة الطبيعية
+const nature = buildNature(root, proj);
+fs.writeFileSync(path.join(root, 'src/data/nature.json'), JSON.stringify(nature || { kinds: {}, items: [] }));
+console.log('الجغرافيا الطبيعية: ' + (nature ? nature.items.length + ' معلماً' : 'بانتظار المراجعة'));
 
 const shapes = [];
 const unmatched = [];

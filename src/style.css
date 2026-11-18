@@ -313,3 +313,70 @@ input[type=range] { width: 100%; }
 .cp .bar.gold i { background: #e0a800 !important; }
 
 .quiz .q-head { padding-left: 54px; }
+.sec.gov.occupied { background: #eef7ee; border-inline-start: 5px solid #149954; }
+
+/* ---------- الإصدار ١٫٤: القفل ولوحة الوالدين ---------- */
+.lock { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.lock-modal .modal { max-width: 380px; }
+.pin-dots { display: flex; gap: 14px; margin: 6px 0; } .pin-dots i { width: 18px; height: 18px; border-radius: 50%; border: 3px solid var(--blue); }
+.pin-dots i.on { background: var(--blue); }
+.keypad { display: grid; grid-template-columns: repeat(3, 72px); gap: 10px; }
+.key { height: 64px; border: 0; border-radius: 18px; background: #fff; font: 900 1.6rem Cairo, sans-serif; box-shadow: 0 3px 0 #d5dde8; color: var(--ink); }
+.key:active { transform: translateY(2px); box-shadow: none; }
+.pin-ans { font: 700 1.4rem Cairo; text-align: center; width: 160px; padding: 8px; border-radius: 12px; border: 2px solid #d5dde8; }
+.parent-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.panel.child h4 { margin: 14px 0 6px; }
+.child-head { display: flex; align-items: center; gap: 12px; } .child-head h3 { margin: 0; } .big-av { font-size: 2.8rem; }
+.stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; }
+.stat { background: #f4f7fb; border-radius: 14px; padding: 8px 4px; display: flex; flex-direction: column; align-items: center; }
+.stat b { font-size: 1.4rem; } .stat small { color: var(--muted); font-size: .78rem; text-align: center; }
+.act-bars { display: flex; align-items: flex-end; gap: 4px; height: 90px; }
+.act-bars .ab { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; }
+.act-bars .ab i { width: 100%; background: var(--blue); border-radius: 4px 4px 0 0; min-height: 3px; display: block; }
+.act-bars .ab small { font-size: .65rem; color: var(--muted); }
+.skill-bars { display: flex; flex-direction: column; gap: 6px; }
+.sb { display: grid; grid-template-columns: 110px 1fr 90px; align-items: center; gap: 8px; font-weight: 700; font-size: .92rem; }
+.sb .bar { height: 12px; background: #eef2f7; border-radius: 99px; overflow: hidden; } .sb .bar i { display: block; height: 100%; }
+.sb small { color: var(--muted); }
+.row.wrap { flex-wrap: wrap; }
+textarea.paste { width: 100%; min-height: 140px; border-radius: 12px; border: 2px solid #d5dde8; padding: 8px; font-family: monospace; box-sizing: border-box; }
+
+/* الشهادات */
+.certs { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.cert-card { border: 0; border-radius: 18px; background: #fff; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 4px; box-shadow: var(--shadow); border-top: 6px solid var(--c); font-family: Cairo; color: var(--ink); opacity: .75; }
+.cert-card.on { opacity: 1; } .cert-card.gold { opacity: 1; background: #fff6d6; }
+.cert-card .ce { font-size: 2rem; } .cert-card small { color: var(--muted); font-size: .8rem; }
+.cert-modal .modal { max-width: 900px; } .cert-img { width: 100%; border-radius: 10px; box-shadow: 0 4px 18px #0002; }
+.cert-view { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+
+/* تحدي العائلة */
+.fam-players { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+.fam-p { border: 3px solid transparent; background: #fff; border-radius: 18px; padding: 10px; display: flex; flex-direction: column; align-items: center; font-family: Cairo; color: var(--ink); box-shadow: var(--shadow); opacity: .55; }
+.fam-p.on { border-color: var(--blue); opacity: 1; } .fam-p .av { font-size: 2.2rem; } .fam-p small { color: var(--muted); }
+.fam-board { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.fb { background: #fff; border-radius: 999px; padding: 6px 14px; display: flex; gap: 6px; align-items: center; box-shadow: var(--shadow); }
+.fb.now { outline: 3px solid var(--blue); } .fb .sc { background: var(--blue); color: #fff; border-radius: 99px; padding: 0 10px; font-weight: 900; }
+.fam-turn, .fam-end { text-align: center; margin-top: 24px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.fam-turn .big-av { font-size: 5rem; }
+.podium { display: flex; flex-direction: column; gap: 8px; width: min(420px, 100%); }
+.pd { display: grid; grid-template-columns: 40px 1fr auto; align-items: center; background: #fff; padding: 10px 14px; border-radius: 16px; box-shadow: var(--shadow); font-size: 1.1rem; }
+.pd.win { background: #fff6d6; }
+
+/* الطبقة الطبيعية */
+.map .nat { pointer-events: none; vector-effect: non-scaling-stroke; }
+.map .nat.river { fill: none; stroke: #2f86d6; stroke-width: 1.8px; stroke-linejoin: round; stroke-linecap: round; }
+.map .nat.lake { fill: #8fcdf5; stroke: #2f86d6; stroke-width: 1px; }
+.map .nat.range { fill: #8b5a2b; fill-opacity: .3; stroke: none; }
+.map .nat.desert { fill: #e8b960; fill-opacity: .45; stroke: none; }
+.map .nlbl { text-anchor: middle; dominant-baseline: middle; font-weight: 800; paint-order: stroke; stroke: rgba(255,255,255,.9); stroke-width: 3px; vector-effect: non-scaling-stroke; cursor: pointer; }
+.map .nlbl.ocean { fill: #1b5e9e; font-style: italic; letter-spacing: .08em; stroke: rgba(207,238,255,.8); }
+.map .nlbl.sea { fill: #2373b8; font-style: italic; stroke: rgba(207,238,255,.8); }
+.map .nlbl.river, .map .nlbl.lake { fill: #1d6fbf; }
+.map .nlbl.range, .map .nlbl.peak { fill: #6b3d12; }
+.map .nlbl.desert { fill: #8a5a00; }
+.map .nlbl.flash { fill: #e5484d; }
+.map.nat-on .lbl { opacity: .75; }
+.nat-toggle { position: absolute; left: 10px; top: 178px; z-index: 3; width: 46px; height: 46px; border-radius: 14px; background: #fff; box-shadow: var(--shadow); font-size: 1.4rem; border: 0; }
+.nat-toggle.on { background: #8b5a2b; }
+.nat-card .kind { color: var(--muted); font-weight: 700; }
+.res-ic { font-size: 1.5rem; width: 34px; text-align: center; }

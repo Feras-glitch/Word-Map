@@ -2,6 +2,7 @@ import { h, stars } from '../ui.js';
 import { store } from '../store.js';
 import { states, contOrder, continents, contEmoji, contColors, flagUrl, byId } from '../data.js';
 import { openCard } from '../card.js';
+import { certsSection } from '../certs.js';
 import { skillSummary, SKILLS, weakest } from '../mastery.js';
 
 const GAME_NAMES = { flag: '🚩 خمّن العلم', where: '📍 أين الدولة؟', capital: '🏛️ العاصمة', memory: '🧠 الذاكرة' };
@@ -45,7 +46,7 @@ export function passportScreen(root, { go }) {
     return h('div', { class: 'badge-row' }, h('span', {}, t), h('span', {}, pct.toLocaleString('ar-EG') + '٪ صحيح من ' + (x.ok + x.bad).toLocaleString('ar-EG') + ' سؤال'));
   }));
   const weak = weakest(6);
-  root.append(cover, h('h3', {}, 'تقدمي في القارات'), h('p', { class: 'hint' }, 'الشريط الملوّن: أختام الزيارة · الشريط الذهبي: أختام الإتقان'), progress,
+  root.append(...[cover, h('h3', {}, 'تقدمي في القارات'), h('p', { class: 'hint' }, 'الشريط الملوّن: أختام الزيارة · الشريط الذهبي: أختام الإتقان'), progress,
     Object.keys(sum).length ? [h('h3', {}, 'مهاراتي'), skills] : null,
-    weak.length ? [h('h3', {}, 'دول أخطئ فيها كثيراً'), h('div', { class: 'neighbors' }, weak.map((id) => h('button', { class: 'chip', onclick: () => openCard(id, { onShowOnMap: showOnMap }) }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))] : null, h('h3', {}, 'جوائزي'), badges, h('h3', {}, 'أختامي'), grid);
+    weak.length ? [h('h3', {}, 'دول أخطئ فيها كثيراً'), h('div', { class: 'neighbors' }, weak.map((id) => h('button', { class: 'chip', onclick: () => openCard(id, { onShowOnMap: showOnMap }) }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))] : null, h('h3', {}, '🎓 شهاداتي'), certsSection(me), h('h3', {}, 'جوائزي'), badges, h('h3', {}, 'أختامي'), grid].flat(Infinity).filter(Boolean));
 }

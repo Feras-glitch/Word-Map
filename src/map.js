@@ -1,6 +1,8 @@
 // خريطة SVG تفاعلية: سحب، تكبير بإصبعين أو بعجلة الفأرة، لمس الدول، وطبقات إضافية.
 import { geoNaturalEarth1 } from 'd3-geo';
 import { map as M, byId, contColors } from './data.js';
+import NAT from './data/nature.json';
+export { NAT };
 
 const NS = 'http://www.w3.org/2000/svg';
 const S = (tag, attrs = {}) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
@@ -16,7 +18,7 @@ export function lighten(hex, amt) {
 }
 export const defaultFill = (c) => (c.kind === 'territory' && c.id !== 'ATA' ? lighten(contColors[c.cont] || '#ccc', 0.45) : contColors[c.cont] || '#ddd');
 
-export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, minW = 30, onView } = {}) {
+export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, minW = 30, onView, onNature } = {}) {
   const wrap = document.createElement('div');
   wrap.className = 'map-wrap';
   const svg = S('svg', { class: 'map', viewBox: `0 0 ${M.w} ${M.h}`, preserveAspectRatio: 'xMidYMid meet' });
@@ -29,7 +31,39 @@ export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, mi
   const gDots = S('g', { class: 'dots' });
   const gOver = S('g', { class: 'overlay' });
   const gLabels = S('g', { class: 'labels' });
-  svg.append(gLand, gDots, gOver, gLabels);
+  const gNat = S('g', { class: 'nature' }); gNat.style.display = 'none';
+  const gNatL = S('g', { class: 'nat-labels' }); gNatL.style.display = 'none';
+  svg.append(gLand, gNat, gDots, gOver, gLabels, gNatL);
+  // الطبقة الطبيعية تُبنى عند أول تشغيل
+  let natOn = false, natBuilt = false; const natLbl = [];
+  const PRI = { ocean: 0, sea: 1, range: 2, desert: 2, river: 2, lake: 3, peak: 3 };
+  function buildNature() {
+    natBuilt = true;
+    for (const it of NAT.items) {
+      if (it.d) gNat.append(S('path', { d: it.d, class: 'nat ' + it.kind, 'data-nat-shape': it.id }));
+      const t = S('text', { x: it.xy[0], y: it.xy[1], class: 'nlbl ' + it.kind, 'data-nat': it.id });
+      const icon = it.kind === 'peak' ? '▲ ' : '';
+      t.textContent = icon + it.ar;
+      gNatL.append(t); natLbl.push({ t, it, p: PRI[it.kind] ?? 3 });
+    }
+    natLbl.sort((a, b) => a.p - b.p);
+  }
+  function natLabels(k, placed) {
+    for (const L of natLbl) {
+      const { it } = L; const [cx, cy] = it.xy;
+      const inView = cx > vb.x && cx < vb.x + vb.w && cy > vb.y && cy < vb.y + vb.h;
+      const lim = [99, 3.2, 2.4, 2.4][L.p] ?? 1.6;
+      let show = inView && k < lim;
+      const fs = (it.kind === 'ocean' ? 15 : it.kind === 'sea' ? 11.5 : 11) * k;
+      if (show) {
+        const hw = L.t.textContent.length * fs * 0.3 + fs * 0.3, hh = fs * 0.75;
+        const box = [cx - hw, cy - hh, cx + hw, cy + hh];
+        if (placed.some((b) => box[0] < b[2] && box[2] > b[0] && box[1] < b[3] && box[3] > b[1])) show = false; else placed.push(box);
+      }
+      L.t.style.display = show ? '' : 'none';
+      if (show) L.t.setAttribute('font-size', fs);
+    }
+  }
   wrap.append(svg);
 
   const paths = [];
@@ -74,6 +108,7 @@ export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, mi
       // الأكبر أولاً، ولا نعرض اسماً يتداخل مع اسم ظاهر
       const fs = 12 * k;
       const placed = [];
+      if (natOn) natLabels(k, placed);
       let shown = 0;
       for (const L of labelEls) {
         const px = L.w / k;
@@ -171,7 +206,10 @@ export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, mi
     if (pts.size === 1) { const p = [...pts.values()][0]; start = { x: p.x, y: p.y, vb: { ...vb } }; }
     if (wasTap && e.type === 'pointerup') {
       svg.releasePointerCapture?.(e.pointerId);
-      const el = document.elementFromPoint(e.clientX, e.clientY)?.closest?.('[data-id]');
+      const hit = document.elementFromPoint(e.clientX, e.clientY);
+      const nat = natOn ? hit?.closest?.('[data-nat]') : null;
+      if (nat && onNature) return onNature(nat.dataset.nat);
+      const el = hit?.closest?.('[data-id]');
       if (el && onTap) onTap(el.dataset.id, el.dataset.sub, el);
       else if (!el && onMiss) onMiss();
     }
@@ -197,6 +235,15 @@ export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, mi
     clearMarks(cls) { for (const p of all()) p.classList.remove(cls); },
     flash(id, cls = 'flash', ms = 1400) { this.mark(id, cls); setTimeout(() => this.mark(id, cls, false), ms); },
     kPx, refresh,
+    setNature(on) { natOn = on; if (on && !natBuilt) buildNature(); gNat.style.display = gNatL.style.display = on ? '' : 'none'; svg.classList.toggle('nat-on', on); refresh(); },
+    zoomToNature(id) {
+      const it = NAT.items.find((x) => x.id === id); if (!it) return;
+      const sh = gNat.querySelector(`[data-nat-shape="${id}"]`);
+      if (sh) { const b = sh.getBBox(); return zoomTo([b.x, b.y, b.x + b.width, b.y + b.height], 700, 0.25); }
+      const r = it.kind === 'ocean' ? 300 : it.kind === 'sea' ? 90 : 40;
+      return zoomTo([it.xy[0] - r, it.xy[1] - r, it.xy[0] + r, it.xy[1] + r], 700, 0);
+    },
+    flashNature(id) { const el = gNatL.querySelector(`[data-nat="${id}"]`); el?.classList.add('flash'); setTimeout(() => el?.classList.remove('flash'), 2400); },
     get vb() { return vb; },
   };
 }

@@ -17,6 +17,8 @@ import { helloScreen } from './screens/hello.js';
 import { dailyScreen } from './screens/daily.js';
 import { settingsScreen } from './screens/settings.js';
 import { reviewScreen } from './screens/review.js';
+import { parentScreen } from './screens/parent.js';
+import { familyScreen } from './screens/family.js';
 
 const screens = {
   profiles: { title: 'من يلعب؟', fn: profilesScreen, noBack: true },
@@ -34,6 +36,8 @@ const screens = {
   daily: { title: '✈️ رحلة اليوم', fn: dailyScreen, full: true },
   options: { title: '⚙️ الإعدادات', fn: settingsScreen },
   review: { title: '🔔 المراجعة', fn: reviewScreen },
+  parent: { title: '🔒 لوحة الوالدين', fn: parentScreen },
+  family: { title: '👨‍👩‍👧‍👦 تحدي العائلة', fn: familyScreen },
 };
 
 const app = document.getElementById('app');

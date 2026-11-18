@@ -94,7 +94,7 @@ jobs:
         with: { merge-multiple: true }
       - uses: softprops/action-gh-release@v2
         with:
-          tag_name: v1.3.${{ github.run_number }}
+          tag_name: v1.4.${{ github.run_number }}
           name: مستكشف العالم 1.1.${{ github.run_number }}
           make_latest: true
           body: |

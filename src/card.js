@@ -19,7 +19,7 @@ export function zhRuby(zh, py) {
 }
 
 // اسم بثلاث لغات، كل سطر بزر نطق
-function tri(o, { big = false, prefix = '' } = {}) {
+export function tri(o, { big = false, prefix = '' } = {}) {
   return h('div', { class: 'tri' + (big ? ' big' : '') },
     h('div', { class: 'name-row ar' }, h('span', { class: 'lang-tag' }, 'عربي'), h('b', {}, o.ar), say(prefix + o.ar, LANG.ar)),
     o.en ? h('div', { class: 'name-row en', dir: 'ltr' }, h('span', { class: 'lang-tag' }, 'EN'), h('b', {}, o.en), say(o.en, LANG.en)) : null,
@@ -116,6 +116,9 @@ function numbersTab(c, openNeighbor) {
   const neighbors = c.borders.map((b) => byId[b]).filter(Boolean);
   const pop = popText(c);
   return h('div', {},
+    c.gov?.special ? h('div', { class: 'sec gov occupied' }, h('span', { class: 'st-label' }, '🕊️ الحكم'),
+      tri({ ar: c.gov.ar, en: c.gov.en, zh: c.gov.zh, py: c.gov.py }),
+      h('p', { class: 'note strong' }, c.gov.note + '.')) :
     c.gov ? h('div', { class: 'sec gov' }, h('span', { class: 'st-label' }, (c.gov.icon || '🏛️') + ' نظام الحكم'),
       tri({ ar: c.gov.ar, en: c.gov.en, zh: c.gov.zh, py: c.gov.py }, { prefix: 'نظام الحكم في ' + c.ar + ': ' }),
       h('p', { class: 'note' }, c.gov.kid),
@@ -195,7 +198,7 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
         h('span', { class: 'chip-st' + (visit ? ' on' : '') }, visit ? '✅ ختم الزيارة' : '⬜ ختم الزيارة'),
         h('span', { class: 'chip-st gold' + (gold ? ' on' : '') }, gold ? '🥇 الختم الذهبي' : '⬜ الختم الذهبي')),
       !visit ? h('button', { class: 'btn big', onclick: () => visitQuestion(c, () => { giveVisit(c.id); showStamp(false); drawStamp(); checkContinentBadge(c.cont); }) }, '🛂 احصل على ختم الزيارة (سؤال واحد)') : null,
-      visit && !gold ? (ex.ok ? h('button', { class: 'btn big gold-btn', onclick: () => masteryExam(c, (score) => { if (examResult(c.id, score)) showStamp(true); drawStamp(); }) }, '⭐ امتحان الإتقان (٥ أسئلة)')
+      visit && !gold ? (ex.ok ? h('button', { class: 'btn big gold-btn', onclick: () => masteryExam(c, (score) => { if (examResult(c.id, score)) { showStamp(true); checkGoldCert(c.cont); } drawStamp(); }) }, '⭐ امتحان الإتقان (٥ أسئلة)')
         : h('p', { class: 'note' }, '⏳ ' + ex.why)) : null,
       gold && due ? h('button', { class: 'btn big', onclick: () => reviewQuiz(c, (pass) => { reviewResult(c.id, pass); drawStamp(); }) }, '🔔 حان وقت المراجعة') : null,
     ].filter(Boolean));
@@ -205,10 +208,17 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
   return m;
 }
 
+function checkGoldCert(cont) {
+  const me = store.me; if (!me) return;
+  if (states.filter((s) => s.cont === cont).every((s) => me.gold?.[s.id]) && store.badge('gold-' + cont)) {
+    setTimeout(() => { confetti(); sfx('win'); toast(`🥇 أتقنت قارة ${continents[cont]} كلها! شهادتك الذهبية في جواز السفر`, 4500); speak(`مبارك! نلت شهادة إتقان قارة ${continents[cont]}`, LANG.ar); }, 2200);
+  }
+}
+
 function checkContinentBadge(cont) {
   const me = store.me; if (!me) return;
   const inCont = states.filter((s) => s.cont === cont);
   if (inCont.every((s) => me.stamps[s.id]) && store.badge('cont-' + cont)) {
-    setTimeout(() => { confetti(); sfx('win'); toast(`🎉 أكملت قارة ${continents[cont]} كلها!`, 4000); speak(`مبارك! أكملت قارة ${continents[cont]} كلها`, LANG.ar); }, 2200);
+    setTimeout(() => { confetti(); sfx('win'); toast(`🎓 أكملت قارة ${continents[cont]} كلها! شهادتك في جواز السفر`, 4500); speak(`مبارك! أكملت قارة ${continents[cont]} كلها، ونلت شهادتها`, LANG.ar); }, 2200);
   }
 }
