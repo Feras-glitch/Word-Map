@@ -13,6 +13,7 @@ export function exploreScreen(root) {
   // خريطة التقدم: فاتح لما لم يُزَر، ملوّن بعد ختم الزيارة، ذهبي بعد الإتقان
   const fill = (c) => c.kind !== 'state' ? defaultFill(c) : me.gold?.[c.id] ? '#f2c230' : me.stamps[c.id] ? contColors[c.cont] : lighten(contColors[c.cont], 0.55);
   const m = createMap({
+    compass: true,
     fill,
     onMiss: () => toast('🌊 هذا ماء: بحر أو محيط. المس اليابسة لتكتشف دولة'),
     onNature: (id) => openNature(id),

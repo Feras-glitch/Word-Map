@@ -20,6 +20,7 @@ import { reviewScreen } from './screens/review.js';
 import { parentScreen } from './screens/parent.js';
 import { familyScreen } from './screens/family.js';
 import { aboutScreen } from './screens/about.js';
+import { missionsScreen, findScreen, guideScreen, nileScreen } from './screens/missions.js';
 
 const screens = {
   profiles: { title: 'من يلعب؟', fn: profilesScreen, noBack: true },
@@ -40,6 +41,10 @@ const screens = {
   parent: { title: '🔒 لوحة الوالدين', fn: parentScreen },
   family: { title: '👨‍👩‍👧‍👦 تحدي العائلة', fn: familyScreen },
   about: { title: '🗺️ عن هذه الخريطة', fn: aboutScreen },
+  missions: { title: '🔎 مهام المستكشف', fn: missionsScreen },
+  find: { title: '🔎 ابحث عن بلدي', fn: findScreen, full: true, back: 'missions' },
+  guide: { title: '🧭 كن دليل أخيك', fn: guideScreen, back: 'missions' },
+  nile: { title: '💧 رحلة قطرة في النيل', fn: nileScreen, full: true, back: 'missions' },
 };
 
 const app = document.getElementById('app');

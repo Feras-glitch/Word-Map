@@ -391,3 +391,22 @@ textarea.paste { width: 100%; min-height: 140px; border-radius: 12px; border: 2p
 .opt-wrap { display: flex; gap: 6px; align-items: stretch; } .opt-wrap .opt { flex: 1; } .opt-wrap .opt-say { border: 0; font-size: 1.3rem; border-radius: 14px; padding: 0 10px; }
 .say-again { float: left; border: 0; background: #fff; border-radius: 50%; width: 38px; height: 38px; box-shadow: 0 1px 4px #0002; font-size: 1.1rem; }
 .sec.pop-world ul { margin: 6px 0; padding-inline-start: 18px; line-height: 1.8; }
+
+/* مهام المستكشف (١٫٦) */
+.compass { position: absolute; right: 10px; top: 10px; z-index: 3; width: 46px; height: 58px; background: #fff; border-radius: 14px; box-shadow: var(--shadow); display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1; pointer-events: none; }
+.compass span { color: #e5484d; font-size: 1.1rem; } .compass b { font-size: 1rem; } .compass small { font-size: .6rem; color: var(--muted); }
+.clue-panel { max-height: 48%; }
+.clue-list { margin: 4px 0; padding-inline-start: 22px; display: flex; flex-direction: column; gap: 6px; }
+.clue-list li { font-weight: 700; line-height: 1.6; } .clue-list .ci { margin-inline-end: 6px; } .clue-list .say, .clue-list .btn { margin-inline-start: 8px; vertical-align: middle; }
+.clue-msg { color: #1d4e89; font-weight: 700; min-height: 1.4em; }
+.clue-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin: 8px 0 14px; }
+.clue-card { border: 0; background: #f4f7fb; border-radius: 14px; padding: 10px; text-align: start; font: 700 .95rem Cairo, sans-serif; color: var(--ink); display: flex; gap: 6px; align-items: flex-start; }
+.clue-card .ci { font-size: 1.3rem; }
+.map .station { fill: #ffd84d; stroke: #1d6fbf; stroke-width: 3px; vector-effect: non-scaling-stroke; cursor: pointer; animation: pulse 1s ease-in-out infinite alternate; }
+@keyframes pulse { to { fill: #ff9f1c; } }
+.map .station-l { fill: #1f2a44; font-weight: 800; paint-order: stroke; stroke: #fff; stroke-width: 3px; vector-effect: non-scaling-stroke; pointer-events: none; }
+.map .drop { pointer-events: none; }
+.sentence { background: #fff6d6; border-radius: 12px; padding: 8px 12px; }
+.stories { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.stories li { background: #fff; border-radius: 14px; padding: 8px 12px; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow); }
+.stories li img { width: 30px; border-radius: 3px; } .stories li span { flex: 1; font-weight: 700; } .stories li small { color: var(--muted); }

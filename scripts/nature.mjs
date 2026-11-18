@@ -42,6 +42,7 @@ export function buildNature(root, proj) {
   const items = C.items.map((it) => {
     const [x, y] = proj(it.at);
     const o = { id: it.id, kind: it.kind, ar: it.ar, en: it.en, zh: it.zh, py: pinyin(it.zh.replace(/[（）()]/g, ' '), { toneType: 'symbol', type: 'array' }).filter((s) => s.trim()).join(' '), fact: it.fact, xy: [+x.toFixed(1), +y.toFixed(1)] };
+    Object.defineProperty(o, '_at', { value: it.at, enumerable: false });
     if (it.ne) {
       const names = new Set(it.ne);
       let src = [];
@@ -51,6 +52,7 @@ export function buildNature(root, proj) {
       if (!src.length) console.warn('⚠️ لم يُعثر على شكل:', it.id);
       const tol = it.kind === 'river' ? 0.6 : 0.8;
       o.d = src.map((f) => pathOf(f.geometry, tol)).join('');
+      Object.defineProperty(o, '_geo', { value: src.map((f) => f.geometry), enumerable: false });
     }
     return o;
   });

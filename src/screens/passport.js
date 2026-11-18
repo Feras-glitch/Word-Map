@@ -48,5 +48,6 @@ export function passportScreen(root, { go }) {
   const weak = weakest(6);
   root.append(...[cover, h('h3', {}, 'تقدمي في القارات'), h('p', { class: 'hint' }, 'الشريط الملوّن: أختام الزيارة · الشريط الذهبي: أختام الإتقان'), progress,
     Object.keys(sum).length ? [h('h3', {}, 'مهاراتي'), skills] : null,
-    weak.length ? [h('h3', {}, 'دول أخطئ فيها كثيراً'), h('div', { class: 'neighbors' }, weak.map((id) => h('button', { class: 'chip', onclick: () => openCard(id, { onShowOnMap: showOnMap }) }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))] : null, h('h3', {}, '🎓 شهاداتي'), certsSection(me), h('h3', {}, 'جوائزي'), badges, h('h3', {}, 'أختامي'), grid].flat(Infinity).filter(Boolean));
+    weak.length ? [h('h3', {}, 'دول أخطئ فيها كثيراً'), h('div', { class: 'neighbors' }, weak.map((id) => h('button', { class: 'chip', onclick: () => openCard(id, { onShowOnMap: showOnMap }) }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))] : null, (me.stories || []).length ? [h('h3', {}, '🔎 قصص اكتشافاتي'), h('ul', { class: 'stories' }, me.stories.slice(0, 12).map((st) => h('li', {}, byId[st.id] ? h('img', { src: flagUrl(byId[st.id].f), alt: '' }) : null, h('span', {}, st.text), h('small', {}, new Date(st.date).toLocaleDateString('ar-EG', { day: 'numeric', month: 'short' })))))] : null,
+    h('h3', {}, '🎓 شهاداتي'), certsSection(me), h('h3', {}, 'جوائزي'), badges, h('h3', {}, 'أختامي'), grid].flat(Infinity).filter(Boolean));
 }

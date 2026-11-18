@@ -18,7 +18,7 @@ export function lighten(hex, amt) {
 }
 export const defaultFill = (c) => (c.kind === 'territory' && c.id !== 'ATA' ? lighten(contColors[c.cont] || '#ccc', 0.45) : contColors[c.cont] || '#ddd');
 
-export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, minW = 30, onView, onNature, dotPx } = {}) {
+export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, minW = 30, onView, onNature, dotPx, compass = false } = {}) {
   const wrap = document.createElement('div');
   wrap.className = 'map-wrap';
   const svg = S('svg', { class: 'map', viewBox: `0 0 ${M.w} ${M.h}`, preserveAspectRatio: 'xMidYMid meet' });
@@ -109,11 +109,11 @@ export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, mi
     svg.style.setProperty('--terr-dots', k < 0.6 ? 'inline' : 'none');
     svg.style.setProperty('--k', k);
     onView?.(k);
+    const placed = [];
+    if (natOn) natLabels(k, placed);
     if (labels) {
       // الأكبر أولاً، ولا نعرض اسماً يتداخل مع اسم ظاهر
       const fs = 12 * k;
-      const placed = [];
-      if (natOn) natLabels(k, placed);
       let shown = 0;
       for (const L of labelEls) {
         const px = L.w / k;
@@ -212,6 +212,9 @@ export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, mi
     if (wasTap && e.type === 'pointerup') {
       svg.releasePointerCapture?.(e.pointerId);
       const hit = document.elementFromPoint(e.clientX, e.clientY);
+      // عناصر مضافة فوق الخريطة (محطات المهام): تستقبل حدث maptap
+      const custom = document.elementsFromPoint(e.clientX, e.clientY).find((el) => el.closest?.('[data-tap]'))?.closest('[data-tap]');
+      if (custom) return custom.dispatchEvent(new Event('maptap'));
       const nat = natOn ? hit?.closest?.('[data-nat]') : null;
       if (nat && onNature) return onNature(nat.dataset.nat);
       const el = hit?.closest?.('[data-id]');
@@ -229,6 +232,8 @@ export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, mi
   const centerZoom = (f) => { const r = rect(); zoomAt(f, r.left + r.width / 2, r.top + r.height / 2); };
   zoomBtns.append(mk('+', () => centerZoom(1.5), 'تكبير'), mk('−', () => centerZoom(1 / 1.5), 'تصغير'), mk('🌍', () => world(600), 'العالم كله'));
   wrap.append(zoomBtns);
+  // سهم الشمال (في هذا الإسقاط يبقى الشمال إلى الأعلى)
+  if (compass) { const cp = document.createElement('div'); cp.className = 'compass'; cp.setAttribute('aria-label', 'الشمال إلى الأعلى'); cp.innerHTML = '<span>▲</span><b>ش</b><small>N</small>'; wrap.append(cp); }
 
   new ResizeObserver(() => { clamp(); apply(); refresh(); }).observe(wrap);
 

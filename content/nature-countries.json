@@ -1,0 +1,264 @@
+{
+ "_about": "الدول التي يمر بها كل نهر أو تقع فيها كل بحيرة وصحراء وسلسلة جبال وقمة. حُسبت هندسياً من Natural Earth (content/nature-countries.computed.json) ثم صُحّحت يدوياً هنا. تُستعمل في أدلة «ابحث عن بلدي».",
+ "review": "reviewed-1",
+ "countries": {
+  "nile": [
+   "EGY",
+   "SDN",
+   "SSD",
+   "ETH",
+   "UGA"
+  ],
+  "amazon": [
+   "PER",
+   "BRA",
+   "COL"
+  ],
+  "yangtze": [
+   "CHN"
+  ],
+  "huang": [
+   "CHN"
+  ],
+  "mississippi": [
+   "USA"
+  ],
+  "congo": [
+   "AGO",
+   "COD",
+   "COG"
+  ],
+  "niger": [
+   "MLI",
+   "NGA",
+   "GIN",
+   "NER",
+   "BEN"
+  ],
+  "danube": [
+   "DEU",
+   "AUT",
+   "SVK",
+   "HUN",
+   "HRV",
+   "SRB",
+   "ROU",
+   "BGR",
+   "MDA",
+   "UKR"
+  ],
+  "volga": [
+   "RUS"
+  ],
+  "ganges": [
+   "IND",
+   "BGD"
+  ],
+  "euphrates": [
+   "TUR",
+   "SYR",
+   "IRQ"
+  ],
+  "tigris": [
+   "TUR",
+   "SYR",
+   "IRQ"
+  ],
+  "indus": [
+   "PAK",
+   "IND",
+   "CHN"
+  ],
+  "mekong": [
+   "CHN",
+   "LAO",
+   "KHM",
+   "THA",
+   "VNM",
+   "MMR"
+  ],
+  "jordan": [
+   "PSE",
+   "JOR"
+  ],
+  "zambezi": [
+   "AGO",
+   "BWA",
+   "MOZ",
+   "NAM",
+   "ZMB",
+   "ZWE"
+  ],
+  "victoria": [
+   "TZA",
+   "UGA",
+   "KEN"
+  ],
+  "baikal": [
+   "RUS"
+  ],
+  "superior": [
+   "USA",
+   "CAN"
+  ],
+  "tanganyika": [
+   "COD",
+   "TZA",
+   "ZMB",
+   "BDI"
+  ],
+  "titicaca": [
+   "PER",
+   "BOL"
+  ],
+  "chad": [
+   "TCD",
+   "CMR",
+   "NER",
+   "NGA"
+  ],
+  "nasser": [
+   "EGY",
+   "SDN"
+  ],
+  "deadsea": [
+   "JOR",
+   "PSE"
+  ],
+  "tiberias": [
+   "PSE"
+  ],
+  "himalaya": [
+   "IND",
+   "NPL",
+   "BTN",
+   "CHN",
+   "PAK"
+  ],
+  "andes": [
+   "PER",
+   "CHL",
+   "ARG",
+   "BOL",
+   "COL",
+   "VEN",
+   "ECU"
+  ],
+  "rockies": [
+   "USA",
+   "CAN"
+  ],
+  "alps": [
+   "FRA",
+   "ITA",
+   "CHE",
+   "AUT",
+   "DEU",
+   "SVN",
+   "LIE",
+   "MCO"
+  ],
+  "atlas": [
+   "MAR",
+   "DZA",
+   "TUN"
+  ],
+  "ural": [
+   "KAZ",
+   "RUS"
+  ],
+  "caucasus": [
+   "RUS",
+   "GEO",
+   "AZE",
+   "ARM"
+  ],
+  "zagros": [
+   "IRN",
+   "IRQ",
+   "TUR"
+  ],
+  "ethiopian": [
+   "ETH",
+   "ERI"
+  ],
+  "dividing": [
+   "AUS"
+  ],
+  "hindukush": [
+   "AFG",
+   "PAK"
+  ],
+  "everest": [
+   "NPL",
+   "CHN"
+  ],
+  "k2": [],
+  "kilimanjaro": [
+   "TZA"
+  ],
+  "aconcagua": [
+   "ARG"
+  ],
+  "denali": [
+   "USA"
+  ],
+  "elbrus": [
+   "RUS"
+  ],
+  "montblanc": [
+   "FRA",
+   "ITA"
+  ],
+  "toubkal": [
+   "MAR"
+  ],
+  "kosciuszko": [
+   "AUS"
+  ],
+  "sahara": [
+   "DZA",
+   "SDN",
+   "LBY",
+   "MRT",
+   "TCD",
+   "NER",
+   "MLI",
+   "EGY",
+   "MAR",
+   "TUN"
+  ],
+  "rubalkhali": [
+   "SAU",
+   "YEM",
+   "OMN",
+   "ARE"
+  ],
+  "gobi": [
+   "CHN",
+   "MNG"
+  ],
+  "kalahari": [
+   "NAM",
+   "BWA",
+   "ZAF"
+  ],
+  "atacama": [
+   "CHL"
+  ],
+  "syrian": [
+   "IRQ",
+   "SAU",
+   "JOR",
+   "SYR"
+  ],
+  "thar": [
+   "IND",
+   "PAK"
+  ],
+  "greatvictoria": [
+   "AUS"
+  ],
+  "vinson": []
+ }
+}

@@ -1,0 +1,266 @@
+{
+ "pacific": [],
+ "atlantic": [],
+ "indian": [],
+ "arctic": [],
+ "southern": [],
+ "med": [],
+ "red": [],
+ "gulf": [],
+ "arabian": [],
+ "black": [],
+ "caspian": [],
+ "caribbean": [],
+ "mexico": [],
+ "scs": [],
+ "bengal": [],
+ "north": [],
+ "baltic": [],
+ "japan_sea": [],
+ "coral": [],
+ "bering": [],
+ "hudson": [],
+ "aden": [],
+ "nile": [
+  "EGY",
+  "SDN",
+  "SSD",
+  "ETH",
+  "UGA"
+ ],
+ "amazon": [
+  "PER",
+  "BRA",
+  "COL"
+ ],
+ "yangtze": [
+  "CHN"
+ ],
+ "huang": [
+  "CHN"
+ ],
+ "mississippi": [
+  "USA"
+ ],
+ "congo": [
+  "COD",
+  "COG"
+ ],
+ "niger": [
+  "MLI",
+  "NGA",
+  "GIN",
+  "NER",
+  "BEN"
+ ],
+ "danube": [
+  "ROU",
+  "DEU",
+  "SRB",
+  "HUN",
+  "AUT",
+  "BGR",
+  "HRV",
+  "SVK"
+ ],
+ "volga": [
+  "RUS"
+ ],
+ "ganges": [
+  "IND",
+  "BGD"
+ ],
+ "euphrates": [
+  "IRQ",
+  "SYR"
+ ],
+ "tigris": [
+  "IRQ"
+ ],
+ "indus": [
+  "PAK",
+  "IND",
+  "CHN"
+ ],
+ "mekong": [
+  "CHN",
+  "LAO",
+  "KHM",
+  "THA",
+  "VNM",
+  "MMR"
+ ],
+ "jordan": [
+  "PSE",
+  "JOR"
+ ],
+ "zambezi": [
+  "ZMB",
+  "MOZ",
+  "ZWE",
+  "AGO"
+ ],
+ "victoria": [
+  "TZA",
+  "UGA",
+  "KEN"
+ ],
+ "baikal": [
+  "RUS"
+ ],
+ "superior": [
+  "USA",
+  "CAN"
+ ],
+ "tanganyika": [
+  "COD",
+  "TZA",
+  "ZMB",
+  "BDI"
+ ],
+ "titicaca": [
+  "PER",
+  "BOL"
+ ],
+ "chad": [
+  "TCD",
+  "CMR"
+ ],
+ "nasser": [
+  "EGY",
+  "SDN"
+ ],
+ "deadsea": [
+  "JOR",
+  "PSE"
+ ],
+ "tiberias": [
+  "PSE"
+ ],
+ "himalaya": [
+  "CHN",
+  "IND",
+  "NPL",
+  "BTN"
+ ],
+ "andes": [
+  "PER",
+  "CHL",
+  "ARG",
+  "BOL",
+  "COL",
+  "VEN",
+  "ECU"
+ ],
+ "rockies": [
+  "USA",
+  "CAN"
+ ],
+ "alps": [
+  "AUT",
+  "ITA",
+  "CHE",
+  "FRA",
+  "DEU"
+ ],
+ "atlas": [
+  "MAR",
+  "DZA",
+  "TUN"
+ ],
+ "ural": [
+  "RUS"
+ ],
+ "caucasus": [
+  "RUS",
+  "GEO",
+  "AZE"
+ ],
+ "zagros": [
+  "IRN"
+ ],
+ "ethiopian": [
+  "ETH",
+  "ERI"
+ ],
+ "dividing": [
+  "AUS"
+ ],
+ "hindukush": [
+  "AFG",
+  "PAK",
+  "IND",
+  "TJK"
+ ],
+ "everest": [
+  "CHN"
+ ],
+ "k2": [
+  "CHN"
+ ],
+ "kilimanjaro": [
+  "TZA"
+ ],
+ "aconcagua": [
+  "ARG"
+ ],
+ "denali": [
+  "USA"
+ ],
+ "elbrus": [
+  "RUS"
+ ],
+ "montblanc": [
+  "ITA"
+ ],
+ "toubkal": [
+  "MAR"
+ ],
+ "kosciuszko": [
+  "AUS"
+ ],
+ "vinson": [],
+ "sahara": [
+  "DZA",
+  "SDN",
+  "LBY",
+  "MRT",
+  "TCD",
+  "NER",
+  "MLI",
+  "EGY",
+  "MAR"
+ ],
+ "rubalkhali": [
+  "SAU",
+  "YEM",
+  "OMN",
+  "ARE"
+ ],
+ "gobi": [
+  "CHN",
+  "MNG"
+ ],
+ "kalahari": [
+  "NAM",
+  "BWA",
+  "ZAF",
+  "AGO"
+ ],
+ "atacama": [
+  "CHL"
+ ],
+ "syrian": [
+  "IRQ",
+  "SAU",
+  "JOR",
+  "SYR"
+ ],
+ "thar": [
+  "IND",
+  "PAK"
+ ],
+ "greatvictoria": [
+  "AUS"
+ ]
+}

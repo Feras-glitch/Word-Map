@@ -8,7 +8,7 @@ import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { feature } from 'topojson-client';
 import { presimplify, simplify, quantile } from 'topojson-simplify';
-import { geoNaturalEarth1, geoPath, geoCentroid } from 'd3-geo';
+import { geoNaturalEarth1, geoPath, geoCentroid, geoContains } from 'd3-geo';
 import { buildNature } from './nature.mjs';
 import polygonClipping from 'polygon-clipping';
 import { pinyin, customPinyin } from 'pinyin-pro';
@@ -183,6 +183,42 @@ const proj = geoNaturalEarth1().fitExtent([[10, 10], [W - 10, H - 10]], fc);
 const gp = geoPath(proj).digits(1);
 // الطبقة الطبيعية
 const nature = buildNature(root, proj);
+// أي الدول يمر بها كل نهر أو تقع فيها كل صحراء وسلسلة جبال وبحيرة (حساب هندسي، يُراجع يدوياً في content/nature-countries.json)
+if (nature) {
+  const byIdFeat = {};
+  for (const f of fc.features) {
+    const c = f.id ? byNum[f.id] : null;
+    let id = c ? ID(c) : policy.nameToId[f.properties.name];
+    if (!id) continue; if (policy.mergeInto[id]) id = policy.mergeInto[id];
+    if (!ids.has(id) || out.find((x) => x.id === id)?.kind !== 'state') continue;
+    (byIdFeat[id] ||= []).push(f);
+  }
+  const whereIs = (pt) => { for (const [id, fs2] of Object.entries(byIdFeat)) if (fs2.some((f) => geoContains(f, pt))) return id; return null; };
+  const coordsOf = (g) => (g.type === 'LineString' ? g.coordinates : g.type === 'MultiLineString' ? g.coordinates.flat() : g.type === 'Polygon' ? g.coordinates.flat() : g.coordinates.flat(2));
+  const report = {};
+  for (const it of nature.items) {
+    const cnt = {};
+    if (it.kind === 'peak') { const w = whereIs(it._at); if (w) cnt[w] = 9; }
+    else if (it._geo) {
+      if (it.kind === 'river' || it.kind === 'lake') for (const g of it._geo) for (const pt of coordsOf(g)) { const w = whereIs(pt); if (w) cnt[w] = (cnt[w] || 0) + 1; }
+      else for (const g of it._geo) {
+        const pts = coordsOf(g); const xs = pts.map((p) => p[0]), ys = pts.map((p) => p[1]);
+        const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
+        const st = Math.max(0.25, Math.min(x1 - x0, y1 - y0) / 12);
+        for (let x = x0; x <= x1; x += st) for (let y = y0; y <= y1; y += st) if (geoContains({ type: 'Feature', geometry: g }, [x, y])) { const w = whereIs([x, y]); if (w) cnt[w] = (cnt[w] || 0) + 1; }
+      }
+    }
+    const tot = Object.values(cnt).reduce((a, b) => a + b, 0);
+    const list = Object.entries(cnt).filter(([, n]) => n >= 3 || n / tot >= 0.15 || it.kind === 'peak').sort((a, b) => b[1] - a[1]).map(([id]) => id);
+    report[it.id] = list;
+  }
+  // التصحيحات اليدوية بعد المراجعة لها الأولوية
+  const fixFile = path.join(root, 'content/nature-countries.json');
+  const fixes = fs.existsSync(fixFile) ? JSON.parse(fs.readFileSync(fixFile, 'utf8')) : {};
+  for (const it of nature.items) it.countries = fixes.countries?.[it.id] || report[it.id] || [];
+  nature.countriesReviewed = !!fixes.review && fixes.review !== 'pending';
+  fs.writeFileSync(path.join(root, 'content/nature-countries.computed.json'), JSON.stringify(report, null, 1));
+}
 fs.writeFileSync(path.join(root, 'src/data/nature.json'), JSON.stringify(nature || { kinds: {}, items: [] }));
 console.log('الجغرافيا الطبيعية: ' + (nature ? nature.items.length + ' معلماً' : 'بانتظار المراجعة'));
 

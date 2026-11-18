@@ -56,6 +56,7 @@ export function parentScreen(root, { go }) {
       }))] : null,
       (() => { let n = 0; for (const m of Object.values(p.practice || {})) for (const x of Object.values(m)) n += x.ok + x.bad; return n ? h('p', { class: 'hint' }, `وأجاب في ألعاب التدريب عن ${ar(n)} سؤالاً (تُعرض منفصلة لأنها تمرين، وقد يرى فيها التلميح أو يحاول مرتين).`) : null; })(),
       weak.length ? [h('h4', {}, 'دول يخطئ فيها أكثر من غيرها (بنسبة الخطأ، محاولتان على الأقل)'), h('div', { class: 'neighbors' }, weak.map((id) => h('span', { class: 'chip' }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))] : null,
+      (p.stories || []).length ? [h('h4', {}, 'آخر ما اكتشفه في المهام'), h('ul', { class: 'stories' }, p.stories.slice(0, 6).map((st) => h('li', {}, h('span', {}, st.text + (st.detail ? ' — ' + st.detail : '')), h('small', {}, new Date(st.date).toLocaleDateString('ar-EG', { day: 'numeric', month: 'short' })))))] : null,
       h('h4', {}, 'المستوى'),
       h('div', { class: 'levels' }, Object.entries(LEVELS).map(([k, L]) => h('button', { class: 'lv-btn' + (+k === p.level ? ' on' : ''), onclick: () => { store.updateProfile(p.id, { level: +k }); draw(); } },
         h('span', {}, L.emoji), h('b', {}, L.name), h('small', {}, L.ages)))),
