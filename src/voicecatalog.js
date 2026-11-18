@@ -3,6 +3,7 @@ import { states, continents3, languages } from './data.js';
 import { NAT } from './map.js';
 import { keyOf, langOf } from './voice.js';
 import TASHKEEL from '../content/tashkeel.json';
+import TEXTS from '../content/tashkeel-text.json';
 
 // عبارات ثابتة تُركَّب منها الأسئلة والتشجيع
 export const PHRASES = [
@@ -11,7 +12,8 @@ export const PHRASES = [
   'من معالم', 'الشهيرة', 'هل تعلم؟', 'أهلاً بك في مستكشف العالم', 'هيا نستكشف العالم', 'مبارك! نلت ختماً ذهبياً جديداً', 'أحسنتم جميعاً',
 ];
 const LANGS = { ar: 'ar-SA', en: 'en-US', zh: 'zh-CN' };
-const voc = (t) => (TASHKEEL.words || {})[t] || '';
+// النص المشكول لمن يسجّل: الأسماء من قاموس الكلمات، والعبارات والمعلومات الطويلة من قاموس النصوص
+const voc = (t) => (TASHKEEL.words || {})[t] || (TEXTS.review === 'pending' ? '' : (TEXTS.texts || {})[t]) || '';
 const item = (group, text, lang, extra = {}) => text ? { group, text, lang, key: keyOf(text, lang), voc: langOf(lang) === 'ar' ? voc(text) : '', ...extra } : null;
 
 export const GROUPS = {

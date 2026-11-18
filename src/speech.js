@@ -5,12 +5,17 @@ import { store } from './store.js';
 import { toast } from './ui.js';
 import { playRecorded, stopClip } from './voice.js';
 import TASHKEEL from '../content/tashkeel.json';
+import TEXTS from '../content/tashkeel-text.json';
 
 // قاموس التشكيل: نعطي القارئ الآلي الأسماء العربية مشكولة حتى ينطقها صحيحة (مثل «عُمان» لا «عَمّان»)
 // لا يُستعمل القاموس قبل أن يراجعه مراجع مستقل
 const LEX = TASHKEEL.review === 'pending' ? [] : Object.entries(TASHKEEL.words || {}).sort((a, b) => b[0].length - a[0].length);
+// النصوص الكاملة المشكولة (المعالم والمعلومات) تُعطى للقارئ الآلي كما هي إن طابقت
+const FULL = TEXTS.review === 'pending' ? {} : (TEXTS.texts || {});
 export function withTashkeel(text) {
+  if (FULL[text]) return FULL[text];
   let t = text;
+  for (const [plain, v] of Object.entries(FULL)) if (plain.length > 12 && t.includes(plain)) t = t.split(plain).join(v);
   for (const [plain, voc] of LEX) if (t.includes(plain)) t = t.replace(new RegExp('(^|[^\\u0621-\\u064A])' + plain.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?=$|[^\\u0621-\\u064A])', 'g'), '$1' + voc);
   return t;
 }
