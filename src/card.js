@@ -57,6 +57,7 @@ function namesTab(c) {
   const cont = continents3[c.cont];
   return h('div', {},
     tri({ ar: c.ar, en: c.en, zh: c.zh, py: c.py }, { big: true }),
+    c.occNote ? h('div', { class: 'sec occ-note' }, h('span', { class: 'st-label' }, '🕊️ أرض محتلة'), h('p', {}, c.occNote + '.'), say(c.occNote, LANG.ar)) : null,
     cont && c.cont !== 'antarctica' ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, (contEmoji[c.cont] || '🌍') + ' تقع في قارة'), tri(cont, { prefix: 'قارة ' }), c.sub ? h('small', { class: 'muted' }, c.sub) : null) : null,
   );
 }

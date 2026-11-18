@@ -1,7 +1,7 @@
 import { h, owl } from '../ui.js';
 import { byId, flagUrl } from '../data.js';
 import { dueReviews, reviewResult, weakest } from '../mastery.js';
-import { reviewQuiz, Q, runQuiz } from '../quiz.js';
+import { reviewQuiz, buildSet, runQuiz } from '../quiz.js';
 import { store } from '../store.js';
 
 export function reviewScreen(root, { go }) {
@@ -20,7 +20,7 @@ export function reviewScreen(root, { go }) {
       root.append(h('h3', {}, '🎯 تدرّب على ما تخطئ فيه'), h('div', { class: 'review-list' }, weak.map((id) => {
         const c = byId[id];
         const lvl = store.me?.level || 2; const n = lvl === 1 ? 3 : 4;
-        return h('button', { class: 'review-item', onclick: () => runQuiz({ title: '🎯 تدريب: ' + c.ar, country: c, questions: [Q.flag(c, n), Q.capital(c, n), Q.continent(c, n)], onDone: (_s, _r, box, m) => box.append(h('div', { class: 'quiz-end' }, h('button', { class: 'btn big', onclick: () => { m.close(); draw(); } }, 'متابعة'))) }) },
+        return h('button', { class: 'review-item', onclick: () => runQuiz({ title: '🎯 تدريب: ' + c.ar, country: c, questions: buildSet(c, ['flag', 'capital', 'continent'], n), onDone: (_s, _r, box, m) => box.append(h('div', { class: 'quiz-end' }, h('button', { class: 'btn big', onclick: () => { m.close(); draw(); } }, 'متابعة'))) }) },
           h('img', { src: flagUrl(c.f), alt: '' }), c.ar, h('small', {}, 'تدريب ←'));
       })));
     }

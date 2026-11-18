@@ -24,7 +24,7 @@ export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, mi
   const svg = S('svg', { class: 'map', viewBox: `0 0 ${M.w} ${M.h}`, preserveAspectRatio: 'xMidYMid meet' });
   const defs = S('defs');
   defs.innerHTML = `<radialGradient id="sea" cx="50%" cy="45%" r="75%"><stop offset="0" stop-color="#cfeeff"/><stop offset="1" stop-color="#8fcdf5"/></radialGradient>
-    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
+    <pattern id="occ" width="1.6" height="1.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="1.6" height="1.6" fill="transparent"/><line x1="0" y1="0" x2="0" y2="1.6" stroke="#7a1f1f" stroke-width="0.55" stroke-opacity=".55"/></pattern><filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`;
   svg.append(defs);
   svg.append(S('rect', { x: -3000, y: -3000, width: M.w + 6000, height: M.h + 6000, fill: 'url(#sea)' }));
   const gLand = S('g', { class: 'land' });
@@ -73,6 +73,11 @@ export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, mi
     if (s.sub) p.dataset.sub = s.sub;
     p.style.fill = fill(c);
     gLand.append(p); paths.push(p);
+  }
+  // أراضٍ محتلة: تخطيط فوق الدولة صاحبة الأرض، ولمسها يفتح بطاقة تلك الدولة
+  for (const o of M.occupied || []) {
+    const p = S('path', { d: o.d, 'data-id': o.of, 'data-sub': 'لمستَ الجولان: أرض سورية محتلة منذ عام ١٩٦٧', class: 'occ' });
+    gLand.append(p);
   }
   const dots = [];
   for (const c of Object.values(byId)) {

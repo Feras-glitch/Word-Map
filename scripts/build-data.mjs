@@ -101,6 +101,7 @@ for (const c of out) {
   if (d.capitalNote) c.capNote = d.capitalNote;
   if (d.landmark) { c.lm3 = d.landmark; c.landmark = d.landmark.ar; }
   if (d.fact) c.fact = d.fact;
+  if (d.occupiedNote) c.occNote = d.occupiedNote;
   c.langs = d.languages;
   if (c.langs.others == null && eth[c.id] != null) c.langs.others = eth[c.id];
   if (!d.currency) d.currency = currentCurrency(c.f.toUpperCase());
@@ -160,6 +161,7 @@ const fc = feature(t, t.objects.countries);
   // d3 يريد الحلقة الخارجية باتجاه عقارب الساعة؛ polygon-clipping يعطي العكس
   const rw = (mp) => ({ type: 'MultiPolygon', coordinates: mp.map((p) => p.map((r) => r.slice().reverse())) });
   isr.geometry = rw(rest); syr.geometry = rw(syrNew);
+  globalThis.__golan = { type: 'Feature', geometry: rw(cut) };
 }
 const W = 2000, H = 1000;
 const proj = geoNaturalEarth1().fitExtent([[10, 10], [W - 10, H - 10]], fc);
@@ -230,7 +232,7 @@ for (const c of out) {
 const pr = { scale: proj.scale(), translate: proj.translate() };
 fs.mkdirSync(path.join(root, 'src/data'), { recursive: true });
 fs.writeFileSync(path.join(root, 'src/data/countries.json'), JSON.stringify(out));
-fs.writeFileSync(path.join(root, 'src/data/map.json'), JSON.stringify({ w: W, h: H, proj: pr, shapes }));
+fs.writeFileSync(path.join(root, 'src/data/map.json'), JSON.stringify({ w: W, h: H, proj: pr, shapes, occupied: [{ id: 'golan', of: 'SYR', ar: 'الجولان', d: gp(globalThis.__golan), at: proj([35.78, 33.0]).map((v) => +v.toFixed(1)) }] }));
 fs.writeFileSync(path.join(root, 'src/data/languages.json'), JSON.stringify(languages));
 
 // ---------- الأعلام ----------

@@ -1,6 +1,6 @@
 // أسئلة الختمين والمراجعة واختبار المستوى
 import { h, modal, confetti } from './ui.js';
-import { states, byId, flagUrl, continents, contBox, shuffle, pick, contColors } from './data.js';
+import { states, byId, flagUrl, continents, contBox, shuffle, pick, contColors, languages } from './data.js';
 import { speak, LANG } from './speech.js';
 import { sfx } from './sfx.js';
 import { record } from './mastery.js';
@@ -8,51 +8,108 @@ import { createMap, lighten } from './map.js';
 import { store } from './store.js';
 
 const capName = (c) => (c.capAr || '').replace(/\s*\(.*\)\s*/, '');
+const bare = (t) => (t || '').replace(/^ال/, '').trim();
+
+// أعلام متشابهة لا تُوضع خياراً مع بعضها (التمييز بينها ليس هدف السؤال)
+const LOOKALIKE = [['TCD', 'ROU', 'AND', 'MDA'], ['IDN', 'MCO', 'POL', 'SGP'], ['IRL', 'CIV', 'ITA'], ['NLD', 'LUX', 'PRY', 'HRV'], ['AUS', 'NZL'],
+  ['SEN', 'MLI', 'GIN', 'CMR'], ['COL', 'ECU', 'VEN'], ['SVK', 'SVN', 'RUS', 'SRB'], ['NOR', 'ISL'], ['HND', 'NIC', 'SLV', 'GTM'], ['QAT', 'BHR'],
+  ['EGY', 'SYR', 'IRQ', 'YEM', 'SDN'], ['JOR', 'PSE'], ['GHA', 'BOL'], ['LTU', 'MMR'], ['DNK', 'CHE'], ['NER', 'IND'], ['MYS', 'LBR', 'USA'], ['UAE', 'KWT']];
+const look = (a, b) => LOOKALIKE.some((g) => g.includes(a) && g.includes(b));
+
 const others = (c, n, filter = () => true) => {
   const same = states.filter((s) => s.id !== c.id && s.cont === c.cont && filter(s));
   const src = same.length >= n ? same : states.filter((s) => s.id !== c.id && filter(s));
   return pick(src, n);
 };
 const flagOpt = (s) => h('span', { class: 'qo-flag' }, h('img', { src: flagUrl(s.f), alt: '' }), h('b', {}, s.ar));
+const sayBtn = (text, lang) => h('span', { class: 'opt-say', role: 'button', 'aria-label': 'استمع', onclick: (e) => { e.stopPropagation(); speak(text, lang); } }, '🔊');
 
+// كل سؤال يذكر الدولة، والخيارات هي الصفات (عاصمة، معلم، اسم بلغة أخرى، لغة، جارة...)،
+// ولا يُعرض في السؤال ما يكشف الإجابة. leaks(c) تخبر إن كان السؤال مكشوفاً لهذه الدولة.
 export const Q = {
   flag(c, n) {
-    const opts = shuffle([c, ...others(c, n - 1)]);
+    const opts = shuffle([c, ...others(c, n - 1, (s) => !look(c.id, s.id))]);
     return { skill: 'flag', say: `أيّ هذه الأعلام علم ${c.ar}؟`, prompt: h('p', {}, 'أيّ هذه الأعلام علم ', h('b', {}, c.ar), '؟'),
-      flags: true, options: opts.map((o) => ({ correct: o.id === c.id, el: h('img', { class: 'qo-big-flag', src: flagUrl(o.f), alt: o.ar }), label: o.ar })) };
+      flags: true, options: opts.map((o) => ({ correct: o.id === c.id, el: h('img', { class: 'qo-big-flag', src: flagUrl(o.f), alt: '' }) })) };
   },
   capital(c, n) {
-    const opts = shuffle([c, ...others(c, n - 1, (s) => s.capAr)]);
-    return { skill: 'capital', say: `ما عاصمة ${c.ar}؟`, prompt: h('div', {}, h('img', { class: 'q-flag small', src: flagUrl(c.f), alt: '' }), h('p', {}, 'ما عاصمة ', h('b', {}, c.ar), '؟')),
+    const opts = shuffle([c, ...others(c, n - 1, (s) => s.capAr && capName(s) !== capName(c))]);
+    return { skill: 'capital', say: `ما عاصمة ${c.ar}؟`, prompt: h('p', {}, 'ما عاصمة ', h('b', {}, c.ar), '؟'),
       options: opts.map((o) => ({ correct: o.id === c.id, el: h('b', {}, capName(o)), label: capName(o) })) };
   },
   continent(c, n) {
     const keys = shuffle(Object.keys(continents).filter((k) => k !== 'antarctica' && k !== c.cont)).slice(0, n - 1);
     const opts = shuffle([c.cont, ...keys]);
-    return { skill: 'continent', say: `في أي قارة تقع ${c.ar}؟`, prompt: h('div', {}, h('img', { class: 'q-flag small', src: flagUrl(c.f), alt: '' }), h('p', {}, 'في أي قارة تقع ', h('b', {}, c.ar), '؟')),
+    return { skill: 'continent', say: `في أي قارة تقع ${c.ar}؟`, prompt: h('p', {}, 'في أي قارة تقع ', h('b', {}, c.ar), '؟'),
       options: opts.map((k) => ({ correct: k === c.cont, el: h('b', { style: { color: '#1f2a44' } }, continents[k]), label: continents[k], bg: contColors[k] })) };
   },
-  names(c, n) {
-    const useZh = c.zh && Math.random() < 0.5;
-    const opts = shuffle([c, ...others(c, n - 1)]);
-    const text = useZh ? c.zh : c.en;
-    return { skill: 'names', sayFn: () => speak(text, useZh ? LANG.zh : LANG.en),
-      prompt: h('div', {}, h('p', {}, useZh ? '🇨🇳 اسمع الاسم بالصينية: أيّ دولة هذه؟' : '🔤 اسمع الاسم بالإنجليزية: أيّ دولة هذه؟'),
-        h('button', { class: 'btn small soft', onclick: () => speak(text, useZh ? LANG.zh : LANG.en) }, '🔊 اسمع مرة أخرى'),
-        h('div', { class: 'q-word', dir: 'ltr' }, text, useZh && c.py ? h('small', {}, c.py) : null)),
-      options: opts.map((o) => ({ correct: o.id === c.id, el: flagOpt(o), label: o.ar })) };
+  // اسم الدولة بالإنجليزية أو الصينية: نذكر الدولة بالعربية، والخيارات أسماء بتلك اللغة (مع زر استماع)
+  names(c, n, force) {
+    const useZh = force ? force === 'zh' : Math.random() < 0.5;
+    const opts = shuffle([c, ...others(c, n - 1, (s) => (useZh ? s.zh !== c.zh : s.en !== c.en))]);
+    const lang = useZh ? 'بالصينية' : 'بالإنجليزية';
+    return { skill: 'names', say: `ما اسم ${c.ar} ${lang}؟`, prompt: h('p', {}, 'ما اسم ', h('b', {}, c.ar), ' ' + lang + '؟'),
+      options: opts.map((o) => ({ correct: o.id === c.id,
+        el: h('span', { class: 'qo-name', dir: 'ltr' }, useZh ? h('span', { class: 'zh-opt' }, h('b', {}, o.zh), h('small', {}, o.py)) : h('b', {}, o.en), sayBtn(useZh ? o.zh : o.en, useZh ? LANG.zh : LANG.en)) })) };
   },
   landmark(c, n) {
-    if (!c.landmark) return Q.continent(c, n);
-    const opts = shuffle([c, ...others(c, n - 1)]);
-    return { skill: 'landmark', say: `${c.landmark}، من معالم أي دولة؟`, prompt: h('p', {}, '⭐ «', h('b', {}, c.landmark), '» من معالم أي دولة؟'),
-      options: opts.map((o) => ({ correct: o.id === c.id, el: flagOpt(o), label: o.ar })) };
+    const opts = shuffle([c, ...others(c, n - 1, (s) => s.landmark && s.landmark !== c.landmark)]);
+    return { skill: 'landmark', say: `أيّ هذه من أشهر معالم ${c.ar}؟`, prompt: h('p', {}, '⭐ أيّ هذه من أشهر معالم ', h('b', {}, c.ar), '؟'),
+      options: opts.map((o) => ({ correct: o.id === c.id, el: h('b', {}, o.landmark), label: o.landmark })) };
+  },
+  // اللغة الرسمية (أو لغة العمل الفعلية)، والخيارات لغات لا يتكلمها أهل هذه الدولة رسمياً
+  language(c, n) {
+    const L = c.langs || {};
+    const mine = new Set(['official', 'defacto', 'working', 'second', 'regional', 'widespread'].flatMap((k) => L[k] || []));
+    const main = (L.official?.length ? L.official : L.defacto?.length ? L.defacto : L.working || []).filter((x) => languages[x] && !languages[x].sign);
+    const right = main[Math.floor(Math.random() * main.length)];
+    const pool = [...new Set(states.filter((s) => s.cont === c.cont).flatMap((s) => s.langs?.official || []))].filter((x) => languages[x] && !mine.has(x) && !languages[x].sign);
+    const wrong = shuffle(pool.length >= n - 1 ? pool : Object.keys(languages).filter((x) => !mine.has(x) && !languages[x].sign)).slice(0, n - 1);
+    const opts = shuffle([right, ...wrong]);
+    const lbl = (x) => languages[x].ar.replace(/\s*\(.*\)\s*/, '');
+    return { skill: 'language', say: `أيّ هذه لغة رسمية في ${c.ar}؟`, prompt: h('p', {}, '🗣️ أيّ هذه لغة رسمية في ', h('b', {}, c.ar), '؟'),
+      options: opts.map((x) => ({ correct: x === right, el: h('b', {}, lbl(x)), label: lbl(x) })) };
+  },
+  neighbor(c, n) {
+    const nb = c.borders.map((id) => byId[id]).filter((s) => s && s.kind === 'state');
+    const right = nb[Math.floor(Math.random() * nb.length)];
+    const wrong = others(c, n - 1, (s) => !c.borders.includes(s.id) && s.id !== right.id);
+    const opts = shuffle([right, ...wrong]);
+    return { skill: 'neighbor', say: `أيّ هذه الدول جارة لـ${c.ar}؟`, prompt: h('p', {}, '🤝 أيّ هذه الدول جارة لـ', h('b', {}, c.ar), '؟'),
+      options: opts.map((o) => ({ correct: o.id === right.id, el: flagOpt(o), label: o.ar })) };
   },
   map(c) {
-    if (!c.bb || c.small || c.dotOnly) return Q.continent(c, 4);
     return { skill: 'map', type: 'map', say: `المس ${c.ar} على الخريطة`, prompt: h('p', {}, '📍 المس ', h('b', {}, c.ar), ' على الخريطة') };
   },
 };
+
+// هل يكشف السؤالُ الإجابةَ أو لا يصلح لهذه الدولة؟
+const nameIn = (c, t) => { const b = bare(c.ar); return b.length >= 3 && (t || '').includes(b.slice(0, Math.max(3, b.length - 1))); };
+export function usable(kind, c) {
+  switch (kind) {
+    case 'capital': return !!c.capAr && !nameIn(c, capName(c)) && !c.ar.includes(bare(capName(c)).split(' ')[0]);
+    case 'landmark': return !!c.landmark && !nameIn(c, c.landmark);
+    case 'map': return !!c.bb && !c.small && !c.dotOnly;
+    case 'neighbor': return c.borders.some((id) => byId[id]?.kind === 'state');
+    case 'language': {
+      const L = c.langs || {}; const main = (L.official?.length ? L.official : L.defacto?.length ? L.defacto : L.working || []).filter((x) => languages[x] && !languages[x].sign);
+      return main.length > 0 && !main.some((x) => nameIn(c, languages[x].ar));
+    }
+    default: return true;
+  }
+}
+// يبني قائمة أسئلة من الأنواع المطلوبة، ويستبدل غير الصالح ببديل غير مكرر
+const FALLBACK = ['language', 'neighbor', 'continent', 'names_en', 'names_zh'];
+export function buildSet(c, kinds, n) {
+  const used = new Set();
+  return kinds.map((k) => {
+    if (k === 'names') k = Math.random() < 0.5 ? 'names_en' : 'names_zh';
+    const kind = usable(k, c) && !used.has(k) ? k : FALLBACK.find((f) => !used.has(f) && usable(f, c)) || 'continent';
+    used.add(kind);
+    if (kind === 'names_en' || kind === 'names_zh') return Q.names(c, n, kind.slice(6));
+    return Q[kind](c, n);
+  });
+}
 
 // يعرض الأسئلة واحداً بعد الآخر، ويستدعي onDone(score, results) في النهاية
 export function runQuiz({ title, country, questions, passMark, onDone, intro, level: lv, pid, record: rec = true }) {
@@ -117,7 +174,7 @@ export function runQuiz({ title, country, questions, passMark, onDone, intro, le
 export function visitQuestion(c, onPass) {
   const level = store.me?.level || 2;
   const n = level === 1 ? 3 : 4;
-  const kinds = level === 1 ? ['flag', 'continent'] : ['flag', 'capital', 'continent'];
+  const kinds = (level === 1 ? ['flag', 'continent'] : ['flag', 'capital', 'continent']).filter((k) => usable(k, c));
   const q = Q[kinds[Math.floor(Math.random() * kinds.length)]](c, n);
   runQuiz({ title: '🛂 سؤال ختم الزيارة', country: c, questions: [q], onDone: (score, _r, box, m) => {
     if (score === 1) {
@@ -132,10 +189,10 @@ export function visitQuestion(c, onPass) {
 export function masteryExam(c, onDone) {
   const level = store.me?.level || 2;
   const n = level === 1 ? 3 : 4;
-  const questions = [Q.flag(c, n), Q.capital(c, n), Q.map(c), Q.names(c, n), Q.landmark(c, n)];
+  const questions = buildSet(c, ['flag', 'capital', 'map', level === 1 ? 'continent' : 'names', 'landmark'], n);
   runQuiz({ title: '⭐ امتحان الإتقان: ' + c.ar, country: c, questions,
     intro: h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, '⭐'), h('h3', {}, 'امتحان إتقان ' + c.ar),
-      h('p', {}, 'خمسة أسئلة: العلم، العاصمة، الموقع، الاسم بلغة أخرى، والمعالم. أجب عن أربعة صحيحاً لتنال الختم الذهبي.')),
+      h('p', {}, 'خمسة أسئلة عن ' + c.ar + ': العلم، والعاصمة، والموقع على الخريطة، وغيرها. أجب عن أربعة صحيحاً لتنال الختم الذهبي.')),
     onDone: (score, _r, box, m) => {
       const pass = score >= 4;
       if (pass) { confetti(); sfx('win'); speak(`مبارك! نلت الختم الذهبي لدولة ${c.ar}`, LANG.ar); }
@@ -152,7 +209,7 @@ export function masteryExam(c, onDone) {
 export function reviewQuiz(c, onDone) {
   const level = store.me?.level || 2;
   const n = level === 1 ? 3 : 4;
-  runQuiz({ title: '🔔 مراجعة: ' + c.ar, country: c, questions: shuffle([Q.flag(c, n), Q.capital(c, n), Q.map(c)]),
+  runQuiz({ title: '🔔 مراجعة: ' + c.ar, country: c, questions: shuffle(buildSet(c, ['flag', 'capital', 'map'], n)),
     onDone: (score, _r, box, m) => {
       const pass = score >= 2;
       sfx(pass ? 'win' : 'wrong');
@@ -173,7 +230,7 @@ export function placementTest(onDone) {
     ...pick(mid, 2).map((c) => [c, 'capital']), ...pick(mid, 1).map((c) => [c, 'flag']),
     ...pick(hard, 1).map((c) => [c, 'capital']), ...pick(hard, 1).map((c) => [c, 'flag']),
   ];
-  const questions = set.map(([c, k]) => Q[k](c, 4));
+  const questions = set.map(([c, k]) => (usable(k, c) ? Q[k](c, 4) : Q.continent(c, 4)));
   runQuiz({ title: '🧭 اختبار تحديد المستوى', questions,
     intro: h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, '🧭'), h('h3', {}, 'لنعرف مستواك!'), h('p', {}, 'عشرة أسئلة قصيرة تبدأ سهلة ثم تصعب. لا تقلق إن لم تعرف الإجابة.')),
     onDone: (score, _r, box, m) => {
@@ -185,3 +242,4 @@ export function placementTest(onDone) {
         h('button', { class: 'btn big', onclick: () => { m.close(); onDone(level, score); } }, 'موافق')));
     } });
 }
+if (import.meta.env.DEV) window.__Q = { Q, buildSet, usable };

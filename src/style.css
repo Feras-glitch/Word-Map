@@ -380,3 +380,10 @@ textarea.paste { width: 100%; min-height: 140px; border-radius: 12px; border: 2p
 .nat-toggle.on { background: #8b5a2b; }
 .nat-card .kind { color: var(--muted); font-weight: 700; }
 .res-ic { font-size: 1.5rem; width: 34px; text-align: center; }
+.map .occ { fill: url(#occ); stroke: #7a1f1f; stroke-width: .8px; stroke-dasharray: 2 2; vector-effect: non-scaling-stroke; }
+.sec.occ-note { background: #fbeeee; border-inline-start: 5px solid #b83232; }
+.qo-name { display: flex; align-items: center; justify-content: center; gap: 10px; } .zh-opt { display: flex; flex-direction: column; align-items: center; } .zh-opt small { color: #b33; font-size: .8rem; }
+.opt-say { font-size: 1.1rem; background: #fff; border-radius: 50%; padding: 4px 6px; box-shadow: 0 1px 3px #0002; }
+/* الامتحان يغطي الشاشة كلها حتى لا تظهر البطاقة خلفه فتكشف الإجابة */
+.modal-back:has(> .quiz-modal) { background: #fdf6ea; backdrop-filter: none; }
+.modal.quiz-modal { min-height: 88vh; }

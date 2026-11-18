@@ -4,7 +4,7 @@
 // المراجعة: بعد الختم الذهبي تُستحق مراجعة بعد ٣ أيام، ثم ٧، ثم ٣٠. الخطأ في المراجعة يعيدها إلى ٣ أيام.
 import { store } from './store.js';
 
-export const SKILLS = { flag: 'العلم', capital: 'العاصمة', map: 'الموقع', names: 'الأسماء باللغات', landmark: 'المعالم', continent: 'القارة' };
+export const SKILLS = { flag: 'العلم', capital: 'العاصمة', map: 'الموقع', names: 'الأسماء باللغات', landmark: 'المعالم', continent: 'القارة', language: 'اللغات', neighbor: 'الجيران' };
 export const INTERVALS = [3, 7, 30];
 const DAY = 864e5;
 export const today = () => new Date().toLocaleDateString('en-CA');

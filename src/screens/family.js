@@ -2,7 +2,7 @@
 import { h, owl, confetti, toast } from '../ui.js';
 import { store } from '../store.js';
 import { pool, LEVELS, shuffle } from '../data.js';
-import { Q, runQuiz } from '../quiz.js';
+import { buildSet, runQuiz } from '../quiz.js';
 import { speak, LANG } from '../speech.js';
 import { sfx } from '../sfx.js';
 
@@ -38,7 +38,7 @@ export function familyScreen(root, { go }) {
       const kinds = pl.level === 1 ? ['flag', 'continent'] : pl.level === 2 ? ['flag', 'capital', 'continent', 'names'] : ['flag', 'capital', 'names', 'landmark', 'map'];
       const n = pl.level === 1 ? 3 : 4;
       const cs = shuffle(pool(pl.level)).slice(0, rounds);
-      pl.qs = cs.map((c, i) => ({ c, q: Q[kinds[i % kinds.length]](c, n) }));
+      pl.qs = cs.map((c, i) => ({ c, q: buildSet(c, [kinds[i % kinds.length]], n)[0] }));
       pl.score = 0; pl.done = 0;
     }
     let turn = 0;
