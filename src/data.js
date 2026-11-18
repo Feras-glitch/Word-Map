@@ -51,14 +51,15 @@ export function shuffle(a) {
 export const pick = (a, n) => shuffle(a).slice(0, n);
 
 export function search(q) {
-  const norm = (s) => (s || '').toLowerCase().replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/^ال/, '');
+  // يزيل التشكيل والنبرات (البينين بلا نبرات) ويوحّد الهمزات
+  const norm = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f\u064b-\u0655\u0670]/g, '').replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/^ال/, '').replace(/\s+/g, ' ');
   q = norm(q.trim());
   if (!q) return [];
   const score = (c) => {
-    const names = [c.ar, c.en, c.capAr].map(norm);
+    const names = [c.ar, c.en, c.zh, c.capAr, c.capEn, c.cap3?.zh, c.py, c.cap3?.py, (c.py || '').replace(/ /g, ''), (c.cap3?.py || '').replace(/ /g, '')].map(norm);
     if (names.some((n) => n === q)) return 0;
     if (names.some((n) => n.startsWith(q))) return 1;
-    if (names.some((n) => n.includes(q)) || (c.zh || '').includes(q)) return 2;
+    if (names.some((n) => n.includes(q))) return 2;
     return 9;
   };
   return countries.map((c) => [score(c), c]).filter(([s]) => s < 9).sort((a, b) => a[0] - b[0] || (a[1].kind === 'state' ? -1 : 1)).slice(0, 8).map(([, c]) => c);

@@ -387,3 +387,7 @@ textarea.paste { width: 100%; min-height: 140px; border-radius: 12px; border: 2p
 /* الامتحان يغطي الشاشة كلها حتى لا تظهر البطاقة خلفه فتكشف الإجابة */
 .modal-back:has(> .quiz-modal) { background: #fdf6ea; backdrop-filter: none; }
 .modal.quiz-modal { min-height: 88vh; }
+.about-list { padding-inline-start: 18px; line-height: 1.9; } .bk-sum { line-height: 1.9; }
+.opt-wrap { display: flex; gap: 6px; align-items: stretch; } .opt-wrap .opt { flex: 1; } .opt-wrap .opt-say { border: 0; font-size: 1.3rem; border-radius: 14px; padding: 0 10px; }
+.say-again { float: left; border: 0; background: #fff; border-radius: 50%; width: 38px; height: 38px; box-shadow: 0 1px 4px #0002; font-size: 1.1rem; }
+.sec.pop-world ul { margin: 6px 0; padding-inline-start: 18px; line-height: 1.8; }

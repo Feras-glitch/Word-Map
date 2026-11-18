@@ -58,7 +58,7 @@ function namesTab(c) {
   return h('div', {},
     tri({ ar: c.ar, en: c.en, zh: c.zh, py: c.py }, { big: true }),
     c.occNote ? h('div', { class: 'sec occ-note' }, h('span', { class: 'st-label' }, '🕊️ أرض محتلة'), h('p', {}, c.occNote + '.'), say(c.occNote, LANG.ar)) : null,
-    cont && c.cont !== 'antarctica' ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, (contEmoji[c.cont] || '🌍') + ' تقع في قارة'), tri(cont, { prefix: 'قارة ' }), c.sub ? h('small', { class: 'muted' }, c.sub) : null) : null,
+    cont && c.cont !== 'antarctica' ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, (contEmoji[c.cont] || '🌍') + ' تقع في قارة'), tri(cont, { prefix: 'قارة ' }), c.sub ? h('small', { class: 'muted' }, c.sub) : null, c.contNote ? h('p', { class: 'note' }, '🌐 ' + c.contNote + '.') : null) : null,
   );
 }
 
@@ -127,9 +127,13 @@ function numbersTab(c, openNeighbor) {
       c.gov.federal ? h('p', { class: 'note' }, '🧩 دولة اتحادية: تتكون من ولايات أو أقاليم، لكل منها حكومة خاصة بها.') : null) : null,
     h('div', { class: 'facts-grid' },
       c.area ? h('div', { class: 'fact' }, h('span', {}, '📏 المساحة'), h('b', {}, num(c.area) + ' كم²')) : null,
-      pop ? h('div', { class: 'fact' }, h('span', {}, '👨‍👩‍👧 السكان'), h('b', {}, pop.n), pop.cmp ? h('small', {}, pop.cmp) : null) : null,
+      pop ? h('div', { class: 'fact' }, h('span', {}, '👨‍👩‍👧 السكان'), h('b', {}, pop.n), c.popInfo ? h('small', {}, c.popInfo.scope + '، ' + c.popInfo.year) : null, pop.cmp ? h('small', {}, pop.cmp) : null) : null,
       c.kind !== 'state' && c.parent ? h('div', { class: 'fact' }, h('span', {}, '🔗 تتبع'), h('b', {}, c.parent)) : null,
     ),
+    c.id === 'PSE' && c.area ? h('p', { class: 'note' }, '📏 المساحة لفلسطين التاريخية كلها، والسكان المذكورون أعلاه للضفة الغربية وقطاع غزة فقط.') : null,
+    c.popInfo?.world ? h('div', { class: 'sec pop-world' }, h('span', { class: 'st-label' }, '🌍 ' + c.popInfo.world.title),
+      h('ul', {}, c.popInfo.world.lines.map((l) => h('li', {}, l + '.'))),
+      h('small', { class: 'muted' }, 'المصدر: الجهاز المركزي للإحصاء الفلسطيني، والأونروا للأردن.')) : null,
     c.cur ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '💰 العملة'), tri(c.cur),
       c.curNote ? h('p', { class: 'note' }, c.curNote) : null,
       c.curStory ? h('button', { class: 'btn small soft', onclick: () => openStory(c.curStory) }, '📜 ' + c.curStory.title) : null) : null,
@@ -199,10 +203,14 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
         h('span', { class: 'chip-st' + (visit ? ' on' : '') }, visit ? '✅ ختم الزيارة' : '⬜ ختم الزيارة'),
         h('span', { class: 'chip-st gold' + (gold ? ' on' : '') }, gold ? '🥇 الختم الذهبي' : '⬜ الختم الذهبي')),
       !visit ? (visitWait(c.id) > 0 ? waitNote()
-        : h('button', { class: 'btn big', onclick: () => visitQuestion(c, () => { giveVisit(c.id); showStamp(false); drawStamp(); checkContinentBadge(c.cont); }, () => { visitFailed(c.id); drawStamp(); }) }, '🛂 احصل على ختم الزيارة (سؤال واحد)')) : null,
-      visit && !gold ? (ex.ok ? h('button', { class: 'btn big gold-btn', onclick: () => masteryExam(c, (score) => { if (examResult(c.id, score)) { showStamp(true); checkGoldCert(c.cont); } drawStamp(); }) }, '⭐ امتحان الإتقان (٥ أسئلة)')
+        : h('button', { class: 'btn big', onclick: () => { let won = false;
+          visitQuestion(c, { onPass: () => { won = giveVisit(c.id); }, onFail: () => visitFailed(c.id),
+            onClose: () => { drawStamp(); if (won) { showStamp(false); checkContinentBadge(c.cont); } } }); } }, '🛂 احصل على ختم الزيارة (سؤال واحد)')) : null,
+      visit && !gold ? (ex.ok ? h('button', { class: 'btn big gold-btn', onclick: () => { let won = false;
+          masteryExam(c, { onResult: (pass) => { won = examResult(c.id, pass); },
+            onClose: () => { drawStamp(); if (won) { showStamp(true); checkGoldCert(c.cont); } } }); } }, '⭐ امتحان الإتقان (٥ أسئلة)')
         : h('p', { class: 'note' }, '⏳ ' + ex.why)) : null,
-      gold && due ? h('button', { class: 'btn big', onclick: () => reviewQuiz(c, (pass) => { reviewResult(c.id, pass); drawStamp(); }) }, '🔔 حان وقت المراجعة') : null,
+      gold && due ? h('button', { class: 'btn big', onclick: () => reviewQuiz(c, { onResult: (pass) => reviewResult(c.id, pass), onClose: drawStamp }) }, '🔔 حان وقت المراجعة') : null,
     ].filter(Boolean));
   };
   // عدّ تنازلي بعد خطأ في سؤال الزيارة

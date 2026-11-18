@@ -18,7 +18,7 @@ export function lighten(hex, amt) {
 }
 export const defaultFill = (c) => (c.kind === 'territory' && c.id !== 'ATA' ? lighten(contColors[c.cont] || '#ccc', 0.45) : contColors[c.cont] || '#ddd');
 
-export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, minW = 30, onView, onNature } = {}) {
+export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, minW = 30, onView, onNature, dotPx } = {}) {
   const wrap = document.createElement('div');
   wrap.className = 'map-wrap';
   const svg = S('svg', { class: 'map', viewBox: `0 0 ${M.w} ${M.h}`, preserveAspectRatio: 'xMidYMid meet' });
@@ -105,7 +105,7 @@ export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, mi
 
   function refresh() {
     const k = kPx();
-    for (const d of dots) d.setAttribute('r', Math.max(1, (k > 0.6 ? 3.2 : 5.5) * k));
+    for (const d of dots) d.setAttribute('r', dotPx ? dotPx * k : Math.max(1, (k > 0.6 ? 3.2 : 5.5) * k));
     svg.style.setProperty('--terr-dots', k < 0.6 ? 'inline' : 'none');
     svg.style.setProperty('--k', k);
     onView?.(k);

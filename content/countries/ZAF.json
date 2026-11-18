@@ -32,19 +32,17 @@
  "sources": [
   {
    "title": "عدد اللغات الحية حسب Ethnologue (الطبعة ٢٢، ٢٠١٩)",
-   "url": "https://wiki.riteme.site/wiki/Number_of_languages_by_country"
+   "url": "https://en.wikipedia.org/wiki/Number_of_languages_by_country"
   },
   {
    "title": "رئاسة جنوب أفريقيا: لغة الإشارة اللغة الرسمية الثانية عشرة",
    "url": "https://www.gov.za/speeches/president-cyril-ramaphosa-signing-ceremony-south-african-sign-language-bill-19-jul-2023"
   },
   {
-   "title": "التحيات بلغات جنوب أفريقيا الرسمية",
-   "url": "https://www.remitly.com/blog/en-ca/lifestyle-and-culture/how-to-greet-people-in-kenya-guide-for-canadians/"
-  },
-  {
    "title": "Unicode CLDR: السكان ونسب المتحدثين والعملات وأسماء اللغات",
    "url": "https://cldr.unicode.org/"
   }
- ]
+ ],
+ "review": "reviewed-1",
+ "batch": "sample"
 }

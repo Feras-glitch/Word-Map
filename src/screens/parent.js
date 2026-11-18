@@ -50,11 +50,12 @@ export function parentScreen(root, { go }) {
         return h('div', { class: 'ab', title: d }, h('i', { style: { height: (q / maxQ) * 100 + '%', opacity: q ? 1 : 0.15 } }), h('small', {}, new Date(d).toLocaleDateString('ar-EG', { weekday: 'narrow' })));
       })),
       h('p', { class: 'hint' }, total ? `أجاب عن ${ar(total)} سؤالاً إجمالاً، ونشط ${ar(active7)} من آخر ٧ أيام. آخر نشاط: ${lastDay === today() ? 'اليوم' : new Date(lastDay).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long' })}.` : 'لم يُجب عن أسئلة بعد.'),
-      Object.keys(sum).length ? [h('h4', {}, 'المهارات (نسبة الإجابات الصحيحة)'), h('div', { class: 'skill-bars' }, Object.entries(SKILLS).filter(([k]) => sum[k]).map(([k, t]) => {
+      Object.keys(sum).length ? [h('h4', {}, 'المهارات: الإجابة الأولى في الأسئلة والامتحانات (لا تُحسب الألعاب)'), h('div', { class: 'skill-bars' }, Object.entries(SKILLS).filter(([k]) => sum[k]).map(([k, t]) => {
         const x = sum[k]; const n = x.ok + x.bad; const pct = Math.round((x.ok / n) * 100);
         return h('div', { class: 'sb' }, h('span', {}, t), h('div', { class: 'bar' }, h('i', { style: { width: pct + '%', background: pct >= 75 ? '#1a9b55' : pct >= 50 ? '#e0a800' : '#e5484d' } })), h('small', {}, `${ar(pct)}٪ من ${ar(n)}`));
       }))] : null,
-      weak.length ? [h('h4', {}, 'دول يخطئ فيها كثيراً'), h('div', { class: 'neighbors' }, weak.map((id) => h('span', { class: 'chip' }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))] : null,
+      (() => { let n = 0; for (const m of Object.values(p.practice || {})) for (const x of Object.values(m)) n += x.ok + x.bad; return n ? h('p', { class: 'hint' }, `وأجاب في ألعاب التدريب عن ${ar(n)} سؤالاً (تُعرض منفصلة لأنها تمرين، وقد يرى فيها التلميح أو يحاول مرتين).`) : null; })(),
+      weak.length ? [h('h4', {}, 'دول يخطئ فيها أكثر من غيرها (بنسبة الخطأ، محاولتان على الأقل)'), h('div', { class: 'neighbors' }, weak.map((id) => h('span', { class: 'chip' }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))] : null,
       h('h4', {}, 'المستوى'),
       h('div', { class: 'levels' }, Object.entries(LEVELS).map(([k, L]) => h('button', { class: 'lv-btn' + (+k === p.level ? ' on' : ''), onclick: () => { store.updateProfile(p.id, { level: +k }); draw(); } },
         h('span', {}, L.emoji), h('b', {}, L.name), h('small', {}, L.ages)))),
@@ -86,11 +87,18 @@ export function parentScreen(root, { go }) {
         } }, '📝 استعادة من رمز')));
   }
   function restore(text) {
-    const d = modal(h('div', { class: 'panel' }, h('h3', {}, 'استبدال البيانات الحالية؟'), h('p', {}, 'ستُستبدل كل الملفات والأختام الموجودة الآن بما في النسخة الاحتياطية.'),
-      h('div', { class: 'row' }, h('button', { class: 'btn danger', onclick: () => { d.close(); const err = store.importData(text); toast(err || 'تمت الاستعادة ✓'); if (!err) setTimeout(draw, 300); } }, 'نعم، استبدل'), h('button', { class: 'btn soft', onclick: () => d.close() }, 'إلغاء'))));
+    const r = store.parseBackup(text);
+    if (r.error) return toast(r.error, 4000);
+    const when = r.at ? new Date(r.at).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long', year: 'numeric' }) : 'تاريخ غير معروف';
+    const d = modal(h('div', { class: 'panel' }, h('h3', {}, 'استبدال البيانات الحالية بهذه النسخة؟'),
+      h('p', {}, 'تاريخ النسخة: ' + when),
+      h('ul', { class: 'bk-sum' }, r.summary.map((x) => h('li', {}, `${x.avatar} ${x.name}: ${ar(x.stamps)} ختم زيارة، ${ar(x.gold)} ختم ذهبي`))),
+      h('p', { class: 'hint' }, 'ستُستبدل كل الملفات الموجودة الآن. احفظ نسخة من بياناتك الحالية أولاً إن أردت الرجوع إليها.'),
+      h('div', { class: 'row' }, h('button', { class: 'btn danger', onclick: () => { d.close(); const err = store.importData(text); toast(err || 'تمت الاستعادة ✓', 4000); if (!err) setTimeout(draw, 300); } }, 'نعم، استبدل'), h('button', { class: 'btn soft', onclick: () => d.close() }, 'إلغاء'))));
   }
   function pinPanel() {
     return h('div', { class: 'panel' }, h('h3', {}, '🔑 الرقم السري'),
-      h('button', { class: 'btn soft', onclick: () => { store.setParent({ pin: null }); lockNow(); parentLock(draw); } }, 'تغيير الرقم السري'));
+      h('p', { class: 'hint' }, 'القفل يمنع الأولاد من تغيير المستوى أو حذف الملفات، وليس حماية أمنية. لا يُحفظ الرقم داخل النسخة الاحتياطية، وتبقى اللوحة مفتوحة عشر دقائق ثم تُقفل.'),
+      h('button', { class: 'btn soft', onclick: () => { store.setParent({ pinHash: null }); lockNow(); parentLock(draw); } }, 'تغيير الرقم السري'));
   }
 }

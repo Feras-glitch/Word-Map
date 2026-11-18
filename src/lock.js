@@ -1,6 +1,6 @@
 // قفل الوالدين: رقم سري من ٤ أرقام. يُفتح لمدة ١٠ دقائق.
 import { h, modal, toast } from './ui.js';
-import { store } from './store.js';
+import { store, pinHash } from './store.js';
 
 let openUntil = 0;
 const ar = (n) => n.toLocaleString('ar-EG');
@@ -8,7 +8,7 @@ const ar = (n) => n.toLocaleString('ar-EG');
 export function parentLock(onOpen, onCancel) {
   let ok = false;
   if (Date.now() < openUntil) return onOpen();
-  const setting = !store.parent.pin;
+  const setting = !store.parent.pinHash;
   let first = null, entry = '';
   const title = h('h3', {}, setting ? '🔒 اختر رقماً سرياً للوالدين' : '🔒 لوحة الوالدين');
   const sub = h('p', { class: 'hint' }, setting ? 'أربعة أرقام لا يعرفها الأولاد. ستحتاجها لفتح هذه اللوحة.' : 'أدخل الرقم السري');
@@ -31,9 +31,9 @@ export function parentLock(onOpen, onCancel) {
     if (setting) {
       if (!first) { first = entry; entry = ''; sub.textContent = 'أعد إدخال الرقم للتأكيد'; return draw(); }
       if (first !== entry) { first = null; entry = ''; sub.textContent = 'الرقمان مختلفان. اختر رقماً من جديد'; return draw(); }
-      store.setParent({ pin: entry });
+      store.setParent({ pinHash: pinHash(entry) });
       toast('حُفظ الرقم السري');
-    } else if (entry !== store.parent.pin) {
+    } else if (pinHash(entry) !== store.parent.pinHash) {
       entry = ''; draw(); dots.classList.add('shake'); setTimeout(() => dots.classList.remove('shake'), 500);
       return;
     }
@@ -48,7 +48,7 @@ export function parentLock(onOpen, onCancel) {
     const box = h('div', { class: 'lock' }, h('h3', {}, 'سؤال للوالدين'), h('p', {}, `كم حاصل ضرب ${ar(a)} × ${ar(b)}؟`), inp,
       h('button', { class: 'btn big', onclick: () => {
         const v = +String(inp.value).replace(/[٠-٩]/g, (d) => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
-        if (v === a * b) { store.setParent({ pin: null }); ok = true; f.close(); m.close(); setTimeout(() => parentLock(onOpen), 300); }
+        if (v === a * b) { store.setParent({ pinHash: null }); ok = true; f.close(); m.close(); setTimeout(() => parentLock(onOpen), 300); }
         else { inp.value = ''; toast('الإجابة غير صحيحة'); }
       } }, 'تأكيد'));
     const f = modal(box, { cls: 'lock-modal' });

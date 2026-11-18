@@ -3,7 +3,7 @@ import '@fontsource/cairo/arabic-700.css';
 import '@fontsource/cairo/arabic-900.css';
 import '@fontsource/cairo/latin-700.css';
 import './style.css';
-import { h, consumeSkipPop, closeTopModal, clearModals } from './ui.js';
+import { h, consumeSkipPop, closeTopModal, clearModals, toast } from './ui.js';
 import { store } from './store.js';
 import { stopSpeech } from './speech.js';
 import { profilesScreen } from './screens/profiles.js';
@@ -19,6 +19,7 @@ import { settingsScreen } from './screens/settings.js';
 import { reviewScreen } from './screens/review.js';
 import { parentScreen } from './screens/parent.js';
 import { familyScreen } from './screens/family.js';
+import { aboutScreen } from './screens/about.js';
 
 const screens = {
   profiles: { title: 'من يلعب؟', fn: profilesScreen, noBack: true },
@@ -38,6 +39,7 @@ const screens = {
   review: { title: '🔔 المراجعة', fn: reviewScreen },
   parent: { title: '🔒 لوحة الوالدين', fn: parentScreen },
   family: { title: '👨‍👩‍👧‍👦 تحدي العائلة', fn: familyScreen },
+  about: { title: '🗺️ عن هذه الخريطة', fn: aboutScreen },
 };
 
 const app = document.getElementById('app');
@@ -78,3 +80,6 @@ window.addEventListener('popstate', () => {
   render();
 });
 render();
+
+// تنبيه إن فشل الحفظ على الجهاز (مثلاً امتلاء الذاكرة)
+window.addEventListener('store-save-failed', () => toast('⚠️ تعذّر حفظ التقدم على هذا الجهاز. احفظ نسخة احتياطية من لوحة الوالدين', 6000));

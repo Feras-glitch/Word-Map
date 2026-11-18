@@ -47,10 +47,10 @@ export function exploreScreen(root) {
     results.innerHTML = '';
     const q = input.value.trim();
     if (q.length >= 2) for (const it of NAT.items.filter((x) => x.ar.includes(q) || x.en.toLowerCase().includes(q.toLowerCase())).slice(0, 4)) results.append(h('button', { class: 'res', onclick: () => {
-      input.value = ''; results.innerHTML = ''; input.blur(); if (!store.settings.nature) setNat(true); showNat(it.id); setTimeout(() => openNature(it.id), 900);
+      input.value = ''; results.innerHTML = ''; input.blur(); if (!store.settings.nature) setNat(true); showNat(it.id); setTimeout(() => m.el.isConnected && openNature(it.id), 900);
     } }, h('span', { class: 'res-ic' }, NAT.kinds[it.kind].icon), h('b', {}, it.ar), h('small', {}, it.en)));
     for (const c of search(input.value)) results.append(h('button', { class: 'res', onclick: () => {
-      input.value = ''; results.innerHTML = ''; input.blur(); show(c.id); setTimeout(() => openCard(c.id, { onShowOnMap: show, onClose: () => m.setFill(fill) }), 750);
+      input.value = ''; results.innerHTML = ''; input.blur(); show(c.id); setTimeout(() => m.el.isConnected && openCard(c.id, { onShowOnMap: show, onClose: () => m.setFill(fill) }), 750);
     } }, h('img', { src: flagUrl(c.f), alt: '' }), h('b', {}, c.ar), h('small', {}, c.en)));
   } });
 
@@ -65,5 +65,5 @@ export function exploreScreen(root) {
   });
   // فتح مباشر لدولة من شاشة أخرى
   let want = null; try { want = sessionStorage.getItem('openCountry'); sessionStorage.removeItem('openCountry'); } catch { /* */ }
-  if (want && byId[want]) { setTimeout(() => { show(want); openCard(want, { onShowOnMap: show, onClose: () => m.setFill(fill) }); }, 300); }
+  if (want && byId[want]) { setTimeout(() => { if (!m.el.isConnected) return; show(want); openCard(want, { onShowOnMap: show, onClose: () => m.setFill(fill) }); }, 300); }
 }

@@ -8,7 +8,8 @@ export const SKILLS = { flag: 'العلم', capital: 'العاصمة', map: 'ا�
 export const INTERVALS = [3, 7, 30];
 const DAY = 864e5;
 export const today = () => new Date().toLocaleDateString('en-CA');
-const addDays = (d, n) => new Date(new Date(d).getTime() + n * DAY).toLocaleDateString('en-CA');
+// جمع أيام تقويمية بالتوقيت المحلي (لا UTC)
+const addDays = (d, n) => { const [y, m, dd] = d.split('-').map(Number); return new Date(y, m - 1, dd + n).toLocaleDateString('en-CA'); };
 
 function ensure(p) {
   p.mastery ||= {};
@@ -19,10 +20,12 @@ function ensure(p) {
 }
 
 // تسجيل محاولة في مهارة (من الألعاب والامتحانات والأسئلة)
-export function record(id, skill, ok, pid) {
+// src: 'quiz' (أسئلة الختم والامتحان والمراجعة والتحدي: إجابة أولى مستقلة) أو 'practice' (ألعاب التدريب، تُحفظ منفصلة)
+export function record(id, skill, ok, { pid, src = 'quiz' } = {}) {
   const fn = (p) => {
     ensure(p);
-    const m = (p.mastery[id] ||= {});
+    p.practice ||= {};
+    const m = ((src === 'practice' ? p.practice : p.mastery)[id] ||= {});
     const s = (m[skill] ||= { ok: 0, bad: 0 });
     if (ok) s.ok++; else s.bad++;
     s.last = today();
@@ -30,6 +33,7 @@ export function record(id, skill, ok, pid) {
     p.activity ||= {};
     const a = (p.activity[today()] ||= { q: 0, ok: 0 });
     a.q++; if (ok) a.ok++;
+    if (src === 'practice') { a.pq = (a.pq || 0) + 1; }
   };
   if (pid) store.patchProfile(pid, fn); else store.patch(fn);
 }
@@ -50,18 +54,22 @@ export function canTakeExam(id) {
   if (!hasVisit(id)) return { ok: false, why: 'احصل على ختم الزيارة أولاً' };
   // الامتحان من اليوم التالي للزيارة: نقيس ما بقي في الذاكرة لا ما قُرئ قبل ثوانٍ
   if (p.stamps[id] >= today()) return { ok: false, why: 'امتحان الإتقان يُفتح غداً. راجع البطاقة اليوم، وتعال غداً لتنال الختم الذهبي' };
+  // وحد أدنى ٨ ساعات بعد الزيارة، حتى لا تكفي زيارة قبل منتصف الليل بدقائق
+  const at = p.visitAt?.[id];
+  if (at && Date.now() - at < 8 * 36e5) return { ok: false, why: 'امتحان الإتقان يُفتح بعد ساعات قليلة. راجع البطاقة، وعد لاحقاً' };
   const f = p.examFail?.[id];
   if (f && f === today()) return { ok: false, why: 'حاولت اليوم؛ راجع البطاقة وعد غداً' };
   return { ok: true };
 }
 
-export function giveVisit(id) { return store.stamp(id); }
+export function giveVisit(id) { const ok = store.stamp(id); if (ok) store.patch((p) => { (p.visitAt ||= {})[id] = Date.now(); }); return ok; }
 
-export function examResult(id, score) {
+// pass يحسبه الامتحان (٤ من ٥ مع المهارات الإلزامية)
+export function examResult(id, pass) {
   let gold = false;
   store.patch((p) => {
     ensure(p);
-    if (score >= 4) {
+    if (pass) {
       gold = !p.gold[id];
       p.gold[id] = p.gold[id] || today();
       p.review[id] = { step: 0, due: addDays(today(), INTERVALS[0]) };
@@ -111,7 +119,14 @@ export function skillSummary(p = store.me) {
 export function weakest(n = 8, p = store.me) {
   if (!p) return [];
   ensure(p);
+  // نسبة الخطأ في الأسئلة المستقلة (لا الألعاب)، بحد أدنى محاولتين، مع ترجيح الأحدث
+  const t = Date.now();
   return Object.entries(p.mastery)
-    .map(([id, m]) => { let ok = 0, bad = 0; for (const s of Object.values(m)) { ok += s.ok; bad += s.bad; } return [id, bad - ok * 0.5, bad]; })
-    .filter(([, , bad]) => bad > 0).sort((a, b) => b[1] - a[1]).slice(0, n).map(([id]) => id);
+    .map(([id, m]) => {
+      let ok = 0, bad = 0, last = '';
+      for (const s of Object.values(m)) { ok += s.ok; bad += s.bad; if ((s.last || '') > last) last = s.last; }
+      const days = last ? (t - new Date(last + 'T12:00:00').getTime()) / 864e5 : 99;
+      return [id, (bad / (ok + bad)) * (days < 14 ? 1 : 0.6), ok + bad, bad];
+    })
+    .filter(([, r, n, bad]) => n >= 2 && bad > 0 && r >= 0.34).sort((a, b) => b[1] - a[1]).slice(0, n).map(([id]) => id);
 }

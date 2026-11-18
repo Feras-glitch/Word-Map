@@ -13,14 +13,14 @@ export function reviewScreen(root, { go }) {
     if (due.length) {
       root.append(h('h3', {}, '🔔 مراجعات اليوم'), h('div', { class: 'review-list' }, due.map((id) => {
         const c = byId[id];
-        return h('button', { class: 'review-item', onclick: () => reviewQuiz(c, (pass) => { reviewResult(id, pass); draw(); }) }, h('img', { src: flagUrl(c.f), alt: '' }), c.ar, h('small', {}, 'ابدأ المراجعة ←'));
+        return h('button', { class: 'review-item', onclick: () => reviewQuiz(c, { onResult: (pass) => reviewResult(id, pass), onClose: draw }) }, h('img', { src: flagUrl(c.f), alt: '' }), c.ar, h('small', {}, 'ابدأ المراجعة ←'));
       })));
     }
     if (weak.length) {
       root.append(h('h3', {}, '🎯 تدرّب على ما تخطئ فيه'), h('div', { class: 'review-list' }, weak.map((id) => {
         const c = byId[id];
         const lvl = store.me?.level || 2; const n = lvl === 1 ? 3 : 4;
-        return h('button', { class: 'review-item', onclick: () => runQuiz({ title: '🎯 تدريب: ' + c.ar, country: c, questions: buildSet(c, ['flag', 'capital', 'continent'], n), onDone: (_s, _r, box, m) => box.append(h('div', { class: 'quiz-end' }, h('button', { class: 'btn big', onclick: () => { m.close(); draw(); } }, 'متابعة'))) }) },
+        return h('button', { class: 'review-item', onclick: () => runQuiz({ title: '🎯 تدريب: ' + c.ar, country: c, questions: buildSet(c, ['flag', 'capital', 'continent'], n), onClose: draw, onDone: (_s, _r, box, m) => box.append(h('div', { class: 'quiz-end' }, h('button', { class: 'btn big', onclick: () => m.close() }, 'متابعة'))) }) },
           h('img', { src: flagUrl(c.f), alt: '' }), c.ar, h('small', {}, 'تدريب ←'));
       })));
     }

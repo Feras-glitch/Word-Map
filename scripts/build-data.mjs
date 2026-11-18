@@ -15,7 +15,7 @@ import { pinyin, customPinyin } from 'pinyin-pro';
 // قراءات صحيحة لحروف متعددة النطق في أسماء الأعلام
 customPinyin({ 藏语: 'zàng yǔ', 西藏: 'xī zàng', 什: 'shí', 的黎波里: 'dì lí bō lǐ', 麦纳麦: 'mài nà mài', 柏柏尔: 'bó bó ěr' });
 import * as C from './content.mjs';
-import { policy } from './policy.mjs';
+import { policy, landBordersAdd, landBordersRemove, transcontinental, capitalQuestion } from './policy.mjs';
 
 const require = createRequire(import.meta.url);
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -64,7 +64,7 @@ for (const c of countries) {
     capEn: ov.capEn || C.capitalsEnFix[id] || (c.capital || [])[0] || '',
     cont: c.cca3 === 'ATA' ? 'antarctica' : contOf(c),
     sub: C.subregionsAr[c.subregion] || '',
-    area: ov.area || Math.round(c.area || 0),
+    area: ov.area || ((c.area || 0) < 10 ? Math.round((c.area || 0) * 100) / 100 : Math.round(c.area || 0)),
     borders: [...new Set(borders)],
     landlocked: !!c.landlocked,
     greet: greetingKey(c),
@@ -95,13 +95,15 @@ for (const c of out) {
   if (!fs.existsSync(f)) continue;
   const d = JSON.parse(fs.readFileSync(f, 'utf8'));
   // بوابة الجودة: المحتوى الذي لم يُراجَع لا يدخل التطبيق إلا في وضع المعاينة
-  if (d.review === 'pending' && !process.env.PREVIEW) { pendingCount++; continue; }
+  const OK_REVIEW = ['reviewed-1', 'reviewed-2'];
+  if (!OK_REVIEW.includes(d.review) && !process.env.PREVIEW) { pendingCount++; console.warn('⚠️ لم يُراجَع (لن يدخل التطبيق): ' + c.id); continue; }
   c.v2 = true;
   c.cap3 = d.capital; c.capAr = d.capital.ar; c.capEn = d.capital.en;
   if (d.capitalNote) c.capNote = d.capitalNote;
   if (d.landmark) { c.lm3 = d.landmark; c.landmark = d.landmark.ar; }
   if (d.fact) c.fact = d.fact;
   if (d.occupiedNote) c.occNote = d.occupiedNote;
+  if (d.population) c.popInfo = d.population;
   c.langs = d.languages;
   if (c.langs.others == null && eth[c.id] != null) c.langs.others = eth[c.id];
   if (!d.currency) d.currency = currentCurrency(c.f.toUpperCase());
@@ -113,6 +115,7 @@ for (const c of out) {
   }
   const t = territory[c.f.toUpperCase()];
   if (t) c.pop = +t._population;
+  if (c.popInfo) c.pop = c.popInfo.value;
   if (d.currencyNote) c.curNote = d.currencyNote;
   if (d.currencyStory) c.curStory = d.currencyStory;
   c.sources = d.sources;
@@ -140,7 +143,19 @@ for (const c of out) {
 }
 
 const ids = new Set(out.map((c) => c.id));
+for (const c of out) {
+  const t = transcontinental[c.id]; if (t) { c.cont2 = t.cont2; c.contNote = t.note; }
+  if (c.id in capitalQuestion) c.capQ = capitalQuestion[c.id];
+}
 for (const c of out) c.borders = c.borders.filter((b) => ids.has(b));
+// الجيران = حدود برية فقط، ويجب أن تكون العلاقة متماثلة
+{
+  const B = Object.fromEntries(out.map((c) => [c.id, c]));
+  for (const [a, b] of landBordersAdd) { B[a].borders.includes(b) || B[a].borders.push(b); B[b].borders.includes(a) || B[b].borders.push(a); }
+  for (const [a, b] of landBordersRemove) { B[a].borders = B[a].borders.filter((x) => x !== b); B[b].borders = B[b].borders.filter((x) => x !== a); }
+  const asym = out.flatMap((c) => c.borders.filter((b) => !B[b].borders.includes(c.id)).map((b) => c.id + '→' + b));
+  if (asym.length) { console.error('❌ جيران غير متماثلين: ' + asym.join(' ')); process.exit(1); }
+}
 
 // ---------- الخريطة ----------
 let t = presimplify(topo);

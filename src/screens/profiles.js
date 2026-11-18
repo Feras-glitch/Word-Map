@@ -48,7 +48,7 @@ function newProfile(root, go) {
     if (!n) { name.focus(); name.classList.add('shake'); setTimeout(() => name.classList.remove('shake'), 500); return; }
     const p = store.addProfile({ name: n, avatar, level });
     sfx('win');
-    if (test) placementTest((lv) => { store.updateProfile(p.id, { level: lv, placement: lv }); go('home', { replace: true }); });
+    if (test) placementTest((lv) => { store.updateProfile(p.id, { level: lv, placement: lv }); go('home', { replace: true }); }, () => go('home', { replace: true }));
     else { speak(`أهلاً يا ${n}! هيا نستكشف العالم`, 'ar-SA'); go('home', { replace: true }); }
   }
   root.querySelector('.new-profile')?.remove();

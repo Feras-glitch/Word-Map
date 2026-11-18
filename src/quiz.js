@@ -22,7 +22,6 @@ const others = (c, n, filter = () => true) => {
   return pick(src, n);
 };
 const flagOpt = (s) => h('span', { class: 'qo-flag' }, h('img', { src: flagUrl(s.f), alt: '' }), h('b', {}, s.ar));
-const sayBtn = (text, lang) => h('span', { class: 'opt-say', role: 'button', 'aria-label': 'استمع', onclick: (e) => { e.stopPropagation(); speak(text, lang); } }, '🔊');
 
 // كل سؤال يذكر الدولة، والخيارات هي الصفات (عاصمة، معلم، اسم بلغة أخرى، لغة، جارة...)،
 // ولا يُعرض في السؤال ما يكشف الإجابة. leaks(c) تخبر إن كان السؤال مكشوفاً لهذه الدولة.
@@ -34,11 +33,13 @@ export const Q = {
   },
   capital(c, n) {
     const opts = shuffle([c, ...others(c, n - 1, (s) => s.capAr && capName(s) !== capName(c))]);
-    return { skill: 'capital', say: `ما عاصمة ${c.ar}؟`, prompt: h('p', {}, 'ما عاصمة ', h('b', {}, c.ar), '؟'),
+    const qt = c.capQ || `ما عاصمة ${c.ar}؟`;
+    return { skill: 'capital', say: qt, prompt: h('p', {}, qt),
       options: opts.map((o) => ({ correct: o.id === c.id, el: h('b', {}, capName(o)), label: capName(o) })) };
   },
   continent(c, n) {
-    const keys = shuffle(Object.keys(continents).filter((k) => k !== 'antarctica' && k !== c.cont)).slice(0, n - 1);
+    // الدول العابرة للقارات: لا نضع قارتها الثانية بين الخيارات الخاطئة
+    const keys = shuffle(Object.keys(continents).filter((k) => k !== 'antarctica' && k !== c.cont && k !== c.cont2)).slice(0, n - 1);
     const opts = shuffle([c.cont, ...keys]);
     return { skill: 'continent', say: `في أي قارة تقع ${c.ar}؟`, prompt: h('p', {}, 'في أي قارة تقع ', h('b', {}, c.ar), '؟'),
       options: opts.map((k) => ({ correct: k === c.cont, el: h('b', { style: { color: '#1f2a44' } }, continents[k]), label: continents[k], bg: contColors[k] })) };
@@ -50,7 +51,8 @@ export const Q = {
     const lang = useZh ? 'بالصينية' : 'بالإنجليزية';
     return { skill: 'names', say: `ما اسم ${c.ar} ${lang}؟`, prompt: h('div', {}, h('p', {}, 'ما اسم ', h('b', {}, c.ar), ' ' + lang + '؟'), h('small', { class: 'hint' }, 'اضغط 🔊 لتسمع كل خيار، ثم اختر')),
       options: opts.map((o) => ({ correct: o.id === c.id,
-        el: h('span', { class: 'qo-name', dir: 'ltr' }, useZh ? h('span', { class: 'zh-opt' }, h('b', {}, o.zh), h('small', {}, o.py)) : h('b', {}, o.en), sayBtn(useZh ? o.zh : o.en, useZh ? LANG.zh : LANG.en)) })) };
+        label: useZh ? o.zh : o.en, say: [useZh ? o.zh : o.en, useZh ? LANG.zh : LANG.en],
+        el: h('span', { class: 'qo-name', dir: 'ltr' }, useZh ? h('span', { class: 'zh-opt' }, h('b', {}, o.zh), h('small', {}, o.py)) : h('b', {}, o.en)) })) };
   },
   landmark(c, n) {
     const opts = shuffle([c, ...others(c, n - 1, (s) => s.landmark && s.landmark !== c.landmark)]);
@@ -61,13 +63,15 @@ export const Q = {
   language(c, n) {
     const L = c.langs || {};
     const mine = new Set(['official', 'defacto', 'working', 'second', 'regional', 'widespread'].flatMap((k) => L[k] || []));
-    const main = (L.official?.length ? L.official : L.defacto?.length ? L.defacto : L.working || []).filter((x) => languages[x] && !languages[x].sign);
+    const cat = L.official?.length ? 'official' : L.defacto?.length ? 'defacto' : 'working';
+    const main = (L[cat] || []).filter((x) => languages[x] && !languages[x].sign);
     const right = main[Math.floor(Math.random() * main.length)];
+    const catQ = { official: 'لغة رسمية في', defacto: 'هي اللغة التي تستعملها حكومة', working: 'لغة عمل في حكومة' }[cat];
     const pool = [...new Set(states.filter((s) => s.cont === c.cont).flatMap((s) => s.langs?.official || []))].filter((x) => languages[x] && !mine.has(x) && !languages[x].sign);
     const wrong = shuffle(pool.length >= n - 1 ? pool : Object.keys(languages).filter((x) => !mine.has(x) && !languages[x].sign)).slice(0, n - 1);
     const opts = shuffle([right, ...wrong]);
     const lbl = (x) => languages[x].ar.replace(/\s*\(.*\)\s*/, '');
-    return { skill: 'language', say: `أيّ هذه لغة رسمية في ${c.ar}؟`, prompt: h('p', {}, '🗣️ أيّ هذه لغة رسمية في ', h('b', {}, c.ar), '؟'),
+    return { skill: 'language', say: `أيّ هذه ${catQ} ${c.ar}؟`, prompt: h('p', {}, '🗣️ أيّ هذه ' + catQ + ' ', h('b', {}, c.ar), '؟'),
       options: opts.map((x) => ({ correct: x === right, el: h('b', {}, lbl(x)), label: lbl(x) })) };
   },
   neighbor(c, n) {
@@ -87,9 +91,9 @@ export const Q = {
 const nameIn = (c, t) => { const b = bare(c.ar); return b.length >= 3 && (t || '').includes(b.slice(0, Math.max(3, b.length - 1))); };
 export function usable(kind, c) {
   switch (kind) {
-    case 'capital': return !!c.capAr && !nameIn(c, capName(c)) && !c.ar.includes(bare(capName(c)).split(' ')[0]);
+    case 'capital': return !!c.capAr && c.capQ !== null && !nameIn(c, capName(c)) && !c.ar.includes(bare(capName(c)).split(' ')[0]);
     case 'landmark': return !!c.landmark && !nameIn(c, c.landmark);
-    case 'map': return !!c.bb && !c.small && !c.dotOnly;
+    case 'map': return !!(c.cen || c.bb);
     case 'neighbor': return c.borders.some((id) => byId[id]?.kind === 'state');
     case 'language': {
       const L = c.langs || {}; const main = (L.official?.length ? L.official : L.defacto?.length ? L.defacto : L.working || []).filter((x) => languages[x] && !languages[x].sign);
@@ -111,20 +115,23 @@ export function buildSet(c, kinds, n) {
   });
 }
 
-// يعرض الأسئلة واحداً بعد الآخر، ويستدعي onDone(score, results) في النهاية
-export function runQuiz({ title, country, questions, passMark, onDone, intro, level: lv, pid, record: rec = true }) {
+// يعرض الأسئلة واحداً بعد الآخر.
+// onDecide(score, results, questions): يُستدعى فور الإجابة عن آخر سؤال، قبل إعلان النتيجة، ليُحفظ القرار مرة واحدة.
+// onAbort(score, answered): إن أُغلقت النافذة بعد إجابة سؤال واحد على الأقل وقبل القرار.
+// onDone(score, results, box, m): عرض النتيجة فقط. onClose: بعد إغلاق النافذة بأي طريقة.
+export function runQuiz({ title, country, questions, onDone, onDecide, onAbort, onClose, intro, level: lv, pid, record: rec = true, mapCountries }) {
   const level = lv || store.me?.level || 2;
-  const box = h('div', { class: 'quiz' });
-  const m = modal(box, { cls: 'quiz-modal' });
-  let i = 0, score = 0;
+  const box = h('div', { class: 'quiz', role: 'dialog', 'aria-label': title });
+  let i = 0, score = 0, answered = 0, decided = false;
   const results = [];
+  const m = modal(box, { cls: 'quiz-modal', onClose: () => { if (!decided && answered > 0) onAbort?.(score, answered); onClose?.(); } });
   const head = () => h('div', { class: 'q-head' },
     h('b', {}, title),
-    h('div', { class: 'q-dots' }, questions.map((_, k) => h('i', { class: k < i ? (results[k] ? 'done' : 'miss') : k === i ? 'now' : '' }))));
+    h('div', { class: 'q-dots', 'aria-hidden': 'true' }, questions.map((_, k) => h('i', { class: k < i ? (results[k] ? 'done' : 'miss') : k === i ? 'now' : '' }))));
 
   function finish() {
     box.replaceChildren(head());
-    onDone(score, results, box, m);
+    onDone?.(score, results, box, m);
   }
   function next() {
     if (i >= questions.length) return finish();
@@ -133,24 +140,33 @@ export function runQuiz({ title, country, questions, passMark, onDone, intro, le
     let locked = false;
     const answer = (ok, el) => {
       if (locked) return; locked = true;
-      results[i] = ok; if (ok) score++;
-      if (country && rec) record(country.id, q.skill, ok, pid);
+      results[i] = ok; if (ok) score++; answered++;
+      if (country && rec) record(country.id, q.skill, ok, { pid });
+      if (i + 1 >= questions.length && !decided) { decided = true; onDecide?.(score, results, questions); }
       sfx(ok ? 'correct' : 'wrong');
       speak(ok ? ['أحسنت!', 'رائع!', 'صحيح!'][i % 3] : 'ليست هذه', LANG.ar);
       el?.classList.add(ok ? 'right' : 'wrong');
-      fb.replaceChildren(h('button', { class: 'btn', onclick: () => { i++; next(); } }, i + 1 >= questions.length ? 'النتيجة 🏁' : 'التالي ←'));
+      const nb = h('button', { class: 'btn', onclick: () => { i++; next(); } }, i + 1 >= questions.length ? 'النتيجة 🏁' : 'التالي ←');
+      fb.replaceChildren(nb); nb.focus();
     };
+    const say = () => (q.sayFn ? q.sayFn() : speak(q.say, LANG.ar));
+    const again = h('button', { class: 'say-again', 'aria-label': 'أعد قراءة السؤال', onclick: say }, '🔊');
+    const qBox = h('div', { class: 'question', tabindex: '-1' }, again, q.prompt);
     if (q.type === 'map') {
-      const c = country;
-      const mp = createMap({ labels: false, fill: (x) => lighten(contColors[x.cont] || '#ccc', x.kind === 'state' ? 0.1 : 0.5),
+      const c = mapCountries?.[i] || country;
+      const tiny = c.small || !c.bb || (c.bb[2] - c.bb[0]) < 12;
+      const mp = createMap({ labels: false, dotPx: tiny ? 13 : undefined, fill: (x) => lighten(contColors[x.cont] || '#ccc', x.kind === 'state' ? 0.1 : 0.5),
         onTap: (id) => { if (locked || id === 'ATA') return; const ok = id === c.id; mp.mark(id, ok ? 'right' : 'wrong'); if (!ok) mp.mark(c.id, 'right'); answer(ok); } });
       mp.el.classList.add('quiz-map');
-      box.replaceChildren(head(), h('div', { class: 'question' }, q.prompt), mp.el, fb);
-      requestAnimationFrame(() => mp.zoomTo(contBox[c.cont] || [0, 0, 2000, 1000], 0));
+      box.replaceChildren(head(), qBox, mp.el, fb);
+      // الدول الصغيرة: خريطة إقليمية مقرّبة حولها حتى يمكن لمسها
+      const [cx, cy] = c.cen || [(c.bb[0] + c.bb[2]) / 2, (c.bb[1] + c.bb[3]) / 2];
+      const box0 = tiny ? [cx - 45, cy - 30, cx + 45, cy + 30] : (contBox[c.cont] || [0, 0, 2000, 1000]);
+      requestAnimationFrame(() => mp.zoomTo(box0, 0, tiny ? 0 : 0.15));
     } else {
       const opts = h('div', { class: 'options' + (q.flags ? ' flag-opts' : '') });
-      for (const o of q.options) {
-        const b = h('button', { class: 'opt', style: o.bg ? { background: o.bg } : null, onclick: () => {
+      q.options.forEach((o, k) => {
+        const b = h('button', { class: 'opt', 'aria-label': 'الخيار ' + (k + 1).toLocaleString('ar-EG') + (o.label && !q.flags ? ': ' + o.label : ''), style: o.bg ? { background: o.bg } : null, onclick: () => {
           if (locked) return;
           answer(o.correct, b);
           if (!o.correct) opts.querySelector('[data-c="1"]')?.classList.add('right');
@@ -158,89 +174,114 @@ export function runQuiz({ title, country, questions, passMark, onDone, intro, le
         if (o.correct) b.dataset.c = '1';
         // للصغار: لمسة طويلة تقرأ الخيار
         if (level === 1 && o.label) b.addEventListener('contextmenu', (e) => { e.preventDefault(); speak(o.label, LANG.ar); });
-        opts.append(b);
-      }
-      box.replaceChildren(head(), h('div', { class: 'question' }, q.prompt), opts, fb);
+        // زر الاستماع منفصل عن زر الاختيار (لا زر داخل زر)
+        opts.append(o.say ? h('div', { class: 'opt-wrap' }, b, h('button', { class: 'opt-say', 'aria-label': 'استمع إلى الخيار ' + (k + 1).toLocaleString('ar-EG'), onclick: () => speak(o.say[0], o.say[1]) }, '🔊')) : b);
+      });
+      box.replaceChildren(head(), qBox, opts, fb);
     }
-    setTimeout(() => (q.sayFn ? q.sayFn() : speak(q.say, LANG.ar)), 200);
+    qBox.focus();
+    setTimeout(say, 200);
   }
   if (intro) {
-    box.replaceChildren(intro, h('button', { class: 'btn big', onclick: next }, 'ابدأ ←'));
+    const st = h('button', { class: 'btn big', onclick: next }, 'ابدأ ←');
+    box.replaceChildren(intro, st); setTimeout(() => st.focus(), 50);
   } else next();
   return m;
 }
 
 // ---------- ختم الزيارة: سؤال واحد ----------
-export function visitQuestion(c, onPass, onFail) {
+// يُحفظ القرار فور الإجابة: الختم عند الصواب، وبدء الانتظار عند الخطأ
+export function visitQuestion(c, { onPass, onFail, onClose } = {}) {
   const level = store.me?.level || 2;
   const n = level === 1 ? 3 : 4;
   const kinds = (level === 1 ? ['flag', 'continent'] : ['flag', 'capital', 'continent']).filter((k) => usable(k, c));
   const q = Q[kinds[Math.floor(Math.random() * kinds.length)]](c, n);
-  runQuiz({ title: '🛂 سؤال ختم الزيارة', country: c, questions: [q], onDone: (score, _r, box, m) => {
-    if (score === 1) {
-      box.append(h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, '🛂'), h('h3', {}, 'أحسنت! حصلت على ختم زيارة ' + c.ar), h('button', { class: 'btn big', onclick: () => { m.close(); onPass(); } }, 'خذ الختم ✓')));
-    } else {
-      onFail?.();
-      box.append(h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, '📖'), h('h3', {}, 'اقرأ البطاقة جيداً، ويمكنك المحاولة بعد دقيقتين'), h('button', { class: 'btn big soft', onclick: () => m.close() }, 'عودة إلى البطاقة')));
-    }
-  } });
+  runQuiz({ title: '🛂 سؤال ختم الزيارة', country: c, questions: [q], onClose,
+    onDecide: (score) => (score === 1 ? onPass?.() : onFail?.()),
+    onDone: (score, _r, box, m) => {
+      if (score === 1) box.append(h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, '🛂'), h('h3', {}, 'أحسنت! حصلت على ختم زيارة ' + c.ar), h('button', { class: 'btn big', onclick: () => m.close() }, 'خذ الختم ✓')));
+      else box.append(h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, '📖'), h('h3', {}, 'اقرأ البطاقة جيداً، ويمكنك المحاولة بعد دقيقتين'), h('button', { class: 'btn big soft', onclick: () => m.close() }, 'عودة إلى البطاقة')));
+    } });
 }
 
 // ---------- امتحان الإتقان: ٥ أسئلة ----------
-export function masteryExam(c, onDone) {
+// الختم الذهبي: ٤ من ٥، بشرط إصابة العلم والموقع، والعاصمة إن سُئل عنها.
+export const REQUIRED = ['flag', 'map', 'capital'];
+export function examVerdict(score, results, questions) {
+  const missed = questions.map((q, k) => (!results[k] && REQUIRED.includes(q.skill) ? q.skill : null)).filter(Boolean);
+  return { pass: score >= 4 && missed.length === 0, missed };
+}
+const SKILL_AR = { flag: 'العلم', map: 'الموقع على الخريطة', capital: 'العاصمة' };
+export function masteryExam(c, { onResult, onClose } = {}) {
   const level = store.me?.level || 2;
   const n = level === 1 ? 3 : 4;
   const questions = buildSet(c, ['flag', 'capital', 'map', 'names', 'landmark'], n);
-  runQuiz({ title: '⭐ امتحان الإتقان: ' + c.ar, country: c, questions,
+  const hasCap = questions.some((q) => q.skill === 'capital');
+  let verdict = null;
+  runQuiz({ title: '⭐ امتحان الإتقان: ' + c.ar, country: c, questions, onClose,
     intro: h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, '⭐'), h('h3', {}, 'امتحان إتقان ' + c.ar),
-      h('p', {}, 'خمسة أسئلة عن ' + c.ar + ': العلم، والعاصمة، والموقع على الخريطة، وغيرها. أجب عن أربعة صحيحاً لتنال الختم الذهبي.')),
+      h('p', {}, 'خمسة أسئلة عن ' + c.ar + '. تنال الختم الذهبي إن أجبت عن أربعة صحيحاً، على أن يكون منها العلم والموقع على الخريطة' + (hasCap ? ' والعاصمة.' : '.'))),
+    onDecide: (score, results, qs) => { verdict = { ...examVerdict(score, results, qs), score }; onResult?.(verdict.pass, score); },
+    onAbort: (score) => onResult?.(false, score, true),
     onDone: (score, _r, box, m) => {
-      const pass = score >= 4;
+      const { pass, missed } = verdict;
       if (pass) { confetti(); sfx('win'); speak(`مبارك! نلت الختم الذهبي لدولة ${c.ar}`, LANG.ar); }
       else speak(`حصلت على ${score} من خمسة. راجع البطاقة وعد غداً`, LANG.ar);
       box.append(h('div', { class: 'quiz-end' },
         h('div', { class: 'big-emoji' }, pass ? '🥇' : '📖'),
         h('h3', {}, `${score.toLocaleString('ar-EG')} من ٥`),
-        h('p', {}, pass ? 'نلت الختم الذهبي! سنذكّرك بمراجعة هذه الدولة بعد ٣ أيام.' : 'تحتاج ٤ من ٥. راجع البطاقة، ويمكنك المحاولة من جديد غداً.'),
-        h('button', { class: 'btn big', onclick: () => { m.close(); onDone(score); } }, pass ? 'خذ الختم الذهبي 🥇' : 'حسناً')));
+        h('p', {}, pass ? 'نلت الختم الذهبي! سنذكّرك بمراجعة هذه الدولة بعد ٣ أيام.'
+          : missed.length ? `لنيل الختم الذهبي يجب أن تصيب في: ${missed.map((k) => SKILL_AR[k]).join('، ')}. راجع البطاقة، وحاول من جديد غداً.`
+            : 'تحتاج ٤ من ٥. راجع البطاقة، ويمكنك المحاولة من جديد غداً.'),
+        h('button', { class: 'btn big', onclick: () => m.close() }, pass ? 'خذ الختم الذهبي 🥇' : 'حسناً')));
     } });
 }
 
-// ---------- المراجعة: ٣ أسئلة ----------
-export function reviewQuiz(c, onDone) {
+// ---------- المراجعة: ٤ أسئلة، النجاح ٣، تدور على ما أثبته الختم الذهبي ----------
+export function reviewQuiz(c, { onResult, onClose } = {}) {
   const level = store.me?.level || 2;
   const n = level === 1 ? 3 : 4;
-  runQuiz({ title: '🔔 مراجعة: ' + c.ar, country: c, questions: shuffle(buildSet(c, ['flag', 'capital', 'map', 'landmark'], n)),
+  const extra = ['names', 'landmark', 'language'][Math.floor(Math.random() * 3)];
+  let pass = false;
+  runQuiz({ title: '🔔 مراجعة: ' + c.ar, country: c, questions: shuffle(buildSet(c, ['flag', 'map', 'capital', extra], n)), onClose,
+    onDecide: (score) => { pass = score >= 3; onResult?.(pass); },
+    onAbort: () => onResult?.(false, true),
     onDone: (score, _r, box, m) => {
-      const pass = score >= 3;
       sfx(pass ? 'win' : 'wrong');
       box.append(h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, pass ? '✅' : '🔁'),
         h('h3', {}, pass ? 'ما زلت تتذكرها! أحسنت' : 'نسيت شيئاً، لا بأس'),
         h('p', {}, pass ? 'سنذكّرك بها بعد مدة أطول.' : 'سنعيدها إليك بعد ٣ أيام.'),
-        h('button', { class: 'btn big', onclick: () => { m.close(); onDone(pass); } }, 'متابعة')));
+        h('button', { class: 'btn big', onclick: () => m.close() }, 'متابعة')));
     } });
 }
 
-// ---------- اختبار تحديد المستوى ----------
-export function placementTest(onDone) {
+// ---------- اختبار تحديد المستوى: تقدير بداية فقط ----------
+export function placementTest(onDone, onCancel) {
   const fam = states.filter((s) => s.famous);
   const mid = states.filter((s) => !s.famous && s.area > 200000);
   const hard = states.filter((s) => !s.famous && s.area <= 200000);
   const set = [
-    ...pick(fam, 3).map((c) => [c, 'flag']), ...pick(fam, 2).map((c) => [c, 'continent']),
+    ...pick(fam, 2).map((c) => [c, 'flag']), ...pick(fam, 2).map((c) => [c, 'continent']), ...pick(fam, 1).map((c) => [c, 'map']),
     ...pick(mid, 2).map((c) => [c, 'capital']), ...pick(mid, 1).map((c) => [c, 'flag']),
     ...pick(hard, 1).map((c) => [c, 'capital']), ...pick(hard, 1).map((c) => [c, 'flag']),
   ];
-  const questions = set.map(([c, k]) => (usable(k, c) ? Q[k](c, 4) : Q.continent(c, 4)));
-  runQuiz({ title: '🧭 اختبار تحديد المستوى', questions,
-    intro: h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, '🧭'), h('h3', {}, 'لنعرف مستواك!'), h('p', {}, 'عشرة أسئلة قصيرة تبدأ سهلة ثم تصعب. لا تقلق إن لم تعرف الإجابة.')),
+  const questions = set.map(([c, k]) => (usable(k, c) ? Q[k](c, 3) : Q.continent(c, 3)));
+  // سؤال الخريطة يحتاج الدولة نفسها: نمرّرها بوضع خاص
+  let done = false;
+  const runOne = () => runQuiz({ title: '🧭 تقدير البداية', questions, country: null, record: false, mapCountries: set.map(([c]) => c),
+    intro: h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, '🧭'), h('h3', {}, 'لنقدّر من أين تبدأ'),
+      h('p', {}, 'عشرة أسئلة قصيرة تبدأ سهلة ثم تصعب، ويُقرأ كل سؤال بصوت عالٍ. هذا ليس امتحاناً: يقترح مستوى بداية، ويمكن تغييره لاحقاً من لوحة الوالدين.')),
+    onClose: () => { if (!done) onCancel?.(); },
     onDone: (score, _r, box, m) => {
       const level = score <= 3 ? 1 : score <= 7 ? 2 : 3;
       const names = { 1: '🌱 صغير', 2: '🌿 متوسط', 3: '🌳 كبير' };
-      speak(`أحسنت! مستواك ${names[level].slice(2)}`, LANG.ar);
+      speak(`أحسنت! المستوى المقترح ${names[level].slice(2)}`, LANG.ar);
       box.append(h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, '🎯'),
-        h('h3', {}, `${score.toLocaleString('ar-EG')} من ١٠`), h('p', {}, 'مستواك المقترح: ', h('b', {}, names[level])),
-        h('button', { class: 'btn big', onclick: () => { m.close(); onDone(level, score); } }, 'موافق')));
+        h('h3', {}, `${score.toLocaleString('ar-EG')} من ١٠`), h('p', {}, 'المستوى المقترح للبداية: ', h('b', {}, names[level])),
+        h('div', { class: 'row wrap' },
+          h('button', { class: 'btn big', onclick: () => { done = true; m.close(); onDone(level, score); } }, 'موافق'),
+          level > 1 ? h('button', { class: 'btn big soft', onclick: () => { done = true; m.close(); onDone(1, score); } }, '🌱 أفضّل البدء من الأساس') : null)));
     } });
+  runOne();
 }
 if (import.meta.env.DEV) window.__Q = { Q, buildSet, usable };

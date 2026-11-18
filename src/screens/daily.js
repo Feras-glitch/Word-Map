@@ -11,12 +11,17 @@ function hash(s) { let x = 2166136261; for (const ch of s) { x ^= ch.charCodeAt(
 
 export function dailyScreen(root) {
   const me = store.me;
+  const owner = me.id;
+  // تُلغى الرحلة إن خرج الطفل من الشاشة أو بُدّل الملف، فلا يُحفظ شيء لغير صاحبها
+  const alive = () => root.isConnected && store.me?.id === owner;
   const d = today();
   const P = pool(me.level).filter((c) => c.cen);
-  // دولة اليوم ثابتة لكل طفل في اليوم نفسه، ولا تتكرر مع الأمس
+  // دولة اليوم ثابتة لكل طفل في اليوم نفسه، ولا تكون دولة الأمس
+  const avoid = me.daily.last === d ? me.daily.prevId : me.daily.lastId;
   let target = P[hash(d + me.id) % P.length];
-  const from = byId[me.daily.lastId && me.daily.lastId !== target.id ? me.daily.lastId : 'EGY'];
-  if (from.id === target.id) target = P[(hash(d + me.id) + 1) % P.length];
+  if (target.id === avoid) target = P[(hash(d + me.id) + 1) % P.length];
+  let from = byId[avoid] || byId.EGY;
+  if (from.id === target.id) from = byId.SAU;
 
   const m = createMap({ labels: false, onTap: (id) => id !== 'ATA' && openCard(id) });
   const plane = svgEl('text', { class: 'plane', 'text-anchor': 'middle', 'dominant-baseline': 'middle' });
@@ -45,9 +50,11 @@ export function dailyScreen(root) {
   function fly() {
     sfx('whoosh'); panel.replaceChildren(h('p', {}, '✈️ نطير الآن…'));
     trail.classList.add('on');
-    const L = trail.getTotalLength(); const t0 = performance.now(); const dur = 2600;
+    const L = trail.getTotalLength(); const t0 = performance.now();
+    const dur = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 2600;
     const step = (t) => {
-      const p = Math.min(1, Math.max(0, (t - t0) / dur)); const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      if (!alive()) return;
+      const p = dur ? Math.min(1, Math.max(0, (t - t0) / dur)) : 1; const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
       const a = trail.getPointAtLength(L * e), b = trail.getPointAtLength(Math.min(L, L * e + 1));
       // الرمز ✈️ يتجه أصلاً إلى الأعلى واليمين (٤٥°)
       const ang = (Math.atan2(b.y - a.y, b.x - a.x) * 180) / Math.PI + 45;
@@ -57,8 +64,9 @@ export function dailyScreen(root) {
     requestAnimationFrame(step);
   }
   function land() {
+    if (!alive()) return;
     const streak = streakFor();
-    store.patch((p) => { p.daily = { last: d, lastId: target.id, streak }; });
+    store.patchProfile(owner, (p) => { p.daily = { last: d, lastId: target.id, prevId: p.daily?.last === d ? p.daily.prevId : p.daily?.lastId, streak }; });
     m.zoomToCountry(target.id, 900); m.flash(target.id, 'flash', 3000);
     confetti(40); sfx('win');
     speak('هبطنا في ' + target.ar + '!', LANG.ar);
@@ -66,6 +74,5 @@ export function dailyScreen(root) {
       h('div', { class: 'sp-head' }, h('img', { class: 'sp-flag', src: flagUrl(target.f), alt: '' }), h('b', {}, 'هبطنا في ' + target.ar + '!'), h('span', { class: 'sp-n' }, '🔥 ' + streak.toLocaleString('ar-EG') + ' يوم')),
       h('p', {}, streak > 1 ? `رائع! هذه رحلتك رقم ${streak.toLocaleString('ar-EG')} على التوالي. عُد غداً لرحلة جديدة.` : 'عُد غداً لرحلة جديدة، واجمع سلسلة رحلات متتالية!'),
       h('button', { class: 'btn big', onclick: () => openCard(target.id) }, '📖 افتح بطاقة ' + target.ar));
-    setTimeout(() => openCard(target.id), 1400);
   }
 }

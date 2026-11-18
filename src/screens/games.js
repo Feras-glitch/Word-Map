@@ -63,7 +63,7 @@ function choiceGame(root, key, makeQ) {
       const b = h('button', { class: 'opt', onclick: () => {
         if (locked) return; locked = true;
         const ok = o.correct;
-        record(c.id, key === 'capital' ? 'capital' : 'flag', ok);
+        record(c.id, key === 'capital' ? 'capital' : 'flag', ok, { src: 'practice' });
         b.classList.add(ok ? 'right' : 'wrong');
         if (ok) { score++; sfx('correct'); speak(praise() + ' ' + q.answerSpeech, LANG.ar); }
         else { sfx('wrong'); opts.querySelector('[data-c="1"]').classList.add('right'); speak('الجواب: ' + q.answerSpeech, LANG.ar); }
@@ -140,7 +140,7 @@ export function whereGame(root) {
     if (locked || id === 'ATA') return;
     const c = qs[i];
     if (id === c.id) {
-      record(c.id, 'map', tries === 0);
+      record(c.id, 'map', tries === 0, { src: 'practice' });
       locked = true; score += tries === 0 ? 1 : 0.5; sfx('correct'); m.mark(id, 'right');
       speak(praise() + ' هذه ' + c.ar, LANG.ar);
       done();
@@ -148,7 +148,7 @@ export function whereGame(root) {
       tries++; sfx('wrong'); m.flash(id, 'wrong', 900);
       const t = byId[id];
       if (tries >= 2) {
-        record(c.id, 'map', false);
+        record(c.id, 'map', false, { src: 'practice' });
         locked = true; m.mark(c.id, 'right'); m.zoomToCountry(c.id);
         speak('هذه ' + t.ar + '. و' + c.ar + ' هنا', LANG.ar); done();
       } else speak('هذه ' + t.ar + '. حاول مرة أخرى', LANG.ar);
@@ -179,10 +179,11 @@ export function memoryGame(root) {
         moves++; info.querySelector('.mv').textContent = moves.toLocaleString('ar-EG');
         const [a, b] = open;
         if (a.card.c.id === b.card.c.id) {
-          matched++; open = []; sfx('correct'); speak(a.card.c.ar, LANG.ar); record(a.card.c.id, 'flag', true);
+          matched++; open = []; sfx('correct'); speak(a.card.c.ar, LANG.ar);
           a.el.classList.add('matched'); b.el.classList.add('matched');
           info.querySelector('.mt').textContent = matched.toLocaleString('ar-EG');
           if (matched === pairs) setTimeout(() => {
+            if (!root.isConnected) return;
             const score = Math.max(0, Math.min(10, Math.round(10 - (moves - pairs) * (10 / (pairs * 1.6)))));
             finish(root, 'memory', score, 10, () => { root.innerHTML = ''; memoryGame(root); });
           }, 900);

@@ -20,7 +20,8 @@ export function settingsScreen(root, { go }) {
       h('label', {}, '🗣️ سرعة النطق'), rate,
       h('button', { class: 'btn soft small', onclick: () => { speak('مرحباً', 'ar-SA'); setTimeout(() => speak('Hello', 'en-US'), 1200); setTimeout(() => speak('你好', 'zh-CN'), 2400); } }, '🔊 جرّب الأصوات الثلاثة'),
       h('p', { class: 'hint' }, 'إن لم تسمع الصوت الصيني أو العربي: ثبّت حزمة الصوت من إعدادات الجهاز ← اللغة ← تحويل النص إلى كلام.')),
-    h('p', { class: 'hint center' }, 'مستكشف العالم · يعمل بلا إنترنت · الإصدار ١٫٤'),
+    h('button', { class: 'btn soft', onclick: () => go('about') }, '🗺️ عن هذه الخريطة ومصادرها'),
+    h('p', { class: 'hint center' }, 'مستكشف العالم · يعمل بلا إنترنت · الإصدار ' + __APP_VERSION__),
     h('p', { class: 'hint center', dir: 'ltr' }, 'Data: mledoze/countries (ODbL) · Map: Natural Earth · Flags: flag-icons (MIT) · Font: Cairo (OFL)'),
   );
 }
