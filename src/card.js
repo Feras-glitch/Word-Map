@@ -4,7 +4,7 @@ import { byId, flagUrl, continents, continents3, greetings, languages, num, cont
 import { speak, LANG } from './speech.js';
 import { sfx } from './sfx.js';
 import { store } from './store.js';
-import { hasVisit, hasGold, canTakeExam, giveVisit, examResult, dueReviews, reviewResult } from './mastery.js';
+import { hasVisit, hasGold, canTakeExam, giveVisit, visitWait, visitFailed, examResult, dueReviews, reviewResult } from './mastery.js';
 import { visitQuestion, masteryExam, reviewQuiz } from './quiz.js';
 
 const say = (text, lang, fb) => h('button', { class: 'say', 'aria-label': 'استمع', onclick: (e) => { e.stopPropagation(); speak(text, lang, fb); } }, '🔊');
@@ -198,12 +198,28 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
       h('div', { class: 'stamp-status' },
         h('span', { class: 'chip-st' + (visit ? ' on' : '') }, visit ? '✅ ختم الزيارة' : '⬜ ختم الزيارة'),
         h('span', { class: 'chip-st gold' + (gold ? ' on' : '') }, gold ? '🥇 الختم الذهبي' : '⬜ الختم الذهبي')),
-      !visit ? h('button', { class: 'btn big', onclick: () => visitQuestion(c, () => { giveVisit(c.id); showStamp(false); drawStamp(); checkContinentBadge(c.cont); }) }, '🛂 احصل على ختم الزيارة (سؤال واحد)') : null,
+      !visit ? (visitWait(c.id) > 0 ? waitNote()
+        : h('button', { class: 'btn big', onclick: () => visitQuestion(c, () => { giveVisit(c.id); showStamp(false); drawStamp(); checkContinentBadge(c.cont); }, () => { visitFailed(c.id); drawStamp(); }) }, '🛂 احصل على ختم الزيارة (سؤال واحد)')) : null,
       visit && !gold ? (ex.ok ? h('button', { class: 'btn big gold-btn', onclick: () => masteryExam(c, (score) => { if (examResult(c.id, score)) { showStamp(true); checkGoldCert(c.cont); } drawStamp(); }) }, '⭐ امتحان الإتقان (٥ أسئلة)')
         : h('p', { class: 'note' }, '⏳ ' + ex.why)) : null,
       gold && due ? h('button', { class: 'btn big', onclick: () => reviewQuiz(c, (pass) => { reviewResult(c.id, pass); drawStamp(); }) }, '🔔 حان وقت المراجعة') : null,
     ].filter(Boolean));
   };
+  // عدّ تنازلي بعد خطأ في سؤال الزيارة
+  function waitNote() {
+    const el = h('p', { class: 'note wait' });
+    const tick = () => {
+      if (!el.isConnected && el.dataset.started) return;
+      el.dataset.started = 1;
+      const ms = visitWait(c.id);
+      if (ms <= 0) return drawStamp();
+      const s = Math.ceil(ms / 1000);
+      el.textContent = `📖 اقرأ البطاقة أولاً، ثم حاول بعد ${Math.floor(s / 60).toLocaleString('ar-EG')}:${String(s % 60).padStart(2, '0').replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d])}`;
+      setTimeout(tick, 1000);
+    };
+    tick();
+    return el;
+  }
   drawStamp();
   void stamp;
   return m;

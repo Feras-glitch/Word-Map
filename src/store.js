@@ -27,7 +27,7 @@ export const store = {
   switchTo(id) { load().current = id; save(); },
   stamp(cid) {
     const p = this.me; if (!p || p.stamps[cid]) return false;
-    p.stamps[cid] = new Date().toISOString().slice(0, 10); save(); return true;
+    p.stamps[cid] = new Date().toLocaleDateString('en-CA'); save(); return true;
   },
   setStars(game, stars) {
     const p = this.me; if (!p) return;

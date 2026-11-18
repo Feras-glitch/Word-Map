@@ -37,9 +37,19 @@ export function record(id, skill, ok, pid) {
 export const hasVisit = (id) => !!store.me?.stamps?.[id];
 export const hasGold = (id) => !!store.me?.gold?.[id];
 
+// بعد خطأ في سؤال الزيارة ينتظر الطفل دقيقتين ويقرأ البطاقة، حتى لا يصل إلى الختم بالتخمين المتكرر
+export const VISIT_WAIT = 120e3;
+export function visitWait(id) {
+  const t = store.me?.visitFail?.[id]; if (!t) return 0;
+  return Math.max(0, t + VISIT_WAIT - Date.now());
+}
+export function visitFailed(id) { store.patch((p) => { (p.visitFail ||= {})[id] = Date.now(); }); }
+
 export function canTakeExam(id) {
   const p = store.me; if (!p) return { ok: false };
   if (!hasVisit(id)) return { ok: false, why: 'احصل على ختم الزيارة أولاً' };
+  // الامتحان من اليوم التالي للزيارة: نقيس ما بقي في الذاكرة لا ما قُرئ قبل ثوانٍ
+  if (p.stamps[id] >= today()) return { ok: false, why: 'امتحان الإتقان يُفتح غداً. راجع البطاقة اليوم، وتعال غداً لتنال الختم الذهبي' };
   const f = p.examFail?.[id];
   if (f && f === today()) return { ok: false, why: 'حاولت اليوم؛ راجع البطاقة وعد غداً' };
   return { ok: true };

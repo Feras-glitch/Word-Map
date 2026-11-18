@@ -48,7 +48,7 @@ export const Q = {
     const useZh = force ? force === 'zh' : Math.random() < 0.5;
     const opts = shuffle([c, ...others(c, n - 1, (s) => (useZh ? s.zh !== c.zh : s.en !== c.en))]);
     const lang = useZh ? 'بالصينية' : 'بالإنجليزية';
-    return { skill: 'names', say: `ما اسم ${c.ar} ${lang}؟`, prompt: h('p', {}, 'ما اسم ', h('b', {}, c.ar), ' ' + lang + '؟'),
+    return { skill: 'names', say: `ما اسم ${c.ar} ${lang}؟`, prompt: h('div', {}, h('p', {}, 'ما اسم ', h('b', {}, c.ar), ' ' + lang + '؟'), h('small', { class: 'hint' }, 'اضغط 🔊 لتسمع كل خيار، ثم اختر')),
       options: opts.map((o) => ({ correct: o.id === c.id,
         el: h('span', { class: 'qo-name', dir: 'ltr' }, useZh ? h('span', { class: 'zh-opt' }, h('b', {}, o.zh), h('small', {}, o.py)) : h('b', {}, o.en), sayBtn(useZh ? o.zh : o.en, useZh ? LANG.zh : LANG.en)) })) };
   },
@@ -171,7 +171,7 @@ export function runQuiz({ title, country, questions, passMark, onDone, intro, le
 }
 
 // ---------- ختم الزيارة: سؤال واحد ----------
-export function visitQuestion(c, onPass) {
+export function visitQuestion(c, onPass, onFail) {
   const level = store.me?.level || 2;
   const n = level === 1 ? 3 : 4;
   const kinds = (level === 1 ? ['flag', 'continent'] : ['flag', 'capital', 'continent']).filter((k) => usable(k, c));
@@ -180,7 +180,8 @@ export function visitQuestion(c, onPass) {
     if (score === 1) {
       box.append(h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, '🛂'), h('h3', {}, 'أحسنت! حصلت على ختم زيارة ' + c.ar), h('button', { class: 'btn big', onclick: () => { m.close(); onPass(); } }, 'خذ الختم ✓')));
     } else {
-      box.append(h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, '📖'), h('h3', {}, 'اقرأ البطاقة جيداً ثم حاول مرة أخرى'), h('button', { class: 'btn big soft', onclick: () => m.close() }, 'عودة إلى البطاقة')));
+      onFail?.();
+      box.append(h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, '📖'), h('h3', {}, 'اقرأ البطاقة جيداً، ويمكنك المحاولة بعد دقيقتين'), h('button', { class: 'btn big soft', onclick: () => m.close() }, 'عودة إلى البطاقة')));
     }
   } });
 }
@@ -189,7 +190,7 @@ export function visitQuestion(c, onPass) {
 export function masteryExam(c, onDone) {
   const level = store.me?.level || 2;
   const n = level === 1 ? 3 : 4;
-  const questions = buildSet(c, ['flag', 'capital', 'map', level === 1 ? 'continent' : 'names', 'landmark'], n);
+  const questions = buildSet(c, ['flag', 'capital', 'map', 'names', 'landmark'], n);
   runQuiz({ title: '⭐ امتحان الإتقان: ' + c.ar, country: c, questions,
     intro: h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, '⭐'), h('h3', {}, 'امتحان إتقان ' + c.ar),
       h('p', {}, 'خمسة أسئلة عن ' + c.ar + ': العلم، والعاصمة، والموقع على الخريطة، وغيرها. أجب عن أربعة صحيحاً لتنال الختم الذهبي.')),
@@ -209,9 +210,9 @@ export function masteryExam(c, onDone) {
 export function reviewQuiz(c, onDone) {
   const level = store.me?.level || 2;
   const n = level === 1 ? 3 : 4;
-  runQuiz({ title: '🔔 مراجعة: ' + c.ar, country: c, questions: shuffle(buildSet(c, ['flag', 'capital', 'map'], n)),
+  runQuiz({ title: '🔔 مراجعة: ' + c.ar, country: c, questions: shuffle(buildSet(c, ['flag', 'capital', 'map', 'landmark'], n)),
     onDone: (score, _r, box, m) => {
-      const pass = score >= 2;
+      const pass = score >= 3;
       sfx(pass ? 'win' : 'wrong');
       box.append(h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, pass ? '✅' : '🔁'),
         h('h3', {}, pass ? 'ما زلت تتذكرها! أحسنت' : 'نسيت شيئاً، لا بأس'),
