@@ -17,6 +17,11 @@ export async function saveFile(name, data, mime) {
     await Share.share({ title: name, files: [r.uri] });
     return 'shared';
   }
+  // داخل صفحة claude.ai: التنزيل عبر إذن المنصة
+  if (window.claude?.use) {
+    let dl = null; try { dl = await window.claude.use('downloads'); } catch { /* */ }
+    if (dl) { await dl.save({ filename: name, data }); return 'saved'; }
+  }
   const blob = typeof data === 'string' ? new Blob([data], { type: mime || 'application/json' }) : data;
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
