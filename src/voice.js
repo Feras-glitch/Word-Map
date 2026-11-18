@@ -23,7 +23,7 @@ function db() {
   });
   return dbp;
 }
-const tx = async (mode, fn) => { const d = await db(); return new Promise((res, rej) => { const t = d.transaction('clips', mode); const st = t.objectStore('clips'); const out = fn(st); t.oncomplete = () => res(out?.result ?? out); t.onerror = () => rej(t.error); }); };
+const tx = async (mode, fn) => { const d = await db(); return new Promise((res, rej) => { const t = d.transaction('clips', mode); const st = t.objectStore('clips'); const out = fn(st); t.oncomplete = () => res(out instanceof IDBRequest ? out.result : out); t.onerror = () => rej(t.error); }); };
 // clip: { id: pack|key, pack, key, text, lang, blob, mime, by, date, trim:[start,end], gain, approved }
 export const putClip = (clip) => tx('readwrite', (s) => s.put({ ...clip, id: clip.pack + '|' + clip.key }));
 export const delClip = (pack, key) => tx('readwrite', (s) => s.delete(pack + '|' + key));

@@ -57,10 +57,14 @@ const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 async function findFile(t) {
   for (const code of t.codes) {
     const word = norm(t.text);
-    const res = await api({ action: 'query', list: 'search', srnamespace: '6', srlimit: '30', srsearch: `intitle:"(${code})" intitle:"${word.replace(/"/g, '')}" LL` });
     const re = new RegExp('^File:LL-Q\\d+ \\(' + code + '\\)-.+-' + esc(word) + '\\.(wav|ogg|flac|mp3|webm)$', 'i');
-    const hit = (res.query?.search || []).map((x) => x.title).find((x) => re.test(x));
-    if (hit) return hit;
+    // بحثان: بالعنوان، ثم بالنص (الكلمات الصينية لا تُجزّأ جيداً في بحث العناوين)
+    for (const q of [`intitle:"(${code})" intitle:"${word.replace(/"/g, '')}" LL`, `"${word.replace(/"/g, '')}" intitle:"LL-" intitle:"(${code})"`]) {
+      const res = await api({ action: 'query', list: 'search', srnamespace: '6', srlimit: '50', srsearch: q });
+      const hit = (res.query?.search || []).map((x) => x.title).find((x) => re.test(x));
+      if (hit) return hit;
+      await sleep(120);
+    }
     await sleep(150);
   }
   return null;
@@ -77,7 +81,7 @@ async function info(title) {
 
 // ---------- الجلب والتحويل ----------
 const old = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : { items: [] };
-const have = new Map(old.items.map((x) => [x.key, { ...x, by: String(x.by).replace(/\s+/g, ' ').replace(/^Speaker:\s*([^ ]+).*?— /i, '$1 — ') }]));
+const have = new Map((old.v2 ? old.items : []).map((x) => [x.key, { ...x, by: String(x.by).replace(/\s+/g, ' ').replace(/^Speaker:\s*([^ ]+).*?— /i, '$1 — ') }]));
 const items = []; let found = 0, miss = 0, kept = 0;
 for (const [i, t] of uniq.entries()) {
   if (have.has(t.key)) { items.push(have.get(t.key)); kept++; continue; }
@@ -88,7 +92,7 @@ for (const [i, t] of uniq.entries()) {
     if (!inf || !/CC|Public domain|PD/i.test(inf.license) || inf.size > 3e6) { miss++; continue; }
     const src = path.join(TMP, 'in'); const dst = path.join(TMP, 'out.webm');
     fs.writeFileSync(src, Buffer.from(await (await fetch(inf.url, { headers: { 'User-Agent': UA } })).arrayBuffer()));
-    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', src, '-ac', '1', '-ar', '24000', '-af', 'silenceremove=start_periods=1:start_threshold=-45dB:stop_periods=1:stop_threshold=-45dB,loudnorm=I=-18:TP=-2', '-c:a', 'libopus', '-b:a', '24k', dst]);
+    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', src, '-ac', '1', '-ar', '24000', '-af', 'silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,loudnorm=I=-18:TP=-2', '-c:a', 'libopus', '-b:a', '24k', dst]);
     const data = fs.readFileSync(dst).toString('base64');
     items.push({ key: t.key, text: t.text, lang: t.lang, mime: 'audio/webm', data, date: new Date().toISOString(), approved: true,
       by: `${inf.artist || 'Lingua Libre'} — Lingua Libre (${inf.license})`, source: inf.page, license: inf.license, what: t.what });
@@ -97,7 +101,7 @@ for (const [i, t] of uniq.entries()) {
     await sleep(200);
   } catch (e) { miss++; console.warn('⚠️ ' + t.key + ': ' + e.message); }
 }
-const pack = { app: 'world-explorer-voices', v: 1, kind: 'dev', pack: 'dev', by: 'Lingua Libre', at: new Date().toISOString(), items };
+const pack = { app: 'world-explorer-voices', v: 1, v2: true, kind: 'dev', pack: 'dev', by: 'Lingua Libre', at: new Date().toISOString(), items };
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, JSON.stringify(pack));
 // ملف الإسناد (شرط رخصة CC BY-SA)
