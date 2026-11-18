@@ -13,6 +13,7 @@ const ar = (n) => Number(n).toLocaleString('ar-EG');
 const today = () => new Date().toLocaleDateString('en-CA');
 const W = ['', 'دليل واحد', 'دليلين', '٣ أدلة', '٤ أدلة', '٥ أدلة', '٦ أدلة'];
 const cluesWord = (n) => W[n] || ar(n) + ' أدلة';
+const andList = (a) => (a.length <= 1 ? a.join('') : a.slice(0, -1).join('، ') + ' و' + a[a.length - 1]);
 const dualWord = (n) => (n === 1 ? 'دولة واحدة' : n === 2 ? 'دولتين' : n <= 10 ? ar(n) + ' دول' : ar(n) + ' دولة');
 
 // قصة قصيرة تُحفظ في جواز الطفل ولوحة الوالدين
@@ -29,7 +30,9 @@ export function missionsScreen(root, { go }) {
     h('div', { class: 'tiles' },
       M('find', '🔎', 'ابحث عن بلدي', 'أدلة تأتي واحداً بعد الآخر', '#2b7fd4'),
       M('nile', '💧', 'رحلة قطرة في النيل', 'من أسوان حتى البحر', '#1d6fbf'),
-      M('guide', '🧭', 'كن دليل أخيك', 'اصنع لغزاً لإخوتك', '#7b5cd6')));
+      M('guide', '🧭', 'كن دليل أخيك', 'اصنع لغزاً لإخوتك', '#7b5cd6'),
+      M('route', '🚗', 'ارسم طريقي', 'سافر برّاً من دولة إلى أخرى', '#c2410c'),
+      M('layer', '⛰️', 'أين النهر والجبل؟', 'توقّع، ثم اكشف الطبقة', '#8b5a2b')));
 }
 
 // ---------- ابحث عن بلدي ----------
@@ -280,4 +283,137 @@ export function nileScreen(root) {
       panel.replaceChildren(h('p', {}, '💧 ' + intro), h('button', { class: 'btn big', onclick: next }, 'نعم، لننطلق! 💧'));
     }
   });
+}
+
+
+// ---------- ارسم طريقي: طريق بري بين دولتين ----------
+// يقبل أي طريق تشترك فيه كل دولتين متتاليتين في حدود برية
+function bfs(a, b) {
+  const prev = { [a]: null }; const q = [a];
+  while (q.length) { const x = q.shift(); if (x === b) break; for (const n of byId[x].borders) if (byId[n]?.kind === 'state' && !(n in prev)) { prev[n] = x; q.push(n); } }
+  if (!(b in prev)) return null;
+  const path = []; for (let x = b; x; x = prev[x]) path.unshift(x); return path;
+}
+export function routeScreen(root, { go }) {
+  const me = store.me; const owner = me.id; const level = me.level;
+  const alive = () => root.isConnected && store.me?.id === owner;
+  const [minL, maxL] = level === 1 ? [3, 3] : level === 2 ? [3, 4] : [4, 6];
+  const P = pool(Math.max(2, level)).filter((c) => c.borders.length);
+  let from, to, best;
+  for (let t = 0; t < 400; t++) {
+    from = P[Math.floor(Math.random() * P.length)]; to = P[Math.floor(Math.random() * P.length)];
+    if (from === to) continue; best = bfs(from.id, to.id);
+    if (best && best.length >= minL && best.length <= maxL) break; best = null;
+  }
+  const path = [from.id]; let done = false, wrongs = 0;
+  const m = createMap({ labels: level <= 2, compass: true, fill: (x) => (x.kind === 'state' ? lighten(contColors[x.cont] || '#ccc', 0.35) : '#e6e6e6'),
+    onTap: (id) => tap(id), onMiss: () => toast('🌊 هذا ماء. السيارة لا تسير في البحر!') });
+  const lines = svgEl('g', {}); m.overlay.append(lines);
+  const msg = h('p', { class: 'clue-msg' });
+  const steps = h('div', { class: 'route-steps' });
+  const panel = h('div', { class: 'story-panel clue-panel' },
+    h('p', {}, '🚗 سافر برّاً من ', h('b', {}, from.ar), ' إلى ', h('b', {}, to.ar), '. المس الدول التي ستمر بها واحدة بعد الأخرى. لا يمكن عبور البحر!'),
+    steps, msg, h('div', { class: 'row wrap' }, h('button', { class: 'btn small soft', onclick: () => undo() }, '↩️ تراجع'), h('button', { class: 'btn small soft', onclick: () => hint() }, '💡 تلميح')));
+  root.append(m.el, panel);
+  const drawPath = () => {
+    m.clearMarks('right'); m.clearMarks('goal');
+    for (const id of path) m.mark(id, 'right');
+    m.mark(to.id, 'goal');
+    lines.replaceChildren(...path.slice(1).map((id, k) => svgEl('line', { x1: byId[path[k]].cen[0], y1: byId[path[k]].cen[1], x2: byId[id].cen[0], y2: byId[id].cen[1], class: 'route-line' })));
+    steps.replaceChildren(...path.map((id, k) => h('span', { class: 'chip' }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar, k < path.length - 1 ? ' ←' : '')));
+  };
+  function tap(id) {
+    if (done || !alive()) return;
+    const c = byId[id]; if (!c || c.kind !== 'state') return;
+    const last = byId[path[path.length - 1]];
+    if (path.includes(id)) { msg.textContent = `مررتَ بـ${c.ar} من قبل.`; return; }
+    if (!last.borders.includes(id)) {
+      wrongs++; sfx('wrong'); m.flash(id, 'flash', 900);
+      const t = !c.landlocked && !last.landlocked && c.cont === last.cont ? `${c.ar} قريبة، لكن لا حدود برية بينها وبين ${last.ar}. ربما يفصل بينهما بحر.` : `لا تشترك ${c.ar} مع ${last.ar} في حدود برية. اختر جارة لـ${last.ar}.`;
+      msg.textContent = t; speak(t, LANG.ar); return;
+    }
+    path.push(id); sfx('tap'); speak(c.ar, LANG.ar); msg.textContent = ''; drawPath();
+    if (id === to.id) win();
+  }
+  function undo() { if (path.length > 1 && !done) { path.pop(); drawPath(); } }
+  function hint() {
+    const last = path[path.length - 1]; const rest = bfs(last, to.id);
+    if (rest && rest[1]) { m.flash(rest[1], 'flash', 2000); const t = `جرّب ${byId[rest[1]].ar}.`; msg.textContent = t; speak(t, LANG.ar); wrongs++; }
+  }
+  function win() {
+    done = true; confetti(40); sfx('win');
+    const n = path.length - 2;
+    const t = `وصلت إلى ${to.ar}! مررتَ بـ${n === 0 ? 'لا دول' : n === 1 ? 'دولة واحدة' : n === 2 ? 'دولتين' : ar(n) + ' دول'} في الطريق.${path.length > best.length ? ` وأقصر طريق يمر بـ${best.length - 2 === 1 ? 'دولة واحدة' : best.length - 2 === 2 ? 'دولتين' : ar(best.length - 2) + ' دول'}: ${best.slice(1, -1).map((x) => byId[x].ar).join('، ')}.` : ' وهذا أقصر طريق!'}`;
+    speak(t, LANG.ar);
+    addStory(owner, { id: to.id, kind: 'route', path: path.slice(), text: `سافرتُ برّاً من ${from.ar} إلى ${to.ar}`, detail: `مرّ بـ${andList(path.slice(1, -1).map((x) => byId[x].ar)) || 'لا دول'}${wrongs ? '، واحتاج إلى ' + ar(wrongs) + ' تصحيحات أو تلميحات' : '، دون أخطاء'}` });
+    panel.replaceChildren(h('p', {}, '🏁 ' + t), h('button', { class: 'btn', onclick: () => { root.innerHTML = ''; routeScreen(root, { go }); } }, '🔁 طريق جديد'));
+  }
+  drawPath();
+  requestAnimationFrame(() => {
+    // نقرّب على مراكز دول الطريق (لا على مربع روسيا الذي يغطي نصف العالم)
+    const xs = best.map((id) => byId[id].cen[0]), ys = best.map((id) => byId[id].cen[1]);
+    m.zoomTo([Math.min(...xs) - 25, Math.min(...ys) - 25, Math.max(...xs) + 25, Math.max(...ys) + 25], 0, 0.3);
+    setTimeout(() => alive() && speak(`سافر برّاً من ${from.ar} إلى ${to.ar}`, LANG.ar), 300);
+  });
+}
+
+// ---------- أين النهر والجبل؟ توقّع ثم اكشف الطبقة ----------
+export function layerScreen(root, { go }) {
+  const me = store.me; const owner = me.id; const level = me.level;
+  const alive = () => root.isConnected && store.me?.id === owner;
+  const kinds = level === 1 ? ['river', 'desert', 'range'] : ['river', 'desert', 'range', 'lake', 'peak'];
+  const items = NAT.items.filter((it) => kinds.includes(it.kind) && it.countries?.length);
+  const it = items[Math.floor(Math.random() * items.length)];
+  const K = NAT.kinds[it.kind];
+  let done = false, tries = 0;
+  const m = createMap({ labels: level <= 2, compass: true, onTap: (id) => tap(id), onMiss: () => tap(null) });
+  const msg = h('p', { class: 'clue-msg' });
+  const panel = h('div', { class: 'story-panel clue-panel' },
+    h('p', {}, `${K.icon} أين يقع `, h('b', {}, it.ar), '؟ المس على الخريطة دولة تظن أنه فيها، ثم نكشف طبقة الطبيعة لنتحقق.'),
+    msg, h('button', { class: 'btn small soft', onclick: () => reveal(false) }, '👀 اكشف الطبقة الآن'));
+  root.append(m.el, panel);
+  function tap(id) {
+    if (done || !alive()) return;
+    tries++;
+    const c = id && byId[id];
+    if (c && it.countries.includes(id)) return reveal(true, c);
+    const t = c ? `ليس في ${c.ar}. ${tries >= 2 ? 'تلميح: ابحث في قارة ' + continents[byId[it.countries[0]].cont] + '.' : 'حاول مرة أخرى.'}` : 'هذا ماء. المس دولة.';
+    sfx('wrong'); msg.textContent = t; speak(t, LANG.ar);
+  }
+  function reveal(ok, c) {
+    if (done) return; done = true;
+    m.setNature(true); m.zoomToNature(it.id); setTimeout(() => m.flashNature(it.id), 800);
+    for (const id of it.countries) m.mark(id, 'right');
+    if (ok) { confetti(30); sfx('win'); }
+    const names = it.countries.map((x) => byId[x]?.ar).filter(Boolean);
+    const t = (ok ? `أحسنت! ${it.ar} في ${c.ar}. ` : '') + `${it.ar} ${{ river: 'يمر بـ', lake: 'تطل عليها: ', peak: 'في: ' }[it.kind] || 'يمتد في: '}${andList(names)}.`;
+    speak(t, LANG.ar);
+    addStory(owner, { id: ok ? c.id : it.countries[0], kind: 'layer', nat: it.id, text: ok ? `توقّعتُ مكان ${it.ar} وأصبت` : `كشفتُ طبقة الطبيعة وتعلمتُ مكان ${it.ar}`, detail: ok ? `أصاب ${tries === 1 ? 'من أول محاولة' : 'بعد ' + ar(tries) + ' محاولات'}` : 'كشف الطبقة قبل أن يصيب' });
+    panel.replaceChildren(h('p', {}, (ok ? '✅ ' : '👀 ') + t), h('p', { class: 'hint' }, '💡 ' + it.fact),
+      h('button', { class: 'btn', onclick: () => { root.innerHTML = ''; layerScreen(root, { go }); } }, '🔁 معلم آخر'));
+  }
+  requestAnimationFrame(() => {
+    if (level === 1) m.zoomTo(contBox[byId[it.countries[0]].cont], 0); else m.world(0);
+    setTimeout(() => alive() && speak(`أين يقع ${it.ar}؟`, LANG.ar), 300);
+  });
+}
+
+// ---------- الخريطة الصغيرة لقصة في الجواز ----------
+export function openStoryMap(st) {
+  const box = h('div', { class: 'story-map' });
+  const md = modal(h('div', {}, h('h3', {}, st.text), st.detail ? h('p', { class: 'hint' }, st.detail) : null, box), { cls: 'card-modal' });
+  const m = createMap({ labels: true, compass: true });
+  box.append(m.el);
+  requestAnimationFrame(() => {
+    if (st.kind === 'nile') { m.setNature(true); m.zoomToNature('nile'); m.mark('EGY', 'right'); return; }
+    if (st.nat) { m.setNature(true); m.zoomToNature(st.nat); setTimeout(() => m.flashNature(st.nat), 800); return; }
+    if (st.path) {
+      const g = svgEl('g', {}); m.overlay.append(g);
+      st.path.forEach((id, k) => { m.mark(id, 'right'); if (k) g.append(svgEl('line', { x1: byId[st.path[k - 1]].cen[0], y1: byId[st.path[k - 1]].cen[1], x2: byId[id].cen[0], y2: byId[id].cen[1], class: 'route-line' })); });
+      const xs = st.path.map((id) => byId[id].cen[0]), ys = st.path.map((id) => byId[id].cen[1]);
+      m.zoomTo([Math.min(...xs) - 25, Math.min(...ys) - 25, Math.max(...xs) + 25, Math.max(...ys) + 25], 0, 0.3); return;
+    }
+    if (byId[st.id]) { m.mark(st.id, 'right'); m.zoomToCountry(st.id, 0); }
+  });
+  return md;
 }
