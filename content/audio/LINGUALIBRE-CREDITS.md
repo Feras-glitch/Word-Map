@@ -21,7 +21,7 @@
 | Argentina | en | Boredcookie — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Boredcookie-Argentina.wav |
 | 阿根廷 | zh | Jouketou — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%98%BF%E6%A0%B9%E5%BB%B7.wav |
 | Buenos Aires | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Buenos_Aires.wav |
-| Armenia | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Armenia.wav |
+| Armenia | en | Pavani916 — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Pavani916-Armenia.wav |
 | Yerevan | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Yerevan.wav |
 | Antigua and Barbuda | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Antigua_and_Barbuda.wav |
 | Australia | en | Wodencafe — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Wodencafe-Australia.wav |
@@ -58,7 +58,7 @@
 | Belmopan | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Belmopan.wav |
 | Bolivia | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Bolivia.wav |
 | Sucre | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Sucre.wav |
-| Brazil | en | Boredcookie — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Boredcookie-Brazil.wav |
+| Brazil | en | Wodencafe — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Wodencafe-Brazil.wav |
 | 巴西 | zh | Jouketou — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%B7%B4%E8%A5%BF.wav |
 | Brasília | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Bras%C3%ADlia.wav |
 | Barbados | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Barbados.wav |
@@ -74,6 +74,18 @@
 | 加拿大 | zh | Jouketou — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%8A%A0%E6%8B%BF%E5%A4%A7.wav |
 | Ottawa | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Ottawa.wav |
 | Switzerland | en | Boredcookie — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Boredcookie-Switzerland.wav |
+| 瑞士 | zh | Shangkuanlc — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E7%91%9E%E5%A3%AB.wav |
+| Bern | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Bern.wav |
+| Chile | en | Pavani916 — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Pavani916-Chile.wav |
+| Santiago | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Santiago.wav |
+| China | en | Grendelkhan — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-china.wav |
+| 中国 | zh | Jouketou — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%AD%E5%9B%BD.wav |
+| Beijing | en | Zazollo — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Zazollo-Beijing.wav |
+| 北京 | zh | Luilui6666 — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%8C%97%E4%BA%AC.wav |
+| Ivory Coast | en | Pavani916 — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Pavani916-Ivory_Coast.wav |
+| Yamoussoukro | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Yamoussoukro.wav |
+| Cameroon | en | Sudokara — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Sudokara-Cameroon.wav |
+| Yaoundé | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Yaound%C3%A9.wav |
 | Kinshasa | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Kinshasa.wav |
 | Republic of the Congo | en | Pavani916 — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Pavani916-Republic_of_the_Congo.wav |
 | Brazzaville | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Brazzaville.wav |
@@ -83,7 +95,7 @@
 | Cape Verde | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Cape_Verde.wav |
 | Praia | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Praia.wav |
 | Costa Rica | en | Pavani916 — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Pavani916-Costa_Rica.wav |
-| Cuba | en | Boredcookie — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Boredcookie-Cuba.wav |
+| Cuba | en | Berrely — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Berrely-cuba.wav |
 | Havana | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Havana.wav |
 | Cyprus | en | ManjiroLL — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-ManjiroLL-Cyprus.wav |
 | Nicosia | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Nicosia.wav |
@@ -97,11 +109,41 @@
 | Roseau | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Roseau.wav |
 | Denmark | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Denmark.wav |
 | 丹麦 | zh | Jouketou — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%B9%E9%BA%A6.wav |
+| Copenhagen | en | Zazollo — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Zazollo-Copenhagen.wav |
+| Dominican Republic | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Dominican_Republic.wav |
+| Santo Domingo | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Santo_Domingo.wav |
+| Algeria | en | Jishnu12684 — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Jishnu12684-Algeria.wav |
+| 阿尔及利亚 | zh | Shangkuanlc — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E9%98%BF%E5%B0%94%E5%8F%8A%E5%88%A9%E4%BA%9A.wav |
+| Algiers | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Algiers.wav |
+| Ecuador | en | Wodencafe — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Wodencafe-Ecuador.wav |
+| Quito | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Quito.wav |
+| Egypt | en | Wodencafe — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Wodencafe-Egypt.wav |
+| 埃及 | zh | Jouketou — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%9F%83%E5%8F%8A.wav |
+| Cairo | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Cairo.wav |
 | Eritrea | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Eritrea.wav |
 | Asmara | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Asmara.wav |
 | Spain | en | Grendelkhan — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-Spain.wav |
+| 西班牙 | zh | Luilui6666 — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%A5%BF%E7%8F%AD%E7%89%99.wav |
+| Madrid | en | Zazollo — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Zazollo-Madrid.wav |
+| Estonia | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Estonia.wav |
+| Tallinn | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Tallinn.wav |
+| Ethiopia | en | Pavani916 — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Pavani916-Ethiopia.wav |
+| Addis Ababa | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Addis_Ababa.wav |
+| Finland | en | Baswameenakshi — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Baswameenakshi-Finland.wav |
+| 芬兰 | zh | Jouketou — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%8A%AC%E5%85%B0.wav |
+| Fiji | en | Pavani916 — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Pavani916-Fiji.wav |
 | Suva | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Suva.wav |
 | France | en | Grendelkhan — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-France.wav |
+| 法国 | zh | Luilui6666 — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%B3%95%E5%9B%BD.wav |
+| Paris | en | Wodencafe — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Wodencafe-paris.wav |
+| 巴黎 | zh | Luilui6666 — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%B7%B4%E9%BB%8E.wav |
+| Micronesia | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Micronesia.wav |
+| Gabon | en | Pavani916 — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Pavani916-Gabon.wav |
+| United Kingdom | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-United_Kingdom.wav |
+| 英国 | zh | Luilui6666 — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%8B%B1%E5%9B%BD.wav |
+| London | en | Wodencafe — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Wodencafe-london.wav |
+| 伦敦 | zh | Luilui6666 — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%BC%A6%E6%95%A6.wav |
+| Georgia | en | Grendelkhan — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-Georgia.wav |
 | Ghana | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Ghana.wav |
 | Accra | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Accra.wav |
 | Guinea | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Guinea.wav |
@@ -145,6 +187,16 @@
 | Amman | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Amman.wav |
 | Japan | en | Grendelkhan — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-Japan.wav |
 | 日本 | zh | Luilui6666 — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%97%A5%E6%9C%AC.wav |
+| Tokyo | en | Grendelkhan — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Grendelkhan-Tokyo.wav |
+| 东京 | zh | Luilui6666 — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%9C%E4%BA%AC.wav |
+| Kazakhstan | en | Pavani916 — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Pavani916-Kazakhstan.wav |
+| Astana | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Astana.wav |
+| Kenya | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Kenya.wav |
+| Nairobi | en | Zazollo — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Zazollo-Nairobi.wav |
+| Kyrgyzstan | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Kyrgyzstan.wav |
+| Bishkek | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Bishkek.wav |
+| Cambodia | en | Wodencafe — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Wodencafe-Cambodia.wav |
+| Phnom Penh | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Phnom_Penh.wav |
 | Kiribati | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Kiribati.wav |
 | Saint Kitts and Nevis | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Saint_Kitts_and_Nevis.wav |
 | Basseterre | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Basseterre.wav |
@@ -171,11 +223,11 @@
 | Luxembourg | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Luxembourg.wav |
 | Latvia | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Latvia.wav |
 | Riga | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Riga.wav |
-| Morocco | en | Boredcookie — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Boredcookie-Morocco.wav |
+| Morocco | en | Wodencafe — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Wodencafe-Morocco.wav |
 | Rabat | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Rabat.wav |
 | Monaco | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Monaco.wav |
 | Moldova | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Moldova.wav |
-| Madagascar | en | Boredcookie — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Boredcookie-Madagascar.wav |
+| Madagascar | en | Rachlel — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Rachlel-Madagascar.wav |
 | Antananarivo | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Antananarivo.wav |
 | Maldives | en | Pavani916 — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Pavani916-Maldives.wav |
 | Malé | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Mal%C3%A9.wav |
@@ -188,7 +240,7 @@
 | Bamako | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Bamako.wav |
 | Malta | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Malta.wav |
 | Valletta | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Valletta.wav |
-| Myanmar | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Myanmar.wav |
+| Myanmar | en | Pavani916 — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Pavani916-Myanmar.wav |
 | Naypyidaw | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Naypyidaw.wav |
 | Montenegro | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Montenegro.wav |
 | Podgorica | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Podgorica.wav |
@@ -201,7 +253,7 @@
 | Mauritius | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Mauritius.wav |
 | Malawi | en | Boredcookie — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Boredcookie-Malawi.wav |
 | Lilongwe | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Lilongwe.wav |
-| Malaysia | en | Pavani916 — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Pavani916-Malaysia.wav |
+| Malaysia | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Malaysia.wav |
 | Kuala Lumpur | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Kuala_Lumpur.wav |
 | Namibia | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Namibia.wav |
 | Windhoek | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Windhoek.wav |
@@ -223,7 +275,7 @@
 | Wellington | en | Arlo — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Arlo_Barnes-wellington.wav |
 | Oman | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Oman.wav |
 | Muscat | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Muscat.wav |
-| Pakistan | en | Wodencafe — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Wodencafe-Pakistan.wav |
+| Pakistan | en | Boredcookie — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Boredcookie-Pakistan.wav |
 | 巴基斯坦 | zh | Jouketou — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%B7%B4%E5%9F%BA%E6%96%AF%E5%9D%A6.wav |
 | Islamabad | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Islamabad.wav |
 | Panama | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Panama.wav |
@@ -293,7 +345,7 @@
 | N'Djamena | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-N%27Djamena.wav |
 | Togo | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Togo.wav |
 | Lomé | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Lom%C3%A9.wav |
-| Thailand | en | Boredcookie — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Boredcookie-Thailand.wav |
+| Thailand | en | Wodencafe — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Wodencafe-Thailand.wav |
 | Bangkok | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Bangkok.wav |
 | Tajikistan | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Tajikistan.wav |
 | Dushanbe | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Dushanbe.wav |
@@ -309,7 +361,7 @@
 | 土耳其 | zh | Jouketou — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%9C%9F%E8%80%B3%E5%85%B6.wav |
 | Ankara | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Ankara.wav |
 | Tuvalu | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Tuvalu.wav |
-| Tanzania | en | Boredcookie — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Boredcookie-Tanzania.wav |
+| Tanzania | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Tanzania.wav |
 | Uganda | en | Wodencafe — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Wodencafe-Uganda.wav |
 | Kampala | en | Vealhurl — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-Kampala.wav |
 | Ukraine | en | Soundguys — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Soundguys-Ukraine.wav |
@@ -344,7 +396,7 @@
 | Hola | es-ES | CaroEspinoza — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q1321_(spa)-CaroEspinoza-HOLA.wav |
 | Hallo | de-DE | Trypeds — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q188_(deu)-Trypeds-Hallo.wav |
 | Salam | az-AZ | Azerbaijani — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q9292_(aze)-Azerbaijani_audiorecordings-salam.wav |
-| Bonjour | fr-FR | Poslovitch — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q150_(fra)-Poslovitch-bonjour.wav |
+| Bonjour | fr-FR | Helenou66 — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q150_(fra)-Helenou66-bonjour.wav |
 | Hallo | nl-NL | Robin — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q7411_(nld)-Robin_van_der_Vliet-hallo.wav |
 | আসসালামু আলাইকুম | bn-BD | Tahmid — Lingua Libre (CC0) | https://commons.wikimedia.org/wiki/File:LL-Q9610_(ben)-Tahmid-%E0%A6%86%E0%A6%B8%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%81_%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%81%E0%A6%AE.wav |
 | Здравей | bg-BG | Kiril — Lingua Libre (CC BY-SA 4.0) | https://commons.wikimedia.org/wiki/File:LL-Q7918_(bul)-Kiril_kovachev-%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%B5%D0%B9.wav |
