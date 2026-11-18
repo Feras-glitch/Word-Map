@@ -416,3 +416,4 @@ textarea.paste { width: 100%; min-height: 140px; border-radius: 12px; border: 2p
 .route-steps { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
 .story-map { height: 55vh; border-radius: 16px; overflow: hidden; margin-top: 8px; } .story-map .map-wrap { height: 100%; }
 .stories li.tappable { cursor: pointer; } .stories li.tappable::after { content: '🗺️'; }
+.special-note { display: block; background: #fff6d6; border-radius: 12px; padding: 8px 12px; color: #6b4a00; font-weight: 700; }

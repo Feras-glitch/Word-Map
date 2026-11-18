@@ -210,7 +210,7 @@ export function nileScreen(root) {
     drawMarks(null); sfx('tap'); placeDrop(s.at); m.zoomTo(boxAround(s.at, 9), 700);
     if (cur.branch) return atSea(s);
     const card = [h('p', {}, '💧 ' + s.say),
-      h('p', { class: 'sentence' }, '✍️ قل جملة: «' + (s.id === 'aswan' ? 'بدأتُ رحلتي من أسوان' : 'مررتُ بـ' + s.ar) + '».')];
+      h('p', { class: 'sentence' }, '✍️ قل جملة: «' + (s.id === 'aswan' ? 'بدأتُ رحلتي من أسوان' : 'مررتُ ب' + s.ar) + '».')];
     if (s.id === 'cairo') { const c = byId.EGY; card.push(h('p', { class: 'hint' }, 'اسم القاهرة بلغات أخرى:'), tri({ ar: c.cap3.ar, en: c.cap3.en, zh: c.cap3.zh, py: c.cap3.py })); }
     say(s.say);
     panel.replaceChildren(...card, h('button', { class: 'btn big', onclick: () => (s.id === 'luxor' && level >= 2 ? direction() : next()) }, 'تابع ←'));
@@ -287,6 +287,24 @@ export function nileScreen(root) {
 
 
 // ---------- ارسم طريقي: طريق بري بين دولتين ----------
+// حدود لها حالة خاصة قد تبدو غريبة للطفل: نشرحها حين يعبرها
+const SPECIAL = {
+  'POL|RUS': 'هنا عبرتَ إلى كالينينغراد: قطعة من روسيا منفصلة عن باقي أرضها، تقع بين بولندا وليتوانيا على بحر البلطيق.',
+  'LTU|RUS': 'هنا عبرتَ إلى كالينينغراد: قطعة من روسيا منفصلة عن باقي أرضها، تقع بين بولندا وليتوانيا على بحر البلطيق.',
+  'AZE|TUR': 'الحدود بين أذربيجان وتركيا قصيرة جداً، وهي في نخجوان: جزء من أذربيجان منفصل عن باقي أرضها.',
+  'ESP|MAR': 'الحدود البرية بين إسبانيا والمغرب في مدينتي سبتة ومليلية على ساحل المغرب، تديرهما إسبانيا ويطالب بهما المغرب.',
+  'GBR|IRL': 'جزيرة أيرلندا فيها دولتان: أيرلندا، وأيرلندا الشمالية التابعة لبريطانيا. والحدود البرية بينهما على هذه الجزيرة.',
+  'DOM|HTI': 'هايتي والدومينيكان تتقاسمان جزيرة واحدة اسمها هيسبانيولا.',
+  'IDN|TLS': 'تيمور الشرقية وإندونيسيا تتقاسمان جزيرة تيمور.',
+  'IDN|MYS': 'إندونيسيا وماليزيا تتقاسمان جزيرة بورنيو الكبيرة، ومعهما بروناي.',
+  'BRN|MYS': 'بروناي دولة صغيرة على جزيرة بورنيو، تحيط بها ماليزيا.',
+  'IDN|PNG': 'إندونيسيا وبابوا غينيا الجديدة تتقاسمان جزيرة غينيا الجديدة.',
+  'ITA|SMR': 'سان مارينو دولة صغيرة جداً تحيط بها إيطاليا من كل الجهات.',
+  'ITA|VAT': 'الفاتيكان أصغر دولة في العالم، وتقع داخل مدينة روما.',
+  'LSO|ZAF': 'ليسوتو تحيط بها جنوب أفريقيا من كل الجهات.',
+  'ARE|OMN': 'لعُمان جزء منفصل اسمه مسندم، تحيط به الإمارات، يطل على مضيق هرمز.',
+};
+const special = (a, b) => SPECIAL[[a, b].sort().join('|')];
 // يقبل أي طريق تشترك فيه كل دولتين متتاليتين في حدود برية
 function bfs(a, b) {
   const prev = { [a]: null }; const q = [a];
@@ -305,7 +323,7 @@ export function routeScreen(root, { go }) {
     if (from === to) continue; best = bfs(from.id, to.id);
     if (best && best.length >= minL && best.length <= maxL) break; best = null;
   }
-  const path = [from.id]; let done = false, wrongs = 0;
+  const path = [from.id]; let done = false, wrongs = 0; const notes = [];
   const m = createMap({ labels: level <= 2, compass: true, fill: (x) => (x.kind === 'state' ? lighten(contColors[x.cont] || '#ccc', 0.35) : '#e6e6e6'),
     onTap: (id) => tap(id), onMiss: () => toast('🌊 هذا ماء. السيارة لا تسير في البحر!') });
   const lines = svgEl('g', {}); m.overlay.append(lines);
@@ -326,13 +344,16 @@ export function routeScreen(root, { go }) {
     if (done || !alive()) return;
     const c = byId[id]; if (!c || c.kind !== 'state') return;
     const last = byId[path[path.length - 1]];
-    if (path.includes(id)) { msg.textContent = `مررتَ بـ${c.ar} من قبل.`; return; }
+    if (path.includes(id)) { msg.textContent = `مررتَ ب${c.ar} من قبل.`; return; }
     if (!last.borders.includes(id)) {
       wrongs++; sfx('wrong'); m.flash(id, 'flash', 900);
       const t = !c.landlocked && !last.landlocked && c.cont === last.cont ? `${c.ar} قريبة، لكن لا حدود برية بينها وبين ${last.ar}. ربما يفصل بينهما بحر.` : `لا تشترك ${c.ar} مع ${last.ar} في حدود برية. اختر جارة لـ${last.ar}.`;
       msg.textContent = t; speak(t, LANG.ar); return;
     }
-    path.push(id); sfx('tap'); speak(c.ar, LANG.ar); msg.textContent = ''; drawPath();
+    path.push(id); sfx('tap'); drawPath();
+    const note = special(last.id, id);
+    if (note) { notes.push(note); msg.replaceChildren(h('span', { class: 'special-note' }, '💡 ' + note)); speak(c.ar + '. ' + note, LANG.ar); }
+    else { msg.textContent = ''; speak(c.ar, LANG.ar); }
     if (id === to.id) win();
   }
   function undo() { if (path.length > 1 && !done) { path.pop(); drawPath(); } }
@@ -343,10 +364,10 @@ export function routeScreen(root, { go }) {
   function win() {
     done = true; confetti(40); sfx('win');
     const n = path.length - 2;
-    const t = `وصلت إلى ${to.ar}! مررتَ بـ${n === 0 ? 'لا دول' : n === 1 ? 'دولة واحدة' : n === 2 ? 'دولتين' : ar(n) + ' دول'} في الطريق.${path.length > best.length ? ` وأقصر طريق يمر بـ${best.length - 2 === 1 ? 'دولة واحدة' : best.length - 2 === 2 ? 'دولتين' : ar(best.length - 2) + ' دول'}: ${best.slice(1, -1).map((x) => byId[x].ar).join('، ')}.` : ' وهذا أقصر طريق!'}`;
+    const t = `وصلت إلى ${to.ar}! ${n === 0 ? 'لم تمرّ بأي دولة أخرى' : 'مررتَ ب' + ( n === 1 ? 'دولة واحدة' : n === 2 ? 'دولتين' : ar(n) + ' دول')} في الطريق.${path.length > best.length ? ` وأقصر طريق يمر ب${best.length - 2 === 1 ? 'دولة واحدة' : best.length - 2 === 2 ? 'دولتين' : ar(best.length - 2) + ' دول'}: ${best.slice(1, -1).map((x) => byId[x].ar).join('، ')}.` : ' وهذا أقصر طريق!'}`;
     speak(t, LANG.ar);
-    addStory(owner, { id: to.id, kind: 'route', path: path.slice(), text: `سافرتُ برّاً من ${from.ar} إلى ${to.ar}`, detail: `مرّ بـ${andList(path.slice(1, -1).map((x) => byId[x].ar)) || 'لا دول'}${wrongs ? '، واحتاج إلى ' + ar(wrongs) + ' تصحيحات أو تلميحات' : '، دون أخطاء'}` });
-    panel.replaceChildren(h('p', {}, '🏁 ' + t), h('button', { class: 'btn', onclick: () => { root.innerHTML = ''; routeScreen(root, { go }); } }, '🔁 طريق جديد'));
+    addStory(owner, { id: to.id, kind: 'route', path: path.slice(), notes: notes.slice(), text: `سافرتُ برّاً من ${from.ar} إلى ${to.ar}`, detail: `${path.length > 2 ? 'مرّ ب' + andList(path.slice(1, -1).map((x) => byId[x].ar)) : 'لم يمرّ بدول أخرى'}${wrongs ? '، واحتاج إلى ' + ar(wrongs) + ' تصحيحات أو تلميحات' : '، دون أخطاء'}` });
+    panel.replaceChildren(h('p', {}, '🏁 ' + t), ...notes.map((n) => h('p', { class: 'special-note' }, '💡 ' + n)), h('button', { class: 'btn', onclick: () => { root.innerHTML = ''; routeScreen(root, { go }); } }, '🔁 طريق جديد'));
   }
   drawPath();
   requestAnimationFrame(() => {
@@ -386,7 +407,7 @@ export function layerScreen(root, { go }) {
     for (const id of it.countries) m.mark(id, 'right');
     if (ok) { confetti(30); sfx('win'); }
     const names = it.countries.map((x) => byId[x]?.ar).filter(Boolean);
-    const t = (ok ? `أحسنت! ${it.ar} في ${c.ar}. ` : '') + `${it.ar} ${{ river: 'يمر بـ', lake: 'تطل عليها: ', peak: 'في: ' }[it.kind] || 'يمتد في: '}${andList(names)}.`;
+    const t = (ok ? `أحسنت! ${it.ar} في ${c.ar}. ` : '') + `${it.ar} ${{ river: 'يمر ب', lake: 'تطل عليها: ', peak: 'في: ' }[it.kind] || 'يمتد في: '}${andList(names)}.`;
     speak(t, LANG.ar);
     addStory(owner, { id: ok ? c.id : it.countries[0], kind: 'layer', nat: it.id, text: ok ? `توقّعتُ مكان ${it.ar} وأصبت` : `كشفتُ طبقة الطبيعة وتعلمتُ مكان ${it.ar}`, detail: ok ? `أصاب ${tries === 1 ? 'من أول محاولة' : 'بعد ' + ar(tries) + ' محاولات'}` : 'كشف الطبقة قبل أن يصيب' });
     panel.replaceChildren(h('p', {}, (ok ? '✅ ' : '👀 ') + t), h('p', { class: 'hint' }, '💡 ' + it.fact),
@@ -401,7 +422,7 @@ export function layerScreen(root, { go }) {
 // ---------- الخريطة الصغيرة لقصة في الجواز ----------
 export function openStoryMap(st) {
   const box = h('div', { class: 'story-map' });
-  const md = modal(h('div', {}, h('h3', {}, st.text), st.detail ? h('p', { class: 'hint' }, st.detail) : null, box), { cls: 'card-modal' });
+  const md = modal(h('div', {}, h('h3', {}, st.text), st.detail ? h('p', { class: 'hint' }, st.detail) : null, ...(st.notes || []).map((n) => h('p', { class: 'special-note' }, '💡 ' + n)), box), { cls: 'card-modal' });
   const m = createMap({ labels: true, compass: true });
   box.append(m.el);
   requestAnimationFrame(() => {
