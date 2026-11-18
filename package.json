@@ -20,6 +20,7 @@
     "cldr-numbers-full": "^49.0.0",
     "d3-geo": "^3.1.2",
     "flag-icons": "^7.6.0",
+    "iso-639-3": "^3.0.1",
     "pinyin-pro": "^3.29.5",
     "polygon-clipping": "^0.15.7",
     "sharp": "^0.35.5",

@@ -1,0 +1,41 @@
+name: جلب تسجيلات Lingua Libre
+
+# يُشغَّل يدوياً (أو شهرياً) لجلب تسجيلات الناطقين الأصليين من ويكيميديا كومنز وصنع حزمة مطور منها،
+# ثم يحفظها في المستودع ويطلق بناء التطبيق.
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'أقصى عدد للأهداف (للتجربة)'
+        required: false
+        default: '2000'
+  schedule:
+    - cron: '17 3 1 * *'
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: node scripts/build-data.mjs
+      - run: ffmpeg -version | head -1
+      - name: الجلب
+        env: { LL_LIMIT: '${{ github.event.inputs.limit || 2000 }}' }
+        run: node scripts/fetch-lingualibre.mjs
+      - name: الحفظ في المستودع وإطلاق البناء
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/audio/lingualibre.json content/audio/LINGUALIBRE-CREDITS.md
+          if git diff --cached --quiet; then echo "لا جديد"; exit 0; fi
+          git commit -m "تحديث تسجيلات Lingua Libre"
+          git push
+          gh workflow run build.yml --ref main

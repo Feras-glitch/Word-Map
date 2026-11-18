@@ -78,7 +78,7 @@ export function studioScreen(root, { go, params }) {
     function row(x) {
       const c = mine.get(x.key);
       const dev = devIndex[x.key];
-      const status = c ? (m === 'child' && !c.approved ? '🕓 بصوتك (لم يعتمده الأهل بعد)' : '✅ مسجّل') : dev && m !== 'dev' ? '🏷️ عند المطور' : '⬜ لم يُسجّل';
+      const status = c ? (m === 'child' && !c.approved ? '🕓 بصوتك (لم يعتمده الأهل بعد)' : '✅ مسجّل') : dev && m !== 'dev' ? '🏷️ مسجّل من المطور' + (dev.by ? ': ' + dev.by : '') : '⬜ لم يُسجّل';
       const btnRec = h('button', { class: 'rec-btn', 'aria-label': 'تسجيل' }, '⏺');
       btnRec.onclick = async () => {
         if (recording && recording.key !== x.key) return toast('أنهِ التسجيل الحالي أولاً');
