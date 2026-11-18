@@ -70,12 +70,14 @@ async function info(title) {
   const ii = r.query?.pages?.[0]?.imageinfo?.[0]; if (!ii) return null;
   const md = ii.extmetadata || {};
   const strip = (s) => String(s?.value || '').replace(/<[^>]+>/g, '').trim();
-  return { url: ii.url, page: ii.descriptionurl, license: strip(md.LicenseShortName), artist: strip(md.Artist), size: ii.size };
+  // «Speaker: X Recorder: Y» ← اسم الناطق فقط
+  const artist = strip(md.Artist).replace(/\s+/g, ' ').replace(/^Speaker:\s*([^ ]+).*$/i, '$1');
+  return { url: ii.url, page: ii.descriptionurl, license: strip(md.LicenseShortName), artist, size: ii.size };
 }
 
 // ---------- الجلب والتحويل ----------
 const old = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : { items: [] };
-const have = new Map(old.items.map((x) => [x.key, x]));
+const have = new Map(old.items.map((x) => [x.key, { ...x, by: String(x.by).replace(/\s+/g, ' ').replace(/^Speaker:\s*([^ ]+).*?— /i, '$1 — ') }]));
 const items = []; let found = 0, miss = 0, kept = 0;
 for (const [i, t] of uniq.entries()) {
   if (have.has(t.key)) { items.push(have.get(t.key)); kept++; continue; }
