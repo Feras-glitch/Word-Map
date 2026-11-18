@@ -21,9 +21,11 @@ export function zhRuby(zh, py) {
 }
 
 // اسم بثلاث لغات، كل سطر بزر نطق
+// prefix: نص قبل الاسم، أو قائمة أجزاء (تُشغَّل تسجيلاتها متتابعة إن وُجدت)
 export function tri(o, { big = false, prefix = '' } = {}) {
+  const arParts = Array.isArray(prefix) ? [...prefix, o.ar] : prefix ? [prefix.trim(), o.ar] : [o.ar];
   return h('div', { class: 'tri' + (big ? ' big' : '') },
-    h('div', { class: 'name-row ar' }, h('span', { class: 'lang-tag' }, 'عربي'), h('b', {}, o.ar), say(prefix + o.ar, LANG.ar)),
+    h('div', { class: 'name-row ar' }, h('span', { class: 'lang-tag' }, 'عربي'), h('b', {}, o.ar), say(arParts, LANG.ar)),
     o.en ? h('div', { class: 'name-row en', dir: 'ltr' }, h('span', { class: 'lang-tag' }, 'EN'), h('b', {}, o.en), say(o.en, LANG.en)) : null,
     o.zh ? h('div', { class: 'name-row zh', dir: 'ltr' }, h('span', { class: 'lang-tag' }, '中文'), zhRuby(o.zh, o.py), say(o.zh, LANG.zh)) : null);
 }
@@ -48,11 +50,12 @@ function popText(c) {
   return { n: `نحو ${n} نسمة`, cmp };
 }
 
+// أجزاء تُشغَّل تسجيلاتها متتابعة إن وُجدت، وإلا تُقرأ آلياً جملةً واحدة
 function storySpeech(c) {
   const parts = [];
-  if (c.landmark) parts.push(`من معالم ${c.ar} الشهيرة: ${c.landmark}.`);
-  if (c.fact || c.note) parts.push(`هل تعلم؟ ${c.fact || c.note}`);
-  return parts.join(' ');
+  if (c.landmark) parts.push('من معالم', c.ar, 'الشهيرة', c.landmark);
+  if (c.fact || c.note) parts.push('هل تعلم؟', c.fact || c.note);
+  return parts;
 }
 
 function namesTab(c) {
@@ -67,7 +70,7 @@ function namesTab(c) {
 function capitalTab(c) {
   const cap = c.cap3 || (c.capAr ? { ar: c.capAr, en: c.capEn } : null);
   return h('div', {},
-    cap ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '🏛️ العاصمة'), tri(cap, { prefix: 'عاصمة ' + c.ar + ' هي ' }), c.capNote ? h('p', { class: 'note' }, c.capNote) : null) : null,
+    cap ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '🏛️ العاصمة'), tri(cap, { prefix: ['عاصمة', c.ar, 'هي'] }), c.capNote ? h('p', { class: 'note' }, c.capNote) : null) : null,
     c.landmark || c.fact || c.note ? h('div', { class: 'story' },
       c.landmark ? h('div', { class: 'landmark' }, h('span', { class: 'st-label' }, '⭐ من معالمها الشهيرة:'), c.lm3 ? tri(c.lm3) : h('b', {}, c.landmark)) : null,
       c.fact || c.note ? h('div', { class: 'didyou' }, h('span', { class: 'st-label' }, '💡 هل تعلم؟'), h('p', {}, c.fact || c.note)) : null,
@@ -123,7 +126,7 @@ function numbersTab(c, openNeighbor) {
       tri({ ar: c.gov.ar, en: c.gov.en, zh: c.gov.zh, py: c.gov.py }),
       h('p', { class: 'note strong' }, c.gov.note + '.')) :
     c.gov ? h('div', { class: 'sec gov' }, h('span', { class: 'st-label' }, (c.gov.icon || '🏛️') + ' نظام الحكم'),
-      tri({ ar: c.gov.ar, en: c.gov.en, zh: c.gov.zh, py: c.gov.py }, { prefix: 'نظام الحكم في ' + c.ar + ': ' }),
+      tri({ ar: c.gov.ar, en: c.gov.en, zh: c.gov.zh, py: c.gov.py }, { prefix: ['نظام الحكم في', c.ar] }),
       h('p', { class: 'note' }, c.gov.kid),
       c.gov.note ? h('p', { class: 'note strong' }, c.gov.note + '.') : null,
       c.gov.federal ? h('p', { class: 'note' }, '🧩 دولة اتحادية: تتكون من ولايات أو أقاليم، لكل منها حكومة خاصة بها.') : null) : null,

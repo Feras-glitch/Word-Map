@@ -22,7 +22,10 @@ export function parentScreen(root, { go }) {
       h('button', { class: 'btn small soft', onclick: () => { lockNow(); go('home'); } }, '🔒 قفل والخروج')));
     if (!ps.length) root.append(h('p', { class: 'empty' }, 'لا يوجد مستكشفون بعد.'));
     for (const p of ps) root.append(childPanel(p));
-    root.append(backupPanel(), pinPanel());
+    root.append(h('div', { class: 'panel' }, h('h3', {}, '🎙️ الأصوات'),
+      h('p', { class: 'hint' }, 'سجّلوا الأسماء والعبارات بأصواتكم بدل القراءة الآلية، واعتمدوا تسجيلات الأولاد.'),
+      h('div', { class: 'row wrap' }, h('button', { class: 'btn', onclick: () => go('studio?m=family') }, '🎙️ استوديو الأهل'),
+        h('button', { class: 'btn soft', onclick: () => go('studio?m=dev') }, '🛠️ استوديو المطور'))), backupPanel(), pinPanel());
   }
 
   function childPanel(p) {

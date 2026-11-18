@@ -73,6 +73,10 @@ jobs:
       - name: الأيقونات وشاشة البداية
         run: npx --yes @capacitor/assets@4 generate --android --iconBackgroundColor '#2b7fd4' --splashBackgroundColor '#2b7fd4'
       - run: npx cap sync android
+      - name: إذن الميكروفون (للاستوديو الصوتي)
+        run: |
+          sed -i 's#<uses-permission android:name="android.permission.INTERNET" />#<uses-permission android:name="android.permission.INTERNET" />\n    <uses-permission android:name="android.permission.RECORD_AUDIO" />\n    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />#' android/app/src/main/AndroidManifest.xml
+          grep -c RECORD_AUDIO android/app/src/main/AndroidManifest.xml
       - name: رقم الإصدار
         run: |
           sed -i "s/versionCode 1$/versionCode ${{ github.run_number }}/; s/versionName \"1.0\"/versionName \"${{ needs.meta.outputs.version }}\"/" android/app/build.gradle

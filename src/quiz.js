@@ -28,20 +28,20 @@ const flagOpt = (s) => h('span', { class: 'qo-flag' }, h('img', { src: flagUrl(s
 export const Q = {
   flag(c, n) {
     const opts = shuffle([c, ...others(c, n - 1, (s) => !look(c.id, s.id))]);
-    return { skill: 'flag', say: `أيّ هذه الأعلام علم ${c.ar}؟`, prompt: h('p', {}, 'أيّ هذه الأعلام علم ', h('b', {}, c.ar), '؟'),
+    return { skill: 'flag', say: `أيّ هذه الأعلام علم ${c.ar}؟`, parts: ['أيّ هذه الأعلام علم', c.ar], prompt: h('p', {}, 'أيّ هذه الأعلام علم ', h('b', {}, c.ar), '؟'),
       flags: true, options: opts.map((o) => ({ correct: o.id === c.id, el: h('img', { class: 'qo-big-flag', src: flagUrl(o.f), alt: '' }) })) };
   },
   capital(c, n) {
     const opts = shuffle([c, ...others(c, n - 1, (s) => s.capAr && capName(s) !== capName(c))]);
     const qt = c.capQ || `ما عاصمة ${c.ar}؟`;
-    return { skill: 'capital', say: qt, prompt: h('p', {}, qt),
+    return { skill: 'capital', say: qt, parts: c.capQ ? [c.capQ] : ['ما عاصمة', c.ar], prompt: h('p', {}, qt),
       options: opts.map((o) => ({ correct: o.id === c.id, el: h('b', {}, capName(o)), label: capName(o) })) };
   },
   continent(c, n) {
     // الدول العابرة للقارات: لا نضع قارتها الثانية بين الخيارات الخاطئة
     const keys = shuffle(Object.keys(continents).filter((k) => k !== 'antarctica' && k !== c.cont && k !== c.cont2)).slice(0, n - 1);
     const opts = shuffle([c.cont, ...keys]);
-    return { skill: 'continent', say: `في أي قارة تقع ${c.ar}؟`, prompt: h('p', {}, 'في أي قارة تقع ', h('b', {}, c.ar), '؟'),
+    return { skill: 'continent', say: `في أي قارة تقع ${c.ar}؟`, parts: ['في أي قارة تقع', c.ar], prompt: h('p', {}, 'في أي قارة تقع ', h('b', {}, c.ar), '؟'),
       options: opts.map((k) => ({ correct: k === c.cont, el: h('b', { style: { color: '#1f2a44' } }, continents[k]), label: continents[k], bg: contColors[k] })) };
   },
   // اسم الدولة بالإنجليزية أو الصينية: نذكر الدولة بالعربية، والخيارات أسماء بتلك اللغة (مع زر استماع)
@@ -49,14 +49,14 @@ export const Q = {
     const useZh = force ? force === 'zh' : Math.random() < 0.5;
     const opts = shuffle([c, ...others(c, n - 1, (s) => (useZh ? s.zh !== c.zh : s.en !== c.en))]);
     const lang = useZh ? 'بالصينية' : 'بالإنجليزية';
-    return { skill: 'names', say: `ما اسم ${c.ar} ${lang}؟`, prompt: h('div', {}, h('p', {}, 'ما اسم ', h('b', {}, c.ar), ' ' + lang + '؟'), h('small', { class: 'hint' }, 'اضغط 🔊 لتسمع كل خيار، ثم اختر')),
+    return { skill: 'names', say: `ما اسم ${c.ar} ${lang}؟`, parts: ['ما اسم', c.ar, lang + '؟'], prompt: h('div', {}, h('p', {}, 'ما اسم ', h('b', {}, c.ar), ' ' + lang + '؟'), h('small', { class: 'hint' }, 'اضغط 🔊 لتسمع كل خيار، ثم اختر')),
       options: opts.map((o) => ({ correct: o.id === c.id,
         label: useZh ? o.zh : o.en, say: [useZh ? o.zh : o.en, useZh ? LANG.zh : LANG.en],
         el: h('span', { class: 'qo-name', dir: 'ltr' }, useZh ? h('span', { class: 'zh-opt' }, h('b', {}, o.zh), h('small', {}, o.py)) : h('b', {}, o.en)) })) };
   },
   landmark(c, n) {
     const opts = shuffle([c, ...others(c, n - 1, (s) => s.landmark && s.landmark !== c.landmark)]);
-    return { skill: 'landmark', say: `أيّ هذه من أشهر معالم ${c.ar}؟`, prompt: h('p', {}, '⭐ أيّ هذه من أشهر معالم ', h('b', {}, c.ar), '؟'),
+    return { skill: 'landmark', say: `أيّ هذه من أشهر معالم ${c.ar}؟`, parts: ['أيّ هذه من أشهر معالم', c.ar], prompt: h('p', {}, '⭐ أيّ هذه من أشهر معالم ', h('b', {}, c.ar), '؟'),
       options: opts.map((o) => ({ correct: o.id === c.id, el: h('b', {}, o.landmark), label: o.landmark })) };
   },
   // اللغة الرسمية (أو لغة العمل الفعلية)، والخيارات لغات لا يتكلمها أهل هذه الدولة رسمياً
@@ -85,17 +85,17 @@ export const Q = {
   // ---------- الاتجاه المعاكس (للتمرين الشامل فقط، حيث لا سياق يكشف الجواب) ----------
   flagWho(c, n) {
     const opts = shuffle([c, ...others(c, n - 1, (s) => !look(c.id, s.id))]);
-    return { skill: 'flag', say: 'لأي دولة هذا العلم؟', prompt: h('div', {}, h('img', { class: 'q-flag', src: flagUrl(c.f), alt: 'علم' }), h('p', {}, 'لأي دولة هذا العلم؟')),
+    return { skill: 'flag', say: 'لأي دولة هذا العلم؟', parts: ['لأي دولة هذا العلم؟'], prompt: h('div', {}, h('img', { class: 'q-flag', src: flagUrl(c.f), alt: 'علم' }), h('p', {}, 'لأي دولة هذا العلم؟')),
       options: opts.map((o) => ({ correct: o.id === c.id, el: h('b', {}, o.ar), label: o.ar })) };
   },
   capWho(c, n) {
     const opts = shuffle([c, ...others(c, n - 1, (s) => s.capAr && capName(s) !== capName(c))]);
-    return { skill: 'capital', say: `${capName(c)} عاصمة أي دولة؟`, prompt: h('p', {}, '🏛️ ', h('b', {}, capName(c)), ' عاصمة أي دولة؟'),
+    return { skill: 'capital', say: `${capName(c)} عاصمة أي دولة؟`, parts: [capName(c), 'عاصمة أي دولة؟'], prompt: h('p', {}, '🏛️ ', h('b', {}, capName(c)), ' عاصمة أي دولة؟'),
       options: opts.map((o) => ({ correct: o.id === c.id, el: flagOpt(o), label: o.ar })) };
   },
   landmarkWho(c, n) {
     const opts = shuffle([c, ...others(c, n - 1, (s) => s.landmark !== c.landmark)]);
-    return { skill: 'landmark', say: `${c.landmark}: في أي دولة؟`, prompt: h('p', {}, '⭐ ', h('b', {}, c.landmark), ': في أي دولة؟'),
+    return { skill: 'landmark', say: `${c.landmark}: في أي دولة؟`, parts: [c.landmark, 'في أي دولة؟'], prompt: h('p', {}, '⭐ ', h('b', {}, c.landmark), ': في أي دولة؟'),
       options: opts.map((o) => ({ correct: o.id === c.id, el: flagOpt(o), label: o.ar })) };
   },
   natureWho(c, n) {
@@ -107,7 +107,7 @@ export const Q = {
       options: opts.map((o) => ({ correct: o.id === c.id, el: flagOpt(o), label: o.ar })) };
   },
   map(c) {
-    return { skill: 'map', type: 'map', say: `المس ${c.ar} على الخريطة`, prompt: h('p', {}, '📍 المس ', h('b', {}, c.ar), ' على الخريطة') };
+    return { skill: 'map', type: 'map', say: `المس ${c.ar} على الخريطة`, parts: ['المس', c.ar, 'على الخريطة'], prompt: h('p', {}, '📍 المس ', h('b', {}, c.ar), ' على الخريطة') };
   },
 };
 
@@ -181,7 +181,7 @@ export function runQuiz({ title, country, questions, onDone, onDecide, onAbort, 
       const nb = h('button', { class: 'btn', onclick: () => { i++; next(); } }, i + 1 >= questions.length ? 'النتيجة 🏁' : 'التالي ←');
       fb.replaceChildren(nb); nb.focus();
     };
-    const say = () => (q.sayFn ? q.sayFn() : speak(q.say, LANG.ar));
+    const say = () => (q.sayFn ? q.sayFn() : speak(q.parts || q.say, LANG.ar));
     const again = h('button', { class: 'say-again', 'aria-label': 'أعد قراءة السؤال', onclick: say }, '🔊');
     const qBox = h('div', { class: 'question', tabindex: '-1' }, again, q.prompt);
     if (q.type === 'map') {

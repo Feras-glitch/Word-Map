@@ -3,6 +3,17 @@ import { Capacitor } from '@capacitor/core';
 import { TextToSpeech } from '@capacitor-community/text-to-speech';
 import { store } from './store.js';
 import { toast } from './ui.js';
+import { playRecorded, stopClip } from './voice.js';
+import TASHKEEL from '../content/tashkeel.json';
+
+// قاموس التشكيل: نعطي القارئ الآلي الأسماء العربية مشكولة حتى ينطقها صحيحة (مثل «عُمان» لا «عَمّان»)
+// لا يُستعمل القاموس قبل أن يراجعه مراجع مستقل
+const LEX = TASHKEEL.review === 'pending' ? [] : Object.entries(TASHKEEL.words || {}).sort((a, b) => b[0].length - a[0].length);
+export function withTashkeel(text) {
+  let t = text;
+  for (const [plain, voc] of LEX) if (t.includes(plain)) t = t.replace(new RegExp('(^|[^\\u0621-\\u064A])' + plain.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?=$|[^\\u0621-\\u064A])', 'g'), '$1' + voc);
+  return t;
+}
 
 const native = Capacitor.isNativePlatform();
 let voices = [];
@@ -24,8 +35,20 @@ function findVoice(lang) {
 
 const warned = new Set();
 // fallbackAr: نطق تقريبي بالحروف العربية يُقرأ بالصوت العربي إن لم يوجد صوت للغة
+// text: نص، أو قائمة أجزاء تُشغَّل تسجيلاتها متتابعة (مثل ['ما عاصمة', 'مصر'])
+let seq = 0;
 export async function speak(text, lang = 'ar-SA', fallbackAr = null) {
-  if (!text) return;
+  if (!text || (Array.isArray(text) && !text.length)) return;
+  const my = ++seq;
+  const parts = Array.isArray(text) ? text : [text];
+  text = parts.join(' ');
+  stopNow();
+  // ١) التسجيلات: الأجزاء كلها، أو الجملة كاملة
+  if (await playRecorded(parts, lang)) return;
+  if (parts.length > 1 && await playRecorded([text], lang)) return;
+  if (my !== seq) return; // طلب أحدث بدأ أثناء البحث
+  // ٢) القراءة الآلية، مع التشكيل للعربية
+  if (lang.startsWith('ar')) text = withTashkeel(text);
   const rate = store.settings.rate || 0.9;
   if (native) {
     try {
@@ -53,7 +76,13 @@ export async function speak(text, lang = 'ar-SA', fallbackAr = null) {
   s.speak(u);
 }
 
+function stopNow() {
+  stopClip();
+  if (native) TextToSpeech.stop().catch(() => {});
+  else try { window.speechSynthesis?.cancel(); } catch { /* */ }
+}
 export function stopSpeech() {
+  seq++; stopClip();
   if (native) TextToSpeech.stop().catch(() => {});
   else window.speechSynthesis?.cancel();
 }

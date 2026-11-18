@@ -1,10 +1,10 @@
 {
   "name": "world-explorer-kids",
   "private": true,
-  "version": "1.8.0",
+  "version": "1.9.0",
   "type": "module",
   "scripts": {
-    "data": "node scripts/build-data.mjs",
+    "data": "node scripts/build-data.mjs && node scripts/build-voices.mjs",
     "dev": "vite",
     "build": "npm run data && vite build",
     "build:single": "npm run data && vite build --mode single",

@@ -20,6 +20,7 @@ import { worldScreen } from './screens/world.js';
 import { parentScreen } from './screens/parent.js';
 import { familyScreen } from './screens/family.js';
 import { aboutScreen } from './screens/about.js';
+import { studioScreen } from './screens/studio.js';
 import { missionsScreen, findScreen, guideScreen, nileScreen, routeScreen, layerScreen } from './screens/missions.js';
 
 const screens = {
@@ -42,6 +43,7 @@ const screens = {
   parent: { title: '🔒 لوحة الوالدين', fn: parentScreen },
   family: { title: '👨‍👩‍👧‍👦 تحدي العائلة', fn: familyScreen },
   about: { title: '🗺️ عن هذه الخريطة', fn: aboutScreen },
+  studio: { title: '🎙️ الاستوديو الصوتي', fn: studioScreen },
   missions: { title: '🔎 مهام المستكشف', fn: missionsScreen },
   find: { title: '🔎 ابحث عن بلدي', fn: findScreen, full: true, back: 'missions' },
   guide: { title: '🧭 كن دليل أخيك', fn: guideScreen, back: 'missions' },
@@ -60,7 +62,7 @@ export function go(name, { replace = false } = {}) {
 }
 
 function render() {
-  let name = location.hash.slice(1) || 'home';
+  let name = location.hash.slice(1).split('?')[0] || 'home';
   if (!screens[name]) name = 'home';
   if (!store.me && name !== 'profiles') { history.replaceState(null, '', '#profiles'); name = 'profiles'; }
   const sc = screens[name];
