@@ -13,6 +13,7 @@ const OUT_DIR = path.join(root, 'src/landmark-img');
 const META = path.join(root, 'content/landmark-photos.json');
 const CREDITS = path.join(root, 'content/LANDMARK-PHOTOS-CREDITS.md');
 const TMP = fs.mkdtempSync('/tmp/lm-');
+const ONLY = process.env.LM_ONLY ? process.env.LM_ONLY.split(',') : null;
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
 // عنوان مقالة المعلم في ويكيبيديا الإنجليزية: الدول الخمسون المشهورة، ودول الرحلات العربية
@@ -47,8 +48,21 @@ const meta = {};
 const miss = [];
 for (const [id, title] of Object.entries(TITLES)) {
   try {
+    if (ONLY && !ONLY.includes(id)) { if (old[id]) meta[id] = old[id]; continue; }
     let file = OVERRIDE[id];
-    if (!file) {
+    let cands = [];
+    // «search:»: أول نتائج البحث في كومنز التي هي صور فوتوغرافية (jpg) برخصة حرة
+    if (file?.startsWith('search:')) {
+      const s = await api('https://commons.wikimedia.org/w/api.php', { action: 'query', list: 'search', srsearch: file.slice(7) + ' filetype:bitmap', srnamespace: '6', srlimit: '12' });
+      cands = (s.query?.search || []).map((x) => x.title.replace(/^File:/, '')).filter((t) => /\.jpe?g$/i.test(t) && !/logo|map|plan|diagram/i.test(t));
+      file = null;
+    }
+    for (const cand of cands) {
+      const c0 = await api('https://commons.wikimedia.org/w/api.php', { action: 'query', titles: 'File:' + cand, prop: 'imageinfo', iiprop: 'extmetadata|size' });
+      const ii0 = c0.query?.pages?.[0]?.imageinfo?.[0]; const em0 = ii0?.extmetadata || {};
+      if (ii0 && ii0.width >= 800 && em0.NonFree?.value !== 'true' && FREE.test(strip(em0.LicenseShortName?.value))) { file = cand; break; }
+    }
+    if (!file && !cands.length) {
       const q = await api('https://en.wikipedia.org/w/api.php', { action: 'query', titles: title, prop: 'pageimages', piprop: 'name', pilicense: 'free', redirects: '1' });
       file = q.query?.pages?.[0]?.pageimage;
     }

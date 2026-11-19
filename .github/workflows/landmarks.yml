@@ -4,6 +4,11 @@ name: جلب صور المعالم
 # الصور الجديدة تُحفظ بحالة «pending» ولا تظهر في التطبيق قبل مراجعتها بالنظر.
 on:
   workflow_dispatch:
+    inputs:
+      only:
+        description: 'رموز دول مفصولة بفواصل (فارغ = الكل)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -18,12 +23,13 @@ jobs:
       - name: ImageMagick
         run: (command -v convert || (sudo apt-get update -qq && sudo apt-get install -y -qq imagemagick)) && convert -version | head -1
       - name: الجلب
+        env: { LM_ONLY: '${{ github.event.inputs.only }}' }
         run: node scripts/fetch-landmarks.mjs
       - name: الحفظ في المستودع
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/landmark-img content/landmark-photos.json content/LANDMARK-PHOTOS-CREDITS.md
+          git add -A src/landmark-img content/landmark-photos.json content/LANDMARK-PHOTOS-CREDITS.md
           if git diff --cached --quiet; then echo "لا جديد"; exit 0; fi
           git commit -m "صور المعالم من ويكيميديا كومنز (بانتظار المراجعة)"
           git push
