@@ -497,3 +497,9 @@ textarea.paste { width: 100%; min-height: 140px; border-radius: 12px; border: 2p
 .tiles.even .tile .te, .tiles.even .tile:first-child .te { font-size: 2rem; } .tiles.even .tile b { font-size: 1rem; line-height: 1.3; display: block; } .tiles.even .tile small { font-size: .78rem; line-height: 1.3; display: block; }
 .tiles.even .tile > b, .tiles.even .tile > small { flex: 1; }
 .tiles.even .tile .tt { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+/* صور المعالم */
+.lm-photo { margin: 6px 0 8px; } .lm-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px; display: block; box-shadow: 0 6px 14px rgba(0,0,0,.15); }
+.lm-photo figcaption { font-size: .72rem; color: var(--muted); margin-top: 4px; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .lm-photo figcaption a { color: inherit; }
+.lm-row.has-photo .lm-icon { display: none; }
+.q-photo { width: min(100%, 360px); aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px; display: block; margin: 0 auto 8px; box-shadow: 0 6px 14px rgba(0,0,0,.15); }
+.qo-photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; display: block; }

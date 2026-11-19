@@ -9,6 +9,7 @@ import { miniMap } from './minimap.js';
 import { journeyState } from './journeys.js';
 import { conceptBtn } from './concepts.js';
 import { landmarkIcon } from './landmarks.js';
+import { landmarkPhoto } from './photos.js';
 import { goldProgress, goldEligible, OTHER_NEEDED } from './mastery.js';
 import { requiredFor } from './screens/world.js';
 import { hasVisit, hasGold, giveVisit, visitWait, visitFailed, dueReviews } from './mastery.js';
@@ -91,13 +92,21 @@ function namesTab(c) {
   );
 }
 
+// صورة المعلم مع اسم صاحبها ورخصتها (شرط الرخص الحرة)
+function photoFig(c) {
+  const p = landmarkPhoto(c.id); if (!p) return null;
+  return h('figure', { class: 'lm-photo' }, h('img', { src: p.url, alt: c.landmark, loading: 'lazy' }),
+    h('figcaption', { dir: 'ltr' }, '📷 ', h('a', { href: p.page, target: '_blank', rel: 'noopener' }, p.artist), ' · ' + p.license));
+}
+
 function capitalTab(c) {
   const cap = c.cap3 || (c.capAr ? { ar: c.capAr, en: c.capEn } : null);
   return h('div', {},
     cap ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '🏛️ العاصمة ', conceptBtn('capital')), tri(cap, { prefix: ['عاصمة', c.ar, 'هي'] }), c.capNote ? h('p', { class: 'note' }, c.capNote) : null) : null,
     c.landmark ? h('div', { class: 'story' },
       h('div', { class: 'landmark' }, h('span', { class: 'st-label' }, '⭐ من معالمها الشهيرة:'),
-        h('div', { class: 'lm-row' }, h('span', { class: 'lm-icon', 'aria-hidden': 'true' }, landmarkIcon(c.landmark)), c.lm3 ? triFold(c.lm3) : h('b', {}, c.landmark))),
+        photoFig(c),
+        h('div', { class: 'lm-row' + (landmarkPhoto(c.id) ? ' has-photo' : '') }, h('span', { class: 'lm-icon', 'aria-hidden': 'true' }, landmarkIcon(c.landmark)), c.lm3 ? triFold(c.lm3) : h('b', {}, c.landmark))),
       h('button', { class: 'btn small soft', onclick: () => speak(landmarkSpeech(c), LANG.ar) }, '🔊 اسمع عن المعلم'),
     ) : null,
   );

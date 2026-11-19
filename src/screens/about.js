@@ -1,5 +1,7 @@
 // عن هذه الخريطة: اختياراتها ومصادرها وحدود دقتها (للوالدين والأطفال الكبار)
 import { h } from '../ui.js';
+import { byId } from '../data.js';
+import { photoCredits } from '../photos.js';
 
 const S = (title, ...items) => h('div', { class: 'panel' }, h('h3', {}, title), h('ul', { class: 'about-list' }, items.map((t) => h('li', {}, t))));
 
@@ -25,5 +27,8 @@ export function aboutScreen(root) {
       'تسجيلات النطق بأصوات ناطقين أصليين (أسماء الدول والعواصم بالإنجليزية والصينية، والتحيات): مشروع Lingua Libre على ويكيميديا كومنز، برخص المشاع الإبداعي، وأسماء المسجّلين في ملف content/audio/LINGUALIBRE-CREDITS.md في المستودع.',
       'تقديرات السكان: البنك الدولي لسنة ٢٠٢٥ (مبنية على تقديرات الأمم المتحدة). أسماء اللغات والعملات: Unicode CLDR. عدد اللغات في كل دولة: Ethnologue، الطبعة ٢٢ (٢٠١٩).',
       'العواصم والمعالم واللغات الرسمية ونظام الحكم: راجعها مراجعون مستقلون مقابل الدساتير والمواقع الرسمية وبريتانيكا. مصادر كل دولة في آخر تبويب «الحكم والأرقام» من بطاقتها.'),
+    h('details', { class: 'panel' }, h('summary', {}, h('b', {}, '📷 صور المعالم وأصحابها')),
+      h('p', { class: 'hint' }, 'صور حرة الرخصة من ويكيميديا كومنز، رُوجعت كل صورة بالنظر قبل وضعها. لكل صورة صاحبها ورخصتها:'),
+      h('ul', { class: 'about-list', dir: 'auto' }, photoCredits().map((p) => h('li', {}, h('b', {}, (byId[p.id]?.ar || p.id) + ': '), h('a', { href: p.page, target: '_blank', rel: 'noopener' }, p.file), ' — ' + p.artist + ' — ' + p.license)))),
   );
 }

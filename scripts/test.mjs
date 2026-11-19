@@ -123,10 +123,24 @@ await test('الرحلات: تبدأ بفلسطين، وتغطي الدول كل
   assert.equal(st.current.id, 'pal'); assert.equal(st.current.next, 'JOR');
 });
 
-await test('لكل معلم رمز، ولا يُحسب المعلم دليلاً للختم الذهبي', async () => {
+await test('لكل معلم رمز، والمعلم لا يُحسب دليلاً للذهبي إلا بصورته', async () => {
   const { landmarkIcon } = await import('../src/landmarks.js');
   for (const c of states) assert.ok(landmarkIcon(c.landmark), c.id);
-  assert.ok(!M.OTHER_SKILLS.includes('landmark'));
+  assert.ok(M.OTHER_SKILLS.includes('landmark'));
+  const w = read('src/screens/world.js');
+  assert.ok(/landmark: \['landmarkPic'\]/.test(w) && /q\.skill === 'landmark' && !hasPhoto/.test(w), 'شرط الصورة في التمرين الشامل');
+});
+
+await test('صور المعالم: لكل صورة معتمدة ملف ورخصة حرة وصاحب', () => {
+  const meta = json('content/landmark-photos.json');
+  const ok = Object.entries(meta).filter(([, m]) => m.review === 'ok');
+  assert.ok(ok.length >= 40, 'عدد الصور المعتمدة ' + ok.length);
+  for (const [id, m] of ok) {
+    assert.ok(byId[id], id);
+    assert.ok(fs.existsSync(new URL(`../src/landmark-img/${id}.jpg`, import.meta.url)), 'ملف ' + id);
+    assert.match(m.license, /^(CC0|CC BY|Public domain|PD)/i, 'رخصة ' + id);
+    assert.ok(m.artist && m.page, 'صاحب ' + id);
+  }
 });
 
 console.log(process.exitCode ? '\nفشل بعض الاختبارات' : `\nنجحت الاختبارات كلها (${n})`);

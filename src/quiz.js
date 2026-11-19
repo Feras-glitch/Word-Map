@@ -2,6 +2,7 @@
 import { h, modal, confetti } from './ui.js';
 import { states, byId, flagUrl, continents, contBox, shuffle, pick, contColors, languages, pool } from './data.js';
 import { landmarkIcon } from './landmarks.js';
+import { landmarkPhoto, hasPhoto } from './photos.js';
 import { speak, LANG } from './speech.js';
 import { sfx } from './sfx.js';
 import { record } from './mastery.js';
@@ -76,9 +77,11 @@ export const Q = {
         el: h('span', { class: 'qo-name', dir: 'ltr' }, useZh ? h('span', { class: 'zh-opt' }, h('b', {}, o.zh), h('small', {}, o.py)) : h('b', {}, o.en)) })) };
   },
   landmark(c, n) {
-    const opts = shuffle([c, ...others(c, n - 1, (s) => s.landmark && s.landmark !== c.landmark)]);
+    // إن كان للمعلم صورة: الخيارات كلها صور، فيعرف الطفل المعلم بشكله لا باسمه
+    const pic = hasPhoto(c.id) && states.filter((s) => s.id !== c.id && hasPhoto(s.id)).length >= n - 1;
+    const opts = shuffle([c, ...(pic ? pick(states.filter((s) => s.id !== c.id && hasPhoto(s.id)), n - 1) : others(c, n - 1, (s) => s.landmark && s.landmark !== c.landmark))]);
     return { skill: 'landmark', explain: `من معالم ${c.ar}: ${c.landmark}.`, say: `أيّ هذه من أشهر معالم ${c.ar}؟`, parts: ['أيّ هذه من أشهر معالم', c.ar], prompt: h('p', {}, '⭐ أيّ هذه من أشهر معالم ', h('b', {}, c.ar), '؟'),
-      options: opts.map((o) => ({ correct: o.id === c.id, el: h('span', { class: 'lm-opt' }, h('span', { 'aria-hidden': 'true' }, landmarkIcon(o.landmark)), h('b', {}, o.landmark)), label: o.landmark })) };
+      flags: pic, options: opts.map((o) => ({ correct: o.id === c.id, el: pic ? h('img', { class: 'qo-photo', src: landmarkPhoto(o.id).url, alt: '' }) : h('span', { class: 'lm-opt' }, h('span', { 'aria-hidden': 'true' }, landmarkIcon(o.landmark)), h('b', {}, o.landmark)), label: o.landmark })) };
   },
   // اللغة الرسمية (أو لغة العمل الفعلية)، والخيارات لغات لا يتكلمها أهل هذه الدولة رسمياً
   language(c, n) {
@@ -116,7 +119,7 @@ export const Q = {
   },
   landmarkWho(c, n) {
     const opts = shuffle([c, ...others(c, n - 1, (s) => s.landmark !== c.landmark)]);
-    return { skill: 'landmark', explain: `${c.landmark} في ${c.ar}.`, say: `${c.landmark}: في أي دولة؟`, parts: [c.landmark, 'في أي دولة؟'], prompt: h('p', {}, landmarkIcon(c.landmark) + ' ', h('b', {}, c.landmark), ': في أي دولة؟'),
+    return { skill: 'landmark', explain: `${c.landmark} في ${c.ar}.`, say: `${c.landmark}: في أي دولة؟`, parts: [c.landmark, 'في أي دولة؟'], prompt: hasPhoto(c.id) ? h('div', {}, h('img', { class: 'q-photo', src: landmarkPhoto(c.id).url, alt: '' }), h('p', {}, h('b', {}, c.landmark), ': في أي دولة؟')) : h('p', {}, landmarkIcon(c.landmark) + ' ', h('b', {}, c.landmark), ': في أي دولة؟'),
       options: opts.map((o) => ({ correct: o.id === c.id, el: flagOpt(o), label: o.ar })) };
   },
   natureWho(c, n) {
@@ -127,6 +130,8 @@ export const Q = {
     return { skill: 'nature', explain: `${it.ar} ${verb} في ${c.ar}.`, say: `في أي دولة من هذه ${verb} ${it.ar}؟`, prompt: h('p', {}, NAT.kinds[it.kind].icon + ' في أي دولة من هذه ' + verb + ' ', h('b', {}, it.ar), '؟'),
       options: opts.map((o) => ({ correct: o.id === c.id, el: flagOpt(o), label: o.ar })) };
   },
+  // سؤال المعلم بصورته (للختم الذهبي)
+  landmarkPic(c, n) { return Q.landmarkWho(c, n); },
   // ---------- أسئلة المقارنة: تربط الدول بعضها ببعض بدل حفظ كل دولة وحدها ----------
   bigger(c, n, o) { return compareQ(c, o, 'area', 'أيهما أكبر مساحة؟', 'أكبر مساحة'); },
   morePop(c, n, o) { return compareQ(c, o, 'pop', 'أيهما أكثر سكاناً؟', 'أكثر سكاناً'); },
@@ -150,6 +155,8 @@ export function usable(kind, c) {
   switch (kind) {
     case 'capital': return !!c.capAr && c.capQ !== null && !nameIn(c, capName(c)) && !c.ar.includes(bare(capName(c)).split(' ')[0]);
     case 'landmark': case 'landmarkWho': return !!c.landmark && !nameIn(c, c.landmark);
+    // دليلاً للختم الذهبي: المعلم ذو الصورة فقط (يُعرف بشكله)، والسؤال بالصورة لا يكشف الاسم
+    case 'landmarkPic': return hasPhoto(c.id) && !nameIn(c, c.landmark);
     case 'capWho': return usable('capital', c);
     case 'continent': return !c.ar.includes(bare(continents[c.cont]));
     case 'natureWho': return !!NAT.countriesReviewed && NAT.items.some((it) => it.countries?.includes(c.id) && ['river', 'desert', 'range', 'lake'].includes(it.kind));

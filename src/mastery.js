@@ -106,7 +106,8 @@ export function weakest(n = 8, p = store.me) {
 // الإلزامي: العلم والموقع، والعاصمة إن كانت صالحة للسؤال. ومعها مهارتان أخريان.
 // العلم والعاصمة أسئلة اختيار يمكن تخمينها، فيلزم لكل منهما جوابان صحيحان في يومين مختلفين. والخطأ يمحو أدلة تلك المهارة.
 // المعلم ليس دليلاً ما دام اسماً بلا صورة: يحفظه الطفل كلمتين لا معرفة
-export const OTHER_SKILLS = ['names', 'language', 'neighbor', 'nature'];
+// والمعلم يُحسب دليلاً حين يكون له صورة (يُسأل عنه بصورته)
+export const OTHER_SKILLS = ['names', 'language', 'neighbor', 'nature', 'landmark'];
 export const OTHER_NEEDED = 2;
 export const TWICE = ['flag', 'capital'];
 const need = (k) => (TWICE.includes(k) ? 2 : 1);

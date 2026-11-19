@@ -5,6 +5,7 @@ import { h, owl, toast, confetti } from '../ui.js';
 import { states, byId, pool, shuffle, continents, flagUrl } from '../data.js';
 import { store } from '../store.js';
 import { Q, usable, runQuiz } from '../quiz.js';
+import { hasPhoto } from '../photos.js';
 import { dueReviews, reviewResult, goldEligible, addEvidence, evAskable, OTHER_SKILLS, OTHER_NEEDED } from '../mastery.js';
 import { speak, LANG } from '../speech.js';
 import { sfx } from '../sfx.js';
@@ -13,7 +14,7 @@ const ar = (n) => Number(n).toLocaleString('ar-EG');
 const N = 10;
 // أنواع الأسئلة لكل مهارة، بالاتجاهين
 const BY_SKILL = {
-  flag: ['flag', 'flagWho'], capital: ['capital', 'capWho'], map: ['map'],
+  flag: ['flag', 'flagWho'], capital: ['capital', 'capWho'], map: ['map'], landmark: ['landmarkPic'],
   names: ['names'], language: ['language'], neighbor: ['neighbor'], nature: ['natureWho'], continent: ['continent'],
 };
 export const requiredFor = (c) => ['flag', 'map', ...(usable('capital', c) ? ['capital'] : [])];
@@ -38,7 +39,7 @@ export function buildSession(p) {
     for (const sk of missing.slice(0, 2)) add(c, sk, { gold: c.id });
   }
   // ٣) بقية الأسئلة من دول العالم على قدر المستوى
-  const kinds = level === 1 ? ['flag', 'flagWho', 'continent', 'map', 'bigger'] : ['flag', 'flagWho', 'capital', 'capWho', 'map', 'landmarkWho', 'names', 'natureWho', 'neighbor', 'language', 'continent', 'bigger', 'morePop', 'north'];
+  const kinds = level === 1 ? ['flag', 'flagWho', 'continent', 'map', 'bigger', 'landmarkPic'] : ['flag', 'flagWho', 'capital', 'capWho', 'map', 'landmarkWho', 'landmarkPic', 'names', 'natureWho', 'neighbor', 'language', 'continent', 'bigger', 'morePop', 'north'];
   const CMP = ['bigger', 'morePop', 'north']; const cmps = () => specs.filter((s) => CMP.includes(s.kind)).length;
   for (const c of shuffle(pool(level))) {
     if (specs.length >= N) break;
@@ -72,7 +73,7 @@ export function worldScreen(root, { go }) {
         const c = q.c; const s = q.spec;
         if (s.review) { (rev[s.review] ||= []).push(ok); }
         // أي سؤال عن دولة تنتظر الذهبي يُحسب دليلاً (أو يُسقط دليلاً عند الخطأ)
-        if (!['continent', 'compare', 'landmark'].includes(q.skill) && addEvidence(owner, c.id, q.skill, ok, requiredFor(c))) newGold.push(c.id);
+        if (!['continent', 'compare'].includes(q.skill) && !(q.skill === 'landmark' && !hasPhoto(c.id)) && addEvidence(owner, c.id, q.skill, ok, requiredFor(c))) newGold.push(c.id);
       },
       onDecide: () => applyReviews(),
       onAbort: () => applyReviews(true),
