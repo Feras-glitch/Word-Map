@@ -10,7 +10,7 @@ import { SAME, FEM_MARK } from './gender.js';
 export const PHRASES = [
   'أحسنت!', 'رائع!', 'صحيح!', 'ممتاز!', 'إجابة موفقة!', 'ما شاء الله!', 'ليست هذه', 'أيّ هذه الأعلام علم', 'ما عاصمة', 'في أي قارة تقع', 'أيّ هذه من أشهر معالم', 'لأي دولة هذا العلم؟',
   'عاصمة أي دولة؟', 'في أي دولة؟', 'المس', 'على الخريطة', 'ما اسم', 'بالإنجليزية؟', 'بالصينية؟', 'قارة', 'عاصمة', 'هي', 'نظام الحكم في',
-  'من معالم', 'الشهيرة', 'هل تعلم؟', 'أهلاً بك في مستكشف العالم', 'هيا نستكشف العالم', 'مبارك! نلت ختماً ذهبياً جديداً', 'أحسنتم جميعاً',
+  'من معالم', 'الشهيرة', 'هل تعلم؟', 'أهلاً بك في مستكشف العالم', 'رتّب حروف عاصمة', 'هيا نستكشف العالم', 'مبارك! نلت ختماً ذهبياً جديداً', 'أحسنتم جميعاً',
 ];
 const LANGS = { ar: 'ar-SA', en: 'en-US', zh: 'zh-CN' };
 // النص المشكول لمن يسجّل: الأسماء من قاموس الكلمات، والعبارات والمعلومات الطويلة من قاموس النصوص
@@ -18,6 +18,7 @@ const voc = (t) => (TASHKEEL.words || {})[t] || (TEXTS.review === 'pending' ? ''
 const item = (group, text, lang, extra = {}) => text ? { group, text, lang, key: keyOf(text, lang), voc: langOf(lang) === 'ar' ? voc(text) : '', ...extra } : null;
 
 export const GROUPS = {
+  priority: '⭐ الأهم أولاً (يتكرر كثيراً)',
   phrases: '💬 عبارات الأسئلة والتشجيع', names: '🏳️ أسماء الدول', capitals: '🏛️ العواصم', greetings: '👋 التحيات', continents: '🌍 القارات',
   landmarks: '⭐ المعالم', facts: '💡 هل تعلم؟', nature: '⛰️ الأنهار والجبال',
 };
@@ -42,6 +43,12 @@ export function catalog({ child = false } = {}) {
     for (const c of states) if (c.fact) out.push(item('facts', c.fact, LANGS.ar, { sub: c.ar }));
     for (const it of NAT.items) { tri('nature', it, ''); out.push(item('nature', it.fact, LANGS.ar, { sub: it.ar })); }
   }
+  // الأهم أولاً: عبارات الأسئلة والتشجيع، والقارات، ودول الرحلات العربية وعواصمها، والدول المشهورة، بالعربية
+  const ARAB = ['PSE', 'JOR', 'SYR', 'LBN', 'EGY', 'SAU', 'YEM', 'OMN', 'ARE', 'QAT', 'BHR', 'KWT', 'IRQ', 'SDN', 'LBY', 'TUN', 'DZA', 'MAR', 'MRT', 'SOM', 'DJI', 'COM'];
+  const pri = new Set();
+  for (const x of out) if (x && x.lang.startsWith('ar') && (x.group === 'phrases' || x.group === 'continents')) pri.add(x.key);
+  for (const c of states) if (ARAB.includes(c.id) || c.famous) { pri.add(keyOf(c.ar, LANGS.ar)); if (ARAB.includes(c.id) && c.cap3) pri.add(keyOf(c.cap3.ar, LANGS.ar)); }
+  for (const x of out) if (x && pri.has(x.key)) x.pri = true;
   const uniq = new Map();
   for (const x of out.filter(Boolean)) if (!uniq.has(x.key)) uniq.set(x.key, x);
   return [...uniq.values()];

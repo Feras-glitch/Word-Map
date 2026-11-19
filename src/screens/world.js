@@ -6,7 +6,7 @@ import { states, byId, pool, shuffle, continents, flagUrl } from '../data.js';
 import { store } from '../store.js';
 import { Q, usable, runQuiz } from '../quiz.js';
 import { hasPhoto } from '../photos.js';
-import { dueReviews, reviewResult, goldEligible, addEvidence, evAskable, OTHER_SKILLS, OTHER_NEEDED } from '../mastery.js';
+import { dueReviews, reviewResult, goldEligible, addEvidence, evAskable, goldPercent, OTHER_SKILLS, OTHER_NEEDED } from '../mastery.js';
 import { speak, LANG } from '../speech.js';
 import { sfx } from '../sfx.js';
 
@@ -14,7 +14,7 @@ const ar = (n) => Number(n).toLocaleString('ar-EG');
 const N = 10;
 // أنواع الأسئلة لكل مهارة، بالاتجاهين
 const BY_SKILL = {
-  flag: ['flag', 'flagWho'], capital: ['capital', 'capWho'], map: ['map'], landmark: ['landmarkPic'],
+  flag: ['flag', 'flagWho'], capital: ['capital', 'capWho', 'spell'], map: ['map'], landmark: ['landmarkPic'],
   names: ['names'], language: ['language'], neighbor: ['neighbor'], nature: ['natureWho'], continent: ['continent'],
 };
 export const requiredFor = (c) => ['flag', 'map', ...(usable('capital', c) ? ['capital'] : [])];
@@ -39,7 +39,7 @@ export function buildSession(p) {
     for (const sk of missing.slice(0, 2)) add(c, sk, { gold: c.id });
   }
   // ٣) بقية الأسئلة من دول العالم على قدر المستوى
-  const kinds = level === 1 ? ['flag', 'flagWho', 'continent', 'map', 'bigger', 'landmarkPic'] : ['flag', 'flagWho', 'capital', 'capWho', 'map', 'landmarkWho', 'landmarkPic', 'names', 'natureWho', 'neighbor', 'language', 'continent', 'bigger', 'morePop', 'north'];
+  const kinds = level === 1 ? ['flag', 'flagWho', 'continent', 'map', 'bigger', 'landmarkPic'] : ['flag', 'flagWho', 'capital', 'capWho', 'spell', 'map', 'landmarkWho', 'landmarkPic', 'names', 'natureWho', 'neighbor', 'language', 'continent', 'bigger', 'morePop', 'north'];
   const CMP = ['bigger', 'morePop', 'north']; const cmps = () => specs.filter((s) => CMP.includes(s.kind)).length;
   for (const c of shuffle(pool(level))) {
     if (specs.length >= N) break;
@@ -56,19 +56,22 @@ export function worldScreen(root, { go }) {
   const me = store.me; const owner = me.id;
   const due = dueReviews(me).length;
   const ready = Object.keys(me.stamps || {}).filter((id) => goldEligible(me, id)).length;
-  root.append(owl('التمرين الشامل: عشرة أسئلة من دول العالم كلها. فيه تجمع أدلة الأختام الذهبية، وتراجع ما أتقنته من قبل.'),
+  const ids = Object.keys(me.stamps || {}).filter((id) => goldEligible(me, id));
+  const bars = ids.map((id) => [id, goldPercent(me, id, requiredFor(byId[id]))]).sort((a, b) => b[1] - a[1]).slice(0, 6);
+  root.append(owl('عشرة أسئلة من الدول التي زرتها ومن العالم كله.'),
     h('div', { class: 'panel' },
-      h('p', {}, `🛂 دول زرتها وتنتظر الختم الذهبي: ${ar(ready)}`),
-      h('p', {}, `🔔 مراجعات مستحقة: ${ar(due)}`),
-      h('p', { class: 'hint' }, 'الختم الذهبي يأتي حين تجيب صحيحاً من أول محاولة عن علم الدولة وعاصمتها في يومين مختلفين، وعن موقعها، وعن شيئين آخرين منها. الأسئلة التي تُحسب له تحمل علامة 🥇.'),
-      h('button', { class: 'btn big', onclick: () => start() }, '🧠 ابدأ التمرين')));
+      due ? h('p', { class: 'strong' }, `🔔 فيه مراجعة لـ${ar(due)} من الدول التي أتقنتها.`) : null,
+      h('p', {}, '🥇 أجب صحيحاً عن الدولة نفسها في أيام مختلفة، فيمتلئ شريطها وتنال ختمها الذهبي. الأسئلة التي تحمل 🥇 تملأ الشريط.'),
+      bars.length ? h('div', { class: 'gold-bars' }, bars.map(([id, f]) => h('div', { class: 'gb' }, h('img', { src: flagUrl(byId[id].f), alt: '' }), h('span', {}, byId[id].ar),
+        h('div', { class: 'bar' }, h('i', { style: { width: Math.round(f * 100) + '%' } }))))) : h('p', { class: 'hint' }, ready ? '' : 'زر دولاً في «رحلاتي» أولاً، ومن الغد تبدأ أشرطتها.'),
+      h('button', { class: 'btn big', onclick: () => start() }, '🧠 ابدأ')));
 
   function start() {
     const p = store.me; if (!p || p.id !== owner) return;
     const { specs, n } = buildSession(p);
     const questions = specs.map((s) => toQ(s, n));
     const newGold = []; const rev = {};
-    runQuiz({ title: '🧠 التمرين الشامل', questions, requeue: true,
+    runQuiz({ title: '🥇 الأختام الذهبية', questions, requeue: true,
       onAnswer: (q, ok) => {
         const c = q.c; const s = q.spec;
         if (s.review) { (rev[s.review] ||= []).push(ok); }

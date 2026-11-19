@@ -6,6 +6,7 @@ import './style.css';
 import { h, consumeSkipPop, closeTopModal, clearModals, toast } from './ui.js';
 import { store } from './store.js';
 import { setFemOff, setAddressee } from './gender.js';
+import { startTimeLimit } from './timelimit.js';
 import { stopSpeech } from './speech.js';
 import { profilesScreen } from './screens/profiles.js';
 import { homeScreen } from './screens/home.js';
@@ -23,6 +24,7 @@ import { familyScreen } from './screens/family.js';
 import { aboutScreen } from './screens/about.js';
 import { studioScreen } from './screens/studio.js';
 import { journeysScreen } from './screens/journeys.js';
+import { playScreen } from './screens/play.js';
 import { conceptsScreen } from './concepts.js';
 import { missionsScreen, findScreen, guideScreen, nileScreen, routeScreen, layerScreen } from './screens/missions.js';
 
@@ -31,7 +33,7 @@ const screens = {
   home: { title: '', fn: homeScreen, noBack: true },
   explore: { title: '🗺️ خريطة العالم', fn: exploreScreen, full: true },
   passport: { title: '🛂 جواز سفري', fn: passportScreen },
-  games: { title: '🎮 الألعاب', fn: gamesScreen },
+  games: { title: '🎯 تمرّن وحدك', fn: gamesScreen, back: 'play' },
   'g-flag': { title: '🚩 خمّن العلم', fn: flagGame, back: 'games' },
   'g-where': { title: '📍 أين هذه الدولة؟', fn: whereGame, back: 'games', full: true },
   'g-capital': { title: '🏛️ ما العاصمة؟', fn: capitalGame, back: 'games' },
@@ -41,12 +43,13 @@ const screens = {
   hello: { title: '👋 قل مرحباً', fn: helloScreen },
   daily: { title: '✈️ رحلة اليوم', fn: dailyScreen, full: true },
   options: { title: '⚙️ الإعدادات', fn: settingsScreen },
-  world: { title: '🧠 التمرين الشامل', fn: worldScreen },
+  world: { title: '🥇 اجمع الأختام الذهبية', fn: worldScreen, back: 'play' },
   parent: { title: '🔒 لوحة الوالدين', fn: parentScreen },
-  family: { title: '👨‍👩‍👧‍👦 تحدي العائلة', fn: familyScreen },
+  family: { title: '👨‍👩‍👧‍👦 العبوا معاً', fn: familyScreen, back: 'play' },
   about: { title: '🗺️ عن هذه الخريطة', fn: aboutScreen },
   studio: { title: '🎙️ الاستوديو الصوتي', fn: studioScreen },
   journeys: { title: '🧳 رحلاتي', fn: journeysScreen },
+  play: { title: '🎮 العب', fn: playScreen },
   concepts: { title: '📘 مفاهيم المستكشف', fn: conceptsScreen },
   missions: { title: '🔎 مهام المستكشف', fn: missionsScreen },
   find: { title: '🔎 ابحث عن بلدي', fn: findScreen, full: true, back: 'missions' },
@@ -96,6 +99,7 @@ window.addEventListener('popstate', () => {
   render();
 });
 render();
+startTimeLimit();
 
 // تنبيه إن فشل الحفظ على الجهاز (مثلاً امتلاء الذاكرة)
 window.addEventListener('store-save-failed', () => toast('⚠️ تعذّر حفظ التقدم على هذا الجهاز. احفظ نسخة احتياطية من لوحة الوالدين', 6000));

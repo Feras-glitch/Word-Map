@@ -88,7 +88,7 @@ function namesTab(c) {
     c.occNote ? h('div', { class: 'sec occ-note' }, h('span', { class: 'st-label' }, '🕊️ أرض محتلة'), h('p', {}, c.occNote + '.'), say(c.occNote, LANG.ar)) : null,
     // «هل تعلم؟» أمتع ما في البطاقة، فمكانها في أولها
     c.fact || c.note ? h('div', { class: 'didyou big' }, h('span', { class: 'st-label' }, '💡 هل تعلم؟'), h('p', {}, c.fact || c.note), say(factSpeech(c), LANG.ar)) : null,
-    cont && c.cont !== 'antarctica' ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, (contEmoji[c.cont] || '🌍') + ' تقع في قارة ', conceptBtn('continent')), triFold(cont, { prefix: 'قارة ' }), c.sub ? h('small', { class: 'muted' }, c.sub) : null, c.contNote ? h('p', { class: 'note' }, '🌐 ' + c.contNote + '.') : null) : null,
+    cont && c.cont !== 'antarctica' ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, (contEmoji[c.cont] || '🌍') + ' تقع في قارة ', conceptBtn('continent')), triFold(cont, { prefix: 'قارة ' }), c.sub && c.sub !== cont.ar ? h('small', { class: 'muted' }, c.sub) : null, c.contNote ? h('p', { class: 'note' }, '🌐 ' + c.contNote + '.') : null) : null,
   );
 }
 
@@ -271,7 +271,7 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
             onClose: () => { drawStamp(); if (won) { showStamp(false); checkContinentBadge(c.cont); checkJourney(c.id); } } }); } }, '🛂 احصل على ختم الزيارة (سؤال واحد)')) : null,
       // الختم الذهبي لا يُمتحن هنا (البطاقة تكشف الجواب)، بل تُجمع أدلته في التمرين الشامل
       visit && !gold ? goldBox() : null,
-      gold && due ? h('button', { class: 'btn big', onclick: () => { m.close(); setTimeout(() => (location.hash = '#world'), 250); } }, '🔔 حان وقت المراجعة: في التمرين الشامل') : null,
+      gold && due ? h('button', { class: 'btn big', onclick: () => { m.close(); setTimeout(() => (location.hash = '#world'), 250); } }, '🔔 حان وقت مراجعتها') : null,
     ].filter(Boolean));
   };
   // شريط من سطر واحد يتوسع عند اللمس، حتى لا يزاحم محتوى البطاقة
@@ -287,9 +287,9 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
       h('summary', {}, h('b', {}, '🥇 أدلة الختم الذهبي'),
         ...g.req.map(([k, v, n, need]) => h('span', { class: 'gs' + (v ? ' on' : ''), title: N[k] }, L[k] + (v ? '✅' : need > 1 ? ` ${A(n)}/${A(need)}` : ' ◻️'))),
         h('span', { class: 'gs' + (g.others >= OTHER_NEEDED ? ' on' : '') }, '➕' + (g.others >= OTHER_NEEDED ? '✅' : ` ${A(Math.min(g.others, OTHER_NEEDED))}/${A(OTHER_NEEDED)}`))),
-      h('p', { class: 'note' }, open ? 'تُجمع هذه الأدلة في «التمرين الشامل»، حين تجيب صحيحاً من أول محاولة: العلم 🚩 والعاصمة 🏛️ في يومين مختلفين، والموقع 📍، وشيئان آخران ➕.'
-        : 'تبدأ أدلة الختم الذهبي من الغد في «التمرين الشامل». راجع البطاقة اليوم.'),
-      open ? h('button', { class: 'btn gold-btn', onclick: () => { m.close(); setTimeout(() => (location.hash = '#world'), 250); } }, '🧠 إلى التمرين الشامل') : null);
+      h('p', { class: 'note' }, open ? 'أجب صحيحاً عن هذه الدولة في «العب ← اجمع الأختام الذهبية»، في أيام مختلفة، فتمتلئ هذه العلامات.'
+        : 'يبدأ شريط الختم الذهبي من الغد. راجع البطاقة اليوم.'),
+      open ? h('button', { class: 'btn gold-btn', onclick: () => { m.close(); setTimeout(() => (location.hash = '#world'), 250); } }, '🥇 اجمع الأختام الذهبية') : null);
   }
   // عدّ تنازلي بعد خطأ في سؤال الزيارة
   function waitNote() {

@@ -31,7 +31,7 @@ export function parentScreen(root, { go }) {
     root.append(h('div', { class: 'panel' }, h('h3', {}, '🎙️ الأصوات'),
       h('p', { class: 'hint' }, 'سجّلوا الأسماء والعبارات بأصواتكم بدل القراءة الآلية، واعتمدوا تسجيلات الأولاد.'),
       h('div', { class: 'row wrap' }, h('button', { class: 'btn', onclick: () => go('studio?m=family') }, '🎙️ استوديو الأهل'),
-        h('button', { class: 'btn soft', onclick: () => go('studio?m=dev') }, '🛠️ استوديو المطور'))), backupPanel(), pinPanel());
+        h('button', { class: 'btn soft', onclick: () => go('studio?m=dev') }, '🛠️ استوديو المطور'))), backupPanel(), timePanel(), pinPanel());
   }
 
   function childPanel(p) {
@@ -110,6 +110,14 @@ export function parentScreen(root, { go }) {
       h('ul', { class: 'bk-sum' }, r.summary.map((x) => h('li', {}, `${x.avatar} ${x.name}: ${ar(x.stamps)} ختم زيارة، ${ar(x.gold)} ختم ذهبي`))),
       h('p', { class: 'hint' }, 'ستُستبدل كل الملفات الموجودة الآن. احفظ نسخة من بياناتك الحالية أولاً إن أردت الرجوع إليها.'),
       h('div', { class: 'row' }, h('button', { class: 'btn danger', onclick: () => { d.close(); const err = store.importData(text); toast(err || 'تمت الاستعادة ✓', 4000); if (!err) setTimeout(draw, 300); } }, 'نعم، استبدل'), h('button', { class: 'btn soft', onclick: () => d.close() }, 'إلغاء'))));
+  }
+  // وقت اللعب اليومي لكل طفل
+  function timePanel() {
+    const cur = +store.parent.dailyMinutes || 0;
+    return h('div', { class: 'panel' }, h('h3', {}, '⏱️ وقت اللعب اليومي'),
+      h('p', { class: 'hint' }, 'لكل طفل وقته في اليوم. حين ينتهي تظهر له رسالة لطيفة، وتستطيعون إضافة ربع ساعة بالرقم السري.'),
+      h('div', { class: 'row wrap' }, [0, 20, 30, 45, 60].map((m) => h('button', { class: 'btn small' + (m === cur ? '' : ' soft'), onclick: () => { store.setParent({ dailyMinutes: m }); draw(); } }, m ? m.toLocaleString('ar-EG') + ' دقيقة' : 'بلا حد'))),
+      h('p', { class: 'hint' }, store.profiles.map((p) => `${p.avatar} ${p.name}: ${(p.usage?.[today()] || 0).toLocaleString('ar-EG')} دقيقة اليوم`).join(' · ')));
   }
   function pinPanel() {
     return h('div', { class: 'panel' }, h('h3', {}, '🔑 الرقم السري'),

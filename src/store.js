@@ -12,7 +12,7 @@ export function normalizeProfile(p) {
   const q = { ...p };
   q.level = [1, 2, 3].includes(+q.level) ? +q.level : 2;
   q.avatar = typeof q.avatar === 'string' && q.avatar ? q.avatar : '🧭';
-  for (const k of ['stamps', 'gold', 'stars', 'daily', 'badges', 'mastery', 'practice', 'review', 'examFail', 'visitFail', 'activity', 'found', 'visitAt']) q[k] = isObj(q[k]) ? q[k] : {};
+  for (const k of ['stamps', 'gold', 'stars', 'daily', 'badges', 'mastery', 'practice', 'review', 'examFail', 'visitFail', 'activity', 'found', 'visitAt', 'usage']) q[k] = isObj(q[k]) ? q[k] : {};
   for (const k of ['stamps', 'gold']) for (const [id, d] of Object.entries(q[k])) if (typeof d !== 'string' || !DATE.test(d)) delete q[k][id];
   for (const [id, r] of Object.entries(q.review)) if (!isObj(r) || !DATE.test(r.due || '')) delete q.review[id];
   q.gender = q.gender === 'f' ? 'f' : q.gender === 'm' ? 'm' : null;

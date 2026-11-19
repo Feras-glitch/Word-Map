@@ -130,6 +130,15 @@ export const Q = {
     return { skill: 'nature', explain: `${it.ar} ${verb} في ${c.ar}.`, say: `في أي دولة من هذه ${verb} ${it.ar}؟`, prompt: h('p', {}, NAT.kinds[it.kind].icon + ' في أي دولة من هذه ' + verb + ' ', h('b', {}, it.ar), '؟'),
       options: opts.map((o) => ({ correct: o.id === c.id, el: flagOpt(o), label: o.ar })) };
   },
+  // استرجاع لا تعرّف: يرتّب الطفل حروف اسم العاصمة (ومعها حرفان زائدان)
+  spell(c) {
+    // الحروف بلا تشكيل ولا شدة: كل بلاطة حرف واحد
+    const letters = [...capName(c).replace(/[\u064B-\u0652\u0670\u0640\s]/g, '')];
+    const pool2 = 'بتثجحدرسشصطعفقكلمنهوي'.split('').filter((x) => !letters.includes(x));
+    const tiles = shuffle([...letters, ...pick(pool2, 2)]);
+    return { skill: 'capital', type: 'spell', answer: letters.join(''), tiles, explain: `عاصمة ${c.ar} هي ${capName(c)}.`,
+      say: `رتّب حروف عاصمة ${c.ar}`, parts: ['رتّب حروف عاصمة', c.ar], prompt: h('p', {}, '🔤 رتّب حروف عاصمة ', h('b', {}, c.ar)) };
+  },
   // سؤال المعلم بصورته (للختم الذهبي)
   landmarkPic(c, n) { return Q.landmarkWho(c, n); },
   // ---------- أسئلة المقارنة: تربط الدول بعضها ببعض بدل حفظ كل دولة وحدها ----------
@@ -161,6 +170,7 @@ export function usable(kind, c) {
     case 'continent': return !c.ar.includes(bare(continents[c.cont]));
     case 'natureWho': return !!NAT.countriesReviewed && NAT.items.some((it) => it.countries?.includes(c.id) && ['river', 'desert', 'range', 'lake'].includes(it.kind));
     case 'map': return !!(c.cen || c.bb);
+    case 'spell': { const w = capName(c); return (store.me?.level || 2) === 3 && usable('capital', c) && !/\s|\(|-/.test(w) && w.length >= 3 && w.length <= 7; }
     case 'bigger': return !!c.area;
     case 'morePop': return !!c.pop && c.id !== 'PSE';
     case 'north': return !!c.cen;
@@ -237,7 +247,21 @@ export function runQuiz({ title, country, questions, onDone, onDecide, onAbort, 
     const again = h('button', { class: 'say-again', 'aria-label': 'أعد قراءة السؤال', onclick: say }, '🔊');
     const tag = q.again ? '🔁 لنعد إلى ما فاتك' : q.spec?.gold ? '🥇 سؤال للختم الذهبي' : q.spec?.review ? '🔔 مراجعة' : null;
     const qBox = h('div', { class: 'question', tabindex: '-1' }, tag ? h('span', { class: 'q-tag' }, tag) : null, again, q.prompt);
-    if (q.type === 'map') {
+    if (q.type === 'spell') {
+      let built = [];
+      const slot = h('div', { class: 'spell-slot', dir: 'rtl' });
+      const tilesBox = h('div', { class: 'spell-tiles' });
+      const draw = () => {
+        slot.textContent = built.map((k) => q.tiles[k]).join('') || '…';
+        tilesBox.replaceChildren(...q.tiles.map((t, k) => h('button', { class: 'spell-t' + (built.includes(k) ? ' used' : ''), disabled: built.includes(k) || locked || null, onclick: () => {
+          if (locked) return; built.push(k); sfx('tap'); draw();
+          if (built.length === q.answer.length) { const ok = built.map((x) => q.tiles[x]).join('') === q.answer; slot.classList.add(ok ? 'right' : 'wrong'); if (!ok) slot.after(h('div', { class: 'spell-ans' }, q.answer)); answer(ok); }
+        } }, t)));
+      };
+      const back = h('button', { class: 'btn small soft', onclick: () => { if (locked) return; built.pop(); draw(); } }, '⌫ امسح حرفاً');
+      draw();
+      box.replaceChildren(head(), qBox, slot, tilesBox, h('div', { class: 'row' }, back), fb);
+    } else if (q.type === 'map') {
       const c = mapCountries?.[i] || q.c || country;
       const tiny = c.small || !c.bb || (c.bb[2] - c.bb[0]) < 12;
       const mp = createMap({ labels: false, dotPx: tiny ? 13 : undefined, fill: (x) => lighten(contColors[x.cont] || '#ccc', x.kind === 'state' ? 0.1 : 0.5),

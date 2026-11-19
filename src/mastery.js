@@ -146,3 +146,11 @@ export function addEvidence(pid, id, skill, ok, required) {
   });
   return became;
 }
+
+// نسبة اكتمال الختم الذهبي لدولة (لشريط يمتلئ يراه الطفل)
+export function goldPercent(p, id, required) {
+  const ev = p.evidence?.[id] || {};
+  const need = required.reduce((n, k) => n + (TWICE.includes(k) ? 2 : 1), 0) + OTHER_NEEDED;
+  const have = required.reduce((n, k) => n + Math.min(evCount(ev, k), TWICE.includes(k) ? 2 : 1), 0) + Math.min(OTHER_SKILLS.filter((k) => ev[k]).length, OTHER_NEEDED);
+  return have / need;
+}

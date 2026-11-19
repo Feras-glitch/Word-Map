@@ -47,12 +47,14 @@ export function exploreScreen(root) {
   const input = h('input', { class: 'input search', type: 'search', placeholder: '🔎 ابحث عن دولة أو عاصمة…', oninput: () => {
     results.innerHTML = '';
     const q = input.value.trim();
-    if (q.length >= 2) for (const it of NAT.items.filter((x) => x.ar.includes(q) || x.en.toLowerCase().includes(q.toLowerCase())).slice(0, 4)) results.append(h('button', { class: 'res', onclick: () => {
-      input.value = ''; results.innerHTML = ''; input.blur(); if (!store.settings.nature) setNat(true); showNat(it.id); setTimeout(() => m.el.isConnected && openNature(it.id), 900);
-    } }, h('span', { class: 'res-ic' }, NAT.kinds[it.kind].icon), h('b', {}, it.ar), h('small', {}, it.en)));
-    for (const c of search(input.value)) results.append(h('button', { class: 'res', onclick: () => {
+    // الدول والعواصم أولاً، ثم الأنهار والبحار: من يكتب «اليابان» يريد الدولة لا «بحر اليابان»
+    const countries = search(input.value);
+    for (const c of countries) results.append(h('button', { class: 'res', onclick: () => {
       input.value = ''; results.innerHTML = ''; input.blur(); show(c.id); setTimeout(() => m.el.isConnected && openCard(c.id, { onShowOnMap: show, onClose: () => m.setFill(fill) }), 750);
     } }, h('img', { src: flagUrl(c.f), alt: '' }), h('b', {}, c.ar), h('small', {}, c.en)));
+    if (q.length >= 2) for (const it of NAT.items.filter((x) => x.ar.includes(q) || x.en.toLowerCase().includes(q.toLowerCase())).slice(0, countries.length ? 2 : 4)) results.append(h('button', { class: 'res nat', onclick: () => {
+      input.value = ''; results.innerHTML = ''; input.blur(); if (!store.settings.nature) setNat(true); showNat(it.id); setTimeout(() => m.el.isConnected && openNature(it.id), 900);
+    } }, h('span', { class: 'res-ic' }, NAT.kinds[it.kind].icon), h('b', {}, it.ar), h('small', {}, it.en)));
   } });
 
   const conts = h('div', { class: 'cont-bar' }, contOrder.map((k) => h('button', { class: 'cont-btn', style: { '--c': contColors[k] }, onclick: () => { sfx('tap'); m.zoomTo(contBox[k]); } }, contEmoji[k] + ' ' + continents[k])));

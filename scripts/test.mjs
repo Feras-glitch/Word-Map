@@ -143,4 +143,14 @@ await test('صور المعالم: لكل صورة معتمدة ملف ورخص�
   }
 });
 
+await test('سؤال ترتيب الحروف: لا تشكيل في البلاطات', () => {
+  const q = read('src/quiz.js');
+  assert.ok(/capName\(c\)\.replace\(\/\[\\u064B-\\u0652/.test(q), 'الحروف تُنزع منها الحركات والشدة');
+});
+
+await test('البحث: الدولة قبل البحر والنهر', () => {
+  const ex = read('src/screens/explore.js');
+  assert.ok(ex.indexOf('const countries = search(') < ex.indexOf('NAT.items.filter((x) => x.ar.includes(q)'), 'ترتيب نتائج البحث');
+});
+
 console.log(process.exitCode ? '\nفشل بعض الاختبارات' : `\nنجحت الاختبارات كلها (${n})`);

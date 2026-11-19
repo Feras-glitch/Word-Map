@@ -504,3 +504,24 @@ textarea.paste { width: 100%; min-height: 140px; border-radius: 12px; border: 2p
 .q-photo { width: min(100%, 360px); aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px; display: block; margin: 0 auto 8px; box-shadow: 0 6px 14px rgba(0,0,0,.15); }
 .qo-photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; display: block; }
 .clue-photo { display: block; width: 100%; max-width: 280px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; margin: 6px auto 0; }
+/* ١.١٤: رئيسية المستوى الأول، وباب «العب» */
+.tiles.simple { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
+.tiles.simple .tile { flex-direction: column; justify-content: center; align-items: center; min-height: 150px; text-align: center; gap: 6px; }
+.tiles.simple .tile:first-child { grid-column: auto; background: #fff; color: inherit; }
+.tiles.simple .tile .te { font-size: 3.6rem; } .tiles.simple .tile b { font-size: 1.4rem; }
+.more-home { margin-top: 16px; } .more-home > summary { list-style: none; cursor: pointer; text-align: center; font-weight: 900; color: var(--blue-d); background: #fff; border-radius: 16px; padding: 12px; box-shadow: var(--shadow); }
+.more-home > summary::-webkit-details-marker { display: none; }
+.tiles.even .tile.wide { grid-column: 1 / -1; }
+.play-card { position: relative; display: flex; align-items: center; gap: 14px; width: 100%; text-align: start; background: #fff; border-radius: 22px; padding: 18px 16px; margin: 12px 0; box-shadow: 0 6px 0 var(--c), var(--shadow); border-top: 6px solid var(--c); }
+.play-card .pe { font-size: 3rem; } .play-card b { display: block; font-size: 1.35rem; } .play-card small { color: var(--muted); font-size: .95rem; }
+.play-card .tt { display: flex; flex-direction: column; flex: 1; }
+.gold-bars { display: grid; gap: 8px; margin: 10px 0; } .gb { display: grid; grid-template-columns: 34px 1fr 1.2fr; align-items: center; gap: 8px; font-weight: 800; }
+.gb img { width: 34px; border-radius: 4px; box-shadow: 0 0 0 1px #0002; } .gb .bar { height: 12px; background: #f3ead2; border-radius: 99px; overflow: hidden; } .gb .bar i { display: block; height: 100%; background: linear-gradient(90deg, #e0a800, #f6c945); border-radius: 99px; }
+.strong { font-weight: 800; }
+.spell-slot { margin: 14px auto 10px; min-height: 64px; max-width: 320px; border-radius: 18px; background: #fff; box-shadow: inset 0 0 0 3px #d6dde8; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; font-weight: 900; letter-spacing: 0; }
+.spell-slot.right { box-shadow: inset 0 0 0 3px #1a9b55; background: #e5f4e4; } .spell-slot.wrong { box-shadow: inset 0 0 0 3px #e5484d; background: #fbebeb; }
+.spell-ans { text-align: center; font-size: 1.6rem; font-weight: 900; color: #1a9b55; margin-bottom: 8px; }
+.spell-tiles { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 10px; }
+.spell-t { width: 56px; height: 56px; border-radius: 14px; background: #fff; font-size: 1.7rem; font-weight: 900; box-shadow: 0 4px 0 #d6dde8; } .spell-t.used { opacity: .25; }
+.time-up { position: fixed; inset: 0; z-index: 999; background: linear-gradient(180deg, #1d3b6e, #2b5ca8); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; text-align: center; }
+.time-up h2 { margin: 0; font-size: 1.6rem; } .time-up p { margin: 0; font-size: 1.15rem; opacity: .95; } .time-up .btn.small { opacity: .85; }

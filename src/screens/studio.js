@@ -43,7 +43,7 @@ export function studioScreen(root, { go, params }) {
     const pack = m === 'family' ? 'family' : m === 'dev' ? 'dev' : 'child:' + me.name;
     const items = catalog({ child: m === 'child' });
     let mine = new Map((await listPack(pack).catch(() => [])).map((c) => [c.key, c]));
-    let group = m === 'child' ? 'names' : 'phrases', onlyMissing = false, q = '', shown = PAGE, recording = null;
+    let group = m === 'child' ? 'names' : 'priority', onlyMissing = false, q = '', shown = PAGE, recording = null;
     const head = h('div', { class: 'studio-head' });
     const list = h('div', { class: 'studio-list' });
     const extra = h('div', {});
@@ -58,7 +58,8 @@ export function studioScreen(root, { go, params }) {
     }[m];
 
     function drawHead() {
-      const visible = items.filter((x) => x.group === group);
+      const inGroup = (x) => (group === 'priority' ? x.pri : x.group === group);
+      const visible = items.filter(inGroup);
       const done = visible.filter((x) => mine.has(x.key)).length;
       const total = items.filter((x) => mine.has(x.key)).length;
       head.replaceChildren(
@@ -66,14 +67,14 @@ export function studioScreen(root, { go, params }) {
         h('div', { class: 'studio-progress' }, h('b', {}, `سُجّل ${ar(total)} من ${ar(items.length)}`), h('div', { class: 'bar' }, h('i', { style: { width: (total / items.length) * 100 + '%' } }))),
         h('div', { class: 'row wrap' },
           h('select', { class: 'input', onchange: (e) => { group = e.target.value; shown = PAGE; drawHead(); drawList(); } },
-            Object.entries(GROUPS).filter(([k]) => items.some((x) => x.group === k)).map(([k, t]) => h('option', { value: k, selected: k === group || null }, t))),
+            Object.entries(GROUPS).filter(([k]) => items.some((x) => (k === 'priority' ? x.pri : x.group === k))).map(([k, t]) => h('option', { value: k, selected: k === group || null }, t))),
           h('label', { class: 'chk' }, h('input', { type: 'checkbox', checked: onlyMissing || null, onchange: (e) => { onlyMissing = e.target.checked; shown = PAGE; drawList(); } }), ' الناقص فقط'),
           h('input', { class: 'input', type: 'search', placeholder: '🔎 بحث', value: q, oninput: (e) => { q = e.target.value.trim(); shown = PAGE; drawList(); } })),
         h('small', { class: 'hint' }, `في هذا القسم: ${ar(done)} من ${ar(visible.length)}`));
     }
 
     function drawList() {
-      let xs = items.filter((x) => x.group === group);
+      let xs = items.filter((x) => (group === 'priority' ? x.pri : x.group === group));
       if (onlyMissing) xs = xs.filter((x) => !mine.has(x.key));
       if (q) xs = xs.filter((x) => x.text.includes(q) || (x.sub || '').includes(q));
       list.replaceChildren(...xs.slice(0, shown).map(row), xs.length > shown ? h('button', { class: 'btn soft', onclick: () => { shown += PAGE; drawList(); } }, `المزيد (${ar(xs.length - shown)})`) : null);
