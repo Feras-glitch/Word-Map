@@ -90,22 +90,22 @@
   "review": "ok"
  },
  "AZE": {
-  "file": "İçərişəhər_kollajı.jpg",
-  "title": "Old City (Baku)",
-  "artist": "Sefer azeri",
+  "file": "Fuente en Baku, Azerbaiyán, 2016-09-26, DD 227-229 HDR.jpg",
+  "title": "",
+  "artist": "Diego Delso",
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:%C4%B0%C3%A7%C9%99ri%C5%9F%C9%99h%C9%99r_kollaj%C4%B1.jpg",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:Fuente_en_Baku,_Azerbaiy%C3%A1n,_2016-09-26,_DD_227-229_HDR.jpg",
+  "review": "pending"
  },
  "BDI": {
-  "file": "STS51G-034-0012_Lake_Tanganyika_June1985.jpg",
-  "title": "Lake Tanganyika",
-  "artist": "NASA",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:STS51G-034-0012_Lake_Tanganyika_June1985.jpg",
-  "review": "rejected"
+  "file": "Lac Tanganyika au Burundi 2.jpg",
+  "title": "",
+  "artist": "Edouard mhg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Lac_Tanganyika_au_Burundi_2.jpg",
+  "review": "pending"
  },
  "BEL": {
   "file": "Grand-Place,_Brussels_-_panorama,_June_2018.jpg",
@@ -197,6 +197,15 @@
   "page": "https://commons.wikimedia.org/wiki/File:Great_Blue_Hole.jpg",
   "review": "ok"
  },
+ "BOL": {
+  "file": "Piles of Salt Salar de Uyuni Bolivia Luca Galuzzi 2006 a.jpg",
+  "title": "",
+  "artist": "Luca Galuzzi (Lucag), edit by Trialsanderrors",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+  "page": "https://commons.wikimedia.org/wiki/File:Piles_of_Salt_Salar_de_Uyuni_Bolivia_Luca_Galuzzi_2006_a.jpg",
+  "review": "pending"
+ },
  "BRA": {
   "file": "Amazon17_(5641020319).jpg",
   "title": "Amazon rainforest",
@@ -241,6 +250,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Okavango_Delta,_Botswana1.jpg",
   "review": "ok"
+ },
+ "CAF": {
+  "file": "Republique Centrafricaine - Boali - Chutes de Boali.jpg",
+  "title": "",
+  "artist": "Philippe JIMENEZ",
+  "license": "FAL",
+  "licenseUrl": "http://artlibre.org/licence/lal/en",
+  "page": "https://commons.wikimedia.org/wiki/File:Republique_Centrafricaine_-_Boali_-_Chutes_de_Boali.jpg",
+  "review": "pending"
  },
  "CAN": {
   "file": "3Falls_Niagara.jpg",
@@ -288,13 +306,13 @@
   "review": "ok"
  },
  "CMR": {
-  "file": "Flag_of_Cameroon.svg",
-  "title": "Cameroon",
-  "artist": "(of code) -xfi-",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Cameroon.svg",
-  "review": "rejected"
+  "file": "Mount Cameroon, Buea in the wee hours of a clear morning.jpg",
+  "title": "",
+  "artist": "JayManSnaps",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Mount_Cameroon,_Buea_in_the_wee_hours_of_a_clear_morning.jpg",
+  "review": "pending"
  },
  "COD": {
   "file": "Virunga_National_Park-107997.jpg",
@@ -304,6 +322,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Virunga_National_Park-107997.jpg",
   "review": "ok"
+ },
+ "COG": {
+  "file": "Loxodonta cyclotis, Odzala-Kokoua National Park, Republic of the Congo 53146541.jpg",
+  "title": "",
+  "artist": "(c) John P Friel, some rights reserved (CC BY)",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Loxodonta_cyclotis,_Odzala-Kokoua_National_Park,_Republic_of_the_Congo_53146541.jpg",
+  "review": "pending"
  },
  "COL": {
   "file": "Museo_Naval_del_Caribe.JPG",
@@ -342,13 +369,13 @@
   "review": "ok"
  },
  "CUB": {
-  "file": "Havana_Map_-_Habana_Vieja.png",
-  "title": "Old Havana",
-  "artist": "Dэя-Бøяg",
+  "file": "A 95 year old woman with her pet rooster, Havana, Cuba.jpg",
+  "title": "",
+  "artist": "Jorge Royan",
   "license": "CC BY-SA 3.0",
-  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-  "page": "https://commons.wikimedia.org/wiki/File:Havana_Map_-_Habana_Vieja.png",
-  "review": "rejected"
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:A_95_year_old_woman_with_her_pet_rooster,_Havana,_Cuba.jpg",
+  "review": "pending"
  },
  "CYP": {
   "file": "Chionistra_winter_1.JPG",
@@ -358,6 +385,15 @@
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Chionistra_winter_1.JPG",
   "review": "ok"
+ },
+ "CZE": {
+  "file": "Prague 07-2016 Charles Bridge John of Nepomuk statue img1.jpg",
+  "title": "",
+  "artist": "A.Savin",
+  "license": "FAL",
+  "licenseUrl": "http://artlibre.org/licence/lal/en",
+  "page": "https://commons.wikimedia.org/wiki/File:Prague_07-2016_Charles_Bridge_John_of_Nepomuk_statue_img1.jpg",
+  "review": "pending"
  },
  "DEU": {
   "file": "Brandenburger_Tor_abends.jpg",
@@ -385,6 +421,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Dominica_Boiling_Lake.jpg",
   "review": "ok"
+ },
+ "DNK": {
+  "file": "Petite sirène de Copenhague (conforme à la loi danoise).JPG",
+  "title": "",
+  "artist": "Benoît Prieur",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Petite_sir%C3%A8ne_de_Copenhague_(conforme_%C3%A0_la_loi_danoise).JPG",
+  "review": "pending"
  },
  "DOM": {
   "file": "Calle_las_Damas,_Santo_Domingo,_Zona_Colonial.jpg",
@@ -423,13 +468,13 @@
   "review": "ok"
  },
  "ERI": {
-  "file": "Asmara_Montage.png",
-  "title": "Asmara",
-  "artist": "Tigernssnowy7",
+  "file": "Asmara City Eritrea.jpg",
+  "title": "",
+  "artist": "Robel Weldeab",
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Asmara_Montage.png",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:Asmara_City_Eritrea.jpg",
+  "review": "pending"
  },
  "ESP": {
   "file": "Dawn_Charles_V_Palace_Alhambra_Granada_Andalusia_Spain.jpg",
@@ -468,13 +513,13 @@
   "review": "ok"
  },
  "FJI": {
-  "file": "Viti_Levu_Islands.jpg",
-  "title": "Yasawa Islands",
-  "artist": "United States",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Viti_Levu_Islands.jpg",
-  "review": "rejected"
+  "file": "Yasawa Islands, Fiji - August 2016.jpg",
+  "title": "",
+  "artist": "Rickard Törnblad",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Yasawa_Islands,_Fiji_-_August_2016.jpg",
+  "review": "pending"
  },
  "FRA": {
   "file": "Tour_Eiffel_Wikimedia_Commons_(cropped).jpg",
@@ -531,13 +576,13 @@
   "review": "ok"
  },
  "GIN": {
-  "file": "Guinea_Highlands_map.png",
-  "title": "Fouta Djallon",
-  "artist": "Tom Radulovich",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Guinea_Highlands_map.png",
-  "review": "rejected"
+  "file": "Fouta Djallon (14582291826).jpg",
+  "title": "",
+  "artist": "Maarten van der Bent",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Fouta_Djallon_(14582291826).jpg",
+  "review": "pending"
  },
  "GMB": {
   "file": "River_gambia_galleryfull.jpg",
@@ -574,6 +619,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:The_Parthenon_in_Athens.jpg",
   "review": "ok"
+ },
+ "GRD": {
+  "file": "Grenada (Grand Anse Beach) 2.JPG",
+  "title": "",
+  "artist": "dpursoo",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Grenada_(Grand_Anse_Beach)_2.JPG",
+  "review": "pending"
  },
  "GTM": {
   "file": "Tikal_3.jpg",
@@ -719,6 +773,15 @@
   "page": "https://commons.wikimedia.org/wiki/File:View_of_Mount_Fuji_from_%C5%8Cwakudani_20211202.jpg",
   "review": "ok"
  },
+ "KAZ": {
+  "file": "Light metro, Astana (P1190708).jpg",
+  "title": "",
+  "artist": "Matti Blume",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Light_metro,_Astana_(P1190708).jpg",
+  "review": "pending"
+ },
  "KEN": {
   "file": "Masai_Mara_at_Sunset.jpg",
   "title": "Maasai Mara",
@@ -756,13 +819,13 @@
   "review": "ok"
  },
  "KNA": {
-  "file": "Saint_Kitts_and_Nevis_Regions_map.png",
-  "title": "Saint Kitts",
-  "artist": "Burmesedays",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Saint_Kitts_and_Nevis_Regions_map.png",
-  "review": "rejected"
+  "file": "Saint Kitts - Brimstone Hill Fortress 04.JPG",
+  "title": "",
+  "artist": "Martin Falbisoner",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Saint_Kitts_-_Brimstone_Hill_Fortress_04.JPG",
+  "review": "pending"
  },
  "KOR": {
   "file": "Front view of the Imperial Throne Hall Geunjeongjeon at Gyeongbokgung Palace with blue sky in Seoul.jpg",
@@ -783,13 +846,13 @@
   "review": "ok"
  },
  "KWT": {
-  "file": "Kuwait City Kuwait Towers View to the Arabian Gulf Street 2.jpg",
+  "file": "Kuwait Towers (158990699).jpg",
   "title": "Kuwait Towers",
-  "artist": "Zairon",
-  "license": "CC BY 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Kuwait_City_Kuwait_Towers_View_to_the_Arabian_Gulf_Street_2.jpg",
-  "review": "rejected"
+  "artist": "Em and Ernie from Calgary, Canada",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Kuwait_Towers_(158990699).jpg",
+  "review": "pending"
  },
  "LAO": {
   "file": "Pha_That_Luang,_July_2023.jpg",
@@ -809,6 +872,15 @@
   "page": "https://commons.wikimedia.org/wiki/File:Forest_of_The_cedars_of_God.jpg",
   "review": "ok"
  },
+ "LBR": {
+  "file": "Zwergflusspferd - Pygmy Hippopotamus - Hexaprotodon liberiensis.jpg",
+  "title": "",
+  "artist": "Raimond Spekking",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Zwergflusspferd_-_Pygmy_Hippopotamus_-_Hexaprotodon_liberiensis.jpg",
+  "review": "pending"
+ },
  "LBY": {
   "file": "Leptis_Magna_(29)_(8288918733).jpg",
   "title": "Leptis Magna",
@@ -826,6 +898,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Pitons-aerial.jpg",
   "review": "ok"
+ },
+ "LIE": {
+  "file": "Liechtenstein asv2022-10 img22 Vaduz Schloss.jpg",
+  "title": "",
+  "artist": "A.Savin",
+  "license": "FAL",
+  "licenseUrl": "http://artlibre.org/licence/lal/en",
+  "page": "https://commons.wikimedia.org/wiki/File:Liechtenstein_asv2022-10_img22_Vaduz_Schloss.jpg",
+  "review": "pending"
  },
  "LKA": {
   "file": "Sri_Pada.JPG",
@@ -855,13 +936,13 @@
   "review": "ok"
  },
  "LUX": {
-  "file": "Selig_Luxembourg_from_Paffendall.jpg",
-  "title": "Bock (Luxembourg)",
-  "artist": "Christophe-Guillaume Selig (1791-1837)",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Selig_Luxembourg_from_Paffendall.jpg",
-  "review": "rejected"
+  "file": "Bock casemates, Luxembourg - panoramio (2).jpg",
+  "title": "",
+  "artist": "Николай Максимович",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Bock_casemates,_Luxembourg_-_panoramio_(2).jpg",
+  "review": "pending"
  },
  "LVA": {
   "file": "Riga_(33844464828).jpg",
@@ -882,22 +963,22 @@
   "review": "ok"
  },
  "MCO": {
-  "file": "Rainier_III_(JFKWHP-KN-C17888,_cropped).jpg",
-  "title": "Rainier III of Monaco",
-  "artist": "Robert LeRoy Knudsen",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Rainier_III_(JFKWHP-KN-C17888,_cropped).jpg",
-  "review": "rejected"
+  "file": "Hafen und Felsen von Monaco-La Turbie.jpg",
+  "title": "",
+  "artist": "Tobi 87",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Hafen_und_Felsen_von_Monaco-La_Turbie.jpg",
+  "review": "pending"
  },
  "MDA": {
-  "file": "Flag_of_Moldova.svg",
-  "title": "Moldova",
-  "artist": "Gheorghe Vrabie",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Moldova.svg",
-  "review": "rejected"
+  "file": "Monasterio Orheiul Vechi, Orhei, Moldavia, 2023-11-02, DD 23.jpg",
+  "title": "",
+  "artist": "Diego Delso",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Monasterio_Orheiul_Vechi,_Orhei,_Moldavia,_2023-11-02,_DD_23.jpg",
+  "review": "pending"
  },
  "MDG": {
   "file": "Adansonia_grandidieri_Pat_Hooper.jpg",
@@ -936,13 +1017,13 @@
   "review": "ok"
  },
  "MKD": {
-  "file": "Lake_Ohrid,_Macedonia-Albania_viewed_from_a_NASA_satellite.jpg",
-  "title": "Lake Ohrid",
-  "artist": "NASA/METI/AIST/Japan Space Systems, and U.S./Japan ASTER Science Team",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Lake_Ohrid,_Macedonia-Albania_viewed_from_a_NASA_satellite.jpg",
-  "review": "rejected"
+  "file": "Iglesia San Juan Kaneo, Ohrid, Macedonia del Norte, 2014-04-17, DD 22.jpg",
+  "title": "",
+  "artist": "Diego Delso",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Iglesia_San_Juan_Kaneo,_Ohrid,_Macedonia_del_Norte,_2014-04-17,_DD_22.jpg",
+  "review": "pending"
  },
  "MLI": {
   "file": "Djenne_great_mud_mosque.jpg",
@@ -990,13 +1071,13 @@
   "review": "ok"
  },
  "MOZ": {
-  "file": "Flag_of_Mozambique.svg",
-  "title": "Mozambique",
-  "artist": "FRELIMO",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Mozambique.svg",
-  "review": "rejected"
+  "file": "Mozambique - traditional sailboat.jpg",
+  "title": "",
+  "artist": "Steve Evans from Bangalore, India",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Mozambique_-_traditional_sailboat.jpg",
+  "review": "pending"
  },
  "MRT": {
   "file": "Chinguetti-Vue_Goblale_Vieille_ville.jpg",
@@ -1017,13 +1098,13 @@
   "review": "ok"
  },
  "MWI": {
-  "file": "Flag_of_Malawi.svg",
-  "title": "Malawi",
-  "artist": "Original: Unknown author Vector: Achim1999",
+  "file": "Lake Malawi seen from orbit.jpg",
+  "title": "",
+  "artist": "National Aeronautics and Space Administration (NASA)",
   "license": "Public domain",
   "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Malawi.svg",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:Lake_Malawi_seen_from_orbit.jpg",
+  "review": "pending"
  },
  "MYS": {
   "file": "Petronas Panorama II.jpg",
@@ -1062,13 +1143,13 @@
   "review": "ok"
  },
  "NIC": {
-  "file": "Flag_of_Nicaragua.svg",
-  "title": "Nicaragua",
-  "artist": "C records",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Nicaragua.svg",
-  "review": "rejected"
+  "file": "Along Lake Nicaragua - Near Santo Domingo - Ometepe Island - Nicaragua (30987289423).jpg",
+  "title": "",
+  "artist": "Adam Jones from Kelowna, BC, Canada",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Along_Lake_Nicaragua_-_Near_Santo_Domingo_-_Ometepe_Island_-_Nicaragua_(30987289423).jpg",
+  "review": "pending"
  },
  "NLD": {
   "file": "KinderdijkMolens02.jpg",
@@ -1134,13 +1215,13 @@
   "review": "ok"
  },
  "PAN": {
-  "file": "Panama_Canal_Map_EN.svg",
-  "title": "Panama Canal",
-  "artist": "Thoroe",
-  "license": "CC BY-SA 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Panama_Canal_Map_EN.svg",
-  "review": "rejected"
+  "file": "Aktie Canal de Panama 1880.jpg",
+  "title": "",
+  "artist": "Issued by Compagnie Universelle Canal Océanique de Panama, reproduced from an original document by Palauenc05",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Aktie_Canal_de_Panama_1880.jpg",
+  "review": "pending"
  },
  "PER": {
   "file": "Machu_Picchu,_2023_(012).jpg",
@@ -1170,22 +1251,22 @@
   "review": "ok"
  },
  "PNG": {
-  "file": "New_guinea_kokoda.PNG",
-  "title": "Kokoda Track",
-  "artist": "غير معروف",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-  "page": "https://commons.wikimedia.org/wiki/File:New_guinea_kokoda.PNG",
-  "review": "rejected"
+  "file": "Kokoda track Papua New Guinea.JPG",
+  "title": "",
+  "artist": "Luke Brindley",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Kokoda_track_Papua_New_Guinea.JPG",
+  "review": "pending"
  },
  "POL": {
-  "file": "UNESCO_World_Heritage_Site,_Historic_Centre_of_Kraków,_former_quarters,_Kraków,_Poland.png",
-  "title": "Kraków Old Town",
-  "artist": "OpenStreetMap contributors Rumensz",
-  "license": "CC BY-SA 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:UNESCO_World_Heritage_Site,_Historic_Centre_of_Krak%C3%B3w,_former_quarters,_Krak%C3%B3w,_Poland.png",
-  "review": "rejected"
+  "file": "Droga do Zamku street, Old Town, bird's eye view 2025, Kraków, Poland.jpg",
+  "title": "",
+  "artist": "Igor123121",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Droga_do_Zamku_street,_Old_Town,_bird%27s_eye_view_2025,_Krak%C3%B3w,_Poland.jpg",
+  "review": "pending"
  },
  "PRK": {
   "file": "Laika_ac_Mt._Paekdu_(7998657081).jpg",
@@ -1224,13 +1305,13 @@
   "review": "ok"
  },
  "QAT": {
-  "file": "Museum of Islamic Art in Doha (3820043632).jpg",
+  "file": "IslamicArtMuseumDohaSkyline.jpg",
   "title": "Museum of Islamic Art, Doha",
-  "artist": "Mohamed Nanabhay from Qatar",
+  "artist": "Mohamod Fasil",
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Museum_of_Islamic_Art_in_Doha_(3820043632).jpg",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:IslamicArtMuseumDohaSkyline.jpg",
+  "review": "pending"
  },
  "ROU": {
   "file": "Castelul_Bran2.jpg",
@@ -1278,13 +1359,13 @@
   "review": "ok"
  },
  "SEN": {
-  "file": "Ile-de-goree.jpg",
-  "title": "Gorée",
-  "artist": "Gregor Rom",
+  "file": "Île de Gorée vue de la chaloupe 15.jpg",
+  "title": "",
+  "artist": "Fawaz.tairou",
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Ile-de-goree.jpg",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:%C3%8Ele_de_Gor%C3%A9e_vue_de_la_chaloupe_15.jpg",
+  "review": "pending"
  },
  "SGP": {
   "file": "Singapore_Skyline_2019-10.jpg",
@@ -1296,22 +1377,22 @@
   "review": "ok"
  },
  "SLB": {
-  "file": "Vangunu_Island_NASA.jpg",
-  "title": "Marovo Lagoon",
-  "artist": "غير معروف",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Vangunu_Island_NASA.jpg",
-  "review": "rejected"
+  "file": "Palm Tree at Marovo Lagoon (16 August 2008).jpg",
+  "title": "",
+  "artist": "Xplore Dive from Mooloolaba, Australia",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Palm_Tree_at_Marovo_Lagoon_(16_August_2008).jpg",
+  "review": "pending"
  },
  "SLE": {
-  "file": "Freetown_SPOT_1094.jpg",
-  "title": "Bunce Island",
-  "artist": "Cnes - Spot Image",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Freetown_SPOT_1094.jpg",
-  "review": "rejected"
+  "file": "Bunce Island Gravestone 03.jpg",
+  "title": "",
+  "artist": "Pierre Chrzanowski",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Bunce_Island_Gravestone_03.jpg",
+  "review": "pending"
  },
  "SLV": {
   "file": "ES_Joya_Ceren_05_2012_Estructura_9_Area_2_Tamazcal_wide_angle_1479.JPG",
@@ -1350,31 +1431,40 @@
   "review": "ok"
  },
  "SSD": {
-  "file": "Sudd_swamp.jpg",
-  "title": "Sudd",
-  "artist": "NASA",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Sudd_swamp.jpg",
-  "review": "rejected"
+  "file": "Pantanal Sudd, Sudão do Sul.jpg",
+  "title": "",
+  "artist": "Coordenação-Geral de Observação da Terra/INPE",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Pantanal_Sudd,_Sud%C3%A3o_do_Sul.jpg",
+  "review": "pending"
  },
  "STP": {
-  "file": "Gulf_of_Guinea_(English).jpg",
-  "title": "São Tomé (island)",
-  "artist": "غير معروف",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-  "page": "https://commons.wikimedia.org/wiki/File:Gulf_of_Guinea_(English).jpg",
-  "review": "rejected"
- },
- "SUR": {
-  "file": "Paramaribo_city_collage.png",
-  "title": "Paramaribo",
-  "artist": "LLs",
+  "file": "Côte nord-est de l'île de São Tomé (7).jpg",
+  "title": "",
+  "artist": "Ji-Elle",
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Paramaribo_city_collage.png",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:C%C3%B4te_nord-est_de_l%27%C3%AEle_de_S%C3%A3o_Tom%C3%A9_(7).jpg",
+  "review": "pending"
+ },
+ "SUR": {
+  "file": "Historic Inner City of Paramaribo-113545.jpg",
+  "title": "",
+  "artist": "Ron Van Oers",
+  "license": "CC BY-SA 3.0 igo",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Historic_Inner_City_of_Paramaribo-113545.jpg",
+  "review": "pending"
+ },
+ "SVK": {
+  "file": "SlovakiaPanorama.jpg",
+  "title": "",
+  "artist": "Abrget47j",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:SlovakiaPanorama.jpg",
+  "review": "pending"
  },
  "SVN": {
   "file": "Lake_Bled_from_the_Mountain.jpg",
@@ -1395,13 +1485,13 @@
   "review": "ok"
  },
  "SWZ": {
-  "file": "Granite_monolith.jpg",
-  "title": "Sibebe",
-  "artist": "theswazigirl",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Granite_monolith.jpg",
-  "review": "rejected"
+  "file": "Ejubukweni Mountain view of the plains.jpg",
+  "title": "",
+  "artist": "Sekos08",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ejubukweni_Mountain_view_of_the_plains.jpg",
+  "review": "pending"
  },
  "SYC": {
   "file": "Valleé_de_mai2.jpg",
@@ -1422,22 +1512,22 @@
   "review": "ok"
  },
  "TCD": {
-  "file": "Lake_Chad_(MODIS_2018-06-07).jpg",
-  "title": "Lake Chad",
-  "artist": "Jeff Schmaltz, MODIS Land Rapid Response Team, NASA GSFC",
+  "file": "Lake Chad from Apollo 7.jpg",
+  "title": "",
+  "artist": "NASA",
   "license": "Public domain",
   "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Lake_Chad_(MODIS_2018-06-07).jpg",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:Lake_Chad_from_Apollo_7.jpg",
+  "review": "pending"
  },
  "TGO": {
-  "file": "Leonhard_Seppala_with_dogs.jpg",
-  "title": "Togo (dog)",
-  "artist": "Copyright: Copyright © Carrie McLain Museum / AlaskaStock",
-  "license": "CC0",
-  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "page": "https://commons.wikimedia.org/wiki/File:Leonhard_Seppala_with_dogs.jpg",
-  "review": "rejected"
+  "file": "Lagune in Aného.jpg",
+  "title": "",
+  "artist": "MaHeHoe",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Lagune_in_An%C3%A9ho.jpg",
+  "review": "pending"
  },
  "THA": {
   "file": "0005574_-_Wat_Phra_Kaew_006.jpg",
@@ -1485,13 +1575,13 @@
   "review": "ok"
  },
  "TTO": {
-  "file": "Trinidad_pitch_lake_ENG.png",
-  "title": "Pitch Lake",
-  "artist": "Alexander Z.",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Trinidad_pitch_lake_ENG.png",
-  "review": "rejected"
+  "file": "Water lilies at Pitch lake, Trinidad and Tobago.jpg",
+  "title": "",
+  "artist": "John Cray",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Water_lilies_at_Pitch_lake,_Trinidad_and_Tobago.jpg",
+  "review": "pending"
  },
  "TUN": {
   "file": "Great_Mosque_of_Kairouan_Panorama_-_Grande_Mosquée_de_Kairouan_Panorama.jpg",
@@ -1511,14 +1601,32 @@
   "page": "https://commons.wikimedia.org/wiki/File:Hagia_Sophia_(228968325).jpeg",
   "review": "ok"
  },
+ "TUV": {
+  "file": "Funafuti Atoll, Tuvalu (153047 - funafuti oli 20230928 lrg).jpg",
+  "title": "",
+  "artist": "NASA Earth Observatory image by Wanmei Liang, using Landsat data from the U.S. Geological Survey. Story by Lindsey Doermann.",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Funafuti_Atoll,_Tuvalu_(153047_-_funafuti_oli_20230928_lrg).jpg",
+  "review": "pending"
+ },
+ "TZA": {
+  "file": "Mount Kilimanjaro.jpg",
+  "title": "",
+  "artist": "Muhammad Mahdi Karim",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html",
+  "page": "https://commons.wikimedia.org/wiki/File:Mount_Kilimanjaro.jpg",
+  "review": "pending"
+ },
  "UGA": {
-  "file": "Uganda_Jinja_Streetview.JPG",
-  "title": "Jinja, Uganda",
-  "artist": "Ilona1001",
+  "file": "Jinja source of Nile.jpg",
+  "title": "",
+  "artist": "Dror Feitelson",
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Uganda_Jinja_Streetview.JPG",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:Jinja_source_of_Nile.jpg",
+  "review": "pending"
  },
  "UKR": {
   "file": "Ранок_на_Кукулі.jpg",
@@ -1602,13 +1710,13 @@
   "review": "ok"
  },
  "WSM": {
-  "file": "Flag_of_Samoa.svg",
-  "title": "Samoa",
-  "artist": "Original: Malietoa Tanumafili II and Tupua Tamasese Meaʻole Vector: See the file history below for details.",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Samoa.svg",
-  "review": "rejected"
+  "file": "To Sua Ocean Trench, Upolu, Samoa - August 2016.jpg",
+  "title": "",
+  "artist": "Rickard Törnblad",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:To_Sua_Ocean_Trench,_Upolu,_Samoa_-_August_2016.jpg",
+  "review": "pending"
  },
  "YEM": {
   "file": "مدينة_شبام_حضرموت.jpg",
