@@ -53,8 +53,10 @@ for (const [id, title] of Object.entries(TITLES)) {
     let cands = [];
     // «search:»: أول نتائج البحث في كومنز التي هي صور فوتوغرافية (jpg) برخصة حرة
     if (file?.startsWith('search:')) {
-      const s = await api('https://commons.wikimedia.org/w/api.php', { action: 'query', list: 'search', srsearch: file.slice(7) + ' filetype:bitmap', srnamespace: '6', srlimit: '12' });
-      cands = (s.query?.search || []).map((x) => x.title.replace(/^File:/, '')).filter((t) => /\.jpe?g$/i.test(t) && !/logo|map|plan|diagram/i.test(t));
+      // «search:استعلام|ملف مرفوض|ملف مرفوض»: الملفات بعد «|» رفضها المراجع فلا تُختار
+      const [query, ...skip] = file.slice(7).split('|'); const sk = skip.map((x) => x.replace(/_/g, ' '));
+      const s = await api('https://commons.wikimedia.org/w/api.php', { action: 'query', list: 'search', srsearch: query + ' filetype:bitmap', srnamespace: '6', srlimit: '20' });
+      cands = (s.query?.search || []).map((x) => x.title.replace(/^File:/, '')).filter((t) => /\.jpe?g$/i.test(t) && !/logo|map|plan|diagram|night|flag/i.test(t) && !sk.includes(t.replace(/_/g, ' ')));
       file = null;
     }
     for (const cand of cands) {

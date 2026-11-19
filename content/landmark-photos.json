@@ -231,7 +231,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Front_view_of_the_Imperial_Throne_Hall_Geunjeongjeon_at_Gyeongbokgung_Palace_with_blue_sky_in_Seoul.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "KWT": {
   "file": "Kuwait towers.jpg",
@@ -240,7 +240,7 @@
   "license": "CC BY-SA 2.5 se",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/se/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Kuwait_towers.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "LBN": {
   "file": "Forest_of_The_cedars_of_God.jpg",
@@ -294,7 +294,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Petronas_Towers_at_Night_-_from_the_base_upwards.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "NGA": {
   "file": "Zuma_Rock.jpg",
@@ -348,7 +348,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Fisherman_on_the_Doha_Corniche_next_to_the_Islamic_Museum.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "RUS": {
   "file": "Moscow_Kremlin_(8281675670).jpg",
@@ -402,7 +402,7 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Damascus,_Syria,_The_Umayyad_Mosque,_The_Courtyard,_Islamic_Art.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "TUN": {
   "file": "Great_Mosque_of_Kairouan_Panorama_-_Grande_Mosquée_de_Kairouan_Panorama.jpg",
@@ -465,7 +465,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Lake_Assal_1-Djibouti.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "COM": {
   "file": "Mount_Karthala_(11000398163).jpg",
