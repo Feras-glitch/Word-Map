@@ -532,7 +532,8 @@
   "type": "const_monarchy"
  },
  "BHR": {
-  "type": "semi_monarchy"
+  "type": "semi_monarchy",
+  "note": "كانت البحرين إمارة يحكمها أمير. وفي عام ٢٠٠٢ أعلن أميرها تحويلها إلى مملكة، فصار لقبه ملكاً، مع أنها أصغر الدول العربية مساحة"
  },
  "JOR": {
   "type": "semi_monarchy"
