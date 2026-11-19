@@ -387,13 +387,13 @@
   "review": "ok"
  },
  "CZE": {
-  "file": "Prague 07-2016 Charles Bridge John of Nepomuk statue img1.jpg",
+  "file": "Vltava river in Prague.jpg",
   "title": "",
-  "artist": "A.Savin",
-  "license": "FAL",
-  "licenseUrl": "http://artlibre.org/licence/lal/en",
-  "page": "https://commons.wikimedia.org/wiki/File:Prague_07-2016_Charles_Bridge_John_of_Nepomuk_statue_img1.jpg",
-  "review": "rejected"
+  "artist": "Dmitry A. Mottl",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Vltava_river_in_Prague.jpg",
+  "review": "pending"
  },
  "DEU": {
   "file": "Brandenburger_Tor_abends.jpg",
@@ -423,13 +423,13 @@
   "review": "ok"
  },
  "DNK": {
-  "file": "Petite sirène de Copenhague (conforme à la loi danoise).JPG",
+  "file": "Denmark, Copenhagen, Little Mermaid, Langelinie Promenade 150422-25.jpg",
   "title": "",
-  "artist": "Benoît Prieur",
-  "license": "CC0",
-  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "page": "https://commons.wikimedia.org/wiki/File:Petite_sir%C3%A8ne_de_Copenhague_(conforme_%C3%A0_la_loi_danoise).JPG",
-  "review": "rejected"
+  "artist": "Richardmaackphotography",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Denmark,_Copenhagen,_Little_Mermaid,_Langelinie_Promenade_150422-25.jpg",
+  "review": "pending"
  },
  "DOM": {
   "file": "Calle_las_Damas,_Santo_Domingo,_Zona_Colonial.jpg",
@@ -774,13 +774,13 @@
   "review": "ok"
  },
  "KAZ": {
-  "file": "Light metro, Astana (P1190708).jpg",
+  "file": "Astana-2021-10 - 12.jpg",
   "title": "",
-  "artist": "Matti Blume",
+  "artist": "Vyacheslav Bukharov",
   "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
-  "page": "https://commons.wikimedia.org/wiki/File:Light_metro,_Astana_(P1190708).jpg",
-  "review": "rejected"
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Astana-2021-10_-_12.jpg",
+  "review": "pending"
  },
  "KEN": {
   "file": "Masai_Mara_at_Sunset.jpg",
@@ -1098,13 +1098,13 @@
   "review": "ok"
  },
  "MWI": {
-  "file": "Lake Malawi seen from orbit.jpg",
+  "file": "Otter Point, Cape Maclear (Malawi).jpg",
   "title": "",
-  "artist": "National Aeronautics and Space Administration (NASA)",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Lake_Malawi_seen_from_orbit.jpg",
-  "review": "rejected"
+  "artist": "Hans Hillewaert",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Otter_Point,_Cape_Maclear_(Malawi).jpg",
+  "review": "pending"
  },
  "MYS": {
   "file": "Petronas Panorama II.jpg",
@@ -1215,13 +1215,13 @@
   "review": "ok"
  },
  "PAN": {
-  "file": "Aktie Canal de Panama 1880.jpg",
+  "file": "Locomotives Tow Container Ship through Miraflores Locks - Panama Canal.jpg",
   "title": "",
-  "artist": "Issued by Compagnie Universelle Canal Océanique de Panama, reproduced from an original document by Palauenc05",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Aktie_Canal_de_Panama_1880.jpg",
-  "review": "rejected"
+  "artist": "Adam Jones",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Locomotives_Tow_Container_Ship_through_Miraflores_Locks_-_Panama_Canal.jpg",
+  "review": "pending"
  },
  "PER": {
   "file": "Machu_Picchu,_2023_(012).jpg",
