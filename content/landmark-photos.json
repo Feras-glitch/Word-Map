@@ -8,6 +8,33 @@
   "page": "https://commons.wikimedia.org/wiki/File:Blue_Mosque_in_the_northern_Afghan_city_in_2012.jpg",
   "review": "ok"
  },
+ "AGO": {
+  "file": "Kalandula_waterfalls_of_the_Lucala-River_in_Malange,_Angola.JPG",
+  "title": "Kalandula Falls",
+  "artist": "Paulo César Santos",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Kalandula_waterfalls_of_the_Lucala-River_in_Malange,_Angola.JPG",
+  "review": "pending"
+ },
+ "ALB": {
+  "file": "Berat_57.jpg",
+  "title": "Berat",
+  "artist": "Arianit",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Berat_57.jpg",
+  "review": "pending"
+ },
+ "AND": {
+  "file": "Pyrenees_aerial.jpg",
+  "title": "Pyrenees",
+  "artist": "kallerna",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Pyrenees_aerial.jpg",
+  "review": "pending"
+ },
  "ARE": {
   "file": "La tour Burj Khalifa en construction en 2008.jpg",
   "title": "Burj Khalifa",
@@ -26,6 +53,24 @@
   "page": "https://commons.wikimedia.org/wiki/File:Aerial_Foz_de_Igua%C3%A7u_26_Nov_2005.jpg",
   "review": "ok"
  },
+ "ARM": {
+  "file": "Garni_temple_2021_drone.jpg",
+  "title": "Garni Temple",
+  "artist": "Yerevantsi",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Garni_temple_2021_drone.jpg",
+  "review": "pending"
+ },
+ "ATG": {
+  "file": "Nelson's_Dockyard.jpg",
+  "title": "Nelson's Dockyard",
+  "artist": "David Stanley",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Nelson%27s_Dockyard.jpg",
+  "review": "pending"
+ },
  "AUS": {
   "file": "Sydney_Opera_House_2026.jpg",
   "title": "Sydney Opera House",
@@ -34,6 +79,60 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Sydney_Opera_House_2026.jpg",
   "review": "ok"
+ },
+ "AUT": {
+  "file": "Wien_-_Schloss_Schönbrunn.JPG",
+  "title": "Schönbrunn Palace",
+  "artist": "C.Stadler/Bwag",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Wien_-_Schloss_Sch%C3%B6nbrunn.JPG",
+  "review": "pending"
+ },
+ "AZE": {
+  "file": "İçərişəhər_kollajı.jpg",
+  "title": "Old City (Baku)",
+  "artist": "Sefer azeri",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:%C4%B0%C3%A7%C9%99ri%C5%9F%C9%99h%C9%99r_kollaj%C4%B1.jpg",
+  "review": "pending"
+ },
+ "BDI": {
+  "file": "STS51G-034-0012_Lake_Tanganyika_June1985.jpg",
+  "title": "Lake Tanganyika",
+  "artist": "NASA",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:STS51G-034-0012_Lake_Tanganyika_June1985.jpg",
+  "review": "pending"
+ },
+ "BEL": {
+  "file": "Grand-Place,_Brussels_-_panorama,_June_2018.jpg",
+  "title": "Grand-Place",
+  "artist": "Celuici",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Grand-Place,_Brussels_-_panorama,_June_2018.jpg",
+  "review": "pending"
+ },
+ "BEN": {
+  "file": "Abomey_2006_1.jpg",
+  "title": "Royal Palaces of Abomey",
+  "artist": "Joachim Huber",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Abomey_2006_1.jpg",
+  "review": "pending"
+ },
+ "BFA": {
+  "file": "2016.05-441-131ap_wall_Loropéni_Ruins_nr.Loropéni(Poni_Prv.),BF_sun15may2016-1106h.jpg",
+  "title": "Ruins of Loropéni",
+  "artist": "Rik Schuiling / TropCrop-TCS",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:2016.05-441-131ap_wall_Lorop%C3%A9ni_Ruins_nr.Lorop%C3%A9ni(Poni_Prv.),BF_sun15may2016-1106h.jpg",
+  "review": "pending"
  },
  "BGD": {
   "file": "Save_the_sundarbans_20.jpg",
@@ -44,6 +143,60 @@
   "page": "https://commons.wikimedia.org/wiki/File:Save_the_sundarbans_20.jpg",
   "review": "ok"
  },
+ "BGR": {
+  "file": "Rila_Monastery,_August_2013.jpg",
+  "title": "Rila Monastery",
+  "artist": "Raggatt2000",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Rila_Monastery,_August_2013.jpg",
+  "review": "pending"
+ },
+ "BHR": {
+  "file": "Bahrain_Fort_March_2015.JPG",
+  "title": "Qal'at al-Bahrain",
+  "artist": "Martin Falbisoner",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Bahrain_Fort_March_2015.JPG",
+  "review": "ok"
+ },
+ "BHS": {
+  "file": "Dean’s_Blue_Hole.jpg",
+  "title": "Dean's Blue Hole",
+  "artist": "Oceanwave77",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Dean%E2%80%99s_Blue_Hole.jpg",
+  "review": "pending"
+ },
+ "BIH": {
+  "file": "Mostar_Old_Town_Panorama_2007.jpg",
+  "title": "Stari Most",
+  "artist": "Ramirez",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Mostar_Old_Town_Panorama_2007.jpg",
+  "review": "pending"
+ },
+ "BLR": {
+  "file": "Комплекс_Мирского_замка.JPG",
+  "title": "Mir Castle Complex",
+  "artist": "Вадзім Новикаў",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:%D0%9A%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81_%D0%9C%D0%B8%D1%80%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%B7%D0%B0%D0%BC%D0%BA%D0%B0.JPG",
+  "review": "pending"
+ },
+ "BLZ": {
+  "file": "Great_Blue_Hole.jpg",
+  "title": "Great Blue Hole",
+  "artist": "U.S. Geological Survey (USGS)",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Great_Blue_Hole.jpg",
+  "review": "pending"
+ },
  "BRA": {
   "file": "Amazon17_(5641020319).jpg",
   "title": "Amazon rainforest",
@@ -52,6 +205,42 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Amazon17_(5641020319).jpg",
   "review": "ok"
+ },
+ "BRB": {
+  "file": "Harrisoncave1.JPG",
+  "title": "Harrison's Cave",
+  "artist": "NeilEvans at English Wikipedia",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Harrisoncave1.JPG",
+  "review": "pending"
+ },
+ "BRN": {
+  "file": "Sultan_Omar_Ali_Saifuddin_Mosque_with_the_ceremonial_ship.jpg",
+  "title": "Omar Ali Saifuddien Mosque",
+  "artist": "Abdullah Geelah",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Sultan_Omar_Ali_Saifuddin_Mosque_with_the_ceremonial_ship.jpg",
+  "review": "pending"
+ },
+ "BTN": {
+  "file": "Paro_Taktsang,_Bhutan_(edited).jpg",
+  "title": "Paro Taktsang",
+  "artist": "Original: Nina R from Africa Derivative work: UnpetitproleX",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Paro_Taktsang,_Bhutan_(edited).jpg",
+  "review": "pending"
+ },
+ "BWA": {
+  "file": "Okavango_Delta,_Botswana1.jpg",
+  "title": "Okavango Delta",
+  "artist": "Joachim Huber",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Okavango_Delta,_Botswana1.jpg",
+  "review": "pending"
  },
  "CAN": {
   "file": "3Falls_Niagara.jpg",
@@ -71,6 +260,15 @@
   "page": "https://commons.wikimedia.org/wiki/File:Matterhorn_from_Domh%C3%BCtte_-_2.jpg",
   "review": "ok"
  },
+ "CHL": {
+  "file": "AhuTongariki.JPG",
+  "title": "Moai",
+  "artist": "Ian Sewell",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+  "page": "https://commons.wikimedia.org/wiki/File:AhuTongariki.JPG",
+  "review": "pending"
+ },
  "CHN": {
   "file": "The_Great_Wall_of_China_at_Jinshanling-edit.jpg",
   "title": "Great Wall of China",
@@ -79,6 +277,87 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:The_Great_Wall_of_China_at_Jinshanling-edit.jpg",
   "review": "ok"
+ },
+ "CIV": {
+  "file": "Taï_National_Park_(24148248710).jpg",
+  "title": "Taï National Park",
+  "artist": "yakovlev.alexey from Moscow, Russia",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ta%C3%AF_National_Park_(24148248710).jpg",
+  "review": "pending"
+ },
+ "CMR": {
+  "file": "Flag_of_Cameroon.svg",
+  "title": "Cameroon",
+  "artist": "(of code) -xfi-",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Cameroon.svg",
+  "review": "pending"
+ },
+ "COD": {
+  "file": "Virunga_National_Park-107997.jpg",
+  "title": "Virunga National Park",
+  "artist": "Yvette Kaboza",
+  "license": "CC BY-SA 3.0 igo",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Virunga_National_Park-107997.jpg",
+  "review": "pending"
+ },
+ "COL": {
+  "file": "Museo_Naval_del_Caribe.JPG",
+  "title": "Cartagena, Colombia",
+  "artist": "Sgonzalezb",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Museo_Naval_del_Caribe.JPG",
+  "review": "pending"
+ },
+ "COM": {
+  "file": "Mount_Karthala_(11000398163).jpg",
+  "title": "Mount Karthala",
+  "artist": "David Stanley from Nanaimo, Canada",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Mount_Karthala_(11000398163).jpg",
+  "review": "ok"
+ },
+ "CPV": {
+  "file": "Cape_Verde_Pico_do_Fogo_b.jpg",
+  "title": "Pico do Fogo",
+  "artist": "Cayambe",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cape_Verde_Pico_do_Fogo_b.jpg",
+  "review": "pending"
+ },
+ "CRI": {
+  "file": "Arenal_volcano_(70785p)_(cropped).jpg",
+  "title": "Arenal Volcano",
+  "artist": "Rhododendrites",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Arenal_volcano_(70785p)_(cropped).jpg",
+  "review": "pending"
+ },
+ "CUB": {
+  "file": "Havana_Map_-_Habana_Vieja.png",
+  "title": "Old Havana",
+  "artist": "Dэя-Бøяg",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Havana_Map_-_Habana_Vieja.png",
+  "review": "pending"
+ },
+ "CYP": {
+  "file": "Chionistra_winter_1.JPG",
+  "title": "Troodos Mountains",
+  "artist": "Chneophytou",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Chionistra_winter_1.JPG",
+  "review": "pending"
  },
  "DEU": {
   "file": "Brandenburger_Tor_abends.jpg",
@@ -89,6 +368,33 @@
   "page": "https://commons.wikimedia.org/wiki/File:Brandenburger_Tor_abends.jpg",
   "review": "ok"
  },
+ "DJI": {
+  "file": "Lake Assal 1-Djibouti.jpg",
+  "title": "Lake Assal (Djibouti)",
+  "artist": "Fishercd",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Lake_Assal_1-Djibouti.jpg",
+  "review": "ok"
+ },
+ "DMA": {
+  "file": "Dominica_Boiling_Lake.jpg",
+  "title": "Boiling Lake",
+  "artist": "Bayukjdr",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Dominica_Boiling_Lake.jpg",
+  "review": "pending"
+ },
+ "DOM": {
+  "file": "Calle_las_Damas,_Santo_Domingo,_Zona_Colonial.jpg",
+  "title": "Ciudad Colonial (Santo Domingo)",
+  "artist": "Desox7x",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Calle_las_Damas,_Santo_Domingo,_Zona_Colonial.jpg",
+  "review": "pending"
+ },
  "DZA": {
   "file": "Martyrs_Memorial._Algiers,_Algeria.jpg",
   "title": "Maqam Echahid",
@@ -97,6 +403,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Martyrs_Memorial._Algiers,_Algeria.jpg",
   "review": "ok"
+ },
+ "ECU": {
+  "file": "Lobo_marino_(Zalophus_californianus_wollebaeki),_Punta_Pitt,_isla_de_San_Cristóbal,_islas_Galápagos,_Ecuador,_2015-07-24,_DD_11.JPG",
+  "title": "Galápagos Islands",
+  "artist": "Diego Delso",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Lobo_marino_(Zalophus_californianus_wollebaeki),_Punta_Pitt,_isla_de_San_Crist%C3%B3bal,_islas_Gal%C3%A1pagos,_Ecuador,_2015-07-24,_DD_11.JPG",
+  "review": "pending"
  },
  "EGY": {
   "file": "Pyramids_of_the_Giza_Necropolis.jpg",
@@ -107,6 +422,15 @@
   "page": "https://commons.wikimedia.org/wiki/File:Pyramids_of_the_Giza_Necropolis.jpg",
   "review": "ok"
  },
+ "ERI": {
+  "file": "Asmara_Montage.png",
+  "title": "Asmara",
+  "artist": "Tigernssnowy7",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Asmara_Montage.png",
+  "review": "pending"
+ },
  "ESP": {
   "file": "Dawn_Charles_V_Palace_Alhambra_Granada_Andalusia_Spain.jpg",
   "title": "Alhambra",
@@ -115,6 +439,15 @@
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Dawn_Charles_V_Palace_Alhambra_Granada_Andalusia_Spain.jpg",
   "review": "ok"
+ },
+ "EST": {
+  "file": "Old_Town_of_Tallinn,_Tallinn,_Estonia_-_panoramio_(58).jpg",
+  "title": "Tallinn Old Town",
+  "artist": "Ben Bender",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Old_Town_of_Tallinn,_Tallinn,_Estonia_-_panoramio_(58).jpg",
+  "review": "pending"
  },
  "ETH": {
   "file": "Lalibela,_san_giorgio,_esterno_24.jpg",
@@ -125,6 +458,24 @@
   "page": "https://commons.wikimedia.org/wiki/File:Lalibela,_san_giorgio,_esterno_24.jpg",
   "review": "ok"
  },
+ "FIN": {
+  "file": "Suomenlinna_aerial.JPG",
+  "title": "Suomenlinna",
+  "artist": "Migro",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Suomenlinna_aerial.JPG",
+  "review": "pending"
+ },
+ "FJI": {
+  "file": "Viti_Levu_Islands.jpg",
+  "title": "Yasawa Islands",
+  "artist": "United States",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Viti_Levu_Islands.jpg",
+  "review": "pending"
+ },
  "FRA": {
   "file": "Tour_Eiffel_Wikimedia_Commons_(cropped).jpg",
   "title": "Eiffel Tower",
@@ -133,6 +484,24 @@
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Tour_Eiffel_Wikimedia_Commons_(cropped).jpg",
   "review": "ok"
+ },
+ "FSM": {
+  "file": "Nan_madol.jpg",
+  "title": "Nan Madol",
+  "artist": "NOAA",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Nan_madol.jpg",
+  "review": "pending"
+ },
+ "GAB": {
+  "file": "Lopé_National_Park_river_crop.jpg",
+  "title": "Lopé National Park",
+  "artist": "FX",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Lop%C3%A9_National_Park_river_crop.jpg",
+  "review": "pending"
  },
  "GBR": {
   "file": "Elizabeth_Tower_and_the_north_front_of_the_Palace_of_Westminster,_London.jpg",
@@ -143,6 +512,60 @@
   "page": "https://commons.wikimedia.org/wiki/File:Elizabeth_Tower_and_the_north_front_of_the_Palace_of_Westminster,_London.jpg",
   "review": "ok"
  },
+ "GEO": {
+  "file": "Гора_Казбек,_Грузия.jpg",
+  "title": "Mount Kazbek",
+  "artist": "Аліна Семенець",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:%D0%93%D0%BE%D1%80%D0%B0_%D0%9A%D0%B0%D0%B7%D0%B1%D0%B5%D0%BA,_%D0%93%D1%80%D1%83%D0%B7%D0%B8%D1%8F.jpg",
+  "review": "pending"
+ },
+ "GHA": {
+  "file": "Cape_Coast_Castle,_Cape_Coast,_Ghana.JPG",
+  "title": "Cape Coast Castle",
+  "artist": "Rjruiziii",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cape_Coast_Castle,_Cape_Coast,_Ghana.JPG",
+  "review": "pending"
+ },
+ "GIN": {
+  "file": "Guinea_Highlands_map.png",
+  "title": "Fouta Djallon",
+  "artist": "Tom Radulovich",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Guinea_Highlands_map.png",
+  "review": "pending"
+ },
+ "GMB": {
+  "file": "River_gambia_galleryfull.jpg",
+  "title": "Kunta Kinteh Island",
+  "artist": "Jose Canedo",
+  "license": "CC BY-SA 1.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/1.0",
+  "page": "https://commons.wikimedia.org/wiki/File:River_gambia_galleryfull.jpg",
+  "review": "pending"
+ },
+ "GNB": {
+  "file": "L'Archipel_des_Bijagos_vu_par_Sentinel_2.jpg",
+  "title": "Bijagós Islands",
+  "artist": "European Space Agency / CNES",
+  "license": "Attribution",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:L%27Archipel_des_Bijagos_vu_par_Sentinel_2.jpg",
+  "review": "pending"
+ },
+ "GNQ": {
+  "file": "Pico_Basilé.jpg",
+  "title": "Pico Basilé",
+  "artist": "Serge Moons",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Pico_Basil%C3%A9.jpg",
+  "review": "pending"
+ },
  "GRC": {
   "file": "The_Parthenon_in_Athens.jpg",
   "title": "Parthenon",
@@ -151,6 +574,60 @@
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:The_Parthenon_in_Athens.jpg",
   "review": "ok"
+ },
+ "GTM": {
+  "file": "Tikal_3.jpg",
+  "title": "Tikal",
+  "artist": "Mundo Maya",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tikal_3.jpg",
+  "review": "pending"
+ },
+ "GUY": {
+  "file": "GuyanaKaieteurFalls2004.jpg",
+  "title": "Kaieteur Falls",
+  "artist": "Sorenriise at English Wikipedia",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:GuyanaKaieteurFalls2004.jpg",
+  "review": "pending"
+ },
+ "HND": {
+  "file": "Copan_sculpture.jpg",
+  "title": "Copán",
+  "artist": "Adalberto Hernandez Vega from Copan Ruinas, Honduras",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Copan_sculpture.jpg",
+  "review": "pending"
+ },
+ "HRV": {
+  "file": "View_in_Plitvice_Lakes_National_Park.jpg",
+  "title": "Plitvice Lakes National Park",
+  "artist": "Zysko serhii",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:View_in_Plitvice_Lakes_National_Park.jpg",
+  "review": "pending"
+ },
+ "HTI": {
+  "file": "Citadelle_Laferrière.jpg",
+  "title": "Citadelle Laferrière",
+  "artist": "Rémi Kaupp",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Citadelle_Laferri%C3%A8re.jpg",
+  "review": "pending"
+ },
+ "HUN": {
+  "file": "Hungarian_Parliament_Building_from_across_the_Danube,_2025-01-11.jpg",
+  "title": "Hungarian Parliament Building",
+  "artist": "Kilyann Le Hen",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Hungarian_Parliament_Building_from_across_the_Danube,_2025-01-11.jpg",
+  "review": "pending"
  },
  "IDN": {
   "file": "Pradaksina.jpg",
@@ -170,6 +647,15 @@
   "page": "https://commons.wikimedia.org/wiki/File:Taj_Mahal_(Edited).jpeg",
   "review": "ok"
  },
+ "IRL": {
+  "file": "Cliffs-Of-Moher-OBriens-From-South.JPG",
+  "title": "Cliffs of Moher",
+  "artist": "Bjørn Christian Tørrissen",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cliffs-Of-Moher-OBriens-From-South.JPG",
+  "review": "pending"
+ },
  "IRN": {
   "file": "Naqsh-i_Jahan_Square,_Jan._2018.jpg",
   "title": "Naqsh-e Jahan Square",
@@ -188,6 +674,15 @@
   "page": "https://commons.wikimedia.org/wiki/File:Samrraa_05.jpg",
   "review": "ok"
  },
+ "ISL": {
+  "file": "Gullfoss_from_the_Air_(cropped).jpg",
+  "title": "Gullfoss",
+  "artist": "Nickspix",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Gullfoss_from_the_Air_(cropped).jpg",
+  "review": "pending"
+ },
  "ITA": {
   "file": "Italy_-_Pisa_-_Leaning_Tower.jpg",
   "title": "Leaning Tower of Pisa",
@@ -196,6 +691,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Italy_-_Pisa_-_Leaning_Tower.jpg",
   "review": "ok"
+ },
+ "JAM": {
+  "file": "Dunns_River_Falls_climb.JPG",
+  "title": "Dunn's River Falls",
+  "artist": "Breakyunit at English Wikipedia",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Dunns_River_Falls_climb.JPG",
+  "review": "pending"
  },
  "JOR": {
   "file": "Al_Deir_Petra.JPG",
@@ -224,6 +728,42 @@
   "page": "https://commons.wikimedia.org/wiki/File:Masai_Mara_at_Sunset.jpg",
   "review": "ok"
  },
+ "KGZ": {
+  "file": "Issykkul_plyag.jpg",
+  "title": "Issyk-Kul",
+  "artist": "Қайырқан Әсем",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Issykkul_plyag.jpg",
+  "review": "pending"
+ },
+ "KHM": {
+  "file": "Angkor_Wat.jpg",
+  "title": "Angkor Wat",
+  "artist": "Bjørn Christian Tørrissen",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Angkor_Wat.jpg",
+  "review": "pending"
+ },
+ "KIR": {
+  "file": "Rotjan_-_Enderbury_Day_1_-_2nd_half_(62).JPG",
+  "title": "Phoenix Islands Protected Area",
+  "artist": "Dr. Randi Rotjan, New England Aquarium. www.neaq.org",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Rotjan_-_Enderbury_Day_1_-_2nd_half_(62).JPG",
+  "review": "pending"
+ },
+ "KNA": {
+  "file": "Saint_Kitts_and_Nevis_Regions_map.png",
+  "title": "Saint Kitts",
+  "artist": "Burmesedays",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Saint_Kitts_and_Nevis_Regions_map.png",
+  "review": "pending"
+ },
  "KOR": {
   "file": "Front view of the Imperial Throne Hall Geunjeongjeon at Gyeongbokgung Palace with blue sky in Seoul.jpg",
   "title": "Gyeongbokgung",
@@ -233,14 +773,32 @@
   "page": "https://commons.wikimedia.org/wiki/File:Front_view_of_the_Imperial_Throne_Hall_Geunjeongjeon_at_Gyeongbokgung_Palace_with_blue_sky_in_Seoul.jpg",
   "review": "ok"
  },
- "KWT": {
-  "file": "Water towerz kuwait (2).jpg",
-  "title": "Kuwait Towers",
-  "artist": "irvin calicut",
+ "XKX": {
+  "file": "37_Prizreni_-_Xhamia_e_Sinan_Pashës_-_The_Sinan_Pasha_Moscue.JPG",
+  "title": "Prizren",
+  "artist": "ShkelzenRexha",
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Water_towerz_kuwait_(2).jpg",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:37_Prizreni_-_Xhamia_e_Sinan_Pash%C3%ABs_-_The_Sinan_Pasha_Moscue.JPG",
+  "review": "pending"
+ },
+ "KWT": {
+  "file": "Kuwait City Kuwait Towers View to the Arabian Gulf Street 2.jpg",
+  "title": "Kuwait Towers",
+  "artist": "Zairon",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Kuwait_City_Kuwait_Towers_View_to_the_Arabian_Gulf_Street_2.jpg",
+  "review": "pending"
+ },
+ "LAO": {
+  "file": "Pha_That_Luang,_July_2023.jpg",
+  "title": "Pha That Luang",
+  "artist": "Coalfruit1012",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Pha_That_Luang,_July_2023.jpg",
+  "review": "pending"
  },
  "LBN": {
   "file": "Forest_of_The_cedars_of_God.jpg",
@@ -260,6 +818,60 @@
   "page": "https://commons.wikimedia.org/wiki/File:Leptis_Magna_(29)_(8288918733).jpg",
   "review": "ok"
  },
+ "LCA": {
+  "file": "Pitons-aerial.jpg",
+  "title": "Pitons (Saint Lucia)",
+  "artist": "Caribbeandy",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Pitons-aerial.jpg",
+  "review": "pending"
+ },
+ "LKA": {
+  "file": "Sri_Pada.JPG",
+  "title": "Adam's Peak",
+  "artist": "Bourgeois",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Sri_Pada.JPG",
+  "review": "pending"
+ },
+ "LSO": {
+  "file": "Maletsunyanefalls.JPG",
+  "title": "Maletsunyane Falls",
+  "artist": "BagelBelt",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Maletsunyanefalls.JPG",
+  "review": "pending"
+ },
+ "LTU": {
+  "file": "Traku_pilis_by_Augustas_Didzgalvis.jpg",
+  "title": "Trakai Island Castle",
+  "artist": "BigHead",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Traku_pilis_by_Augustas_Didzgalvis.jpg",
+  "review": "pending"
+ },
+ "LUX": {
+  "file": "Selig_Luxembourg_from_Paffendall.jpg",
+  "title": "Bock (Luxembourg)",
+  "artist": "Christophe-Guillaume Selig (1791-1837)",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Selig_Luxembourg_from_Paffendall.jpg",
+  "review": "pending"
+ },
+ "LVA": {
+  "file": "Riga_(33844464828).jpg",
+  "title": "Riga",
+  "artist": "Jorge Franganillo from Barcelona, Spain",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Riga_(33844464828).jpg",
+  "review": "pending"
+ },
  "MAR": {
   "file": "University_of_Al_Qaraouiyine.jpg",
   "title": "University of al-Qarawiyyin",
@@ -268,6 +880,42 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:University_of_Al_Qaraouiyine.jpg",
   "review": "ok"
+ },
+ "MCO": {
+  "file": "Rainier_III_(JFKWHP-KN-C17888,_cropped).jpg",
+  "title": "Rainier III of Monaco",
+  "artist": "Robert LeRoy Knudsen",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Rainier_III_(JFKWHP-KN-C17888,_cropped).jpg",
+  "review": "pending"
+ },
+ "MDA": {
+  "file": "Flag_of_Moldova.svg",
+  "title": "Moldova",
+  "artist": "Gheorghe Vrabie",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Moldova.svg",
+  "review": "pending"
+ },
+ "MDG": {
+  "file": "Adansonia_grandidieri_Pat_Hooper.jpg",
+  "title": "Avenue of the Baobabs",
+  "artist": "Pat Hooper from Chicago, IL, USA",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Adansonia_grandidieri_Pat_Hooper.jpg",
+  "review": "pending"
+ },
+ "MDV": {
+  "file": "Male'_Hukuru_Miskiy_1.jpg",
+  "title": "Malé Friday Mosque",
+  "artist": "Zairon",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Male%27_Hukuru_Miskiy_1.jpg",
+  "review": "pending"
  },
  "MEX": {
   "file": "ZA77_Teotihuacán_edo_de_mex_Herberto_de_la_rosa.jpg",
@@ -278,6 +926,78 @@
   "page": "https://commons.wikimedia.org/wiki/File:ZA77_Teotihuac%C3%A1n_edo_de_mex_Herberto_de_la_rosa.jpg",
   "review": "ok"
  },
+ "MHL": {
+  "file": "Eneko_Islet_02.JPG",
+  "title": "Majuro",
+  "artist": "Cliff Hansen",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Eneko_Islet_02.JPG",
+  "review": "pending"
+ },
+ "MKD": {
+  "file": "Lake_Ohrid,_Macedonia-Albania_viewed_from_a_NASA_satellite.jpg",
+  "title": "Lake Ohrid",
+  "artist": "NASA/METI/AIST/Japan Space Systems, and U.S./Japan ASTER Science Team",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Lake_Ohrid,_Macedonia-Albania_viewed_from_a_NASA_satellite.jpg",
+  "review": "pending"
+ },
+ "MLI": {
+  "file": "Djenne_great_mud_mosque.jpg",
+  "title": "Great Mosque of Djenné",
+  "artist": "Ruud Zwart",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Djenne_great_mud_mosque.jpg",
+  "review": "pending"
+ },
+ "MLT": {
+  "file": "Ggantija_Temples,_Xaghra,_Gozo.jpg",
+  "title": "Megalithic Temples of Malta",
+  "artist": "BoneA",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ggantija_Temples,_Xaghra,_Gozo.jpg",
+  "review": "pending"
+ },
+ "MMR": {
+  "file": "Shwedagon_Pagoda_2017.jpg",
+  "title": "Shwedagon Pagoda",
+  "artist": "Bjørn Christian Tørrissen",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Shwedagon_Pagoda_2017.jpg",
+  "review": "pending"
+ },
+ "MNE": {
+  "file": "Kotor_aerial_1.jpg",
+  "title": "Bay of Kotor",
+  "artist": "kallerna",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Kotor_aerial_1.jpg",
+  "review": "pending"
+ },
+ "MNG": {
+  "file": "Gobi_Desert.jpg",
+  "title": "Gobi Desert",
+  "artist": "غير معروف",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Gobi_Desert.jpg",
+  "review": "pending"
+ },
+ "MOZ": {
+  "file": "Flag_of_Mozambique.svg",
+  "title": "Mozambique",
+  "artist": "FRELIMO",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Mozambique.svg",
+  "review": "pending"
+ },
  "MRT": {
   "file": "Chinguetti-Vue_Goblale_Vieille_ville.jpg",
   "title": "Chinguetti",
@@ -286,6 +1006,24 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
   "page": "https://commons.wikimedia.org/wiki/File:Chinguetti-Vue_Goblale_Vieille_ville.jpg",
   "review": "ok"
+ },
+ "MUS": {
+  "file": "Seven_Coloured_Earths_Geopark_in_Chamarel,_Mauritius_(53697998768).jpg",
+  "title": "Seven Coloured Earths",
+  "artist": "\"dronepicr\"",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Seven_Coloured_Earths_Geopark_in_Chamarel,_Mauritius_(53697998768).jpg",
+  "review": "pending"
+ },
+ "MWI": {
+  "file": "Flag_of_Malawi.svg",
+  "title": "Malawi",
+  "artist": "Original: Unknown author Vector: Achim1999",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Malawi.svg",
+  "review": "pending"
  },
  "MYS": {
   "file": "Petronas Panorama II.jpg",
@@ -296,6 +1034,24 @@
   "page": "https://commons.wikimedia.org/wiki/File:Petronas_Panorama_II.jpg",
   "review": "ok"
  },
+ "NAM": {
+  "file": "Sossusvlei.jpg",
+  "title": "Sossusvlei",
+  "artist": "Ikiwaner",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html",
+  "page": "https://commons.wikimedia.org/wiki/File:Sossusvlei.jpg",
+  "review": "pending"
+ },
+ "NER": {
+  "file": "1997_277-9A_Agadez_mosque_cropped.jpg",
+  "title": "Agadez Mosque",
+  "artist": "Dan Lundberg",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:1997_277-9A_Agadez_mosque_cropped.jpg",
+  "review": "pending"
+ },
  "NGA": {
   "file": "Zuma_Rock.jpg",
   "title": "Zuma Rock",
@@ -305,6 +1061,15 @@
   "page": "https://commons.wikimedia.org/wiki/File:Zuma_Rock.jpg",
   "review": "ok"
  },
+ "NIC": {
+  "file": "Flag_of_Nicaragua.svg",
+  "title": "Nicaragua",
+  "artist": "C records",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Nicaragua.svg",
+  "review": "pending"
+ },
  "NLD": {
   "file": "KinderdijkMolens02.jpg",
   "title": "Kinderdijk",
@@ -313,6 +1078,42 @@
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:KinderdijkMolens02.jpg",
   "review": "ok"
+ },
+ "NOR": {
+  "file": "Geirangerfjord_.jpg",
+  "title": "Geirangerfjord",
+  "artist": "Andreas Trepte",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+  "page": "https://commons.wikimedia.org/wiki/File:Geirangerfjord_.jpg",
+  "review": "pending"
+ },
+ "NPL": {
+  "file": "Mount-Everest.jpg",
+  "title": "2015 Mount Everest avalanches",
+  "artist": "Joe Hastings",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Mount-Everest.jpg",
+  "review": "pending"
+ },
+ "NRU": {
+  "file": "Living_on_a_Blue_Planet_-_Nauru.jpg",
+  "title": "Anibare Bay",
+  "artist": "Hadi Zaher from Melbourne, Australia",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Living_on_a_Blue_Planet_-_Nauru.jpg",
+  "review": "pending"
+ },
+ "NZL": {
+  "file": "Milford_Sound_(New_Zealand).JPG",
+  "title": "Milford Sound",
+  "artist": "Maros M r a z (Maros)",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Milford_Sound_(New_Zealand).JPG",
+  "review": "pending"
  },
  "OMN": {
   "file": "Nizwa_(5).jpg",
@@ -332,6 +1133,87 @@
   "page": "https://commons.wikimedia.org/wiki/File:Ali_Mujtaba_WLM2017_FAISAL_MOSQUE_019.jpg",
   "review": "ok"
  },
+ "PAN": {
+  "file": "Panama_Canal_Map_EN.svg",
+  "title": "Panama Canal",
+  "artist": "Thoroe",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Panama_Canal_Map_EN.svg",
+  "review": "pending"
+ },
+ "PER": {
+  "file": "Machu_Picchu,_2023_(012).jpg",
+  "title": "Machu Picchu",
+  "artist": "Draceane",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Machu_Picchu,_2023_(012).jpg",
+  "review": "pending"
+ },
+ "PHL": {
+  "file": "Chocolate_Hills_Bohol.JPG",
+  "title": "Chocolate Hills",
+  "artist": "P199",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Chocolate_Hills_Bohol.JPG",
+  "review": "pending"
+ },
+ "PLW": {
+  "file": "Ngerukewid-2016-aerial-view-Luka-Peternel.jpg",
+  "title": "Rock Islands",
+  "artist": "Luka Peternel",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ngerukewid-2016-aerial-view-Luka-Peternel.jpg",
+  "review": "pending"
+ },
+ "PNG": {
+  "file": "New_guinea_kokoda.PNG",
+  "title": "Kokoda Track",
+  "artist": "غير معروف",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:New_guinea_kokoda.PNG",
+  "review": "pending"
+ },
+ "POL": {
+  "file": "UNESCO_World_Heritage_Site,_Historic_Centre_of_Kraków,_former_quarters,_Kraków,_Poland.png",
+  "title": "Kraków Old Town",
+  "artist": "OpenStreetMap contributors Rumensz",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:UNESCO_World_Heritage_Site,_Historic_Centre_of_Krak%C3%B3w,_former_quarters,_Krak%C3%B3w,_Poland.png",
+  "review": "pending"
+ },
+ "PRK": {
+  "file": "Laika_ac_Mt._Paekdu_(7998657081).jpg",
+  "title": "Mount Paektu",
+  "artist": "Laika ac from USA",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Laika_ac_Mt._Paekdu_(7998657081).jpg",
+  "review": "pending"
+ },
+ "PRT": {
+  "file": "Torre_Belém_April_2009-4a.jpg",
+  "title": "Belém Tower",
+  "artist": "Alvesgaspar",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Torre_Bel%C3%A9m_April_2009-4a.jpg",
+  "review": "pending"
+ },
+ "PRY": {
+  "file": "Itaipu_geral.jpg",
+  "title": "Itaipu Dam",
+  "artist": "Jonas de Carvalho",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Itaipu_geral.jpg",
+  "review": "pending"
+ },
  "PSE": {
   "file": "Jerusalem_DomeoftheRock_J65_(cropped).JPG",
   "title": "Dome of the Rock",
@@ -342,13 +1224,22 @@
   "review": "ok"
  },
  "QAT": {
-  "file": "View of the Persian Gulf and the Museum of Islamic Art in Qatar at dusk.jpg",
+  "file": "Museum of Islamic Art in Doha (3820043632).jpg",
   "title": "Museum of Islamic Art, Doha",
-  "artist": "Alex Sergeev (www.asergeev.com)",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-  "page": "https://commons.wikimedia.org/wiki/File:View_of_the_Persian_Gulf_and_the_Museum_of_Islamic_Art_in_Qatar_at_dusk.jpg",
-  "review": "rejected"
+  "artist": "Mohamed Nanabhay from Qatar",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Museum_of_Islamic_Art_in_Doha_(3820043632).jpg",
+  "review": "pending"
+ },
+ "ROU": {
+  "file": "Castelul_Bran2.jpg",
+  "title": "Bran Castle",
+  "artist": "Dobre Cezar",
+  "license": "CC BY-SA 3.0 ro",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/ro/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Castelul_Bran2.jpg",
+  "review": "pending"
  },
  "RUS": {
   "file": "Moscow_Kremlin_(8281675670).jpg",
@@ -358,6 +1249,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Moscow_Kremlin_(8281675670).jpg",
   "review": "ok"
+ },
+ "RWA": {
+  "file": "Volcanoes_National_Park_Banner_Image.gif",
+  "title": "Volcanoes National Park",
+  "artist": "Volcanoes National Park",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Volcanoes_National_Park_Banner_Image.gif",
+  "review": "pending"
  },
  "SAU": {
   "file": "Edited_Great_Mosque_of_Mecca1_5-2019-ccsa4.0_(cropped).jpg",
@@ -377,6 +1277,60 @@
   "page": "https://commons.wikimedia.org/wiki/File:NubianMeroePyramids30sep2005(2).jpg",
   "review": "ok"
  },
+ "SEN": {
+  "file": "Ile-de-goree.jpg",
+  "title": "Gorée",
+  "artist": "Gregor Rom",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ile-de-goree.jpg",
+  "review": "pending"
+ },
+ "SGP": {
+  "file": "Singapore_Skyline_2019-10.jpg",
+  "title": "Merlion",
+  "artist": "Unwicked",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Singapore_Skyline_2019-10.jpg",
+  "review": "pending"
+ },
+ "SLB": {
+  "file": "Vangunu_Island_NASA.jpg",
+  "title": "Marovo Lagoon",
+  "artist": "غير معروف",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Vangunu_Island_NASA.jpg",
+  "review": "pending"
+ },
+ "SLE": {
+  "file": "Freetown_SPOT_1094.jpg",
+  "title": "Bunce Island",
+  "artist": "Cnes - Spot Image",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Freetown_SPOT_1094.jpg",
+  "review": "pending"
+ },
+ "SLV": {
+  "file": "ES_Joya_Ceren_05_2012_Estructura_9_Area_2_Tamazcal_wide_angle_1479.JPG",
+  "title": "Joya de Cerén",
+  "artist": "Mariordo (Mario Roberto Duran Ortiz)",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:ES_Joya_Ceren_05_2012_Estructura_9_Area_2_Tamazcal_wide_angle_1479.JPG",
+  "review": "pending"
+ },
+ "SMR": {
+  "file": "San_marino,_veduta_del_monte_titano_02.jpg",
+  "title": "City of San Marino",
+  "artist": "Francesco Bini",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:San_marino,_veduta_del_monte_titano_02.jpg",
+  "review": "pending"
+ },
  "SOM": {
   "file": "Laas_Geel.jpg",
   "title": "Laas Geel",
@@ -385,6 +1339,51 @@
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Laas_Geel.jpg",
   "review": "ok"
+ },
+ "SRB": {
+  "file": "P037152-661920_-_Belgrade_fortress_stand_at_the_downtown_of_Belgrade.jpg",
+  "title": "Belgrade Fortress",
+  "artist": "Oliver Bunic",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:P037152-661920_-_Belgrade_fortress_stand_at_the_downtown_of_Belgrade.jpg",
+  "review": "pending"
+ },
+ "SSD": {
+  "file": "Sudd_swamp.jpg",
+  "title": "Sudd",
+  "artist": "NASA",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Sudd_swamp.jpg",
+  "review": "pending"
+ },
+ "STP": {
+  "file": "Gulf_of_Guinea_(English).jpg",
+  "title": "São Tomé (island)",
+  "artist": "غير معروف",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Gulf_of_Guinea_(English).jpg",
+  "review": "pending"
+ },
+ "SUR": {
+  "file": "Paramaribo_city_collage.png",
+  "title": "Paramaribo",
+  "artist": "LLs",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Paramaribo_city_collage.png",
+  "review": "pending"
+ },
+ "SVN": {
+  "file": "Lake_Bled_from_the_Mountain.jpg",
+  "title": "Lake Bled",
+  "artist": "Canadianhockey91",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Lake_Bled_from_the_Mountain.jpg",
+  "review": "pending"
  },
  "SWE": {
   "file": "Gamla_stan_September_2014_01.jpg",
@@ -395,6 +1394,24 @@
   "page": "https://commons.wikimedia.org/wiki/File:Gamla_stan_September_2014_01.jpg",
   "review": "ok"
  },
+ "SWZ": {
+  "file": "Granite_monolith.jpg",
+  "title": "Sibebe",
+  "artist": "theswazigirl",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Granite_monolith.jpg",
+  "review": "pending"
+ },
+ "SYC": {
+  "file": "Valleé_de_mai2.jpg",
+  "title": "Vallée de Mai",
+  "artist": "غير معروف",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Valle%C3%A9_de_mai2.jpg",
+  "review": "pending"
+ },
  "SYR": {
   "file": "Damascus, Syria, The Umayyad Mosque, The Courtyard, Islamic Art.jpg",
   "title": "Umayyad Mosque",
@@ -403,6 +1420,78 @@
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Damascus,_Syria,_The_Umayyad_Mosque,_The_Courtyard,_Islamic_Art.jpg",
   "review": "ok"
+ },
+ "TCD": {
+  "file": "Lake_Chad_(MODIS_2018-06-07).jpg",
+  "title": "Lake Chad",
+  "artist": "Jeff Schmaltz, MODIS Land Rapid Response Team, NASA GSFC",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Lake_Chad_(MODIS_2018-06-07).jpg",
+  "review": "pending"
+ },
+ "TGO": {
+  "file": "Leonhard_Seppala_with_dogs.jpg",
+  "title": "Togo (dog)",
+  "artist": "Copyright: Copyright © Carrie McLain Museum / AlaskaStock",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Leonhard_Seppala_with_dogs.jpg",
+  "review": "pending"
+ },
+ "THA": {
+  "file": "0005574_-_Wat_Phra_Kaew_006.jpg",
+  "title": "Grand Palace",
+  "artist": "Preecha.MJ",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:0005574_-_Wat_Phra_Kaew_006.jpg",
+  "review": "pending"
+ },
+ "TJK": {
+  "file": "Ледник_Советских_офицеров_южн._-_panoramio_(3).jpg",
+  "title": "Pamir Mountains",
+  "artist": "AmanovDmitry",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:%D0%9B%D0%B5%D0%B4%D0%BD%D0%B8%D0%BA_%D0%A1%D0%BE%D0%B2%D0%B5%D1%82%D1%81%D0%BA%D0%B8%D1%85_%D0%BE%D1%84%D0%B8%D1%86%D0%B5%D1%80%D0%BE%D0%B2_%D1%8E%D0%B6%D0%BD._-_panoramio_(3).jpg",
+  "review": "pending"
+ },
+ "TKM": {
+  "file": "Turkmenistan_Merv_city.jpg",
+  "title": "Merv",
+  "artist": "Kalpak Travel",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Turkmenistan_Merv_city.jpg",
+  "review": "pending"
+ },
+ "TLS": {
+  "file": "Atauro_coast_2.jpg",
+  "title": "Atauro",
+  "artist": "molly+",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Atauro_coast_2.jpg",
+  "review": "pending"
+ },
+ "TON": {
+  "file": "Haʻamonga.jpg",
+  "title": "Haʻamonga ʻa Maui",
+  "artist": "Tauʻolunga",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Ha%CA%BBamonga.jpg",
+  "review": "pending"
+ },
+ "TTO": {
+  "file": "Trinidad_pitch_lake_ENG.png",
+  "title": "Pitch Lake",
+  "artist": "Alexander Z.",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Trinidad_pitch_lake_ENG.png",
+  "review": "pending"
  },
  "TUN": {
   "file": "Great_Mosque_of_Kairouan_Panorama_-_Grande_Mosquée_de_Kairouan_Panorama.jpg",
@@ -422,6 +1511,33 @@
   "page": "https://commons.wikimedia.org/wiki/File:Hagia_Sophia_(228968325).jpeg",
   "review": "ok"
  },
+ "UGA": {
+  "file": "Uganda_Jinja_Streetview.JPG",
+  "title": "Jinja, Uganda",
+  "artist": "Ilona1001",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Uganda_Jinja_Streetview.JPG",
+  "review": "pending"
+ },
+ "UKR": {
+  "file": "Ранок_на_Кукулі.jpg",
+  "title": "Ukrainian Carpathians",
+  "artist": "Vian",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:%D0%A0%D0%B0%D0%BD%D0%BE%D0%BA_%D0%BD%D0%B0_%D0%9A%D1%83%D0%BA%D1%83%D0%BB%D1%96.jpg",
+  "review": "pending"
+ },
+ "URY": {
+  "file": "Basilica_del_Sanctísimo_Sacramento.jpg",
+  "title": "Colonia del Sacramento",
+  "artist": "JGHowes, photographer (Canon AE-1 camera).",
+  "license": "Attribution",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Basilica_del_Sanct%C3%ADsimo_Sacramento.jpg",
+  "review": "pending"
+ },
  "USA": {
   "file": "Front_view_of_Statue_of_Liberty_(cropped).jpg",
   "title": "Statue of Liberty",
@@ -430,6 +1546,69 @@
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Front_view_of_Statue_of_Liberty_(cropped).jpg",
   "review": "ok"
+ },
+ "UZB": {
+  "file": "RegistanSquare_Samarkand.jpg",
+  "title": "Registan",
+  "artist": "Registan_-_Gusjer.jpg: Gustavo Jeronimo from Aranjuez, Spain derivative work: MrPanyGoff",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:RegistanSquare_Samarkand.jpg",
+  "review": "pending"
+ },
+ "VAT": {
+  "file": "St_Peter's_Square,_Vatican_City_-_April_2007.jpg",
+  "title": "St. Peter's Square",
+  "artist": "Diliff",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:St_Peter%27s_Square,_Vatican_City_-_April_2007.jpg",
+  "review": "pending"
+ },
+ "VCT": {
+  "file": "Soufriere.jpg",
+  "title": "La Soufrière (Saint Vincent)",
+  "artist": "غير معروف",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Soufriere.jpg",
+  "review": "pending"
+ },
+ "VEN": {
+  "file": "SaltoAngel1.jpg",
+  "title": "Angel Falls",
+  "artist": "Rich Childs",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:SaltoAngel1.jpg",
+  "review": "pending"
+ },
+ "VNM": {
+  "file": "Ha_Long_Bay_in_2019.jpg",
+  "title": "Hạ Long Bay",
+  "artist": "Taewangkorea",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ha_Long_Bay_in_2019.jpg",
+  "review": "pending"
+ },
+ "VUT": {
+  "file": "Mount_Yasur_eruption_2006,_Tanna_Island,_Vanuatu,_VAN_0516.jpg",
+  "title": "Mount Yasur",
+  "artist": "Rolf Cosar",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+  "page": "https://commons.wikimedia.org/wiki/File:Mount_Yasur_eruption_2006,_Tanna_Island,_Vanuatu,_VAN_0516.jpg",
+  "review": "pending"
+ },
+ "WSM": {
+  "file": "Flag_of_Samoa.svg",
+  "title": "Samoa",
+  "artist": "Original: Malietoa Tanumafili II and Tupua Tamasese Meaʻole Vector: See the file history below for details.",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Samoa.svg",
+  "review": "pending"
  },
  "YEM": {
   "file": "مدينة_شبام_حضرموت.jpg",
@@ -449,31 +1628,22 @@
   "page": "https://commons.wikimedia.org/wiki/File:Table_Mountain_DanieVDM.jpg",
   "review": "ok"
  },
- "BHR": {
-  "file": "Bahrain_Fort_March_2015.JPG",
-  "title": "Qal'at al-Bahrain",
-  "artist": "Martin Falbisoner",
+ "ZMB": {
+  "file": "Cataratas_Victoria,_Zambia-Zimbabue,_2018-07-27,_DD_04.jpg",
+  "title": "Victoria Falls",
+  "artist": "Diego Delso",
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Bahrain_Fort_March_2015.JPG",
-  "review": "ok"
+  "page": "https://commons.wikimedia.org/wiki/File:Cataratas_Victoria,_Zambia-Zimbabue,_2018-07-27,_DD_04.jpg",
+  "review": "pending"
  },
- "DJI": {
-  "file": "Lake Assal 1-Djibouti.jpg",
-  "title": "Lake Assal (Djibouti)",
-  "artist": "Fishercd",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Lake_Assal_1-Djibouti.jpg",
-  "review": "ok"
- },
- "COM": {
-  "file": "Mount_Karthala_(11000398163).jpg",
-  "title": "Mount Karthala",
-  "artist": "David Stanley from Nanaimo, Canada",
-  "license": "CC BY 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Mount_Karthala_(11000398163).jpg",
-  "review": "ok"
+ "ZWE": {
+  "file": "Conical_Tower_-_Great_Enclosure_III_(33736918448).jpg",
+  "title": "Great Zimbabwe",
+  "artist": "Andrew Moore from Johannesburg, South Africa",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Conical_Tower_-_Great_Enclosure_III_(33736918448).jpg",
+  "review": "pending"
  }
 }
