@@ -3,7 +3,7 @@
 صور من ويكيميديا كومنز برخص حرة. لكل صورة صاحبها ورخصتها:
 
 - **AFG** — [Blue_Mosque_in_the_northern_Afghan_city_in_2012.jpg](https://commons.wikimedia.org/wiki/File:Blue_Mosque_in_the_northern_Afghan_city_in_2012.jpg) — Sgt. Kimberly Lamb (U.S. Armed Forces) — Public domain
-- **ARE** — [Burj_Khalifa_(worlds_tallest_building)_and_the_Dubai_skyline_(25781049892).jpg](https://commons.wikimedia.org/wiki/File:Burj_Khalifa_(worlds_tallest_building)_and_the_Dubai_skyline_(25781049892).jpg) — imran shahabuddin — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
+- **ARE** — [La tour Burj Khalifa en construction en 2008.jpg](https://commons.wikimedia.org/wiki/File:La_tour_Burj_Khalifa_en_construction_en_2008.jpg) — Aheilner — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **ARG** — [Aerial_Foz_de_Iguaçu_26_Nov_2005.jpg](https://commons.wikimedia.org/wiki/File:Aerial_Foz_de_Igua%C3%A7u_26_Nov_2005.jpg) — Mariordo (Mario Roberto Durán Ortiz) — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **AUS** — [Sydney_Opera_House_2026.jpg](https://commons.wikimedia.org/wiki/File:Sydney_Opera_House_2026.jpg) — BAVhah — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **BGD** — [Save_the_sundarbans_20.jpg](https://commons.wikimedia.org/wiki/File:Save_the_sundarbans_20.jpg) — Shihabur Rahman — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
@@ -28,19 +28,19 @@
 - **JPN** — [View_of_Mount_Fuji_from_Ōwakudani_20211202.jpg](https://commons.wikimedia.org/wiki/File:View_of_Mount_Fuji_from_%C5%8Cwakudani_20211202.jpg) — Suicasmo — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **KEN** — [Masai_Mara_at_Sunset.jpg](https://commons.wikimedia.org/wiki/File:Masai_Mara_at_Sunset.jpg) — Danijel Mihajlovic — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **KOR** — [Front view of the Imperial Throne Hall Geunjeongjeon at Gyeongbokgung Palace with blue sky in Seoul.jpg](https://commons.wikimedia.org/wiki/File:Front_view_of_the_Imperial_Throne_Hall_Geunjeongjeon_at_Gyeongbokgung_Palace_with_blue_sky_in_Seoul.jpg) — Basile Morin — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
-- **KWT** — [Kuwait towers.jpg](https://commons.wikimedia.org/wiki/File:Kuwait_towers.jpg) — Mikael Lindmark — CC BY-SA 2.5 se (https://creativecommons.org/licenses/by-sa/2.5/se/deed.en)
+- **KWT** — [Water towerz kuwait (2).jpg](https://commons.wikimedia.org/wiki/File:Water_towerz_kuwait_(2).jpg) — irvin calicut — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **LBN** — [Forest_of_The_cedars_of_God.jpg](https://commons.wikimedia.org/wiki/File:Forest_of_The_cedars_of_God.jpg) — BlingBling10 at English Wikipedia — CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
 - **LBY** — [Leptis_Magna_(29)_(8288918733).jpg](https://commons.wikimedia.org/wiki/File:Leptis_Magna_(29)_(8288918733).jpg) — joepyrek from Richmond, Va, USA — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0)
 - **MAR** — [University_of_Al_Qaraouiyine.jpg](https://commons.wikimedia.org/wiki/File:University_of_Al_Qaraouiyine.jpg) — Abdel Hassouni — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **MEX** — [ZA77_Teotihuacán_edo_de_mex_Herberto_de_la_rosa.jpg](https://commons.wikimedia.org/wiki/File:ZA77_Teotihuac%C3%A1n_edo_de_mex_Herberto_de_la_rosa.jpg) — Hdlrosa — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **MRT** — [Chinguetti-Vue_Goblale_Vieille_ville.jpg](https://commons.wikimedia.org/wiki/File:Chinguetti-Vue_Goblale_Vieille_ville.jpg) — François COLIN — CC BY-SA 2.5 (https://creativecommons.org/licenses/by-sa/2.5)
-- **MYS** — [Petronas Towers at Night - from the base upwards.jpg](https://commons.wikimedia.org/wiki/File:Petronas_Towers_at_Night_-_from_the_base_upwards.jpg) — Dcubillas — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
+- **MYS** — [Petronas Panorama II.jpg](https://commons.wikimedia.org/wiki/File:Petronas_Panorama_II.jpg) — Someformofhuman — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **NGA** — [Zuma_Rock.jpg](https://commons.wikimedia.org/wiki/File:Zuma_Rock.jpg) — Jeff Attaway — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
 - **NLD** — [KinderdijkMolens02.jpg](https://commons.wikimedia.org/wiki/File:KinderdijkMolens02.jpg) — Lucas Hirschegger — CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
 - **OMN** — [Nizwa_(5).jpg](https://commons.wikimedia.org/wiki/File:Nizwa_(5).jpg) — Andries Oudshoorn — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0)
 - **PAK** — [Ali_Mujtaba_WLM2017_FAISAL_MOSQUE_019.jpg](https://commons.wikimedia.org/wiki/File:Ali_Mujtaba_WLM2017_FAISAL_MOSQUE_019.jpg) — Ali Mujtaba — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **PSE** — [Jerusalem_DomeoftheRock_J65_(cropped).JPG](https://commons.wikimedia.org/wiki/File:Jerusalem_DomeoftheRock_J65_(cropped).JPG) — Ludvig14 — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
-- **QAT** — [Fisherman on the Doha Corniche next to the Islamic Museum.jpg](https://commons.wikimedia.org/wiki/File:Fisherman_on_the_Doha_Corniche_next_to_the_Islamic_Museum.jpg) — Picture taken by Aju George Chris &amp; uploaded by Creative Commons Qatar @ Flickr.com — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
+- **QAT** — [View of the Persian Gulf and the Museum of Islamic Art in Qatar at dusk.jpg](https://commons.wikimedia.org/wiki/File:View_of_the_Persian_Gulf_and_the_Museum_of_Islamic_Art_in_Qatar_at_dusk.jpg) — Alex Sergeev (www.asergeev.com) — CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
 - **RUS** — [Moscow_Kremlin_(8281675670).jpg](https://commons.wikimedia.org/wiki/File:Moscow_Kremlin_(8281675670).jpg) — Pavel Kazachkov from Moscow, Russia — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
 - **SAU** — [Edited_Great_Mosque_of_Mecca1_5-2019-ccsa4.0_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Edited_Great_Mosque_of_Mecca1_5-2019-ccsa4.0_(cropped).jpg) — Saudipics.com — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **SDN** — [NubianMeroePyramids30sep2005(2).jpg](https://commons.wikimedia.org/wiki/File:NubianMeroePyramids30sep2005(2).jpg) — Wufei07 — Public domain
