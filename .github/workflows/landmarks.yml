@@ -1,0 +1,29 @@
+name: جلب صور المعالم
+
+# يُشغَّل يدوياً: يجلب صوراً حرة الرخصة للمعالم من ويكيميديا كومنز ويحفظها في المستودع.
+# الصور الجديدة تُحفظ بحالة «pending» ولا تظهر في التطبيق قبل مراجعتها بالنظر.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with: { node-version: 22 }
+      - name: ImageMagick
+        run: (command -v convert || (sudo apt-get update -qq && sudo apt-get install -y -qq imagemagick)) && convert -version | head -1
+      - name: الجلب
+        run: node scripts/fetch-landmarks.mjs
+      - name: الحفظ في المستودع
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/landmark-img content/landmark-photos.json content/LANDMARK-PHOTOS-CREDITS.md
+          if git diff --cached --quiet; then echo "لا جديد"; exit 0; fi
+          git commit -m "صور المعالم من ويكيميديا كومنز (بانتظار المراجعة)"
+          git push
