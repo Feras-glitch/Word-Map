@@ -46,7 +46,9 @@ const FREE = /^(CC0|CC[ -]BY(-SA)?( \d(\.\d)?)?|Public domain|PD|GFDL|Attributio
 const old = fs.existsSync(META) ? JSON.parse(fs.readFileSync(META, 'utf8')) : {};
 const meta = {};
 const miss = [];
-for (const [id, title] of Object.entries(TITLES)) {
+const COUNTRIES = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(root, 'src/data/countries.json'), 'utf8')).filter((c) => c.kind === 'state' && c.landmark).map((c) => [c.id, c]));
+for (const id of Object.keys(COUNTRIES)) {
+  let title = TITLES[id];
   try {
     if (ONLY && !ONLY.includes(id)) { if (old[id]) meta[id] = old[id]; continue; }
     let file = OVERRIDE[id];
@@ -65,6 +67,13 @@ for (const [id, title] of Object.entries(TITLES)) {
       if (ii0 && ii0.width >= 800 && em0.NonFree?.value !== 'true' && FREE.test(strip(em0.LicenseShortName?.value))) { file = cand; break; }
     }
     if (!file && !cands.length) {
+      // بلا عنوان محدد: نبحث في ويكيبيديا الإنجليزية عن اسم المعلم مع اسم الدولة، ونأخذ أول مقالة
+      if (!TITLES[id]) {
+        const c = COUNTRIES[id];
+        const sr = await api('https://en.wikipedia.org/w/api.php', { action: 'query', list: 'search', srsearch: `${c.lm3?.en || c.landmark} ${c.en}`, srlimit: '1' });
+        title = sr.query?.search?.[0]?.title;
+        if (!title) { miss.push(id + ': لا مقالة'); continue; }
+      }
       const q = await api('https://en.wikipedia.org/w/api.php', { action: 'query', titles: title, prop: 'pageimages', piprop: 'name', pilicense: 'free', redirects: '1' });
       file = q.query?.pages?.[0]?.pageimage;
     }
@@ -84,7 +93,7 @@ for (const [id, title] of Object.entries(TITLES)) {
     // ٤٢٠ بكسل عرضاً، مقصوصة إلى نسبة ٤:٣، وجودة ٦٨: نحو ٣٠ كيلوبايت للصورة
     execFileSync('convert', [raw + '[0]', '-auto-orient', '-resize', '420x315^', '-gravity', 'center', '-extent', '420x315', '-strip', '-interlace', 'Plane', '-quality', '68', out]);
     const same = old[id]?.file === file;
-    meta[id] = { file, title, artist: strip(em.Artist?.value).slice(0, 160) || 'غير معروف', license: lic, licenseUrl: em.LicenseUrl?.value || '', page: ii.descriptionurl, review: same ? old[id].review : 'pending' };
+    meta[id] = { file, title: title || '', artist: strip(em.Artist?.value).slice(0, 160) || 'غير معروف', license: lic, licenseUrl: em.LicenseUrl?.value || '', page: ii.descriptionurl, review: same ? old[id].review : 'pending' };
     console.log('✓', id, file, lic, Math.round(fs.statSync(out).size / 1024) + 'KB');
     await sleep(300);
   } catch (e) { miss.push(id + ': ' + e.message); }

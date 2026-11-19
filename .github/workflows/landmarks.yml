@@ -22,6 +22,8 @@ jobs:
         with: { node-version: 22 }
       - name: ImageMagick
         run: (command -v convert || (sudo apt-get update -qq && sudo apt-get install -y -qq imagemagick)) && convert -version | head -1
+      - run: npm ci
+      - run: node scripts/build-data.mjs
       - name: الجلب
         env: { LM_ONLY: '${{ github.event.inputs.only }}' }
         run: node scripts/fetch-landmarks.mjs
