@@ -131,7 +131,8 @@ for (const c of out) {
   const g = govData[c.id];
   if (!g || !govTypes[g.type]) continue;
   const T = govTypes[g.type];
-  c.gov = { type: g.type, ar: T.ar, en: T.en, zh: T.zh, py: pinyin(T.zh, { toneType: 'symbol', type: 'array' }).join(' '), kid: T.kid, icon: T.icon, special: !!T.special, federal: !!g.federal, note: g.note || '' };
+  // يجوز لدولة أن تسمّي نظامها باسمها الخاص (إمارة قطر) مع بقاء الصنف العام
+  c.gov = { type: g.type, ar: g.ar || T.ar, en: g.en || T.en, zh: g.zh || T.zh, py: pinyin(g.zh || T.zh, { toneType: 'symbol', type: 'array' }).join(' '), kid: g.kid || T.kid, icon: T.icon, special: !!T.special, federal: !!g.federal, note: g.note || '' };
 }
 
 const languages = {};
