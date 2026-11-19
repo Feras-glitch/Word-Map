@@ -4,6 +4,7 @@ import { TextToSpeech } from '@capacitor-community/text-to-speech';
 import { store } from './store.js';
 import { toast } from './ui.js';
 import { playRecorded, stopClip } from './voice.js';
+import { isFem, toFem, SAME, FEM_MARK } from './gender.js';
 import TASHKEEL from '../content/tashkeel.json';
 import TEXTS from '../content/tashkeel-text.json';
 
@@ -45,12 +46,17 @@ let seq = 0;
 export async function speak(text, lang = 'ar-SA', fallbackAr = null) {
   if (!text || (Array.isArray(text) && !text.length)) return;
   const my = ++seq;
-  const parts = Array.isArray(text) ? text : [text];
-  text = parts.join(' ');
+  let parts = Array.isArray(text) ? text : [text];
+  // مخاطبة البنت: الصيغة المؤنثة، وللعبارات المتطابقة حروفاً تسجيل مستقل وتشكيل مؤنث
+  let ttsParts = parts;
+  if (lang.startsWith('ar') && isFem()) parts = parts.map((p) => (SAME[p] ? FEM_MARK + p : toFem(p)));
+  // ما يبدأ بعلامة ♀ عبارة للبنات: تُقرأ آلياً بتشكيلها المؤنث
+  ttsParts = parts.map((p) => (String(p).startsWith(FEM_MARK) ? SAME[p.slice(1)] || p.slice(1) : p));
+  text = ttsParts.join(' ');
   stopNow();
   // ١) التسجيلات: الأجزاء كلها، أو الجملة كاملة
   if (await playRecorded(parts, lang)) return;
-  if (parts.length > 1 && await playRecorded([text], lang)) return;
+  if (parts.length > 1 && await playRecorded([parts.join(' ')], lang)) return;
   if (my !== seq) return; // طلب أحدث بدأ أثناء البحث
   // ٢) القراءة الآلية، مع التشكيل للعربية
   if (lang.startsWith('ar')) text = withTashkeel(text);

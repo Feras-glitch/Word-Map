@@ -3,6 +3,7 @@ import { h, modal, toast } from './ui.js';
 import { store, pinHash } from './store.js';
 
 let openUntil = 0;
+let fails = 0, blockedUntil = 0;
 const ar = (n) => n.toLocaleString('ar-EG');
 
 export function parentLock(onOpen, onCancel) {
@@ -33,10 +34,16 @@ export function parentLock(onOpen, onCancel) {
       if (first !== entry) { first = null; entry = ''; sub.textContent = 'الرقمان مختلفان. اختر رقماً من جديد'; return draw(); }
       store.setParent({ pinHash: pinHash(entry) });
       toast('حُفظ الرقم السري');
+    } else if (Date.now() < blockedUntil) {
+      entry = ''; draw(); sub.textContent = `محاولات كثيرة. انتظر ${ar(Math.ceil((blockedUntil - Date.now()) / 1000))} ثانية`;
+      return;
     } else if (pinHash(entry) !== store.parent.pinHash) {
       entry = ''; draw(); dots.classList.add('shake'); setTimeout(() => dots.classList.remove('shake'), 500);
+      // بعد خمس محاولات خاطئة: انتظار دقيقة، ويتضاعف مع تكرار التجريب
+      if (++fails % 5 === 0) { blockedUntil = Date.now() + 60e3 * 2 ** (fails / 5 - 1); sub.textContent = 'محاولات كثيرة. انتظر قليلاً ثم حاول'; }
       return;
     }
+    fails = 0;
     openUntil = Date.now() + 10 * 60e3;
     ok = true;
     m.close(); setTimeout(onOpen, 260);

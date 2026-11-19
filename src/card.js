@@ -1,13 +1,14 @@
-// بطاقة الدولة: أربعة أقسام (الأسماء، العاصمة والمعالم، اللغات، أرقام)
+// بطاقة الدولة: أربعة أقسام (الأسماء، العاصمة والمعالم، اللغات، أرقام)، وثلاثة مبسطة للمستوى الصغير
 import { h, modal, confetti, toast } from './ui.js';
 import { byId, flagUrl, continents, continents3, greetings, languages, num, contEmoji, states } from './data.js';
 import { speak, LANG } from './speech.js';
 import { sfx } from './sfx.js';
 import { store } from './store.js';
+import { fem } from './gender.js';
 import { goldProgress, goldEligible, OTHER_NEEDED } from './mastery.js';
 import { requiredFor } from './screens/world.js';
-import { hasVisit, hasGold, canTakeExam, giveVisit, visitWait, visitFailed, examResult, dueReviews, reviewResult } from './mastery.js';
-import { visitQuestion, masteryExam, reviewQuiz } from './quiz.js';
+import { hasVisit, hasGold, giveVisit, visitWait, visitFailed, dueReviews } from './mastery.js';
+import { visitQuestion } from './quiz.js';
 
 const say = (text, lang, fb) => h('button', { class: 'say', 'aria-label': 'استمع', onclick: (e) => { e.stopPropagation(); speak(text, lang, fb); } }, '🔊');
 
@@ -118,6 +119,17 @@ function languagesTab(c) {
   );
 }
 
+// بطاقة المستوى الصغير: لغة البلد وتحيته فقط، بلا تصنيفات
+function helloTab(c, openNeighbor) {
+  const L = c.langs || {}; const ov = L.greetOverride || {};
+  const ks = (L.official?.length ? L.official : L.defacto?.length ? L.defacto : L.working || []).filter((k) => languages[k] && !languages[k].sign).slice(0, 2);
+  const neighbors = c.borders.map((b) => byId[b]).filter((n) => n && n.kind === 'state');
+  return h('div', {},
+    ks.length ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '🗣️ يتكلم أهلها'), ks.map((k) => h('div', { class: 'lang-item' }, langName(languages[k]), greetBox(ov[k] || languages[k].greet)))) : null,
+    neighbors.length ? h('div', { class: 'neighbors' }, h('span', {}, '🤝 الجيران:'),
+      neighbors.map((n) => h('button', { class: 'chip', onclick: () => openNeighbor(n.id) }, h('img', { src: flagUrl(n.f), alt: '' }), n.ar))) : null);
+}
+
 function numbersTab(c, openNeighbor) {
   const neighbors = c.borders.map((b) => byId[b]).filter(Boolean);
   const pop = popText(c);
@@ -132,7 +144,7 @@ function numbersTab(c, openNeighbor) {
       c.gov.federal ? h('p', { class: 'note' }, '🧩 دولة اتحادية: تتكون من ولايات أو أقاليم، لكل منها حكومة خاصة بها.') : null) : null,
     h('div', { class: 'facts-grid' },
       c.area ? h('div', { class: 'fact' }, h('span', {}, '📏 المساحة'), h('b', {}, num(c.area) + ' كم²')) : null,
-      pop ? h('div', { class: 'fact' }, h('span', {}, '👨‍👩‍👧 السكان'), h('b', {}, pop.n), c.popInfo ? h('small', {}, c.popInfo.scope + '، ' + c.popInfo.year) : null, pop.cmp ? h('small', {}, pop.cmp) : null) : null,
+      pop ? h('div', { class: 'fact' }, h('span', {}, '👨‍👩‍👧 السكان'), h('b', {}, pop.n), c.popInfo ? h('small', {}, c.popInfo.scope + '، ' + c.popInfo.year) : null, !c.popInfo && c.popYear ? h('small', {}, 'تقدير سنة ' + String(c.popYear).replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d])) : null, pop.cmp ? h('small', {}, pop.cmp) : null) : null,
       c.kind !== 'state' && c.parent ? h('div', { class: 'fact' }, h('span', {}, '🔗 تتبع'), h('b', {}, c.parent)) : null,
     ),
     c.id === 'PSE' && c.area ? h('p', { class: 'note' }, '📏 المساحة لفلسطين التاريخية كلها، والسكان المذكورون أعلاه للضفة الغربية وقطاع غزة فقط.') : null,
@@ -164,7 +176,13 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
   const isState = c.kind === 'state';
   const openNeighbor = (nid) => openCard(nid, { onShowOnMap, stamp, replace: true, onClose });
 
-  const tabs = [
+  // المستوى الصغير: بطاقة مبسطة بلا نظام الحكم ولا الأرقام، وتُسمَع المعلومة تلقائياً
+  const simple = isState && store.me?.level === 1;
+  const tabs = simple ? [
+    ['🌍', 'الأسماء', () => namesTab(c)],
+    ['🏛️', 'العاصمة والمعالم', () => capitalTab(c)],
+    ['👋', 'اللغة والجيران', () => helloTab(c, openNeighbor)],
+  ] : [
     ['🌍', 'الأسماء', () => namesTab(c)],
     ['🏛️', isState ? 'العاصمة والمعالم' : 'معلومات', () => capitalTab(c)],
     ...(isState ? [['🗣️', 'اللغات', () => languagesTab(c)]] : []),
@@ -172,10 +190,13 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
   ];
   const pane = h('div', { class: 'tab-pane' });
   const bar = h('div', { class: 'tab-bar' });
+  const seen = new Set(); let redraw = null;
   const show = (i, quiet) => {
     bar.querySelectorAll('button').forEach((b, k) => b.classList.toggle('on', k === i));
     pane.replaceChildren(tabs[i][2]());
     if (!quiet) sfx('tap');
+    const first = !seen.has(i); seen.add(i);
+    if (first && i === 1) { redraw?.(); if (simple) setTimeout(() => speak(storySpeech(c), LANG.ar), 400); }
   };
   tabs.forEach(([e, t], i) => bar.append(h('button', { onclick: () => show(i) }, h('span', {}, e), h('small', {}, t))));
 
@@ -204,9 +225,11 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
     const visit = hasVisit(c.id), gold = hasGold(c.id), due = dueReviews().includes(c.id);
     stampBox.replaceChildren(...[
       h('div', { class: 'stamp-status' },
-        h('span', { class: 'chip-st' + (visit ? ' on' : '') }, visit ? '✅ ختم الزيارة' : '⬜ ختم الزيارة'),
-        h('span', { class: 'chip-st gold' + (gold ? ' on' : '') }, gold ? '🥇 الختم الذهبي' : '⬜ الختم الذهبي')),
+        h('span', { class: 'chip-st' + (visit ? ' on' : '') }, visit ? '✅ ختم الزيارة' : '🔒 ختم الزيارة'),
+        h('span', { class: 'chip-st gold' + (gold ? ' on' : '') }, gold ? '🥇 الختم الذهبي' : '🔒 الختم الذهبي')),
+      // ختم الزيارة بعد زيارة فعلية: يُفتح تبويب العاصمة والمعالم أولاً
       !visit ? (visitWait(c.id) > 0 ? waitNote()
+        : !seen.has(1) ? h('button', { class: 'btn big soft', onclick: () => { show(1); bar.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }, '🏛️ اقرأ «العاصمة والمعالم» أولاً، ثم خذ الختم')
         : h('button', { class: 'btn big', onclick: () => { let won = false;
           visitQuestion(c, { onPass: () => { won = giveVisit(c.id); }, onFail: () => visitFailed(c.id),
             onClose: () => { drawStamp(); if (won) { showStamp(false); checkContinentBadge(c.cont); } } }); } }, '🛂 احصل على ختم الزيارة (سؤال واحد)')) : null,
@@ -223,9 +246,9 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
     const open = goldEligible(p, c.id);
     return h('div', { class: 'gold-progress' },
       h('p', { class: 'note strong' }, '🥇 أدلة الختم الذهبي:'),
-      h('div', { class: 'stamp-status' }, ...g.req.map(([k, v]) => h('span', { class: 'chip-st' + (v ? ' on' : '') }, (v ? '✅ ' : '⬜ ') + L[k])),
+      h('div', { class: 'stamp-status' }, ...g.req.map(([k, v, n, need]) => h('span', { class: 'chip-st' + (v ? ' on' : '') }, (v ? '✅ ' : '◻️ ') + L[k] + (need > 1 ? ` ${n.toLocaleString('ar-EG')}/${need.toLocaleString('ar-EG')}` : ''))),
         h('span', { class: 'chip-st' + (g.others >= OTHER_NEEDED ? ' on' : '') }, `➕ أخرى ${Math.min(g.others, OTHER_NEEDED).toLocaleString('ar-EG')}/${OTHER_NEEDED.toLocaleString('ar-EG')}`)),
-      h('p', { class: 'note' }, open ? 'تُجمع هذه الأدلة في «التمرين الشامل»، بين أسئلة من دول العالم كلها، حين تجيب صحيحاً من أول محاولة.'
+      h('p', { class: 'note' }, open ? 'تُجمع هذه الأدلة في «التمرين الشامل»، حين تجيب صحيحاً من أول محاولة. العلم والعاصمة يلزمهما جوابان في يومين مختلفين.'
         : 'تبدأ أدلة الختم الذهبي من الغد في «التمرين الشامل». راجع البطاقة اليوم.'),
       open ? h('button', { class: 'btn big gold-btn', onclick: () => { m.close(); setTimeout(() => (location.hash = '#world'), 250); } }, '🧠 إلى التمرين الشامل') : null);
   }
@@ -238,12 +261,13 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
       const ms = visitWait(c.id);
       if (ms <= 0) return drawStamp();
       const s = Math.ceil(ms / 1000);
-      el.textContent = `📖 اقرأ البطاقة أولاً، ثم حاول بعد ${Math.floor(s / 60).toLocaleString('ar-EG')}:${String(s % 60).padStart(2, '0').replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d])}`;
+      el.textContent = fem('📖 اقرأ البطاقة أولاً، ثم حاول بعد ') + `${Math.floor(s / 60).toLocaleString('ar-EG')}:${String(s % 60).padStart(2, '0').replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d])}`;
       setTimeout(tick, 1000);
     };
     tick();
     return el;
   }
+  redraw = drawStamp;
   drawStamp();
   void stamp;
   return m;

@@ -8,7 +8,8 @@ import DEV_INDEX from './data/devvoices.json';
 const TASHKEEL = /[ً-ْٰـ]/g;
 export const langOf = (lang) => String(lang || 'ar').toLowerCase().split('-')[0];
 export const normText = (t) => String(t || '').replace(TASHKEEL, '').replace(/[؟?!.،,:؛]+\s*$/g, '').replace(/^[\s«»"]+|[\s«»"]+$/g, '').replace(/\s+/g, ' ').trim();
-export const keyOf = (text, lang) => langOf(lang) + ':' + normText(text);
+// العبارات المسجّلة للبنات خاصةً تبدأ بعلامة ♀ ولها مفتاح مستقل
+export const keyOf = (text, lang) => { const t = String(text || ''); const f = t.startsWith('♀'); return langOf(lang) + ':' + (f ? '♀' : '') + normText(f ? t.slice(1) : t); };
 
 // ---------- IndexedDB ----------
 let dbp = null;
@@ -89,10 +90,10 @@ export async function playClip(clip) {
 // يحاول تشغيل تسجيل للنص أو لأجزائه كلها؛ يعيد false إن نقص شيء (فتُستعمل القراءة الآلية للنص كاملاً)
 export async function playRecorded(parts, lang) {
   try {
-    const list = (Array.isArray(parts) ? parts : [parts]).map((t) => normText(t)).filter(Boolean);
+    const list = (Array.isArray(parts) ? parts : [parts]).filter((t) => normText(t)).map((t) => keyOf(t, lang));
     if (!list.length) return false;
     const clips = [];
-    for (const t of list) { const c = await findClip(langOf(lang) + ':' + t); if (!c) return false; clips.push(c); }
+    for (const t of list) { const c = await findClip(t); if (!c) return false; clips.push(c); }
     for (const c of clips) await playClip(c);
     return true;
   } catch { return false; }

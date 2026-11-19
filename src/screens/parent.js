@@ -6,6 +6,7 @@ import { skillSummary, weakest, dueReviews, SKILLS, today } from '../mastery.js'
 import { saveFile, pickTextFile, copyText } from '../save.js';
 import { parentLock, lockNow } from '../lock.js';
 import { certStatus } from '../certs.js';
+import { gp } from '../gender.js';
 
 const ar = (n) => Number(n).toLocaleString('ar-EG');
 const DAY = 864e5;
@@ -20,6 +21,11 @@ export function parentScreen(root, { go }) {
     root.append(h('div', { class: 'parent-top' },
       h('p', { class: 'hint' }, 'هنا ترى ما تعلمه كل طفل وأين يخطئ، وتحفظ نسخة احتياطية من تقدمهم.'),
       h('button', { class: 'btn small soft', onclick: () => { lockNow(); go('home'); } }, '🔒 قفل والخروج')));
+    // تذكير شهري بالنسخة الاحتياطية: التقدم محفوظ على هذا الجهاز وحده
+    const lastB = store.parent.lastBackup; const hasProgress = ps.some((p) => Object.keys(p.stamps || {}).length);
+    if (hasProgress && (!lastB || Date.now() - lastB > 30 * DAY)) root.append(h('div', { class: 'panel warn' },
+      h('b', {}, '💾 ' + (lastB ? 'مرّ أكثر من شهر على آخر نسخة احتياطية.' : 'لم تُحفظ نسخة احتياطية بعد.')),
+      h('p', { class: 'hint' }, 'تقدم الأولاد محفوظ على هذا الجهاز وحده، ومسح بيانات التطبيق يمحوه. احفظ نسخة من القسم أدناه.')));
     if (!ps.length) root.append(h('p', { class: 'empty' }, 'لا يوجد مستكشفون بعد.'));
     for (const p of ps) root.append(childPanel(p));
     root.append(h('div', { class: 'panel' }, h('h3', {}, '🎙️ الأصوات'),
@@ -52,14 +58,19 @@ export function parentScreen(root, { go }) {
         const a = act[d]; const q = a?.q || 0;
         return h('div', { class: 'ab', title: d }, h('i', { style: { height: (q / maxQ) * 100 + '%', opacity: q ? 1 : 0.15 } }), h('small', {}, new Date(d).toLocaleDateString('ar-EG', { weekday: 'narrow' })));
       })),
-      h('p', { class: 'hint' }, total ? `أجاب عن ${ar(total)} سؤالاً إجمالاً، ونشط ${ar(active7)} من آخر ٧ أيام. آخر نشاط: ${lastDay === today() ? 'اليوم' : new Date(lastDay).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long' })}.` : 'لم يُجب عن أسئلة بعد.'),
-      Object.keys(sum).length ? [h('h4', {}, 'المهارات: الإجابة الأولى في الأسئلة والامتحانات (لا تُحسب الألعاب)'), h('div', { class: 'skill-bars' }, Object.entries(SKILLS).filter(([k]) => sum[k]).map(([k, t]) => {
+      h('p', { class: 'hint' }, total ? `${gp(p, 'أجاب', 'أجابت')} عن ${ar(total)} سؤالاً إجمالاً، ${gp(p, 'ونشط', 'ونشطت')} ${ar(active7)} من آخر ٧ أيام. آخر نشاط: ${lastDay === today() ? 'اليوم' : new Date(lastDay).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long' })}.` : gp(p, 'لم يُجب', 'لم تُجب') + ' عن أسئلة بعد.'),
+      Object.keys(sum).length ? [h('h4', {}, 'المهارات: الإجابة الأولى في الأسئلة (لا تُحسب الألعاب)'), h('p', { class: 'hint' }, 'الخط الرمادي حدّ التخمين: نسبة قريبة منه تعني أن الطفل يخمّن.'), h('div', { class: 'skill-bars' }, Object.entries(SKILLS).filter(([k]) => sum[k]).map(([k, t]) => {
         const x = sum[k]; const n = x.ok + x.bad; const pct = Math.round((x.ok / n) * 100);
-        return h('div', { class: 'sb' }, h('span', {}, t), h('div', { class: 'bar' }, h('i', { style: { width: pct + '%', background: pct >= 75 ? '#1a9b55' : pct >= 50 ? '#e0a800' : '#e5484d' } })), h('small', {}, `${ar(pct)}٪ من ${ar(n)}`));
+        // أقل من ١٠ إجابات لا تكفي لنسبة ذات معنى. والخط الرمادي حدّ التخمين (خيار من ٣ أو ٤)، ولا تخمين في سؤال الخريطة
+        if (n < 10) return h('div', { class: 'sb' }, h('span', {}, t), h('div', { class: 'bar' }), h('small', {}, `${ar(n)} فقط، قليلة`));
+        return h('div', { class: 'sb' }, h('span', {}, t), h('div', { class: 'bar' }, h('i', { style: { width: pct + '%', background: pct >= 75 ? '#1a9b55' : pct >= 50 ? '#e0a800' : '#e5484d' } }), k === 'map' ? null : h('u', { class: 'chance', title: 'حد التخمين' })), h('small', {}, `${ar(pct)}٪ من ${ar(n)}`));
       }))] : null,
-      (() => { let n = 0; for (const m of Object.values(p.practice || {})) for (const x of Object.values(m)) n += x.ok + x.bad; return n ? h('p', { class: 'hint' }, `وأجاب في ألعاب التدريب عن ${ar(n)} سؤالاً (تُعرض منفصلة لأنها تمرين، وقد يرى فيها التلميح أو يحاول مرتين).`) : null; })(),
-      weak.length ? [h('h4', {}, 'دول يخطئ فيها أكثر من غيرها (بنسبة الخطأ، محاولتان على الأقل)'), h('div', { class: 'neighbors' }, weak.map((id) => h('span', { class: 'chip' }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))] : null,
-      (p.stories || []).length ? [h('h4', {}, 'آخر ما اكتشفه في المهام'), h('ul', { class: 'stories' }, p.stories.slice(0, 6).map((st) => h('li', {}, h('span', {}, st.text + (st.detail ? ' — ' + st.detail : '')), h('small', {}, new Date(st.date).toLocaleDateString('ar-EG', { day: 'numeric', month: 'short' })))))] : null,
+      (() => { let n = 0; for (const m of Object.values(p.practice || {})) for (const x of Object.values(m)) n += x.ok + x.bad; return n ? h('p', { class: 'hint' }, `${gp(p, 'وأجاب', 'وأجابت')} في ألعاب التدريب عن ${ar(n)} سؤالاً (تُعرض منفصلة لأنها تمرين، وقد يرى فيها التلميح أو يحاول مرتين).`) : null; })(),
+      weak.length ? [h('h4', {}, gp(p, 'دول يخطئ', 'دول تخطئ') + ' فيها أكثر من غيرها (بنسبة الخطأ، محاولتان على الأقل)'), h('div', { class: 'neighbors' }, weak.map((id) => h('span', { class: 'chip' }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))] : null,
+      (p.stories || []).length ? [h('h4', {}, gp(p, 'آخر ما اكتشفه', 'آخر ما اكتشفته') + ' في المهام'), h('ul', { class: 'stories' }, p.stories.slice(0, 6).map((st) => h('li', {}, h('span', {}, st.text + (st.detail ? ' — ' + st.detail : '')), h('small', {}, new Date(st.date).toLocaleDateString('ar-EG', { day: 'numeric', month: 'short' })))))] : null,
+      h('h4', {}, 'صيغة المخاطبة'),
+      h('div', { class: 'levels gender' }, [['m', '👦', 'ولد'], ['f', '👧', 'بنت']].map(([k, e, t]) => h('button', { class: 'lv-btn' + (p.gender === k ? ' on' : ''), onclick: () => { store.updateProfile(p.id, { gender: k }); draw(); } }, h('span', {}, e), h('b', {}, t)))),
+      p.gender ? null : h('p', { class: 'hint' }, 'لم تُحدَّد بعد؛ يخاطَب الطفل بصيغة المذكر حتى تختاروا.'),
       h('h4', {}, 'المستوى'),
       h('div', { class: 'levels' }, Object.entries(LEVELS).map(([k, L]) => h('button', { class: 'lv-btn' + (+k === p.level ? ' on' : ''), onclick: () => { store.updateProfile(p.id, { level: +k }); draw(); } },
         h('span', {}, L.emoji), h('b', {}, L.name), h('small', {}, L.ages)))),

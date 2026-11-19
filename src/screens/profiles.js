@@ -27,17 +27,22 @@ export function profilesScreen(root, { go }) {
 }
 
 function newProfile(root, go) {
-  let avatar = AVATARS[0], level = 2;
+  let avatar = AVATARS[0], level = 2, gender = null;
   const name = h('input', { class: 'input', placeholder: 'اكتب اسمك هنا', maxlength: 16 });
   const avs = h('div', { class: 'avatars' }, AVATARS.map((a) => h('button', { class: 'av-btn' + (a === avatar ? ' on' : ''), onclick: (e) => {
     avatar = a; avs.querySelectorAll('.av-btn').forEach((b) => b.classList.remove('on')); e.currentTarget.classList.add('on'); sfx('tap');
   } }, a)));
+  // ولد أم بنت: لتخاطب البومة كل طفل بصيغته
+  const gd = h('div', { class: 'levels gender' }, [['m', '👦', 'ولد'], ['f', '👧', 'بنت']].map(([k, e, t]) => h('button', { class: 'lv-btn', onclick: (ev) => {
+    gender = k; gd.querySelectorAll('.lv-btn').forEach((b) => b.classList.remove('on')); ev.currentTarget.classList.add('on'); gd.classList.remove('shake'); sfx('tap');
+  } }, h('span', {}, e), h('b', {}, t))));
   const lv = h('div', { class: 'levels' }, Object.entries(LEVELS).map(([k, L]) => h('button', { class: 'lv-btn' + (+k === level ? ' on' : ''), onclick: (e) => {
     level = +k; lv.querySelectorAll('.lv-btn').forEach((b) => b.classList.remove('on')); e.currentTarget.classList.add('on'); sfx('tap');
   } }, h('span', {}, L.emoji), h('b', {}, L.name), h('small', {}, L.ages))));
   const form = h('div', { class: 'panel new-profile' },
     h('h2', {}, '✨ مستكشف جديد'),
     h('label', {}, 'ما اسمك؟'), name,
+    h('label', {}, 'ولد أم بنت؟'), gd,
     h('label', {}, 'اختر صورتك'), avs,
     h('label', {}, 'اختر مستواك'), lv,
     h('button', { class: 'btn big', onclick: () => create(false) }, 'هيا نبدأ! 🚀'),
@@ -46,7 +51,8 @@ function newProfile(root, go) {
   function create(test) {
     const n = name.value.trim();
     if (!n) { name.focus(); name.classList.add('shake'); setTimeout(() => name.classList.remove('shake'), 500); return; }
-    const p = store.addProfile({ name: n, avatar, level });
+    if (!gender) { gd.classList.add('shake'); gd.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(() => gd.classList.remove('shake'), 500); return; }
+    const p = store.addProfile({ name: n, avatar, level, gender });
     sfx('win');
     if (test) placementTest((lv) => { store.updateProfile(p.id, { level: lv, placement: lv }); go('home', { replace: true }); }, () => go('home', { replace: true }));
     else { speak(`أهلاً يا ${n}! هيا نستكشف العالم`, 'ar-SA'); go('home', { replace: true }); }

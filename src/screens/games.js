@@ -6,6 +6,7 @@ import { sfx } from '../sfx.js';
 import { createMap, lighten } from '../map.js';
 import { openCard } from '../card.js';
 import { record } from '../mastery.js';
+import { look, namedCapital } from '../quiz.js';
 
 const ROUNDS = 10;
 const PRAISE = ['أحسنت!', 'رائع!', 'ممتاز!', 'بطل!', 'صحيح!', 'ما شاء الله!'];
@@ -57,7 +58,7 @@ function choiceGame(root, key, makeQ) {
     const c = qs[i];
     const q = makeQ(c, level, nOpt);
     root.innerHTML = '';
-    const opts = h('div', { class: 'options' + (q.flags ? ' flag-opts' : '') });
+    const opts = h('div', { class: 'options' + (q.flags ? ' flag-opts' : '') + (q.options.length === 3 ? ' three' : '') });
     let locked = false;
     for (const o of q.options) {
       const b = h('button', { class: 'opt', onclick: () => {
@@ -71,7 +72,9 @@ function choiceGame(root, key, makeQ) {
           h('button', { class: 'btn soft', onclick: () => openCard(c.id, { stamp: true }) }, '📖 بطاقة ' + c.ar));
       } }, o.el);
       if (o.correct) b.dataset.c = '1';
-      opts.append(b);
+      // للصغار الذين لا يقرؤون بعد: زر استماع بجانب كل خيار مكتوب
+      const txt = level === 1 && !q.flags ? b.textContent.trim() : '';
+      opts.append(txt ? h('div', { class: 'opt-wrap' }, b, h('button', { class: 'opt-say', 'aria-label': 'استمع إلى الخيار', onclick: () => speak(txt, LANG.ar) }, '🔊')) : b);
     }
     const feedback = h('div', { class: 'feedback' });
     root.append(header(i, score), h('div', { class: 'question' }, q.prompt), opts, feedback);
@@ -82,7 +85,7 @@ function choiceGame(root, key, makeQ) {
 
 export function flagGame(root) {
   choiceGame(root, 'flag', (c, level, n) => {
-    const src = level === 3 ? states.filter((s) => s.cont === c.cont && s.id !== c.id) : pool(level).filter((s) => s.id !== c.id);
+    const src = (level === 3 ? states.filter((s) => s.cont === c.cont && s.id !== c.id) : pool(level).filter((s) => s.id !== c.id)).filter((s) => !look(c.id, s.id));
     const opts = shuffle([c, ...pick(src, n - 1)]);
     return {
       prompt: h('div', {}, h('img', { class: 'q-flag', src: flagUrl(c.f), alt: 'علم' }), h('p', {}, 'لأي دولة هذا العلم؟')),
@@ -94,7 +97,7 @@ export function flagGame(root) {
 
 export function capitalGame(root) {
   choiceGame(root, 'capital', (c, level, n) => {
-    const src = (level === 3 ? states.filter((s) => s.cont === c.cont) : pool(level)).filter((s) => s.id !== c.id && s.capAr);
+    const src = (level === 3 ? states.filter((s) => s.cont === c.cont) : pool(level)).filter((s) => s.id !== c.id && s.capAr && !namedCapital(s));
     const opts = shuffle([c, ...pick(src, n - 1)]);
     const reverse = level === 3 && Math.random() < 0.4;
     if (reverse) {

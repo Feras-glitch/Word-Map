@@ -4,6 +4,10 @@
 //  - استوديو المطور (برمز خاص): يسجّل الحزمة الرسمية ويصدّرها لترفع إلى GitHub فتُدمج في التطبيق.
 // أصوات الأطفال والأهل لا تُرفع إلى المستودع العام أبداً.
 import { h, modal, toast } from '../ui.js';
+import { toFem } from '../gender.js';
+import { store as _st } from '../store.js';
+// الاستوديو يُعرض بنصوصه الأصلية؛ ما يخاطب الطفل فيه يؤنَّث صراحة
+const gtx = (t) => (_st.me?.gender === 'f' ? toFem(t) : t);
 import { store, pinHash } from '../store.js';
 import { catalog, GROUPS } from '../voicecatalog.js';
 import { putClip, delClip, listPack, listPacks, playClip, startRecording, analyze, exportPack, parsePack, importPack, conflictsOf, devIndex, getClip, keyOf } from '../voice.js';
@@ -49,7 +53,7 @@ export function studioScreen(root, { go, params }) {
     const title = { family: '🎙️ استوديو الأهل', child: `🎙️ استوديو ${me.avatar} ${me.name}`, dev: '🛠️ استوديو المطور' }[m];
     const intro = {
       family: 'سجّلوا الأسماء والعبارات بأصواتكم، فيسمعها الأولاد بدل القراءة الآلية. تسجيلاتكم تبقى على هذا الجهاز، وتنقلونها إلى أجهزة العائلة بملف.',
-      child: 'سجّل الأسماء بصوتك! كل اسم تسجّله تمرين على نطقه. يمكنك أن تسمع التطبيق بصوتك، أو بصوت إخوتك.',
+      child: gtx('سجّل الأسماء بصوتك! كل اسم تسجّله تمرين على نطقه. يمكنك أن تسمع التطبيق بصوتك، أو بصوت إخوتك.'),
       dev: 'الحزمة الرسمية: تُصدَّر ملفاً، ثم تُرفع إلى مجلد content/audio-inbox في GitHub، فتُدمج في التطبيق عند البناء التالي.',
     }[m];
 
@@ -129,14 +133,14 @@ export function studioScreen(root, { go, params }) {
         const packs = (await listPacks().catch(() => [])).filter((p) => p.startsWith('child:'));
         const cur = me.voice || 'family';
         const opt = (v, t) => h('button', { class: 'btn small' + (cur === v ? '' : ' soft'), onclick: () => { store.patch((p) => { p.voice = v; }); drawExtra(); speak('أهلاً بك في مستكشف العالم'); } }, t);
-        parts.push(h('div', { class: 'panel' }, h('h4', {}, '🔊 بصوت مَن تسمع التطبيق؟'),
+        parts.push(h('div', { class: 'panel' }, h('h4', {}, gtx('🔊 بصوت مَن تسمع التطبيق؟')),
           h('div', { class: 'row wrap' }, opt('family', 'صوت العائلة'), opt('child:' + me.name, 'صوتي أنا'),
             ...packs.filter((p) => p !== 'child:' + me.name).map((p) => opt(p, 'صوت ' + p.slice(6))), packs.length > 1 ? opt('kids', 'أصوات الإخوة معاً') : null),
           h('p', { class: 'hint' }, 'ما لم يُسجَّل بالصوت الذي تختاره يُقرأ بصوت العائلة، ثم المطور، ثم القراءة الآلية. وتسجيلات إخوتك لا تُسمع إلا بعد أن يعتمدها الأهل.')));
         parts.push(h('div', { class: 'row wrap' },
           h('button', { class: 'btn', onclick: async () => { await saveFile(`صوت-${me.name}-${today()}.json`, await exportPack(pack, { kind: 'child', by: me.name })); } }, '📤 صدّر ملف صوتي'),
-          h('button', { class: 'btn soft', onclick: () => importFile('child') }, '📥 استورد ملف صوت أخي')));
-        if ((me.recorded || 0) >= 20) parts.push(h('p', { class: 'badge-row' }, '🎙️ شارة «صوت المستكشف»: سجّلتَ ' + ar(me.recorded) + ' مقطعاً!'));
+          h('button', { class: 'btn soft', onclick: () => importFile('child') }, '📥 استورد ملف صوت إخوتي')));
+        if ((me.recorded || 0) >= 20) parts.push(h('p', { class: 'badge-row' }, gtx('🎙️ شارة «صوت المستكشف»: سجّلتَ ') + ar(me.recorded) + ' مقطعاً!'));
       }
       if (m === 'family') {
         const pend = [];

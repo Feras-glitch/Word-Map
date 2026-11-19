@@ -15,6 +15,7 @@ export function normalizeProfile(p) {
   for (const k of ['stamps', 'gold', 'stars', 'daily', 'badges', 'mastery', 'practice', 'review', 'examFail', 'visitFail', 'activity', 'found', 'visitAt']) q[k] = isObj(q[k]) ? q[k] : {};
   for (const k of ['stamps', 'gold']) for (const [id, d] of Object.entries(q[k])) if (typeof d !== 'string' || !DATE.test(d)) delete q[k][id];
   for (const [id, r] of Object.entries(q.review)) if (!isObj(r) || !DATE.test(r.due || '')) delete q.review[id];
+  q.gender = q.gender === 'f' ? 'f' : q.gender === 'm' ? 'm' : null;
   q.battuta = Number.isFinite(+q.battuta) ? +q.battuta : 0;
   return q;
 }
@@ -57,9 +58,9 @@ export const store = {
   setSetting(k, v) { load().settings[k] = v; save(); },
   get profiles() { return load().profiles; },
   get me() { const s = load(); return s.profiles.find((p) => p.id === s.current) || null; },
-  addProfile({ name, avatar, level }) {
+  addProfile({ name, avatar, level, gender = null }) {
     const s = load();
-    const p = { id: Date.now().toString(36), name, avatar, level, stamps: {}, stars: {}, daily: {}, battuta: 0, badges: {} };
+    const p = { id: Date.now().toString(36), name, avatar, level, gender, stamps: {}, stars: {}, daily: {}, battuta: 0, badges: {} };
     s.profiles.push(p); s.current = p.id; save(); return p;
   },
   updateProfile(id, patch) { const p = load().profiles.find((x) => x.id === id); Object.assign(p, patch); save(); },

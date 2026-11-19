@@ -1,6 +1,7 @@
 // سجل الإتقان والمراجعة المتباعدة
 // لكل طفل ولكل دولة ولكل مهارة: عدد الإجابات الصحيحة والخاطئة وآخر محاولة.
-// ختم الزيارة: بعد سؤال واحد صحيح. ختم الإتقان (الذهبي): ٤ من ٥ في الامتحان، ومن يرسب يعيد بعد يوم.
+// ختم الزيارة: بعد سؤال واحد صحيح.
+// الختم الذهبي: أدلة تتراكم في التمرين الشامل (انظر آخر الملف): العلم والعاصمة صحيحان في يومين مختلفين، والموقع، ومهارتان أخريان.
 // المراجعة: بعد الختم الذهبي تُستحق مراجعة بعد ٣ أيام، ثم ٧، ثم ٣٠. الخطأ في المراجعة يعيدها إلى ٣ أيام.
 import { store } from './store.js';
 
@@ -14,7 +15,6 @@ const addDays = (d, n) => { const [y, m, dd] = d.split('-').map(Number); return 
 function ensure(p) {
   p.mastery ||= {};
   p.gold ||= {};
-  p.examFail ||= {};
   p.review ||= {};
   return p;
 }
@@ -49,37 +49,7 @@ export function visitWait(id) {
 }
 export function visitFailed(id) { store.patch((p) => { (p.visitFail ||= {})[id] = Date.now(); }); }
 
-export function canTakeExam(id) {
-  const p = store.me; if (!p) return { ok: false };
-  if (!hasVisit(id)) return { ok: false, why: 'احصل على ختم الزيارة أولاً' };
-  // الامتحان من اليوم التالي للزيارة: نقيس ما بقي في الذاكرة لا ما قُرئ قبل ثوانٍ
-  if (p.stamps[id] >= today()) return { ok: false, why: 'امتحان الإتقان يُفتح غداً. راجع البطاقة اليوم، وتعال غداً لتنال الختم الذهبي' };
-  // وحد أدنى ٨ ساعات بعد الزيارة، حتى لا تكفي زيارة قبل منتصف الليل بدقائق
-  const at = p.visitAt?.[id];
-  if (at && Date.now() - at < 8 * 36e5) return { ok: false, why: 'امتحان الإتقان يُفتح بعد ساعات قليلة. راجع البطاقة، وعد لاحقاً' };
-  const f = p.examFail?.[id];
-  if (f && f === today()) return { ok: false, why: 'حاولت اليوم؛ راجع البطاقة وعد غداً' };
-  return { ok: true };
-}
-
 export function giveVisit(id) { const ok = store.stamp(id); if (ok) store.patch((p) => { (p.visitAt ||= {})[id] = Date.now(); }); return ok; }
-
-// pass يحسبه الامتحان (٤ من ٥ مع المهارات الإلزامية)
-export function examResult(id, pass) {
-  let gold = false;
-  store.patch((p) => {
-    ensure(p);
-    if (pass) {
-      gold = !p.gold[id];
-      p.gold[id] = p.gold[id] || today();
-      p.review[id] = { step: 0, due: addDays(today(), INTERVALS[0]) };
-      delete p.examFail[id];
-    } else {
-      p.examFail[id] = today();
-    }
-  });
-  return gold;
-}
 
 export function dueReviews(p = store.me) {
   if (!p) return [];
@@ -134,8 +104,15 @@ export function weakest(n = 8, p = store.me) {
 // ---------- الختم الذهبي بالأدلة المتراكمة في التمرين الشامل ----------
 // الدليل: إجابة صحيحة من المحاولة الأولى عن مهارة لهذه الدولة، داخل جلسة مختلطة لا سياق فيها.
 // الإلزامي: العلم والموقع، والعاصمة إن كانت صالحة للسؤال. ومعها مهارتان أخريان.
+// العلم والعاصمة أسئلة اختيار يمكن تخمينها، فيلزم لكل منهما جوابان صحيحان في يومين مختلفين. والخطأ يمحو أدلة تلك المهارة.
 export const OTHER_SKILLS = ['names', 'landmark', 'language', 'neighbor', 'nature'];
 export const OTHER_NEEDED = 2;
+export const TWICE = ['flag', 'capital'];
+const need = (k) => (TWICE.includes(k) ? 2 : 1);
+// عدد الأدلة المحفوظة لمهارة: ev[k] تاريخ الأول، ev[k+'2'] تاريخ الثاني
+export const evCount = (ev, k) => (ev?.[k] ? (ev[k + '2'] ? 2 : 1) : 0);
+// هل يفيد السؤال عن هذه المهارة اليوم؟ (الدليل الثاني لا يُقبل في يوم الأول)
+export const evAskable = (ev, k) => evCount(ev, k) < need(k) && !(evCount(ev, k) === 1 && ev[k] >= today());
 // يُحسب الدليل فقط من اليوم التالي للزيارة وبعد ٨ ساعات منها
 export function goldEligible(p, id) {
   if (!p.stamps?.[id] || p.gold?.[id]) return false;
@@ -145,7 +122,7 @@ export function goldEligible(p, id) {
 }
 export function goldProgress(p, id, required) {
   const ev = p.evidence?.[id] || {};
-  const req = required.map((k) => [k, !!ev[k]]);
+  const req = required.map((k) => [k, evCount(ev, k) >= need(k), evCount(ev, k), need(k)]);
   const others = OTHER_SKILLS.filter((k) => ev[k]).length;
   return { req, others, done: req.every(([, v]) => v) && others >= OTHER_NEEDED };
 }
@@ -156,7 +133,9 @@ export function addEvidence(pid, id, skill, ok, required) {
     ensure(p);
     if (!goldEligible(p, id)) return;
     const ev = ((p.evidence ||= {})[id] ||= {});
-    if (ok) ev[skill] = today(); else delete ev[skill];
+    if (!ok) { delete ev[skill]; delete ev[skill + '2']; }
+    else if (!ev[skill]) ev[skill] = today();
+    else if (need(skill) === 2 && !ev[skill + '2'] && ev[skill] < today()) ev[skill + '2'] = today();
     if (goldProgress(p, id, required).done) {
       p.gold[id] = today();
       p.review[id] = { step: 0, due: addDays(today(), INTERVALS[0]) };

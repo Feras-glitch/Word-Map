@@ -529,7 +529,7 @@
   "type": "const_monarchy"
  },
  "BTN": {
-  "type": "semi_monarchy"
+  "type": "const_monarchy"
  },
  "BHR": {
   "type": "semi_monarchy"

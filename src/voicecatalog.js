@@ -4,10 +4,11 @@ import { NAT } from './map.js';
 import { keyOf, langOf } from './voice.js';
 import TASHKEEL from '../content/tashkeel.json';
 import TEXTS from '../content/tashkeel-text.json';
+import { SAME, FEM_MARK } from './gender.js';
 
 // عبارات ثابتة تُركَّب منها الأسئلة والتشجيع
 export const PHRASES = [
-  'أحسنت!', 'رائع!', 'صحيح!', 'ليست هذه', 'أيّ هذه الأعلام علم', 'ما عاصمة', 'في أي قارة تقع', 'أيّ هذه من أشهر معالم', 'لأي دولة هذا العلم؟',
+  'أحسنت!', 'رائع!', 'صحيح!', 'ممتاز!', 'إجابة موفقة!', 'ما شاء الله!', 'ليست هذه', 'أيّ هذه الأعلام علم', 'ما عاصمة', 'في أي قارة تقع', 'أيّ هذه من أشهر معالم', 'لأي دولة هذا العلم؟',
   'عاصمة أي دولة؟', 'في أي دولة؟', 'المس', 'على الخريطة', 'ما اسم', 'بالإنجليزية؟', 'بالصينية؟', 'قارة', 'عاصمة', 'هي', 'نظام الحكم في',
   'من معالم', 'الشهيرة', 'هل تعلم؟', 'أهلاً بك في مستكشف العالم', 'هيا نستكشف العالم', 'مبارك! نلت ختماً ذهبياً جديداً', 'أحسنتم جميعاً',
 ];
@@ -25,6 +26,9 @@ export function catalog({ child = false } = {}) {
   const out = [];
   const tri = (group, o, sub, langs = ['ar', 'en', 'zh']) => { for (const l of langs) out.push(item(group, o?.[l], LANGS[l], { sub })); };
   for (const p of PHRASES) out.push(item('phrases', p, LANGS.ar));
+  // صيغ مخاطبة البنت: ما تطابقت حروفه مع المذكر يُسجَّل بمفتاح مستقل
+  for (const [p, v] of Object.entries(SAME)) out.push({ ...item('phrases', FEM_MARK + p, LANGS.ar, { sub: 'للبنات' }), voc: v });
+  out.push(item('phrases', 'المسي', LANGS.ar, { sub: 'للبنات' }));
   if (!child) for (const k of Object.keys(continents3)) tri('continents', continents3[k], '');
   for (const c of states) tri('names', { ar: c.ar, en: c.en, zh: c.zh }, c.ar, child ? ['ar'] : ['ar', 'en', 'zh']);
   for (const c of states) if (c.cap3) tri('capitals', c.cap3, c.ar, child ? ['ar'] : ['ar', 'en', 'zh']);

@@ -36,6 +36,8 @@ jobs:
         with: { node-version: 22, cache: npm }
       - run: npm ci
       - run: npm run build
+      - name: الاختبارات الآلية (فشلها يوقف النشر)
+        run: npm test
       - run: npx vite build --mode single && cp dist-single/index.html WorldExplorer-web.html
       - uses: actions/upload-artifact@v4
         with: { name: web-single, path: WorldExplorer-web.html }
@@ -69,6 +71,8 @@ jobs:
         with: { distribution: temurin, java-version: 21 }
       - run: npm ci
       - run: npm run build
+      - name: الاختبارات الآلية (فشلها يوقف النشر)
+        run: npm test
       - run: npx cap add android
       - name: الأيقونات وشاشة البداية
         run: npx --yes @capacitor/assets@4 generate --android --iconBackgroundColor '#2b7fd4' --splashBackgroundColor '#2b7fd4'

@@ -15,6 +15,7 @@ import { pinyin, customPinyin } from 'pinyin-pro';
 // قراءات صحيحة لحروف متعددة النطق في أسماء الأعلام
 customPinyin({ 藏语: 'zàng yǔ', 西藏: 'xī zàng', 什: 'shí', 的黎波里: 'dì lí bō lǐ', 麦纳麦: 'mài nà mài', 柏柏尔: 'bó bó ěr' });
 import * as C from './content.mjs';
+const WBPOP = JSON.parse(fs.readFileSync(new URL('../content/population-wb.json', import.meta.url)));
 import { policy, landBordersAdd, landBordersRemove, transcontinental, capitalQuestion } from './policy.mjs';
 
 const require = createRequire(import.meta.url);
@@ -115,10 +116,13 @@ for (const c of out) {
   }
   const t = territory[c.f.toUpperCase()];
   if (t) c.pop = +t._population;
+  // السكان: تقديرات البنك الدولي (المبنية على تقديرات الأمم المتحدة) لأحدث سنة، وتحل محل أرقام CLDR الأقدم
+  if (WBPOP.values[c.id]) { c.pop = WBPOP.values[c.id].value; c.popYear = WBPOP.values[c.id].year; }
   if (c.popInfo) c.pop = c.popInfo.value;
   if (d.currencyNote) c.curNote = d.currencyNote;
   if (d.currencyStory) c.curStory = d.currencyStory;
   c.sources = d.sources;
+  if (c.sources && WBPOP.values[c.id]) c.sources = [...c.sources.map((x) => ({ ...x, title: x.title.replace('السكان ونسب المتحدثين', 'نسب المتحدثين').replace('السكان والعملات', 'العملات') })), { title: 'البنك الدولي: عدد السكان (SP.POP.TOTL)', url: 'https://data.worldbank.org/indicator/SP.POP.TOTL' }];
 }
 // نظام الحكم
 const govTypes = JSON.parse(fs.readFileSync(path.join(root, 'content/government-types.json'), 'utf8'));

@@ -3,7 +3,7 @@ import { store } from '../store.js';
 import { states, LEVELS } from '../data.js';
 import { speak } from '../speech.js';
 import { sfx } from '../sfx.js';
-import { dueReviews } from '../mastery.js';
+import { dueReviews, goldEligible } from '../mastery.js';
 
 const TILES = [
   { k: 'explore', e: '🗺️', t: 'خريطة العالم', s: 'استكشف الدول وأعلامها', c: '#2b7fd4' },
@@ -27,13 +27,25 @@ export function homeScreen(root, { go }) {
   root.append(
     h('div', { class: 'home-top' },
       h('button', { class: 'me', onclick: () => go('profiles') }, h('span', { class: 'av' }, me.avatar), h('span', {}, h('b', {}, me.name), h('small', {}, LEVELS[me.level].emoji + ' ' + LEVELS[me.level].name))),
-      h('div', { class: 'me-stats' }, h('span', {}, '🛂 ' + got.toLocaleString('ar-EG') + ' من ' + states.length.toLocaleString('ar-EG')),
+      h('div', { class: 'me-stats' }, h('span', {}, got ? '🛂 ' + got.toLocaleString('ar-EG') + ' من ' + states.length.toLocaleString('ar-EG') : '🛂 لا أختام بعد'),
         h('button', { class: 'icon-btn', 'aria-label': 'الإعدادات', onclick: () => go('options') }, '⚙️'))),
     h('h1', { class: 'brand' }, '🌍 مستكشف العالم'),
     owl(due ? `${greet} يا ${me.name}! حان وقت مراجعة ${due.toLocaleString('ar-EG')} من الدول. 🔔` : `${greet} يا ${me.name}! ${got ? 'في جوازك ' + got.toLocaleString('ar-EG') + ' من الأختام. ' : ''}إلى أين نسافر اليوم؟`, { size: 84 }),
+    nextStep(me, due, got, go),
     h('div', { class: 'tiles' }, TILES.map((t) => h('button', { class: 'tile', style: { '--c': t.c }, onclick: () => { sfx('tap'); go(t.k); } },
       t.k === 'world' && due ? h('span', { class: 'badge-dot' }, due.toLocaleString('ar-EG')) : null,
       h('span', { class: 'te' }, t.e), h('b', {}, t.t), h('small', {}, t.k === 'world' && due ? 'حان وقت المراجعة!' : t.s)))),
   );
   root.querySelector('.owl-wrap').addEventListener('click', () => speak(root.querySelector('.bubble').textContent, 'ar-SA'));
+}
+
+// «ابدأ من هنا»: خطوة واحدة مقترحة بدل أحد عشر خياراً متساوية
+function nextStep(me, due, got, go) {
+  const ready = Object.keys(me.stamps || {}).filter((id) => goldEligible(me, id)).length;
+  const [k, e, t, s] = due ? ['world', '🔔', 'حان وقت المراجعة', 'في التمرين الشامل']
+    : !got ? ['explore', '🗺️', 'ابدأ من هنا', 'افتح الخريطة، والمس دولة، وخذ أول ختم']
+    : ready ? ['world', '🥇', 'اجمع أدلة الختم الذهبي', `${ready.toLocaleString('ar-EG')} من الدول التي زرتها تنتظر`]
+    : got < 5 ? ['explore', '🗺️', 'تابع الاستكشاف', 'زر دولة جديدة وخذ ختمها']
+    : ['missions', '🔎', 'مهمة اليوم', 'لغز تحلّه بالخريطة'];
+  return h('button', { class: 'next-step', onclick: () => { sfx('tap'); go(k); } }, h('span', { class: 'ne' }, e), h('span', {}, h('b', {}, t), h('small', {}, s)), h('span', { class: 'na' }, '←'));
 }

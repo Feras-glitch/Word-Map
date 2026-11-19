@@ -4,6 +4,7 @@ import { h, owl, toast, confetti, modal } from '../ui.js';
 import { createMap, lighten, project, projection, svgEl, NAT } from '../map.js';
 import { states, byId, pool, flagUrl, contColors, contBox, continents, shuffle, search } from '../data.js';
 import { store } from '../store.js';
+import { fem, toFem3 } from '../gender.js';
 import { speak, LANG } from '../speech.js';
 import { sfx } from '../sfx.js';
 import { clueChain, cluesFor, candidates } from '../clues.js';
@@ -18,7 +19,7 @@ const dualWord = (n) => (n === 1 ? 'دولة واحدة' : n === 2 ? 'دولتي
 
 // قصة قصيرة تُحفظ في جواز الطفل ولوحة الوالدين
 function addStory(pid, story) {
-  store.patchProfile(pid, (p) => { (p.stories ||= []).unshift({ ...story, date: today() }); p.stories = p.stories.slice(0, 60); });
+  store.patchProfile(pid, (p) => { if (p.gender === 'f' && story.detail) story = { ...story, detail: toFem3(story.detail) }; (p.stories ||= []).unshift({ ...story, date: today() }); p.stories = p.stories.slice(0, 60); });
 }
 
 // لغز معلّق من «كن دليل أخيك»
@@ -30,7 +31,7 @@ export function missionsScreen(root, { go }) {
     h('div', { class: 'tiles' },
       M('find', '🔎', 'ابحث عن بلدي', 'أدلة تأتي واحداً بعد الآخر', '#2b7fd4'),
       M('nile', '💧', 'رحلة قطرة في النيل', 'من أسوان حتى البحر', '#1d6fbf'),
-      M('guide', '🧭', 'كن دليل أخيك', 'اصنع لغزاً لإخوتك', '#7b5cd6'),
+      M('guide', '🧭', 'كن دليل إخوتك', 'اصنع لغزاً لإخوتك', '#7b5cd6'),
       M('route', '🚗', 'ارسم طريقي', 'سافر برّاً من دولة إلى أخرى', '#c2410c'),
       M('layer', '⛰️', 'أين النهر والجبل؟', 'توقّع، ثم اكشف الطبقة', '#8b5a2b')));
 }
@@ -64,7 +65,7 @@ export function findScreen(root, { go }) {
   }
   function reveal() {
     if (shown >= chain.length) return;
-    shown++; drawClues(); msg.textContent = '';
+    shown++; drawClues(); msg.textContent = fem('');
     speak(chain[shown - 1].text, LANG.ar);
   }
   function tap(id) {
@@ -78,7 +79,7 @@ export function findScreen(root, { go }) {
     let t;
     if (!broken) t = `${c.ar}: اختيارك يطابق ${shown === 1 ? 'الدليل' : 'الأدلة'} حتى الآن! ${shown < chain.length ? 'اسمع الدليل التالي لنضيّق البحث.' : 'لكنها ليست الدولة المقصودة. جرّب دولة قريبة منها.'}`;
     else t = `هذه ${c.ar}. لا ينطبق عليها: «${broken.text}».`;
-    msg.textContent = t; speak(t, LANG.ar);
+    msg.textContent = fem(t); speak(t, LANG.ar);
   }
   function win() {
     done = true;
@@ -123,7 +124,7 @@ export function guideScreen(root, { go }) {
         results.innerHTML = '';
         for (const c of search(input.value).filter((x) => x.kind === 'state')) results.append(h('button', { class: 'res', onclick: () => { target = c; chosen = []; draw(); } }, h('img', { src: flagUrl(c.f), alt: '' }), h('b', {}, c.ar)));
       } });
-      root.append(owl(`يا ${me.name}، اختر دولة سرّاً دون أن يرى إخوتك، ثم اختر لها أدلة. أخوك سيبحث عنها على الخريطة.`),
+      root.append(owl(`يا ${me.name}، اختر دولة سرّاً دون أن يرى إخوتك، ثم اختر لها أدلة. وسيبحث عنها أحد إخوتك على الخريطة.`),
         h('div', { class: 'map-tools' }, input, results),
         h('p', { class: 'hint' }, 'أو اختر واحدة من هذه:'),
         h('div', { class: 'neighbors' }, shuffle(pool(me.level)).slice(0, 8).map((c) => h('button', { class: 'chip', onclick: () => { target = c; chosen = []; draw(); } }, h('img', { src: flagUrl(c.f), alt: '' }), c.ar))));
@@ -147,7 +148,7 @@ export function guideScreen(root, { go }) {
       h('button', { class: 'btn big', disabled: chosen.length < 2 || null, onclick: () => {
         pendingPuzzle = { id: target.id, clues: chosen.slice(), from: me.avatar + ' ' + me.name };
         addStory(me.id, { id: target.id, kind: 'guide', text: `صنعتُ لغزاً عن ${target.ar} من ${cluesWord(chosen.length)}`, detail: cand.length === 1 ? 'أدلته تحدد دولة واحدة' : `أدلته تناسب ${dualWord(cand.length)}` });
-        const d = modal(h('div', { class: 'panel center' }, h('div', { class: 'big-emoji' }, '🤫'), h('h3', {}, 'سلّم الجهاز لأخيك'),
+        const d = modal(h('div', { class: 'panel center' }, h('div', { class: 'big-emoji' }, '🤫'), h('h3', {}, 'سلّم الجهاز لمن سيبحث'),
           h('p', {}, 'من سيحل اللغز؟'),
           h('div', { class: 'neighbors' }, store.profiles.filter((p) => p.id !== me.id).map((p) => h('button', { class: 'chip', onclick: () => { store.switchTo(p.id); d.close(); setTimeout(() => go('find'), 260); } }, p.avatar + ' ' + p.name))),
           h('button', { class: 'btn soft', onclick: () => { d.close(); setTimeout(() => go('find'), 260); } }, 'يحلّه شخص آخر على هذا الملف')));
@@ -192,7 +193,7 @@ export function nileScreen(root) {
       const c = svgEl('circle', { cx: x, cy: y, r: 13 * k, class: 'station', 'data-tap': s.id });
       c.addEventListener('maptap', () => arrive(s));
       marks.append(c);
-      const t = svgEl('text', { x, y: y - 18 * k, class: 'station-l', 'font-size': 12 * k, 'text-anchor': 'middle' }); t.textContent = level === 3 && !s.branch && next?.id !== 'aswan' ? '؟' : s.ar;
+      const t = svgEl('text', { x, y: y - 18 * k, class: 'station-l', 'font-size': 13 * k, 'text-anchor': 'middle' }); t.textContent = level === 3 && !s.branch && next?.id !== 'aswan' ? '؟' : s.ar;
       marks.append(t);
     }
   }
@@ -315,10 +316,11 @@ function bfs(a, b) {
 export function routeScreen(root, { go }) {
   const me = store.me; const owner = me.id; const level = me.level;
   const alive = () => root.isConnected && store.me?.id === owner;
-  const [minL, maxL] = level === 1 ? [3, 3] : level === 2 ? [3, 4] : [4, 6];
-  const P = pool(Math.max(2, level)).filter((c) => c.borders.length);
+  // الصغير: دولتان مشهورتان متجاورتان أو بينهما دولة واحدة
+  const [minL, maxL] = level === 1 ? [2, 3] : level === 2 ? [3, 4] : [4, 6];
+  const P = pool(level).filter((c) => c.borders.length);
   let from, to, best;
-  for (let t = 0; t < 400; t++) {
+  for (let t = 0; t < 600; t++) {
     from = P[Math.floor(Math.random() * P.length)]; to = P[Math.floor(Math.random() * P.length)];
     if (from === to) continue; best = bfs(from.id, to.id);
     if (best && best.length >= minL && best.length <= maxL) break; best = null;
@@ -344,22 +346,22 @@ export function routeScreen(root, { go }) {
     if (done || !alive()) return;
     const c = byId[id]; if (!c || c.kind !== 'state') return;
     const last = byId[path[path.length - 1]];
-    if (path.includes(id)) { msg.textContent = `مررتَ ب${c.ar} من قبل.`; return; }
+    if (path.includes(id)) { msg.textContent = fem(`مررتَ ب${c.ar} من قبل.`); return; }
     if (!last.borders.includes(id)) {
       wrongs++; sfx('wrong'); m.flash(id, 'flash', 900);
       const t = !c.landlocked && !last.landlocked && c.cont === last.cont ? `${c.ar} قريبة، لكن لا حدود برية بينها وبين ${last.ar}. ربما يفصل بينهما بحر.` : `لا تشترك ${c.ar} مع ${last.ar} في حدود برية. اختر جارة لـ${last.ar}.`;
-      msg.textContent = t; speak(t, LANG.ar); return;
+      msg.textContent = fem(t); speak(t, LANG.ar); return;
     }
     path.push(id); sfx('tap'); drawPath();
     const note = special(last.id, id);
     if (note) { notes.push(note); msg.replaceChildren(h('span', { class: 'special-note' }, '💡 ' + note)); speak(c.ar + '. ' + note, LANG.ar); }
-    else { msg.textContent = ''; speak(c.ar, LANG.ar); }
+    else { msg.textContent = fem(''); speak(c.ar, LANG.ar); }
     if (id === to.id) win();
   }
   function undo() { if (path.length > 1 && !done) { path.pop(); drawPath(); } }
   function hint() {
     const last = path[path.length - 1]; const rest = bfs(last, to.id);
-    if (rest && rest[1]) { m.flash(rest[1], 'flash', 2000); const t = `جرّب ${byId[rest[1]].ar}.`; msg.textContent = t; speak(t, LANG.ar); wrongs++; }
+    if (rest && rest[1]) { m.flash(rest[1], 'flash', 2000); const t = `جرّب ${byId[rest[1]].ar}.`; msg.textContent = fem(t); speak(t, LANG.ar); wrongs++; }
   }
   function win() {
     done = true; confetti(40); sfx('win');
@@ -383,14 +385,16 @@ export function layerScreen(root, { go }) {
   const me = store.me; const owner = me.id; const level = me.level;
   const alive = () => root.isConnected && store.me?.id === owner;
   const kinds = level === 1 ? ['river', 'desert', 'range'] : ['river', 'desert', 'range', 'lake', 'peak'];
-  const items = NAT.items.filter((it) => kinds.includes(it.kind) && it.countries?.length);
+  // الصغير: معالم مشهورة قريبة من عالمه فقط
+  const EASY = ['nile', 'amazon', 'euphrates', 'tigris', 'jordan', 'himalaya', 'alps', 'atlas', 'sahara', 'rubalkhali'];
+  const items = NAT.items.filter((it) => kinds.includes(it.kind) && it.countries?.length && (level > 1 || EASY.includes(it.id)));
   const it = items[Math.floor(Math.random() * items.length)];
   const K = NAT.kinds[it.kind];
   let done = false, tries = 0;
   const m = createMap({ labels: level <= 2, compass: true, onTap: (id) => tap(id), onMiss: () => tap(null) });
   const msg = h('p', { class: 'clue-msg' });
   const panel = h('div', { class: 'story-panel clue-panel' },
-    h('p', {}, `${K.icon} أين يقع `, h('b', {}, it.ar), '؟ المس على الخريطة دولة تظن أنه فيها، ثم نكشف طبقة الطبيعة لنتحقق.'),
+    h('p', {}, `${K.icon} في أي دولة نجد `, h('b', {}, it.ar), '؟ المس الدولة على الخريطة، ثم نكشف طبقة الطبيعة لنتحقق.'),
     msg, h('button', { class: 'btn small soft', onclick: () => reveal(false) }, '👀 اكشف الطبقة الآن'));
   root.append(m.el, panel);
   function tap(id) {
@@ -399,7 +403,7 @@ export function layerScreen(root, { go }) {
     const c = id && byId[id];
     if (c && it.countries.includes(id)) return reveal(true, c);
     const t = c ? `ليس في ${c.ar}. ${tries >= 2 ? 'تلميح: ابحث في قارة ' + continents[byId[it.countries[0]].cont] + '.' : 'حاول مرة أخرى.'}` : 'هذا ماء. المس دولة.';
-    sfx('wrong'); msg.textContent = t; speak(t, LANG.ar);
+    sfx('wrong'); msg.textContent = fem(t); speak(t, LANG.ar);
   }
   function reveal(ok, c) {
     if (done) return; done = true;
@@ -415,7 +419,7 @@ export function layerScreen(root, { go }) {
   }
   requestAnimationFrame(() => {
     if (level === 1) m.zoomTo(contBox[byId[it.countries[0]].cont], 0); else m.world(0);
-    setTimeout(() => alive() && speak(`أين يقع ${it.ar}؟`, LANG.ar), 300);
+    setTimeout(() => alive() && speak(`في أي دولة نجد ${it.ar}؟`, LANG.ar), 300);
   });
 }
 

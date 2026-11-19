@@ -5,6 +5,7 @@ import '@fontsource/cairo/latin-700.css';
 import './style.css';
 import { h, consumeSkipPop, closeTopModal, clearModals, toast } from './ui.js';
 import { store } from './store.js';
+import { setFemOff, setAddressee } from './gender.js';
 import { stopSpeech } from './speech.js';
 import { profilesScreen } from './screens/profiles.js';
 import { homeScreen } from './screens/home.js';
@@ -46,7 +47,7 @@ const screens = {
   studio: { title: '🎙️ الاستوديو الصوتي', fn: studioScreen },
   missions: { title: '🔎 مهام المستكشف', fn: missionsScreen },
   find: { title: '🔎 ابحث عن بلدي', fn: findScreen, full: true, back: 'missions' },
-  guide: { title: '🧭 كن دليل أخيك', fn: guideScreen, back: 'missions' },
+  guide: { title: '🧭 كن دليل إخوتك', fn: guideScreen, back: 'missions' },
   nile: { title: '💧 رحلة قطرة في النيل', fn: nileScreen, full: true, back: 'missions' },
   route: { title: '🚗 ارسم طريقي', fn: routeScreen, full: true, back: 'missions' },
   layer: { title: '⛰️ أين النهر والجبل؟', fn: layerScreen, full: true, back: 'missions' },
@@ -66,6 +67,8 @@ function render() {
   if (!screens[name]) name = 'home';
   if (!store.me && name !== 'profiles') { history.replaceState(null, '', '#profiles'); name = 'profiles'; }
   const sc = screens[name];
+  // شاشات الأهل والاستوديو تُعرض بصيغتها الأصلية
+  setAddressee(undefined); setFemOff(['parent', 'about', 'studio'].includes(name));
   stopSpeech();
   clearModals();
   document.querySelectorAll('.modal-back').forEach((m) => m.remove());

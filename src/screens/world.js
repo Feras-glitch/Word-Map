@@ -5,7 +5,7 @@ import { h, owl, toast, confetti } from '../ui.js';
 import { states, byId, pool, shuffle, continents, flagUrl } from '../data.js';
 import { store } from '../store.js';
 import { Q, usable, runQuiz } from '../quiz.js';
-import { dueReviews, reviewResult, goldEligible, goldProgress, addEvidence, OTHER_SKILLS } from '../mastery.js';
+import { dueReviews, reviewResult, goldEligible, addEvidence, evAskable, OTHER_SKILLS, OTHER_NEEDED } from '../mastery.js';
 import { speak, LANG } from '../speech.js';
 import { sfx } from '../sfx.js';
 
@@ -34,7 +34,7 @@ export function buildSession(p) {
   const cands = Object.keys(p.stamps || {}).map((id) => byId[id]).filter((c) => c && goldEligible(p, c.id));
   for (const c of shuffle(cands).slice(0, 3)) {
     const ev = p.evidence?.[c.id] || {};
-    const missing = [...requiredFor(c).filter((k) => !ev[k]), ...shuffle(OTHER_SKILLS.filter((k) => !ev[k] && kindFor(k, c)))];
+    const missing = [...requiredFor(c).filter((k) => evAskable(ev, k)), ...(OTHER_SKILLS.filter((k) => ev[k]).length >= OTHER_NEEDED ? [] : shuffle(OTHER_SKILLS.filter((k) => !ev[k] && kindFor(k, c))))];
     for (const sk of missing.slice(0, 2)) add(c, sk, { gold: c.id });
   }
   // ٣) بقية الأسئلة من دول العالم على قدر المستوى
@@ -47,7 +47,8 @@ export function buildSession(p) {
   }
   return { specs: shuffle(specs), n };
 }
-export const toQ = (spec, n) => ({ ...Q[spec.kind](byId[spec.id], n), spec });
+// أسئلة الختم الذهبي والمراجعة بأربعة خيارات دائماً، مهما كان المستوى
+export const toQ = (spec, n) => { const q = Q[spec.kind](byId[spec.id], spec.gold || spec.review ? 4 : n); return { ...q, spec, remake: () => ({ ...q.remake(), spec: {} }) }; };
 
 export function worldScreen(root, { go }) {
   const me = store.me; const owner = me.id;
@@ -57,7 +58,7 @@ export function worldScreen(root, { go }) {
     h('div', { class: 'panel' },
       h('p', {}, `🛂 دول زرتها وتنتظر الختم الذهبي: ${ar(ready)}`),
       h('p', {}, `🔔 مراجعات مستحقة: ${ar(due)}`),
-      h('p', { class: 'hint' }, 'الختم الذهبي يأتي حين تجيب صحيحاً من أول محاولة عن علم الدولة وموقعها وعاصمتها، وعن شيئين آخرين منها. ولا يلزم أن يكون ذلك في جلسة واحدة.'),
+      h('p', { class: 'hint' }, 'الختم الذهبي يأتي حين تجيب صحيحاً من أول محاولة عن علم الدولة وعاصمتها في يومين مختلفين، وعن موقعها، وعن شيئين آخرين منها. الأسئلة التي تُحسب له تحمل علامة 🥇.'),
       h('button', { class: 'btn big', onclick: () => start() }, '🧠 ابدأ التمرين')));
 
   function start() {
@@ -65,7 +66,7 @@ export function worldScreen(root, { go }) {
     const { specs, n } = buildSession(p);
     const questions = specs.map((s) => toQ(s, n));
     const newGold = []; const rev = {};
-    runQuiz({ title: '🧠 التمرين الشامل', questions,
+    runQuiz({ title: '🧠 التمرين الشامل', questions, requeue: true,
       onAnswer: (q, ok) => {
         const c = q.c; const s = q.spec;
         if (s.review) { (rev[s.review] ||= []).push(ok); }
