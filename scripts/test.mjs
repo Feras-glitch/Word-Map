@@ -74,7 +74,7 @@ await test('الختم الذهبي: العلم والعاصمة في يومين
   store.patch((x) => { x.stamps.EGY = day(-3); });
   const req = ['flag', 'map', 'capital'];
   const add = (k, ok = true) => M.addEvidence(p.id, 'EGY', k, ok, req);
-  for (const k of ['flag', 'capital', 'map', 'names', 'landmark']) assert.equal(add(k), false);
+  for (const k of ['flag', 'capital', 'map', 'names', 'language']) assert.equal(add(k), false);
   assert.equal(add('flag'), false, 'جواب ثانٍ في اليوم نفسه لا يُحسب');
   assert.ok(!store.me.gold.EGY, 'لا ذهبي في يوم واحد');
   // نحاكي مرور يوم: نؤرّخ الدليل الأول بالأمس
@@ -107,6 +107,26 @@ await test('ملف الطفل: الحقول تُصحَّح عند التحميل
   const { normalizeProfile } = await import('../src/store.js');
   const q = normalizeProfile({ id: 'a', name: 'س', level: 9, gender: 'x', stamps: { EGY: 'bad', FRA: '2026-01-01' } });
   assert.equal(q.level, 2); assert.equal(q.gender, null); assert.deepEqual(Object.keys(q.stamps), ['FRA']);
+});
+
+await test('الرحلات: تبدأ بفلسطين، وتغطي الدول كلها مرة واحدة', async () => {
+  const J = await import('../src/journeys-core.js');
+  const C = await import('./content.mjs');
+  const contOrder = ['asia', 'africa', 'europe', 'namerica', 'samerica', 'oceania'];
+  const D = { states, byId, continents: C.continents, contEmoji: {}, contOrder, pool: (l) => (l <= 1 ? states.filter((c) => c.famous) : l === 2 ? states.filter((c) => c.famous || c.area > 60000) : states) };
+  const list = J.buildJourneys(D, 3);
+  assert.equal(list[0].ids[0], 'PSE'); assert.deepEqual([...list[0].ids].sort(), ['EGY', 'JOR', 'LBN', 'PSE', 'SYR']);
+  const all = list.flatMap((j) => j.ids);
+  assert.equal(all.length, 195); assert.equal(new Set(all).size, 195);
+  for (const id of all) assert.ok(byId[id]?.kind === 'state', id);
+  const st = J.stateOf(J.buildJourneys(D, 1), { stamps: { PSE: '2026-01-01' } });
+  assert.equal(st.current.id, 'pal'); assert.equal(st.current.next, 'JOR');
+});
+
+await test('لكل معلم رمز، ولا يُحسب المعلم دليلاً للختم الذهبي', async () => {
+  const { landmarkIcon } = await import('../src/landmarks.js');
+  for (const c of states) assert.ok(landmarkIcon(c.landmark), c.id);
+  assert.ok(!M.OTHER_SKILLS.includes('landmark'));
 });
 
 console.log(process.exitCode ? '\nفشل بعض الاختبارات' : `\nنجحت الاختبارات كلها (${n})`);

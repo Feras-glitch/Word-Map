@@ -13,7 +13,7 @@ const ar = (n) => Number(n).toLocaleString('ar-EG');
 const N = 10;
 // أنواع الأسئلة لكل مهارة، بالاتجاهين
 const BY_SKILL = {
-  flag: ['flag', 'flagWho'], capital: ['capital', 'capWho'], map: ['map'], landmark: ['landmark', 'landmarkWho'],
+  flag: ['flag', 'flagWho'], capital: ['capital', 'capWho'], map: ['map'],
   names: ['names'], language: ['language'], neighbor: ['neighbor'], nature: ['natureWho'], continent: ['continent'],
 };
 export const requiredFor = (c) => ['flag', 'map', ...(usable('capital', c) ? ['capital'] : [])];
@@ -38,17 +38,18 @@ export function buildSession(p) {
     for (const sk of missing.slice(0, 2)) add(c, sk, { gold: c.id });
   }
   // ٣) بقية الأسئلة من دول العالم على قدر المستوى
-  const kinds = level === 1 ? ['flag', 'flagWho', 'continent', 'map', 'landmarkWho'] : ['flag', 'flagWho', 'capital', 'capWho', 'map', 'landmarkWho', 'landmark', 'names', 'natureWho', 'neighbor', 'language', 'continent'];
+  const kinds = level === 1 ? ['flag', 'flagWho', 'continent', 'map', 'bigger'] : ['flag', 'flagWho', 'capital', 'capWho', 'map', 'landmarkWho', 'names', 'natureWho', 'neighbor', 'language', 'continent', 'bigger', 'morePop', 'north'];
+  const CMP = ['bigger', 'morePop', 'north']; const cmps = () => specs.filter((s) => CMP.includes(s.kind)).length;
   for (const c of shuffle(pool(level))) {
     if (specs.length >= N) break;
     if (used.has(c.id)) continue;
-    const k = shuffle(kinds.filter((k) => usable(k, c) && !(k === 'map' && maps() >= 2)))[0];
+    const k = shuffle(kinds.filter((k) => usable(k, c) && !(k === 'map' && maps() >= 2) && !(CMP.includes(k) && cmps() >= 2)))[0];
     if (k) { specs.push({ id: c.id, kind: k }); used.add(c.id); }
   }
   return { specs: shuffle(specs), n };
 }
 // أسئلة الختم الذهبي والمراجعة بأربعة خيارات دائماً، مهما كان المستوى
-export const toQ = (spec, n) => { const q = Q[spec.kind](byId[spec.id], spec.gold || spec.review ? 4 : n); return { ...q, spec, remake: () => ({ ...q.remake(), spec: {} }) }; };
+export const toQ = (spec, n) => { const q = Q[spec.kind](byId[spec.id], spec.gold || spec.review ? 4 : n, spec.other ? byId[spec.other] : undefined); if (q.other) spec.other = q.other.id; return { ...q, spec, remake: () => ({ ...q.remake(), spec: {} }) }; };
 
 export function worldScreen(root, { go }) {
   const me = store.me; const owner = me.id;
@@ -71,7 +72,7 @@ export function worldScreen(root, { go }) {
         const c = q.c; const s = q.spec;
         if (s.review) { (rev[s.review] ||= []).push(ok); }
         // أي سؤال عن دولة تنتظر الذهبي يُحسب دليلاً (أو يُسقط دليلاً عند الخطأ)
-        if (q.skill !== 'continent' && addEvidence(owner, c.id, q.skill, ok, requiredFor(c))) newGold.push(c.id);
+        if (!['continent', 'compare', 'landmark'].includes(q.skill) && addEvidence(owner, c.id, q.skill, ok, requiredFor(c))) newGold.push(c.id);
       },
       onDecide: () => applyReviews(),
       onAbort: () => applyReviews(true),

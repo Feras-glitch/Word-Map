@@ -31,9 +31,9 @@ contBox.europe = [930, 120, 1260, 300];
 
 // مجموعات الدول حسب المستوى
 export const LEVELS = {
-  1: { name: 'صغير', ages: '٦–٧ سنوات', emoji: '🌱' },
-  2: { name: 'متوسط', ages: '٨–٩ سنوات', emoji: '🌿' },
-  3: { name: 'كبير', ages: '١٠ سنوات فأكثر', emoji: '🌳' },
+  1: { name: 'مستكشف', ages: '٦–٧ سنوات', emoji: '🌱' },
+  2: { name: 'رحّالة', ages: '٨–٩ سنوات', emoji: '🌿' },
+  3: { name: 'قبطان', ages: '١٠ سنوات فأكثر', emoji: '🌳' },
 };
 export function pool(level) {
   if (level <= 1) return states.filter((c) => c.famous);

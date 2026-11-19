@@ -1,6 +1,7 @@
 // مولّدات الأسئلة، وعارض الأسئلة، وسؤال ختم الزيارة، واختبار المستوى
 import { h, modal, confetti } from './ui.js';
-import { states, byId, flagUrl, continents, contBox, shuffle, pick, contColors, languages } from './data.js';
+import { states, byId, flagUrl, continents, contBox, shuffle, pick, contColors, languages, pool } from './data.js';
+import { landmarkIcon } from './landmarks.js';
 import { speak, LANG } from './speech.js';
 import { sfx } from './sfx.js';
 import { record } from './mastery.js';
@@ -30,6 +31,17 @@ const others = (c, n, filter = () => true) => {
   const src = same.length >= n ? same : states.filter((s) => s.id !== c.id && filter(s));
   return pick(src, n);
 };
+// شريك المقارنة: دولة من دول المستوى يتحقق فيها الشرط
+const partner = (c, ok) => { const P = shuffle(pool(store.me?.level || 2).filter((s) => s.id !== c.id && ok(s))); return P[0] || shuffle(states.filter((s) => s.id !== c.id && ok(s)))[0]; };
+const timesAr = (r) => (r >= 2.5 ? `بنحو ${Math.round(r).toLocaleString('ar-EG')} ${Math.round(r) <= 10 ? 'مرات' : 'مرة'}` : r >= 1.75 ? 'بنحو مرتين' : 'بنحو مرة ونصف');
+function compareQ(c, o, key, text, word) {
+  // فرق واضح بين الدولتين (ضعف على الأقل للمستوى الأول ثلاثة أضعاف) حتى لا يكون السؤال تخميناً في المتقاربَين
+  const min = (store.me?.level || 2) === 1 ? 3 : 1.6;
+  o = o || partner(c, (s) => s[key] && c[key] && Math.max(s[key] / c[key], c[key] / s[key]) >= min);
+  const win = c[key] > o[key] ? c : o; const lose = win === c ? o : c;
+  return { skill: 'compare', explain: `${win.ar} ${word} من ${lose.ar} ${timesAr(win[key] / lose[key])}.`, say: text, prompt: h('p', {}, (key === 'area' ? '📏 ' : '👨‍👩‍👧 ') + text), other: o,
+    options: shuffle([c, o]).map((x) => ({ correct: x.id === win.id, el: flagOpt(x), label: x.ar })) };
+}
 const flagOpt = (s) => h('span', { class: 'qo-flag' }, h('img', { src: flagUrl(s.f), alt: '' }), h('b', {}, s.ar));
 
 // كل سؤال يذكر الدولة، والخيارات هي الصفات (عاصمة، معلم، اسم بلغة أخرى، لغة، جارة...)،
@@ -66,7 +78,7 @@ export const Q = {
   landmark(c, n) {
     const opts = shuffle([c, ...others(c, n - 1, (s) => s.landmark && s.landmark !== c.landmark)]);
     return { skill: 'landmark', explain: `من معالم ${c.ar}: ${c.landmark}.`, say: `أيّ هذه من أشهر معالم ${c.ar}؟`, parts: ['أيّ هذه من أشهر معالم', c.ar], prompt: h('p', {}, '⭐ أيّ هذه من أشهر معالم ', h('b', {}, c.ar), '؟'),
-      options: opts.map((o) => ({ correct: o.id === c.id, el: h('b', {}, o.landmark), label: o.landmark })) };
+      options: opts.map((o) => ({ correct: o.id === c.id, el: h('span', { class: 'lm-opt' }, h('span', { 'aria-hidden': 'true' }, landmarkIcon(o.landmark)), h('b', {}, o.landmark)), label: o.landmark })) };
   },
   // اللغة الرسمية (أو لغة العمل الفعلية)، والخيارات لغات لا يتكلمها أهل هذه الدولة رسمياً
   language(c, n) {
@@ -104,7 +116,7 @@ export const Q = {
   },
   landmarkWho(c, n) {
     const opts = shuffle([c, ...others(c, n - 1, (s) => s.landmark !== c.landmark)]);
-    return { skill: 'landmark', explain: `${c.landmark} في ${c.ar}.`, say: `${c.landmark}: في أي دولة؟`, parts: [c.landmark, 'في أي دولة؟'], prompt: h('p', {}, '⭐ ', h('b', {}, c.landmark), ': في أي دولة؟'),
+    return { skill: 'landmark', explain: `${c.landmark} في ${c.ar}.`, say: `${c.landmark}: في أي دولة؟`, parts: [c.landmark, 'في أي دولة؟'], prompt: h('p', {}, landmarkIcon(c.landmark) + ' ', h('b', {}, c.landmark), ': في أي دولة؟'),
       options: opts.map((o) => ({ correct: o.id === c.id, el: flagOpt(o), label: o.ar })) };
   },
   natureWho(c, n) {
@@ -115,13 +127,22 @@ export const Q = {
     return { skill: 'nature', explain: `${it.ar} ${verb} في ${c.ar}.`, say: `في أي دولة من هذه ${verb} ${it.ar}؟`, prompt: h('p', {}, NAT.kinds[it.kind].icon + ' في أي دولة من هذه ' + verb + ' ', h('b', {}, it.ar), '؟'),
       options: opts.map((o) => ({ correct: o.id === c.id, el: flagOpt(o), label: o.ar })) };
   },
+  // ---------- أسئلة المقارنة: تربط الدول بعضها ببعض بدل حفظ كل دولة وحدها ----------
+  bigger(c, n, o) { return compareQ(c, o, 'area', 'أيهما أكبر مساحة؟', 'أكبر مساحة'); },
+  morePop(c, n, o) { return compareQ(c, o, 'pop', 'أيهما أكثر سكاناً؟', 'أكثر سكاناً'); },
+  north(c, n, o) {
+    o = o || partner(c, (s) => s.cen && Math.abs(s.cen[1] - c.cen[1]) >= 70);
+    const win = c.cen[1] < o.cen[1] ? c : o; const lose = win === c ? o : c;
+    return { skill: 'compare', explain: `${win.ar} أبعد شمالاً من ${lose.ar}.`, say: 'أيهما أبعد شمالاً؟', prompt: h('p', {}, '🧭 أيهما أبعد شمالاً؟'), other: o,
+      options: shuffle([c, o]).map((x) => ({ correct: x.id === win.id, el: flagOpt(x), label: x.ar })) };
+  },
   map(c) {
     return { skill: 'map', type: 'map', explain: `هنا تقع ${c.ar}.`, say: `المس ${c.ar} على الخريطة`, parts: ['المس', c.ar, 'على الخريطة'], prompt: h('p', {}, '📍 المس ', h('b', {}, c.ar), ' على الخريطة') };
   },
 };
 
 // كل سؤال يحمل دولته (q.c) لتسجيل النتيجة لها حتى في الجلسات المختلطة
-for (const k of Object.keys(Q)) { const f = Q[k]; Q[k] = (c, ...a) => ({ ...f(c, ...a), c, kind: k, remake: () => Q[k](c, ...a) }); }
+for (const k of Object.keys(Q)) { const f = Q[k]; Q[k] = (c, ...a) => { const q = f(c, ...a); return { ...q, c, kind: k, remake: () => (q.other ? Q[k](c, a[0], q.other) : Q[k](c, ...a)) }; }; }
 
 // هل يكشف السؤالُ الإجابةَ أو لا يصلح لهذه الدولة؟
 const nameIn = (c, t) => { const b = bare(c.ar); return b.length >= 3 && (t || '').includes(b.slice(0, Math.max(3, b.length - 1))); };
@@ -133,6 +154,9 @@ export function usable(kind, c) {
     case 'continent': return !c.ar.includes(bare(continents[c.cont]));
     case 'natureWho': return !!NAT.countriesReviewed && NAT.items.some((it) => it.countries?.includes(c.id) && ['river', 'desert', 'range', 'lake'].includes(it.kind));
     case 'map': return !!(c.cen || c.bb);
+    case 'bigger': return !!c.area;
+    case 'morePop': return !!c.pop && c.id !== 'PSE';
+    case 'north': return !!c.cen;
     case 'neighbor': return c.borders.some((id) => byId[id]?.kind === 'state');
     case 'language': {
       const L = c.langs || {}; const main = (L.official?.length ? L.official : L.defacto?.length ? L.defacto : L.working || []).filter((x) => languages[x] && !languages[x].sign);
@@ -278,7 +302,7 @@ export function placementTest(onDone, onCancel) {
     onDone: (score, _r, box, m) => {
       // خمسة فأكثر للمتوسط: من يخمّن كل شيء يبلغها باحتمال نحو ١٥٪ فقط
       const level = score <= 4 ? 1 : score <= 7 ? 2 : 3;
-      const names = { 1: '🌱 صغير', 2: '🌿 متوسط', 3: '🌳 كبير' };
+      const names = { 1: '🌱 مستكشف', 2: '🌿 رحّالة', 3: '🌳 قبطان' };
       speak(`أحسنت! المستوى المقترح ${names[level].slice(2)}`, LANG.ar);
       box.append(h('div', { class: 'quiz-end' }, h('div', { class: 'big-emoji' }, '🎯'),
         h('h3', {}, `${score.toLocaleString('ar-EG')} من ١٠`), h('p', {}, 'المستوى المقترح للبداية: ', h('b', {}, names[level])),

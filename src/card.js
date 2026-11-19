@@ -5,6 +5,10 @@ import { speak, LANG } from './speech.js';
 import { sfx } from './sfx.js';
 import { store } from './store.js';
 import { fem } from './gender.js';
+import { miniMap } from './minimap.js';
+import { journeyState } from './journeys.js';
+import { conceptBtn } from './concepts.js';
+import { landmarkIcon } from './landmarks.js';
 import { goldProgress, goldEligible, OTHER_NEEDED } from './mastery.js';
 import { requiredFor } from './screens/world.js';
 import { hasVisit, hasGold, giveVisit, visitWait, visitFailed, dueReviews } from './mastery.js';
@@ -52,11 +56,28 @@ function popText(c) {
 }
 
 // أجزاء تُشغَّل تسجيلاتها متتابعة إن وُجدت، وإلا تُقرأ آلياً جملةً واحدة
-function storySpeech(c) {
-  const parts = [];
-  if (c.landmark) parts.push('من معالم', c.ar, 'الشهيرة', c.landmark);
-  if (c.fact || c.note) parts.push('هل تعلم؟', c.fact || c.note);
-  return parts;
+const landmarkSpeech = (c) => (c.landmark ? ['من معالم', c.ar, 'الشهيرة', c.landmark] : []);
+const factSpeech = (c) => (c.fact || c.note ? ['هل تعلم؟', c.fact || c.note] : []);
+
+// المساحة مقارنةً بمصر، كما يُقارن عدد السكان
+function areaCmp(c) {
+  const eg = byId.EGY?.area; if (!eg || !c.area || c.id === 'EGY') return '';
+  const r = c.area / eg;
+  if (r >= 1.5) return `أي أكبر من مصر بنحو ${times(Math.round(r))}`;
+  if (r >= 0.67) return 'قريبة من مساحة مصر';
+  if (r >= 0.4) return 'نحو نصف مساحة مصر';
+  if (r >= 0.01) return `ومصر أكبر منها بنحو ${times(Math.round(1 / r))}`;
+  return 'صغيرة جداً: مصر أكبر منها بأكثر من مئة مرة';
+}
+// اسم بالعربية بارزاً، وبقية اللغات مطوية خلف «بلغات أخرى» (تبقى ظاهرة للمستوى الصغير)
+function triFold(o, opts = {}) {
+  if (store.me?.level === 1 || (!o.en && !o.zh)) return tri(o, opts);
+  const arParts = Array.isArray(opts.prefix) ? [...opts.prefix, o.ar] : opts.prefix ? [opts.prefix.trim(), o.ar] : [o.ar];
+  return h('div', { class: 'tri-fold' },
+    h('div', { class: 'name-row ar' }, h('span', { class: 'lang-tag' }, 'عربي'), h('b', {}, o.ar), say(arParts, LANG.ar)),
+    h('details', { class: 'more-langs' }, h('summary', {}, '🌐 بلغات أخرى'),
+      o.en ? h('div', { class: 'name-row en', dir: 'ltr' }, h('span', { class: 'lang-tag' }, 'EN'), h('b', {}, o.en), say(o.en, LANG.en)) : null,
+      o.zh ? h('div', { class: 'name-row zh', dir: 'ltr' }, h('span', { class: 'lang-tag' }, '中文'), zhRuby(o.zh, o.py), say(o.zh, LANG.zh)) : null));
 }
 
 function namesTab(c) {
@@ -64,18 +85,20 @@ function namesTab(c) {
   return h('div', {},
     tri({ ar: c.ar, en: c.en, zh: c.zh, py: c.py }, { big: true }),
     c.occNote ? h('div', { class: 'sec occ-note' }, h('span', { class: 'st-label' }, '🕊️ أرض محتلة'), h('p', {}, c.occNote + '.'), say(c.occNote, LANG.ar)) : null,
-    cont && c.cont !== 'antarctica' ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, (contEmoji[c.cont] || '🌍') + ' تقع في قارة'), tri(cont, { prefix: 'قارة ' }), c.sub ? h('small', { class: 'muted' }, c.sub) : null, c.contNote ? h('p', { class: 'note' }, '🌐 ' + c.contNote + '.') : null) : null,
+    // «هل تعلم؟» أمتع ما في البطاقة، فمكانها في أولها
+    c.fact || c.note ? h('div', { class: 'didyou big' }, h('span', { class: 'st-label' }, '💡 هل تعلم؟'), h('p', {}, c.fact || c.note), say(factSpeech(c), LANG.ar)) : null,
+    cont && c.cont !== 'antarctica' ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, (contEmoji[c.cont] || '🌍') + ' تقع في قارة ', conceptBtn('continent')), triFold(cont, { prefix: 'قارة ' }), c.sub ? h('small', { class: 'muted' }, c.sub) : null, c.contNote ? h('p', { class: 'note' }, '🌐 ' + c.contNote + '.') : null) : null,
   );
 }
 
 function capitalTab(c) {
   const cap = c.cap3 || (c.capAr ? { ar: c.capAr, en: c.capEn } : null);
   return h('div', {},
-    cap ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '🏛️ العاصمة'), tri(cap, { prefix: ['عاصمة', c.ar, 'هي'] }), c.capNote ? h('p', { class: 'note' }, c.capNote) : null) : null,
-    c.landmark || c.fact || c.note ? h('div', { class: 'story' },
-      c.landmark ? h('div', { class: 'landmark' }, h('span', { class: 'st-label' }, '⭐ من معالمها الشهيرة:'), c.lm3 ? tri(c.lm3) : h('b', {}, c.landmark)) : null,
-      c.fact || c.note ? h('div', { class: 'didyou' }, h('span', { class: 'st-label' }, '💡 هل تعلم؟'), h('p', {}, c.fact || c.note)) : null,
-      h('button', { class: 'btn small soft', onclick: () => speak(storySpeech(c), LANG.ar) }, '🔊 اسمع المعلومة'),
+    cap ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '🏛️ العاصمة ', conceptBtn('capital')), tri(cap, { prefix: ['عاصمة', c.ar, 'هي'] }), c.capNote ? h('p', { class: 'note' }, c.capNote) : null) : null,
+    c.landmark ? h('div', { class: 'story' },
+      h('div', { class: 'landmark' }, h('span', { class: 'st-label' }, '⭐ من معالمها الشهيرة:'),
+        h('div', { class: 'lm-row' }, h('span', { class: 'lm-icon', 'aria-hidden': 'true' }, landmarkIcon(c.landmark)), c.lm3 ? triFold(c.lm3) : h('b', {}, c.landmark))),
+      h('button', { class: 'btn small soft', onclick: () => speak(landmarkSpeech(c), LANG.ar) }, '🔊 اسمع عن المعلم'),
     ) : null,
   );
 }
@@ -126,7 +149,7 @@ function helloTab(c, openNeighbor) {
   const neighbors = c.borders.map((b) => byId[b]).filter((n) => n && n.kind === 'state');
   return h('div', {},
     ks.length ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '🗣️ يتكلم أهلها'), ks.map((k) => h('div', { class: 'lang-item' }, langName(languages[k]), greetBox(ov[k] || languages[k].greet)))) : null,
-    neighbors.length ? h('div', { class: 'neighbors' }, h('span', {}, '🤝 الجيران:'),
+    neighbors.length ? h('div', { class: 'neighbors' }, h('span', {}, '🤝 الجيران: ', conceptBtn('border')),
       neighbors.map((n) => h('button', { class: 'chip', onclick: () => openNeighbor(n.id) }, h('img', { src: flagUrl(n.f), alt: '' }), n.ar))) : null);
 }
 
@@ -138,12 +161,12 @@ function numbersTab(c, openNeighbor) {
       tri({ ar: c.gov.ar, en: c.gov.en, zh: c.gov.zh, py: c.gov.py }),
       h('p', { class: 'note strong' }, c.gov.note + '.')) :
     c.gov ? h('div', { class: 'sec gov' }, h('span', { class: 'st-label' }, (c.gov.icon || '🏛️') + ' نظام الحكم'),
-      tri({ ar: c.gov.ar, en: c.gov.en, zh: c.gov.zh, py: c.gov.py }, { prefix: ['نظام الحكم في', c.ar] }),
+      triFold({ ar: c.gov.ar, en: c.gov.en, zh: c.gov.zh, py: c.gov.py }, { prefix: ['نظام الحكم في', c.ar] }),
       h('p', { class: 'note' }, c.gov.kid),
       c.gov.note ? h('p', { class: 'note strong' }, c.gov.note + '.') : null,
       c.gov.federal ? h('p', { class: 'note' }, '🧩 دولة اتحادية: تتكون من ولايات أو أقاليم، لكل منها حكومة خاصة بها.') : null) : null,
     h('div', { class: 'facts-grid' },
-      c.area ? h('div', { class: 'fact' }, h('span', {}, '📏 المساحة'), h('b', {}, num(c.area) + ' كم²')) : null,
+      c.area ? h('div', { class: 'fact' }, h('span', {}, '📏 المساحة'), h('b', {}, num(c.area) + ' كم²'), areaCmp(c) ? h('small', {}, areaCmp(c)) : null) : null,
       pop ? h('div', { class: 'fact' }, h('span', {}, '👨‍👩‍👧 السكان'), h('b', {}, pop.n), c.popInfo ? h('small', {}, c.popInfo.scope + '، ' + c.popInfo.year) : null, !c.popInfo && c.popYear ? h('small', {}, 'تقدير سنة ' + String(c.popYear).replace(/\d/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d])) : null, pop.cmp ? h('small', {}, pop.cmp) : null) : null,
       c.kind !== 'state' && c.parent ? h('div', { class: 'fact' }, h('span', {}, '🔗 تتبع'), h('b', {}, c.parent)) : null,
     ),
@@ -153,10 +176,10 @@ function numbersTab(c, openNeighbor) {
       c.popInfo.world.note ? h('p', { class: 'note' }, c.popInfo.world.note) : null,
       h('small', { class: 'muted' }, c.popInfo.world.source || '')) : null,
     c.popInfo?.gaza ? h('div', { class: 'sec occ-note' }, h('span', { class: 'st-label' }, '🕊️ ' + c.popInfo.gaza.title), h('p', {}, c.popInfo.gaza.text), say(c.popInfo.gaza.text, LANG.ar)) : null,
-    c.cur ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '💰 العملة'), tri(c.cur),
+    c.cur ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '💰 العملة'), triFold(c.cur),
       c.curNote ? h('p', { class: 'note' }, c.curNote) : null,
       c.curStory ? h('button', { class: 'btn small soft', onclick: () => openStory(c.curStory) }, '📜 ' + c.curStory.title) : null) : null,
-    neighbors.length ? h('div', { class: 'neighbors' }, h('span', {}, '🤝 الجيران:'),
+    neighbors.length ? h('div', { class: 'neighbors' }, h('span', {}, '🤝 الجيران: ', conceptBtn('border')),
       neighbors.map((n) => h('button', { class: 'chip', onclick: () => openNeighbor(n.id) }, h('img', { src: flagUrl(n.f), alt: '' }), n.ar))) : null,
     c.sources?.length ? h('details', { class: 'sources' }, h('summary', {}, '📚 المصادر (للوالدين)'),
       h('ul', {}, c.sources.map((s) => h('li', {}, h('a', { href: s.url, target: '_blank', rel: 'noopener' }, s.title))))) : null,
@@ -198,16 +221,18 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
     pane.replaceChildren(tabs[i][2]());
     if (!quiet) sfx('tap');
     const first = !seen.has(i); seen.add(i);
-    if (first && i === 1) { redraw?.(); if (simple) setTimeout(() => speak(storySpeech(c), LANG.ar), 400); }
+    if (first && i === 1) { redraw?.(); if (simple) setTimeout(() => speak(landmarkSpeech(c), LANG.ar), 400); }
   };
   tabs.forEach(([e, t], i) => bar.append(h('button', { onclick: () => show(i) }, h('span', {}, e), h('small', {}, t))));
 
   const body = h('div', { class: 'card' },
-    h('div', { class: 'card-flag' + (isState ? '' : ' terr') }, h('img', { src: flagUrl(c.f), alt: 'علم ' + c.ar })),
+    h('div', { class: 'card-head' },
+      h('div', { class: 'card-flag' + (isState ? '' : ' terr') }, h('img', { src: flagUrl(c.f), alt: 'علم ' + c.ar })),
+      c.cen || c.bb ? h('button', { class: 'card-map', 'aria-label': 'موقع ' + c.ar + ' على الخريطة', onclick: () => { if (onShowOnMap && c.bb) { m.close(); onShowOnMap(c.id); } } }, miniMap(c.id), h('small', {}, '📍 ' + (continents[c.cont] || ''))) : null),
     sub ? h('div', { class: 'sub-note' }, '📌 ' + sub) : null,
     bar, pane,
     h('div', { class: 'card-actions' },
-      onShowOnMap && c.bb ? h('button', { class: 'btn', onclick: () => { m.close(); onShowOnMap(c.id); } }, '📍 أرني على الخريطة') : null),
+      onShowOnMap && c.bb ? h('button', { class: 'btn small soft', onclick: () => { m.close(); onShowOnMap(c.id); } }, '📍 أرني على الخريطة') : null),
   );
   show(0, true);
 
@@ -234,25 +259,28 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
         : !seen.has(1) ? h('button', { class: 'btn big soft', onclick: () => { show(1); bar.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }, '🏛️ اقرأ «العاصمة والمعالم» أولاً، ثم خذ الختم')
         : h('button', { class: 'btn big', onclick: () => { let won = false;
           visitQuestion(c, { onPass: () => { won = giveVisit(c.id); }, onFail: () => visitFailed(c.id),
-            onClose: () => { drawStamp(); if (won) { showStamp(false); checkContinentBadge(c.cont); } } }); } }, '🛂 احصل على ختم الزيارة (سؤال واحد)')) : null,
+            onClose: () => { drawStamp(); if (won) { showStamp(false); checkContinentBadge(c.cont); checkJourney(c.id); } } }); } }, '🛂 احصل على ختم الزيارة (سؤال واحد)')) : null,
       // الختم الذهبي لا يُمتحن هنا (البطاقة تكشف الجواب)، بل تُجمع أدلته في التمرين الشامل
       visit && !gold ? goldBox() : null,
       gold && due ? h('button', { class: 'btn big', onclick: () => { m.close(); setTimeout(() => (location.hash = '#world'), 250); } }, '🔔 حان وقت المراجعة: في التمرين الشامل') : null,
     ].filter(Boolean));
   };
+  // شريط من سطر واحد يتوسع عند اللمس، حتى لا يزاحم محتوى البطاقة
   function goldBox() {
     const p = store.me;
     const req = requiredFor(c);
     const g = goldProgress(p, c.id, req);
-    const L = { flag: '🚩 العلم', map: '📍 الموقع', capital: '🏛️ العاصمة' };
+    const L = { flag: '🚩', map: '📍', capital: '🏛️' };
+    const N = { flag: 'العلم', map: 'الموقع', capital: 'العاصمة' };
     const open = goldEligible(p, c.id);
-    return h('div', { class: 'gold-progress' },
-      h('p', { class: 'note strong' }, '🥇 أدلة الختم الذهبي:'),
-      h('div', { class: 'stamp-status' }, ...g.req.map(([k, v, n, need]) => h('span', { class: 'chip-st' + (v ? ' on' : '') }, (v ? '✅ ' : '◻️ ') + L[k] + (need > 1 ? ` ${n.toLocaleString('ar-EG')}/${need.toLocaleString('ar-EG')}` : ''))),
-        h('span', { class: 'chip-st' + (g.others >= OTHER_NEEDED ? ' on' : '') }, `➕ أخرى ${Math.min(g.others, OTHER_NEEDED).toLocaleString('ar-EG')}/${OTHER_NEEDED.toLocaleString('ar-EG')}`)),
-      h('p', { class: 'note' }, open ? 'تُجمع هذه الأدلة في «التمرين الشامل»، حين تجيب صحيحاً من أول محاولة. العلم والعاصمة يلزمهما جوابان في يومين مختلفين.'
+    const A = (n) => n.toLocaleString('ar-EG');
+    return h('details', { class: 'gold-strip' },
+      h('summary', {}, h('b', {}, '🥇 أدلة الختم الذهبي'),
+        ...g.req.map(([k, v, n, need]) => h('span', { class: 'gs' + (v ? ' on' : ''), title: N[k] }, L[k] + (v ? '✅' : need > 1 ? ` ${A(n)}/${A(need)}` : ' ◻️'))),
+        h('span', { class: 'gs' + (g.others >= OTHER_NEEDED ? ' on' : '') }, '➕' + (g.others >= OTHER_NEEDED ? '✅' : ` ${A(Math.min(g.others, OTHER_NEEDED))}/${A(OTHER_NEEDED)}`))),
+      h('p', { class: 'note' }, open ? 'تُجمع هذه الأدلة في «التمرين الشامل»، حين تجيب صحيحاً من أول محاولة: العلم 🚩 والعاصمة 🏛️ في يومين مختلفين، والموقع 📍، وشيئان آخران ➕.'
         : 'تبدأ أدلة الختم الذهبي من الغد في «التمرين الشامل». راجع البطاقة اليوم.'),
-      open ? h('button', { class: 'btn big gold-btn', onclick: () => { m.close(); setTimeout(() => (location.hash = '#world'), 250); } }, '🧠 إلى التمرين الشامل') : null);
+      open ? h('button', { class: 'btn gold-btn', onclick: () => { m.close(); setTimeout(() => (location.hash = '#world'), 250); } }, '🧠 إلى التمرين الشامل') : null);
   }
   // عدّ تنازلي بعد خطأ في سؤال الزيارة
   function waitNote() {
@@ -288,4 +316,11 @@ function checkContinentBadge(cont) {
   if (inCont.every((s) => me.stamps[s.id]) && store.badge('cont-' + cont)) {
     setTimeout(() => { confetti(); sfx('win'); toast(`🎓 أكملت قارة ${continents[cont]} كلها! شهادتك في جواز السفر`, 4500); speak(`مبارك! أكملت قارة ${continents[cont]} كلها، ونلت شهادتها`, LANG.ar); }, 2200);
   }
+}
+
+// عند إكمال رحلة: تهنئة، والرحلة التالية تنتظر
+function checkJourney(id) {
+  const me = store.me; if (!me) return;
+  const j = journeyState(me).list.find((x) => x.ids.includes(id));
+  if (j?.complete && store.badge('journey-' + j.id)) setTimeout(() => { confetti(); sfx('win'); toast(`🏅 أكملت رحلة «${j.title}»! الرحلة التالية تنتظرك في «رحلاتي»`, 5000); speak(`مبارك! أكملت رحلة ${j.title}`, LANG.ar); }, 2400);
 }

@@ -4,19 +4,30 @@ import { states, LEVELS } from '../data.js';
 import { speak } from '../speech.js';
 import { sfx } from '../sfx.js';
 import { dueReviews, goldEligible } from '../mastery.js';
+import { journeyState } from '../journeys.js';
+import { byId } from '../data.js';
 
-const TILES = [
-  { k: 'explore', e: '🗺️', t: 'خريطة العالم', s: 'استكشف الدول وأعلامها', c: '#2b7fd4' },
-  { k: 'missions', e: '🔎', t: 'مهام المستكشف', s: 'ألغاز تحلّها بالخريطة', c: '#0f766e' },
-  { k: 'daily', e: '✈️', t: 'رحلة اليوم', s: 'دولة جديدة كل يوم', c: '#e76f51' },
-  { k: 'games', e: '🎮', t: 'الألعاب', s: 'أعلام، عواصم، خريطة، ذاكرة', c: '#8e44ad' },
-  { k: 'passport', e: '🛂', t: 'جواز سفري', s: 'أختامي ومهاراتي', c: '#d4a017' },
-  { k: 'family', e: '👨‍👩‍👧‍👦', t: 'تحدي العائلة', s: 'العبوا معاً بالدور', c: '#7b5cd6' },
-  { k: 'world', e: '🧠', t: 'التمرين الشامل', s: 'أسئلة من العالم كله', c: '#e5484d' },
-  { k: 'battuta', e: '🐪', t: 'رحلة ابن بطوطة', s: 'سافر مع الرحالة العظيم', c: '#a0522d' },
-  { k: 'islamic', e: '🕋', t: 'العالم الإسلامي', s: 'الحرمان والأقصى وطرق الحج', c: '#1b8a5a' },
-  { k: 'studio', e: '🎙️', t: 'استوديو صوتي', s: 'سجّل الأسماء بصوتك', c: '#db2777' },
-  { k: 'hello', e: '👋', t: 'قل مرحباً', s: 'التحية بلغات العالم', c: '#2a9d8f' },
+// البلاطات في ثلاثة أقسام بدل قائمة واحدة
+const SECTIONS = [
+  ['🧭 استكشف', [
+    { k: 'journeys', e: '🧳', t: 'رحلاتي', s: 'من فلسطين إلى العالم', c: '#1a9b55' },
+    { k: 'explore', e: '🗺️', t: 'خريطة العالم', s: 'استكشف الدول وأعلامها', c: '#2b7fd4' },
+    { k: 'daily', e: '✈️', t: 'رحلة اليوم', s: 'دولة جديدة كل يوم', c: '#e76f51' },
+    { k: 'concepts', e: '📘', t: 'مفاهيم المستكشف', s: 'ما القارة؟ ما العاصمة؟', c: '#0ea5e9' },
+    { k: 'battuta', e: '🐪', t: 'رحلة ابن بطوطة', s: 'سافر مع الرحالة العظيم', c: '#a0522d' },
+    { k: 'islamic', e: '🕋', t: 'العالم الإسلامي', s: 'الحرمان والأقصى وطرق الحج', c: '#1b8a5a' },
+    { k: 'hello', e: '👋', t: 'قل مرحباً', s: 'التحية بلغات العالم', c: '#2a9d8f' },
+  ]],
+  ['🎮 العب وتمرّن', [
+    { k: 'missions', e: '🔎', t: 'مهام المستكشف', s: 'ألغاز تحلّها بالخريطة', c: '#0f766e' },
+    { k: 'world', e: '🧠', t: 'التمرين الشامل', s: 'أسئلة من العالم كله', c: '#e5484d' },
+    { k: 'games', e: '🎮', t: 'الألعاب', s: 'أعلام، عواصم، خريطة، ذاكرة', c: '#8e44ad' },
+    { k: 'family', e: '👨‍👩‍👧‍👦', t: 'تحدي العائلة', s: 'العبوا معاً بالدور', c: '#7b5cd6' },
+  ]],
+  ['⭐ لي', [
+    { k: 'passport', e: '🛂', t: 'جواز سفري', s: 'أختامي وشهاداتي', c: '#d4a017' },
+    { k: 'studio', e: '🎙️', t: 'استوديو صوتي', s: 'سجّل الأسماء بصوتك', c: '#db2777' },
+  ]],
 ];
 
 export function homeScreen(root, { go }) {
@@ -30,22 +41,22 @@ export function homeScreen(root, { go }) {
       h('div', { class: 'me-stats' }, h('span', {}, got ? '🛂 ' + got.toLocaleString('ar-EG') + ' من ' + states.length.toLocaleString('ar-EG') : '🛂 لا أختام بعد'),
         h('button', { class: 'icon-btn', 'aria-label': 'الإعدادات', onclick: () => go('options') }, '⚙️'))),
     h('h1', { class: 'brand' }, '🌍 مستكشف العالم'),
-    owl(due ? `${greet} يا ${me.name}! حان وقت مراجعة ${due.toLocaleString('ar-EG')} من الدول. 🔔` : `${greet} يا ${me.name}! ${got ? 'في جوازك ' + got.toLocaleString('ar-EG') + ' من الأختام. ' : ''}إلى أين نسافر اليوم؟`, { size: 84 }),
+    owl(`${greet} يا ${me.name}! ${got ? 'في جوازك ' + got.toLocaleString('ar-EG') + (got > 10 ? ' ختماً' : got > 2 ? ' أختام' : got === 2 ? ' ختمان' : ' ختم واحد') + '.' : 'جوازك ينتظر أول ختم.'} إلى أين نسافر اليوم؟`, { size: 84 }),
     nextStep(me, due, got, go),
-    h('div', { class: 'tiles' }, TILES.map((t) => h('button', { class: 'tile', style: { '--c': t.c }, onclick: () => { sfx('tap'); go(t.k); } },
+    ...SECTIONS.flatMap(([title, tiles]) => [h('h2', { class: 'sec-title' }, title), h('div', { class: 'tiles even' }, tiles.map((t) => h('button', { class: 'tile', style: { '--c': t.c }, onclick: () => { sfx('tap'); go(t.k); } },
       t.k === 'world' && due ? h('span', { class: 'badge-dot' }, due.toLocaleString('ar-EG')) : null,
-      h('span', { class: 'te' }, t.e), h('b', {}, t.t), h('small', {}, t.k === 'world' && due ? 'حان وقت المراجعة!' : t.s)))),
+      h('span', { class: 'te' }, t.e), h('span', { class: 'tt' }, h('b', {}, t.t), h('small', {}, t.s)))))]),
   );
   root.querySelector('.owl-wrap').addEventListener('click', () => speak(root.querySelector('.bubble').textContent, 'ar-SA'));
 }
 
-// «ابدأ من هنا»: خطوة واحدة مقترحة بدل أحد عشر خياراً متساوية
+// «ابدأ من هنا»: خطوة واحدة مقترحة. المراجعة المستحقة أولاً، ثم الدولة التالية في الرحلة الحالية
 function nextStep(me, due, got, go) {
   const ready = Object.keys(me.stamps || {}).filter((id) => goldEligible(me, id)).length;
+  const { current } = journeyState(me);
   const [k, e, t, s] = due ? ['world', '🔔', 'حان وقت المراجعة', 'في التمرين الشامل']
-    : !got ? ['explore', '🗺️', 'ابدأ من هنا', 'افتح الخريطة، والمس دولة، وخذ أول ختم']
+    : current ? ['journeys', current.icon, (got ? 'تابع رحلة: ' : 'ابدأ من هنا: ') + current.title, 'الدولة التالية: ' + byId[current.next].ar]
     : ready ? ['world', '🥇', 'اجمع أدلة الختم الذهبي', `${ready.toLocaleString('ar-EG')} من الدول التي زرتها تنتظر`]
-    : got < 5 ? ['explore', '🗺️', 'تابع الاستكشاف', 'زر دولة جديدة وخذ ختمها']
     : ['missions', '🔎', 'مهمة اليوم', 'لغز تحلّه بالخريطة'];
   return h('button', { class: 'next-step', onclick: () => { sfx('tap'); go(k); } }, h('span', { class: 'ne' }, e), h('span', {}, h('b', {}, t), h('small', {}, s)), h('span', { class: 'na' }, '←'));
 }

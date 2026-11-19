@@ -5,7 +5,7 @@
 // المراجعة: بعد الختم الذهبي تُستحق مراجعة بعد ٣ أيام، ثم ٧، ثم ٣٠. الخطأ في المراجعة يعيدها إلى ٣ أيام.
 import { store } from './store.js';
 
-export const SKILLS = { flag: 'العلم', capital: 'العاصمة', map: 'الموقع', names: 'الأسماء باللغات', landmark: 'المعالم', continent: 'القارة', language: 'اللغات', neighbor: 'الجيران', nature: 'الأنهار والجبال' };
+export const SKILLS = { flag: 'العلم', capital: 'العاصمة', map: 'الموقع', names: 'الأسماء باللغات', landmark: 'المعالم', continent: 'القارة', language: 'اللغات', neighbor: 'الجيران', nature: 'الأنهار والجبال', compare: 'المقارنة بين الدول' };
 export const INTERVALS = [3, 7, 30];
 const DAY = 864e5;
 export const today = () => new Date().toLocaleDateString('en-CA');
@@ -105,7 +105,8 @@ export function weakest(n = 8, p = store.me) {
 // الدليل: إجابة صحيحة من المحاولة الأولى عن مهارة لهذه الدولة، داخل جلسة مختلطة لا سياق فيها.
 // الإلزامي: العلم والموقع، والعاصمة إن كانت صالحة للسؤال. ومعها مهارتان أخريان.
 // العلم والعاصمة أسئلة اختيار يمكن تخمينها، فيلزم لكل منهما جوابان صحيحان في يومين مختلفين. والخطأ يمحو أدلة تلك المهارة.
-export const OTHER_SKILLS = ['names', 'landmark', 'language', 'neighbor', 'nature'];
+// المعلم ليس دليلاً ما دام اسماً بلا صورة: يحفظه الطفل كلمتين لا معرفة
+export const OTHER_SKILLS = ['names', 'language', 'neighbor', 'nature'];
 export const OTHER_NEEDED = 2;
 export const TWICE = ['flag', 'capital'];
 const need = (k) => (TWICE.includes(k) ? 2 : 1);

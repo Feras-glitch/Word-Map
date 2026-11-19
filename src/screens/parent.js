@@ -63,7 +63,7 @@ export function parentScreen(root, { go }) {
         const x = sum[k]; const n = x.ok + x.bad; const pct = Math.round((x.ok / n) * 100);
         // أقل من ١٠ إجابات لا تكفي لنسبة ذات معنى. والخط الرمادي حدّ التخمين (خيار من ٣ أو ٤)، ولا تخمين في سؤال الخريطة
         if (n < 10) return h('div', { class: 'sb' }, h('span', {}, t), h('div', { class: 'bar' }), h('small', {}, `${ar(n)} فقط، قليلة`));
-        return h('div', { class: 'sb' }, h('span', {}, t), h('div', { class: 'bar' }, h('i', { style: { width: pct + '%', background: pct >= 75 ? '#1a9b55' : pct >= 50 ? '#e0a800' : '#e5484d' } }), k === 'map' ? null : h('u', { class: 'chance', title: 'حد التخمين' })), h('small', {}, `${ar(pct)}٪ من ${ar(n)}`));
+        return h('div', { class: 'sb' }, h('span', {}, t), h('div', { class: 'bar' }, h('i', { style: { width: pct + '%', background: pct >= 75 ? '#1a9b55' : pct >= 50 ? '#e0a800' : '#e5484d' } }), k === 'map' ? null : h('u', { class: 'chance' + (k === 'compare' ? ' half' : ''), title: 'حد التخمين' })), h('small', {}, `${ar(pct)}٪ من ${ar(n)}`));
       }))] : null,
       (() => { let n = 0; for (const m of Object.values(p.practice || {})) for (const x of Object.values(m)) n += x.ok + x.bad; return n ? h('p', { class: 'hint' }, `${gp(p, 'وأجاب', 'وأجابت')} في ألعاب التدريب عن ${ar(n)} سؤالاً (تُعرض منفصلة لأنها تمرين، وقد يرى فيها التلميح أو يحاول مرتين).`) : null; })(),
       weak.length ? [h('h4', {}, gp(p, 'دول يخطئ', 'دول تخطئ') + ' فيها أكثر من غيرها (بنسبة الخطأ، محاولتان على الأقل)'), h('div', { class: 'neighbors' }, weak.map((id) => h('span', { class: 'chip' }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))] : null,

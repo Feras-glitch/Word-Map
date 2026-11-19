@@ -22,6 +22,8 @@ import { parentScreen } from './screens/parent.js';
 import { familyScreen } from './screens/family.js';
 import { aboutScreen } from './screens/about.js';
 import { studioScreen } from './screens/studio.js';
+import { journeysScreen } from './screens/journeys.js';
+import { conceptsScreen } from './concepts.js';
 import { missionsScreen, findScreen, guideScreen, nileScreen, routeScreen, layerScreen } from './screens/missions.js';
 
 const screens = {
@@ -40,11 +42,12 @@ const screens = {
   daily: { title: '✈️ رحلة اليوم', fn: dailyScreen, full: true },
   options: { title: '⚙️ الإعدادات', fn: settingsScreen },
   world: { title: '🧠 التمرين الشامل', fn: worldScreen },
-  review: { title: '🧠 التمرين الشامل', fn: worldScreen },
   parent: { title: '🔒 لوحة الوالدين', fn: parentScreen },
   family: { title: '👨‍👩‍👧‍👦 تحدي العائلة', fn: familyScreen },
   about: { title: '🗺️ عن هذه الخريطة', fn: aboutScreen },
   studio: { title: '🎙️ الاستوديو الصوتي', fn: studioScreen },
+  journeys: { title: '🧳 رحلاتي', fn: journeysScreen },
+  concepts: { title: '📘 مفاهيم المستكشف', fn: conceptsScreen },
   missions: { title: '🔎 مهام المستكشف', fn: missionsScreen },
   find: { title: '🔎 ابحث عن بلدي', fn: findScreen, full: true, back: 'missions' },
   guide: { title: '🧭 كن دليل إخوتك', fn: guideScreen, back: 'missions' },

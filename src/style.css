@@ -451,3 +451,49 @@ textarea.paste { width: 100%; min-height: 140px; border-radius: 12px; border: 2p
 .studio label, .switch { display: inline-flex; align-items: center; min-height: 44px; }
 .compass small { font-size: .7rem; }
 .opt-wrap .opt-say { min-width: 48px; }
+
+/* ===== ١.١١: البطاقة المنظمة، الرحلات، المفاهيم ===== */
+.card-head { display: grid; grid-template-columns: 1.15fr 1fr; gap: 10px; align-items: stretch; margin: 6px 0 12px; }
+.card-head .card-flag { margin: 0; align-items: center; } .card-head .card-flag img { width: 100%; max-width: 230px; }
+.card-map { background: #fff; border-radius: 14px; padding: 4px; box-shadow: 0 0 0 2px #fff, 0 6px 14px rgba(0,0,0,.14); display: flex; flex-direction: column; overflow: hidden; }
+.card-map .mini-map { width: 100%; flex: 1; min-height: 96px; border-radius: 10px; display: block; } .card-map small { font-weight: 800; color: var(--muted); padding: 2px 0; }
+.mini-map { width: 100%; border-radius: 12px; display: block; }
+.didyou.big { background: #fff6d6; border-radius: 18px; padding: 12px 14px; margin: 10px 0; border-right: 6px solid var(--gold); display: grid; grid-template-columns: 1fr auto; column-gap: 8px; align-items: center; }
+.didyou.big .st-label { grid-column: 1 / -1; } .didyou.big p { margin: 4px 0 0; font-size: 1.15rem; font-weight: 700; line-height: 1.8; }
+.more-langs { margin-top: 6px; } .more-langs summary { color: var(--blue-d); font-weight: 800; font-size: .92rem; padding: 6px 4px; cursor: pointer; list-style: none; min-height: 36px; }
+.more-langs summary::-webkit-details-marker { display: none; } .more-langs[open] summary { margin-bottom: 4px; } .more-langs .name-row { margin-top: 6px; }
+.tri-fold .name-row b { font-size: 1.3rem; }
+.lm-row { display: flex; align-items: center; gap: 10px; } .lm-row > :last-child { flex: 1; } .lm-icon { font-size: 2.6rem; line-height: 1; }
+.lm-opt { display: flex; flex-direction: column; align-items: center; gap: 2px; } .lm-opt span { font-size: 1.8rem; }
+.q-mark { width: 30px; height: 30px; border-radius: 50%; background: #e7f1fb; color: var(--blue-d); font-weight: 900; font-size: 1rem; margin-inline-start: 4px; position: relative; }
+.q-mark::after { content: ''; position: absolute; inset: -8px; } /* مساحة لمس أوسع */
+.gold-strip { background: #fffaf0; border: 2px solid #f0deb0; border-radius: 16px; padding: 6px 10px; margin: 8px 0; }
+.gold-strip summary { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; cursor: pointer; list-style: none; min-height: 40px; font-size: .95rem; }
+.gold-strip summary::-webkit-details-marker { display: none; } .gold-strip summary b { margin-inline-end: auto; }
+.gs { background: #fff; border-radius: 99px; padding: 2px 8px; font-weight: 800; white-space: nowrap; } .gs.on { background: #e5f4e4; }
+.gold-strip .btn { width: 100%; margin-top: 6px; }
+.sec-title { font-size: 1.15rem; margin: 18px 4px 8px; color: var(--ink); }
+.tiles.even .tile:first-child { grid-column: auto; flex-direction: column; background: #fff; color: inherit; }
+.tiles.even .tile:first-child small { color: var(--muted); } .tiles.even .tile:first-child .te { font-size: 3rem; }
+.tiles.even { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.journey summary { display: flex; align-items: center; gap: 10px; cursor: pointer; list-style: none; min-height: 48px; } .journey summary::-webkit-details-marker { display: none; }
+.j-icon { font-size: 2rem; } .j-title { flex: 1; display: flex; flex-direction: column; } .j-title b { font-size: 1.15rem; } .j-title small { color: var(--muted); } .j-count { font-weight: 800; color: var(--muted); white-space: nowrap; }
+.journey .bar { height: 10px; background: #eef2f7; border-radius: 99px; overflow: hidden; margin: 6px 0 10px; } .journey .bar i { display: block; height: 100%; background: #1a9b55; border-radius: 99px; }
+.journey.current { outline: 3px solid #1a9b55; } .journey.done { opacity: .85; }
+.j-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.j-item { display: flex; align-items: center; gap: 8px; background: #f6f8fb; border-radius: 14px; padding: 8px 10px; min-height: 48px; font-weight: 800; text-align: start; }
+.j-item img { width: 34px; border-radius: 4px; box-shadow: 0 0 0 1px #0002; } .j-item span { flex: 1; } .j-item small { color: var(--muted); white-space: nowrap; }
+.j-item.on { background: #e5f4e4; } .j-item.next { background: #fff6d6; outline: 3px solid var(--gold); } .j-item.next small { color: #8a6200; font-weight: 900; }
+.concept-head { display: flex; align-items: center; gap: 10px; } .concept-head h3 { flex: 1; margin: 0; font-size: 1.3rem; }
+.concept-draw { margin: 10px 0; } .concept-map { width: 100%; border-radius: 14px; display: block; } .concept-draw .mini-map { max-height: 260px; }
+.concept p { font-size: 1.12rem; line-height: 1.9; margin: 6px 0; font-weight: 600; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 12px; font-weight: 700; font-size: .9rem; } .legend i { display: inline-block; width: 14px; height: 14px; border-radius: 4px; margin-inline-end: 4px; vertical-align: middle; }
+.hello-bubbles { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding: 14px 0; } .hello-bubbles span { background: #fff; border-radius: 18px; padding: 8px 14px; font-weight: 900; font-size: 1.2rem; box-shadow: var(--shadow); }
+.hello-sec { margin: 10px 0; } .hello-sec summary { display: flex; align-items: center; gap: 8px; background: #fff; border-radius: 14px; padding: 10px 14px; min-height: 48px; cursor: pointer; list-style: none; box-shadow: var(--shadow); }
+.hello-sec summary::-webkit-details-marker { display: none; } .hello-sec summary b { flex: 1; font-size: 1.1rem; } .hello-sec summary small { color: var(--muted); } .hello-sec .hello-grid { margin-top: 10px; }
+.sb .bar .chance.half { right: 50%; }
+/* بلاطات الأقسام مضغوطة: رمز بجانب النص، حتى تُرى الأقسام الثلاثة دون تمرير طويل */
+.tiles.even .tile, .tiles.even .tile:first-child { flex-direction: row; align-items: center; justify-content: flex-start; text-align: start; gap: 10px; padding: 10px 12px; min-height: 68px; }
+.tiles.even .tile .te, .tiles.even .tile:first-child .te { font-size: 2rem; } .tiles.even .tile b { font-size: 1rem; line-height: 1.3; display: block; } .tiles.even .tile small { font-size: .78rem; line-height: 1.3; display: block; }
+.tiles.even .tile > b, .tiles.even .tile > small { flex: 1; }
+.tiles.even .tile .tt { display: flex; flex-direction: column; flex: 1; min-width: 0; }

@@ -108,7 +108,7 @@ export function findScreen(root, { go }) {
     m.world(0);
     setTimeout(() => { if (!alive()) return; speak((puzzle ? `لغز من ${puzzle.from}. ` : 'ابحث عن بلدي. ') + chain[0].text, LANG.ar); }, 300);
     // للصغار: نقرّب الخريطة إلى القارة بعد الدليل الأول
-    if (level === 1 && chain[0].kind === 'cont') setTimeout(() => alive() && m.zoomTo(contBox[target.cont], 900), 2200);
+    if (chain[0].kind === 'cont') setTimeout(() => alive() && m.zoomTo(contBox[target.cont], 900), 2200);
   });
 }
 

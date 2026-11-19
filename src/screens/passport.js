@@ -5,6 +5,7 @@ import { openCard } from '../card.js';
 import { certsSection } from '../certs.js';
 import { openStoryMap } from './missions.js';
 import { skillSummary, SKILLS, weakest } from '../mastery.js';
+import { journeyState } from '../journeys.js';
 
 const GAME_NAMES = { flag: '🚩 خمّن العلم', where: '📍 أين الدولة؟', capital: '🏛️ العاصمة', memory: '🧠 الذاكرة' };
 
@@ -47,8 +48,15 @@ export function passportScreen(root, { go }) {
     return h('div', { class: 'badge-row' }, h('span', {}, t), h('span', {}, pct.toLocaleString('ar-EG') + '٪ صحيح من ' + (x.ok + x.bad).toLocaleString('ar-EG') + ' سؤال'));
   }));
   const weak = weakest(6);
-  root.append(...[cover, h('h3', {}, 'تقدمي في القارات'), h('p', { class: 'hint' }, 'الشريط الملوّن: أختام الزيارة · الشريط الذهبي: أختام الإتقان'), progress,
+  // الأختام أولاً: هي المكافأة. ثم الرحلات، ثم شهادات القارات (وفيها تقدم كل قارة)، ثم المهارات
+  const js = journeyState(me);
+  const jrow = h('div', { class: 'badges' }, js.list.slice(0, 3).concat(js.list.slice(3).filter((j) => j.done)).map((j) => h('div', { class: 'badge-row' }, h('span', {}, j.icon + ' ' + j.title), h('span', {}, j.complete ? '🏅 أكملتها' : j.done.toLocaleString('ar-EG') + ' من ' + j.total.toLocaleString('ar-EG')))),
+    h('button', { class: 'btn small soft', onclick: () => go('journeys') }, '🧳 كل الرحلات'));
+  root.append(...[cover, h('h3', {}, 'أختامي'), grid,
+    h('h3', {}, '🧳 رحلاتي'), jrow,
+    h('h3', {}, '🎓 شهادات القارات'), h('p', { class: 'hint' }, 'تنال شهادة القارة حين تجمع أختام دولها كلها.'), certsSection(me),
     Object.keys(sum).length ? [h('h3', {}, 'مهاراتي'), skills] : null,
-    weak.length ? [h('h3', {}, 'دول أخطئ فيها كثيراً'), h('div', { class: 'neighbors' }, weak.map((id) => h('button', { class: 'chip', onclick: () => openCard(id, { onShowOnMap: showOnMap }) }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))] : null, (me.stories || []).length ? [h('h3', {}, '🔎 قصص اكتشافاتي'), h('ul', { class: 'stories' }, me.stories.slice(0, 12).map((st) => h('li', { class: 'tappable', onclick: () => openStoryMap(st) }, byId[st.id] ? h('img', { src: flagUrl(byId[st.id].f), alt: '' }) : null, h('span', {}, st.text), h('small', {}, new Date(st.date).toLocaleDateString('ar-EG', { day: 'numeric', month: 'short' })))))] : null,
-    h('h3', {}, '🎓 شهاداتي'), certsSection(me), h('h3', {}, 'جوائزي'), badges, h('h3', {}, 'أختامي'), grid].flat(Infinity).filter(Boolean));
+    weak.length ? [h('h3', {}, 'دول أخطئ فيها كثيراً'), h('div', { class: 'neighbors' }, weak.map((id) => h('button', { class: 'chip', onclick: () => openCard(id, { onShowOnMap: showOnMap }) }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))] : null,
+  ].flat(Infinity).filter(Boolean));
+  void progress; void badges; void openStoryMap;
 }

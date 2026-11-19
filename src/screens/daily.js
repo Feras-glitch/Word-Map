@@ -2,6 +2,7 @@ import { h, confetti } from '../ui.js';
 import { createMap, arcPath, svgEl } from '../map.js';
 import { pool, byId, flagUrl } from '../data.js';
 import { store } from '../store.js';
+import { journeyState } from '../journeys.js';
 import { speak, LANG } from '../speech.js';
 import { sfx } from '../sfx.js';
 import { openCard } from '../card.js';
@@ -15,7 +16,10 @@ export function dailyScreen(root) {
   // تُلغى الرحلة إن خرج الطفل من الشاشة أو بُدّل الملف، فلا يُحفظ شيء لغير صاحبها
   const alive = () => root.isConnected && store.me?.id === owner;
   const d = today();
-  const P = pool(me.level).filter((c) => c.cen);
+  // رحلة اليوم تتبع الرحلة الحالية: دولة لم تُزر بعد منها، وإلا فمن دول المستوى
+  const cur = journeyState(me).current;
+  const fromJourney = cur ? cur.ids.filter((id) => !me.stamps[id] && byId[id].cen).map((id) => byId[id]) : [];
+  const P = fromJourney.length > 1 ? fromJourney : pool(me.level).filter((c) => c.cen);
   // دولة اليوم ثابتة لكل طفل في اليوم نفسه، ولا تكون دولة الأمس
   const avoid = me.daily.last === d ? me.daily.prevId : me.daily.lastId;
   let target = P[hash(d + me.id) % P.length];
@@ -67,6 +71,7 @@ export function dailyScreen(root) {
     if (!alive()) return;
     const streak = streakFor();
     store.patchProfile(owner, (p) => { p.daily = { last: d, lastId: target.id, prevId: p.daily?.last === d ? p.daily.prevId : p.daily?.lastId, streak }; });
+    plane.style.display = 'none'; // الطائرة هبطت: لا تغطي الدولة
     m.zoomToCountry(target.id, 900); m.flash(target.id, 'flash', 3000);
     confetti(40); sfx('win');
     speak('هبطنا في ' + target.ar + '!', LANG.ar);
