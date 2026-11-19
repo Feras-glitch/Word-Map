@@ -41,7 +41,7 @@ async function api(base, params) {
   throw new Error('API ' + u);
 }
 const strip = (html) => String(html || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-const FREE = /^(CC0|CC[ -]BY(-SA)?( \d(\.\d)?)?|Public domain|PD|GFDL|Attribution)/i;
+const FREE = /^(CC0|CC[ -]BY(-SA)?( \d(\.\d)?)?|Public domain|PD|GFDL|Attribution|FAL|Free Art License)/i;
 
 const old = fs.existsSync(META) ? JSON.parse(fs.readFileSync(META, 'utf8')) : {};
 const meta = {};
@@ -58,7 +58,7 @@ for (const id of Object.keys(COUNTRIES)) {
       // «search:استعلام|ملف مرفوض|ملف مرفوض»: الملفات بعد «|» رفضها المراجع فلا تُختار
       const [query, ...skip] = file.slice(7).split('|'); const sk = skip.map((x) => x.replace(/_/g, ' '));
       const s = await api('https://commons.wikimedia.org/w/api.php', { action: 'query', list: 'search', srsearch: query + ' filetype:bitmap', srnamespace: '6', srlimit: '20' });
-      cands = (s.query?.search || []).map((x) => x.title.replace(/^File:/, '')).filter((t) => /\.jpe?g$/i.test(t) && !/logo|map|plan|diagram|night|flag/i.test(t) && !sk.includes(t.replace(/_/g, ' ')));
+      cands = (s.query?.search || []).map((x) => x.title.replace(/^File:/, '')).filter((t) => /\.jpe?g$/i.test(t) && !/logo|map|plan|diagram|night|flag|coat|locator|collage|montage|satellite|nasa|landsat|sentinel|iss0|stamp|banknote|coin/i.test(t) && !sk.includes(t.replace(/_/g, ' ')));
       file = null;
     }
     for (const cand of cands) {
