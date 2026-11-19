@@ -525,3 +525,20 @@ textarea.paste { width: 100%; min-height: 140px; border-radius: 12px; border: 2p
 .spell-t { width: 56px; height: 56px; border-radius: 14px; background: #fff; font-size: 1.7rem; font-weight: 900; box-shadow: 0 4px 0 #d6dde8; } .spell-t.used { opacity: .25; }
 .time-up { position: fixed; inset: 0; z-index: 999; background: linear-gradient(180deg, #1d3b6e, #2b5ca8); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; text-align: center; }
 .time-up h2 { margin: 0; font-size: 1.6rem; } .time-up p { margin: 0; font-size: 1.15rem; opacity: .95; } .time-up .btn.small { opacity: .85; }
+
+/* v1.15: نقاط التقدم بنصف صواب، وقائمة ما فات في نهاية اللعبة */
+.q-dots i.half { background: #f0a020; }
+.missed { margin: 10px 0; text-align: center; } .missed .neighbors { justify-content: center; margin-top: 6px; }
+/* شبكة الصور الرمزية تلتف ولا تُقص، واسم الدولة الطويل يبقى داخل بطاقة لعبة الذاكرة */
+.avatars { grid-template-columns: repeat(auto-fill, minmax(46px, 1fr)); } .av-btn { min-width: 0; font-size: 1.8rem; padding: 4px; }
+.mface { overflow: hidden; } .mface b { font-size: clamp(.72rem, 3.3vw, 1rem); line-height: 1.2; overflow-wrap: anywhere; }
+/* زر الإغلاق لا يغطي زر الاستماع في بطاقات المفاهيم */
+.concept-modal .concept-head { padding-inline-end: 52px; }
+/* الوسوم الصغيرة بتباين يبلغ معيار AA */
+.lang-tag { color: #3b4a63; }
+/* «ابحث عن بلدي»: الخريطة لا تضيق إلى شريط، والأدلة تُمرَّر داخل لوحتها؛ وصورة المعلم أصغر */
+.screen.find .map-wrap { min-height: 46vh; flex-shrink: 0; }
+.screen.find .clue-panel { max-height: none; flex: 1; min-height: 0; }
+.clue-photo { max-width: 200px; }
+/* ترقيم القوائم بالأرقام العربية */
+ol { list-style-type: arabic-indic; }

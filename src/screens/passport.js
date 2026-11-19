@@ -6,6 +6,7 @@ import { certsSection } from '../certs.js';
 import { openStoryMap } from './missions.js';
 import { skillSummary, SKILLS, weakest } from '../mastery.js';
 import { journeyState } from '../journeys.js';
+import { cnt } from '../arnum.js';
 
 const GAME_NAMES = { flag: '🚩 خمّن العلم', where: '📍 أين الدولة؟', capital: '🏛️ العاصمة', memory: '🧠 الذاكرة' };
 
@@ -31,7 +32,7 @@ export function passportScreen(root, { go }) {
 
   const badges = h('div', { class: 'badges' },
     Object.entries(GAME_NAMES).map(([k, t]) => h('div', { class: 'badge-row' }, h('span', {}, t), stars(me.stars[k] || 0))),
-    h('div', { class: 'badge-row' }, h('span', {}, '🐪 رحلة ابن بطوطة'), h('span', {}, me.badges.battuta ? '🏅 أكملتها' : (me.battuta || 0).toLocaleString('ar-EG') + ' محطة')),
+    h('div', { class: 'badge-row' }, h('span', {}, '🐪 رحلة ابن بطوطة'), h('span', {}, me.badges.battuta ? '🏅 أكملتها' : (me.battuta ? cnt(me.battuta, 'محطة واحدة', 'محطتان', 'محطات', 'محطة') : 'لم تبدأ بعد'))),
     h('div', { class: 'badge-row' }, h('span', {}, '✈️ رحلات يومية متتالية'), h('span', {}, '🔥 ' + (me.daily.streak || 0).toLocaleString('ar-EG'))),
   );
 
@@ -45,7 +46,7 @@ export function passportScreen(root, { go }) {
   const sum = skillSummary();
   const skills = h('div', { class: 'badges' }, Object.entries(SKILLS).filter(([k]) => sum[k]).map(([k, t]) => {
     const x = sum[k]; const pct = Math.round((x.ok / (x.ok + x.bad)) * 100);
-    return h('div', { class: 'badge-row' }, h('span', {}, t), h('span', {}, pct.toLocaleString('ar-EG') + '٪ صحيح من ' + (x.ok + x.bad).toLocaleString('ar-EG') + ' سؤال'));
+    return h('div', { class: 'badge-row' }, h('span', {}, t), h('span', {}, pct.toLocaleString('ar-EG') + '٪ صحيح من ' + cnt(x.ok + x.bad, 'سؤال واحد', 'سؤالين', 'أسئلة', 'سؤالاً')));
   }));
   const weak = weakest(6);
   // الأختام أولاً: هي المكافأة. ثم الرحلات، ثم شهادات القارات (وفيها تقدم كل قارة)، ثم المهارات

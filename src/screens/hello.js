@@ -4,6 +4,7 @@ import { store } from '../store.js';
 import { speak } from '../speech.js';
 import { sfx } from '../sfx.js';
 import { openCard } from '../card.js';
+import { cnt } from '../arnum.js';
 
 const LANG_AR = {
   ara: 'العربية', eng: 'الإنجليزية', fra: 'الفرنسية', spa: 'الإسبانية', por: 'البرتغالية', deu: 'الألمانية', ita: 'الإيطالية',
@@ -41,7 +42,7 @@ export function helloScreen(root) {
   const visited = keys.filter((k) => groups[k].some((c) => me?.stamps?.[c.id])).sort((a, b) => groups[b].length - groups[a].length);
   const contOf = (k) => { const n = {}; for (const c of groups[k]) n[c.cont] = (n[c.cont] || 0) + 1; return Object.entries(n).sort((a, b) => b[1] - a[1])[0][0]; };
   const box = h('div', {});
-  const section = (title, ks, open) => (ks.length ? h('details', { class: 'hello-sec', open: open || null }, h('summary', {}, h('b', {}, title), h('small', {}, ks.length.toLocaleString('ar-EG') + ' تحية')), h('div', { class: 'hello-grid' }, ks.map(card))) : null);
+  const section = (title, ks, open) => (ks.length ? h('details', { class: 'hello-sec', open: open || null }, h('summary', {}, h('b', {}, title), h('small', {}, cnt(ks.length, 'تحية واحدة', 'تحيتان', 'تحيات', 'تحية'))), h('div', { class: 'hello-grid' }, ks.map(card))) : null);
   const search = h('input', { class: 'input', type: 'search', placeholder: '🔎 ابحث عن لغة أو دولة…', oninput: () => {
     const q = search.value.trim();
     box.querySelectorAll('.hello-card').forEach((el) => { el.style.display = !q || el.dataset.q.includes(q) ? '' : 'none'; });

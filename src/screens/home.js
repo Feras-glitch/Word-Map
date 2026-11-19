@@ -6,6 +6,7 @@ import { sfx } from '../sfx.js';
 import { dueReviews, goldEligible } from '../mastery.js';
 import { journeyState } from '../journeys.js';
 import { byId } from '../data.js';
+import { stampsWord } from '../arnum.js';
 
 // البلاطات في ثلاثة أقسام بدل قائمة واحدة
 const SECTIONS = [
@@ -35,7 +36,7 @@ const SIMPLE = [
   { k: 'play', e: '🎮', t: 'العب', c: '#8e44ad' },
   { k: 'passport', e: '🛂', t: 'جوازي', c: '#d4a017' },
 ];
-const stampWord = (n) => n.toLocaleString('ar-EG') + (n > 10 ? ' ختماً' : n > 2 ? ' أختام' : '');
+
 
 export function homeScreen(root, { go }) {
   const me = store.me;
@@ -48,7 +49,7 @@ export function homeScreen(root, { go }) {
       h('div', { class: 'me-stats' }, h('span', {}, got ? '🛂 ' + got.toLocaleString('ar-EG') + ' من ' + states.length.toLocaleString('ar-EG') : '🛂 لا أختام بعد'),
         h('button', { class: 'icon-btn', 'aria-label': 'الإعدادات', onclick: () => go('options') }, '⚙️'))),
     h('h1', { class: 'brand' }, '🌍 مستكشف العالم'),
-    owl(`${greet} يا ${me.name}! ${got ? 'في جوازك ' + (got === 1 ? 'ختم واحد' : got === 2 ? 'ختمان' : stampWord(got)) + '.' : 'جوازك ينتظر أول ختم.'} إلى أين نسافر اليوم؟`, { size: 84 }),
+    owl(`${greet} يا ${me.name}! ${got ? 'في جوازك ' + stampsWord(got) + '.' : 'جوازك ينتظر أول ختم.'} إلى أين نسافر اليوم؟`, { size: 84 }),
     nextStep(me, due, got, go),
     ...(me.level === 1 ? simpleHome(go, due) : sections(SECTIONS, go, due)),
   );

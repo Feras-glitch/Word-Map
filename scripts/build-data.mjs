@@ -84,7 +84,8 @@ const langNames = Object.fromEntries(['ar', 'en', 'zh'].map((l) => [l, cldrMain(
 const curNames = Object.fromEntries(['ar', 'en', 'zh'].map((l) => [l, JSON.parse(fs.readFileSync(require.resolve(`cldr-numbers-full/main/${l}/currencies.json`), 'utf8')).main[l].numbers.currencies]));
 const territory = JSON.parse(fs.readFileSync(require.resolve('cldr-core/supplemental/territoryInfo.json'), 'utf8')).supplemental.territoryInfo;
 const lexicon = JSON.parse(fs.readFileSync(path.join(root, 'content/languages.json'), 'utf8'));
-const curFix = { INR: { ar: 'روبية هندية' } };
+// أسماء العملات من CLDR فيها أخطاء إملائية ونحوية؛ هذه تصحيحاتها (مراجعة نوفمبر ٢٠٢٦)
+const curFix = { INR: { ar: 'روبية هندية' }, AZN: { ar: 'مانات أذربيجاني' }, BAM: { ar: 'مارك بوسني قابل للتحويل' }, BIF: { ar: 'فرنك بوروندي' }, BTN: { ar: 'نغولترم بوتاني' }, BWP: { ar: 'بولا بوتسواني' }, CRC: { ar: 'كولون كوستاريكي' }, CVE: { ar: 'إسكودو كابو فيردي' }, DOP: { ar: 'بيزو دومينيكاني' }, ERN: { ar: 'ناكفا إريتري' }, ETB: { ar: 'بير إثيوبي' }, GEL: { ar: 'لاري جورجي' }, GHS: { ar: 'سيدي غاني' }, GNF: { ar: 'فرنك غيني' }, GTQ: { ar: 'كيتزال غواتيمالي' }, HNL: { ar: 'ليمبيرا هندوراسية' }, HTG: { ar: 'غورد هايتي' }, HUF: { ar: 'فورنت مجري' }, KES: { ar: 'شلن كيني' }, KGS: { ar: 'سوم قيرغيزي' }, KHR: { ar: 'ريال كمبودي' }, KZT: { ar: 'تنغي كازاخستاني' }, MGA: { ar: 'أرياري مدغشقري' }, MMK: { ar: 'كيات ميانماري' }, MVR: { ar: 'روفية مالديفية' }, MWK: { ar: 'كواشا مالاوية' }, MZN: { ar: 'متيكال موزمبيقي' }, NIO: { ar: 'كوردوبا نيكاراغوية' }, NPR: { ar: 'روبية نيبالية' }, PKR: { ar: 'روبية باكستانية' }, STN: { ar: 'دوبرا ساو تومي وبرينسيب' }, SZL: { ar: 'ليلانجيني إسواتيني' }, THB: { ar: 'بات تايلاندي' }, TMT: { ar: 'مانات تركمانستاني' }, TTD: { ar: 'دولار ترينيداد وتوباغو' }, UAH: { ar: 'هريفنيا أوكرانية' }, UYU: { ar: 'بيزو أوروغواي' }, VND: { ar: 'دونغ فيتنامي' }, ZWG: { ar: 'زيغ (ذهب زيمبابوي)' } };
 const eth = JSON.parse(fs.readFileSync(path.join(root, 'content/ethnologue-2019.json'), 'utf8'));
 const curData = JSON.parse(fs.readFileSync(require.resolve('cldr-core/supplemental/currencyData.json'), 'utf8')).supplemental.currencyData.region;
 const currentCurrency = (cc2) => (curData[cc2] || []).map((o) => Object.entries(o)[0]).filter(([, v]) => !v._to && v._tender !== 'false').map(([k]) => k)[0];
@@ -153,6 +154,14 @@ for (const c of out) {
   if (c.id in capitalQuestion) c.capQ = capitalQuestion[c.id];
 }
 for (const c of out) c.borders = c.borders.filter((b) => ids.has(b));
+// لا تُعدّ أقاليم الدولة نفسها جيراناً لها (هونغ كونغ وماكاو جزء من الصين)
+{
+  const B = Object.fromEntries(out.map((c) => [c.id, c]));
+  const own = (st, t) => t && t.kind !== 'state' && st.kind === 'state' && t.parent === st.ar;
+  for (const c of out) c.borders = c.borders.filter((b) => !own(c, B[b]) && !own(B[b], c));
+}
+// تصنيف الأمم المتحدة (M49): جنوب السودان في شرق أفريقيا
+for (const c of out) if (c.id === 'SSD') c.sub = 'شرق أفريقيا';
 // الجيران = حدود برية فقط، ويجب أن تكون العلاقة متماثلة
 {
   const B = Object.fromEntries(out.map((c) => [c.id, c]));

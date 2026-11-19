@@ -9,6 +9,7 @@ import { miniMap } from './minimap.js';
 import { journeyState } from './journeys.js';
 import { conceptBtn } from './concepts.js';
 import { landmarkIcon } from './landmarks.js';
+import { times, bigNum, cnt, gC } from './arnum.js';
 import { landmarkPhoto } from './photos.js';
 import { goldProgress, goldEligible, OTHER_NEEDED } from './mastery.js';
 import { requiredFor } from './screens/world.js';
@@ -36,22 +37,27 @@ export function tri(o, { big = false, prefix = '' } = {}) {
     o.zh ? h('div', { class: 'name-row zh', dir: 'ltr' }, h('span', { class: 'lang-tag' }, '中文'), zhRuby(o.zh, o.py), say(o.zh, LANG.zh)) : null);
 }
 const langName = (l) => h('span', { class: 'lname' }, h('b', {}, l.ar), h('small', { dir: 'ltr' }, l.en, ' · ', h('span', { lang: 'zh' }, l.zh), l.py ? ` (${l.py})` : ''));
-// التمييز العددي: مرتين، ٣–١٠ مرات، ١١ فأكثر مرة
-const times = (n) => (n === 2 ? 'مرتين' : n.toLocaleString('ar-EG') + (n >= 3 && n <= 10 ? ' مرات' : ' مرة'));
 
 function popText(c) {
   if (!c.pop) return null;
   const p = c.pop;
-  const n = p >= 1e9 ? (Math.round(p / 1e8) / 10).toLocaleString('ar-EG') + ' مليار'
-    : p >= 1e6 ? (p >= 1e7 ? Math.round(p / 1e6) : Math.round(p / 1e5) / 10).toLocaleString('ar-EG') + ' مليون'
-    : Math.round(p / 1e3).toLocaleString('ar-EG') + ' ألف';
+  const n = p >= 1e9 ? bigNum(Math.round(p / 1e8) / 10, 'b')
+    : p >= 1e6 ? bigNum(p >= 1e7 ? Math.round(p / 1e6) : Math.round(p / 1e5) / 10, 'm')
+    : p >= 1500 ? bigNum(Math.round(p / 1e3), 'k') : roundNice(p).toLocaleString('ar-EG');
   let cmp = '';
   const eg = byId.EGY?.pop;
   if (eg && c.id !== 'EGY') {
     const r = p / eg;
-    if (r >= 1.5) cmp = `أي أكثر من سكان مصر بنحو ${times(Math.round(r))}`;
-    else if (r >= 0.67) cmp = 'قريب من عدد سكان مصر';
-    else cmp = `وسكان مصر أكثر منها بنحو ${times(Math.round(1 / r))}`;
+    const k = roundNice(1 / r);
+    cmp = r >= 1.5 ? `أي أكثر من سكان مصر بنحو ${times(Math.round(r))}`
+      : r >= 1.15 ? 'أكثر من سكان مصر قليلاً'
+      : r >= 0.87 ? 'قريب من عدد سكان مصر'
+      : r >= 0.7 ? 'نحو ثلاثة أرباع سكان مصر'
+      : r >= 0.55 ? 'نحو ثلثي سكان مصر'
+      : r >= 0.42 ? 'نحو نصف سكان مصر'
+      : r >= 0.3 ? 'نحو ثلث سكان مصر'
+      : r >= 0.22 ? 'نحو ربع سكان مصر'
+      : `وسكان مصر أكثر من${gC(c, 'ها', 'ه')} بنحو ${k >= 1e6 ? bigNum(Math.round(k / 1e5) / 10, 'm') + ' مرة' : times(k)}`;
   }
   return { n: `نحو ${n} نسمة`, cmp };
 }
@@ -61,14 +67,24 @@ const landmarkSpeech = (c) => (c.landmark ? ['من معالم', c.ar, 'الشه�
 const factSpeech = (c) => (c.fact || c.note ? ['هل تعلم؟', c.fact || c.note] : []);
 
 // المساحة مقارنةً بمصر، كما يُقارن عدد السكان
+// المقارنة بمساحة مصر: كسور مألوفة للقريب منها، وعدد المرات للبعيد، وملاعب الكرة للدول الدقيقة جداً
+const roundNice = (x) => { const p = 10 ** Math.max(0, Math.floor(Math.log10(x)) - 1); return Math.round(x / p) * p; };
 function areaCmp(c) {
   const eg = byId.EGY?.area; if (!eg || !c.area || c.id === 'EGY') return '';
   const r = c.area / eg;
   if (r >= 1.5) return `أي أكبر من مصر بنحو ${times(Math.round(r))}`;
-  if (r >= 0.67) return 'قريبة من مساحة مصر';
-  if (r >= 0.4) return 'نحو نصف مساحة مصر';
-  if (r >= 0.01) return `ومصر أكبر منها بنحو ${times(Math.round(1 / r))}`;
-  return 'صغيرة جداً: مصر أكبر منها بأكثر من مئة مرة';
+  if (r >= 1.15) return 'أكبر من مصر قليلاً';
+  if (r >= 0.87) return 'قريبة من مساحة مصر';
+  if (r >= 0.7) return 'نحو ثلاثة أرباع مساحة مصر';
+  if (r >= 0.55) return 'نحو ثلثي مساحة مصر';
+  if (r >= 0.42) return 'نحو نصف مساحة مصر';
+  if (r >= 0.3) return 'نحو ثلث مساحة مصر';
+  if (r >= 0.22) return 'نحو ربع مساحة مصر';
+  const k = roundNice(1 / r);
+  const big = k >= 1e6 ? bigNum(Math.round(k / 1e5) / 10, 'm') + ' مرة' : times(k);
+  // ملعب كرة القدم نحو ١٠٥×٦٨ متراً = ٠٫٠٠٧١٤ كم²
+  const pitches = c.area < 5 ? `، وتساوي مساحت${gC(c, 'ها', 'ه')} نحو ${cnt(roundNice(c.area / 0.00714), 'ملعب واحد', 'ملعبين', 'ملاعب', 'ملعباً')} لكرة القدم` : '';
+  return `ومصر أكبر من${gC(c, 'ها', 'ه')} بنحو ${big}${pitches}`;
 }
 // اسم بالعربية بارزاً، وبقية اللغات مطوية خلف «بلغات أخرى» (تبقى ظاهرة للمستوى الصغير)
 function triFold(o, opts = {}) {
@@ -147,7 +163,7 @@ function languagesTab(c) {
     work.length ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '🏢 لغات العمل في الحكومة'), work.map((l) => h('div', { class: 'lang-item' }, langName(l), !off.length ? greetBox(l.greet) : null))) : null,
     reg.length ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '📍 لغات رسمية في بعض المناطق فقط'), h('div', { class: 'lang-chips' }, reg.map(langName)), L.regionalNote ? h('p', { class: 'note' }, L.regionalNote) : null) : null,
     wide.length ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '💬 لغات محلية متداولة واسعة الانتشار (ليست رسمية)'), h('div', { class: 'lang-chips' }, wide.map(langName)), L.widespreadNote ? h('p', { class: 'note' }, L.widespreadNote) : null) : null,
-    others > 0 ? h('p', { class: 'note' }, 'ويتحدث الناس فيها أيضاً ' + (others === 1 ? 'لغة محلية أخرى.' : others === 2 ? 'لغتين محليتين أخريين.' : others <= 10 ? `نحو ${others.toLocaleString('ar-EG')} لغات محلية أخرى.` : `نحو ${others.toLocaleString('ar-EG')} لغة محلية أخرى.`) + (L.langNote ? ' ' + L.langNote + '.' : '')) : L.langNote ? h('p', { class: 'note' }, L.langNote + '.') : null,
+    others > 0 ? h('p', { class: 'note' }, 'ويتحدث الناس فيها أيضاً ' + (others === 1 ? 'لغة محلية أخرى.' : others === 2 ? 'لغتين محليتين أخريين.' : 'نحو ' + cnt(others, '', '', 'لغات محلية أخرى', 'لغة محلية أخرى', 'لغة محلية أخرى') + '.') + (L.langNote ? ' ' + L.langNote + '.' : '')) : L.langNote ? h('p', { class: 'note' }, L.langNote + '.') : null,
   );
 }
 
@@ -159,9 +175,16 @@ function helloTab(c, openNeighbor) {
   return h('div', {},
     ks.length ? h('div', { class: 'sec' }, h('span', { class: 'st-label' }, '🗣️ يتكلم أهلها'), ks.map((k) => h('div', { class: 'lang-item' }, langName(languages[k]), greetBox(ov[k] || languages[k].greet)))) : null,
     neighbors.length ? h('div', { class: 'neighbors' }, h('span', {}, '🤝 الجيران: ', conceptBtn('border')),
-      neighbors.map((n) => h('button', { class: 'chip', onclick: () => openNeighbor(n.id) }, h('img', { src: flagUrl(n.f), alt: '' }), n.ar))) : null);
+      neighbors.map((n) => h('button', { class: 'chip', onclick: () => openNeighbor(n.id) }, h('img', { src: flagUrl(n.f), alt: '' }), n.ar))) : null,
+    neighbors.length ? nbNote(c) : null);
 }
 
+// ملاحظات على الجيران تحتاج شرحاً للطفل
+const NB_NOTE = {
+  MAR: 'إسبانيا جارة للمغرب لأنها تحتل مدينتي سبتة ومليلية، وهما مدينتان مغربيتان على ساحل المغرب.',
+  ESP: 'حدود إسبانيا البرية مع المغرب هي حول سبتة ومليلية، وهما مدينتان مغربيتان تحتلهما إسبانيا.',
+};
+const nbNote = (c) => (NB_NOTE[c.id] ? h('p', { class: 'note' }, '🕊️ ' + NB_NOTE[c.id]) : null);
 function numbersTab(c, openNeighbor) {
   const neighbors = c.borders.map((b) => byId[b]).filter(Boolean);
   const pop = popText(c);
@@ -190,6 +213,7 @@ function numbersTab(c, openNeighbor) {
       c.curStory ? h('button', { class: 'btn small soft', onclick: () => openStory(c.curStory) }, '📜 ' + c.curStory.title) : null) : null,
     neighbors.length ? h('div', { class: 'neighbors' }, h('span', {}, '🤝 الجيران: ', conceptBtn('border')),
       neighbors.map((n) => h('button', { class: 'chip', onclick: () => openNeighbor(n.id) }, h('img', { src: flagUrl(n.f), alt: '' }), n.ar))) : null,
+    neighbors.length ? nbNote(c) : null,
     c.sources?.length ? h('details', { class: 'sources' }, h('summary', {}, '📚 المصادر (للوالدين)'),
       h('ul', {}, c.sources.map((s) => h('li', {}, h('a', { href: s.url, target: '_blank', rel: 'noopener' }, s.title))))) : null,
   );

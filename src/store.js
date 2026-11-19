@@ -16,6 +16,7 @@ export function normalizeProfile(p) {
   for (const k of ['stamps', 'gold']) for (const [id, d] of Object.entries(q[k])) if (typeof d !== 'string' || !DATE.test(d)) delete q[k][id];
   for (const [id, r] of Object.entries(q.review)) if (!isObj(r) || !DATE.test(r.due || '')) delete q.review[id];
   q.gender = q.gender === 'f' ? 'f' : q.gender === 'm' ? 'm' : null;
+  q.zh = q.zh === true; // أسئلة الأسماء بالصينية: خيار لكل طفل يفعّله الوالدان
   q.battuta = Number.isFinite(+q.battuta) ? +q.battuta : 0;
   return q;
 }

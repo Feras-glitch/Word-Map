@@ -9,7 +9,8 @@ const FREE = ['parent', 'profiles', 'about', 'options'];
 const route = () => location.hash.slice(1).split('?')[0] || 'home';
 export const usedToday = (p = store.me) => p?.usage?.[today()] || 0;
 export const limitFor = () => +store.parent.dailyMinutes || 0;
-const extraToday = () => (store.parent.extra?.day === today() ? store.parent.extra.min : 0);
+// الوقت الإضافي لكل طفل وحده، ولليوم نفسه فقط
+const extraToday = (p = store.me) => (p?.extraTime?.day === today() ? p.extraTime.min : 0);
 export const minutesLeft = () => { const L = limitFor(); return L ? L + extraToday() - usedToday() : Infinity; };
 
 let overlay = null;
@@ -21,7 +22,7 @@ function check() {
     h('h2', {}, `انتهى وقت الاستكشاف اليوم يا ${store.me.name} 🌙`),
     h('p', {}, 'أحسنت اليوم! العالم ينتظرك غداً.'),
     h('button', { class: 'btn big soft', onclick: () => { location.hash = '#profiles'; } }, '👥 تبديل المستكشف'),
-    h('button', { class: 'btn small soft', onclick: () => parentLock(() => { store.setParent({ extra: { day: today(), min: extraToday() + 15 } }); check(); }) }, '🔒 للوالدين: ربع ساعة إضافية'));
+    h('button', { class: 'btn small soft', onclick: () => parentLock(() => { const min = extraToday() + 15; store.patch((p) => { p.extraTime = { day: today(), min }; }); check(); }) }, '🔒 للوالدين: ربع ساعة إضافية'));
   document.body.append(overlay);
 }
 export function startTimeLimit() {

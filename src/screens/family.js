@@ -5,6 +5,7 @@ import { pool, LEVELS, shuffle } from '../data.js';
 import { buildSet, runQuiz } from '../quiz.js';
 import { speak, LANG } from '../speech.js';
 import { sfx } from '../sfx.js';
+import { gp } from '../gender.js';
 
 const ar = (n) => Number(n).toLocaleString('ar-EG');
 // لاعبون من خارج الملفات: بابا، ماما، الأقارب، الأصدقاء... بأسماء يكتبها الأهل، وتُحفظ للمرات القادمة
@@ -77,7 +78,7 @@ export function familyScreen(root, { go }) {
       // في وضع «مستوى واحد» يأخذ كل لاعب دولاً مختلفة من المجموعة نفسها وبالترتيب نفسه لأنواع الأسئلة
       const cs = same ? shared.filter((_, k) => k % players.length === pi) : shuffle(pool(pl.level)).slice(0, rounds);
       pl.qlevel = lvl;
-      pl.qs = cs.map((c, i) => ({ c, q: buildSet(c, [kinds[i % kinds.length]], n)[0] }));
+      pl.qs = cs.map((c, i) => ({ c, q: buildSet(c, [kinds[i % kinds.length]], n, !!pl.zh)[0] }));
       pl.score = 0; pl.done = 0;
     });
     let turn = 0;
@@ -90,7 +91,7 @@ export function familyScreen(root, { go }) {
       root.innerHTML = '';
       root.append(board(), h('div', { class: 'fam-turn' }, h('div', { class: 'big-av' }, pl.avatar), h('h2', {}, 'دور ' + pl.name),
         h('p', {}, `السؤال ${ar(pl.done + 1)} من ${ar(rounds)}`),
-        h('button', { class: 'btn big', onclick: () => ask(pl) }, 'أنا جاهز! ←')));
+        h('button', { class: 'btn big', onclick: () => ask(pl) }, gp(pl, 'أنا جاهز! ←', 'أنا جاهزة! ←'))));
       speak('دور ' + pl.name, LANG.ar);
     }
     function ask(pl) {

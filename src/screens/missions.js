@@ -8,6 +8,7 @@ import { landmarkPhoto } from '../photos.js';
 import { fem, toFem3 } from '../gender.js';
 import { speak, LANG } from '../speech.js';
 import { sfx } from '../sfx.js';
+import { gC } from '../arnum.js';
 import { clueChain, cluesFor, candidates } from '../clues.js';
 import { tri, openCard } from '../card.js';
 
@@ -80,8 +81,8 @@ export function findScreen(root, { go }) {
     const seen = chain.slice(0, shown);
     const broken = seen.find((cl) => !cl.test(c));
     let t;
-    if (!broken) t = `${c.ar}: اختيارك يطابق ${shown === 1 ? 'الدليل' : 'الأدلة'} حتى الآن! ${shown < chain.length ? 'اسمع الدليل التالي لنضيّق البحث.' : 'لكنها ليست الدولة المقصودة. جرّب دولة قريبة منها.'}`;
-    else t = `هذه ${c.ar}. لا ينطبق عليها: «${broken.text}».`;
+    if (!broken) t = `${c.ar}: اختيارك يطابق ${shown === 1 ? 'الدليل' : 'الأدلة'} حتى الآن! ${shown < chain.length ? 'اسمع الدليل التالي لنضيّق البحث.' : gC(c, 'لكنها ليست الدولة المقصودة. جرّب دولة قريبة منها.', 'لكنه ليس الدولة المقصودة. جرّب دولة قريبة منه.')}`;
+    else t = `${gC(c, 'هذه', 'هذا')} ${c.ar}. لا ينطبق ${gC(c, 'عليها', 'عليه')}: «${broken.text}».`;
     msg.textContent = fem(t); speak(t, LANG.ar);
   }
   function win() {
@@ -100,9 +101,9 @@ export function findScreen(root, { go }) {
   function giveUp() {
     done = true; helped = true;
     m.mark(target.id, 'right'); m.zoomToCountry(target.id, 800);
-    const t = `كانت ${target.ar}. انظر أين تقع، ثم جرّب لغزاً جديداً.`;
+    const t = `${gC(target, 'كانت', 'كان')} ${target.ar}. انظر أين ${gC(target, 'تقع', 'يقع')}، ثم جرّب لغزاً جديداً.`;
     speak(t, LANG.ar);
-    addStory(owner, { id: target.id, kind: 'find-miss', text: `بحثتُ عن ${target.ar} وتعلمتُ مكانها`, detail: 'كُشفت الإجابة بعد كل الأدلة' });
+    addStory(owner, { id: target.id, kind: 'find-miss', text: `بحثتُ عن ${target.ar} وتعلمتُ موقع${gC(target, 'ها', 'ه')}`, detail: 'كُشفت الإجابة بعد كل الأدلة' });
     panel.replaceChildren(h('p', {}, t), h('div', { class: 'row wrap' }, h('button', { class: 'btn', onclick: () => openCard(target.id) }, '📖 بطاقة ' + target.ar),
       h('button', { class: 'btn soft', onclick: () => { root.innerHTML = ''; findScreen(root, { go }); } }, '🔁 لغز جديد')));
   }
@@ -296,7 +297,7 @@ const SPECIAL = {
   'POL|RUS': 'هنا عبرتَ إلى كالينينغراد: قطعة من روسيا منفصلة عن باقي أرضها، تقع بين بولندا وليتوانيا على بحر البلطيق.',
   'LTU|RUS': 'هنا عبرتَ إلى كالينينغراد: قطعة من روسيا منفصلة عن باقي أرضها، تقع بين بولندا وليتوانيا على بحر البلطيق.',
   'AZE|TUR': 'الحدود بين أذربيجان وتركيا قصيرة جداً، وهي في نخجوان: جزء من أذربيجان منفصل عن باقي أرضها.',
-  'ESP|MAR': 'الحدود البرية بين إسبانيا والمغرب في مدينتي سبتة ومليلية على ساحل المغرب، تديرهما إسبانيا ويطالب بهما المغرب.',
+  'ESP|MAR': 'الحدود البرية بين إسبانيا والمغرب في مدينتي سبتة ومليلية على ساحل المغرب، وهما مدينتان مغربيتان تحتلهما إسبانيا.',
   'GBR|IRL': 'جزيرة أيرلندا فيها دولتان: أيرلندا، وأيرلندا الشمالية التابعة لبريطانيا. والحدود البرية بينهما على هذه الجزيرة.',
   'DOM|HTI': 'هايتي والدومينيكان تتقاسمان جزيرة واحدة اسمها هيسبانيولا.',
   'IDN|TLS': 'تيمور الشرقية وإندونيسيا تتقاسمان جزيرة تيمور.',
@@ -352,7 +353,7 @@ export function routeScreen(root, { go }) {
     if (path.includes(id)) { msg.textContent = fem(`مررتَ ب${c.ar} من قبل.`); return; }
     if (!last.borders.includes(id)) {
       wrongs++; sfx('wrong'); m.flash(id, 'flash', 900);
-      const t = !c.landlocked && !last.landlocked && c.cont === last.cont ? `${c.ar} قريبة، لكن لا حدود برية بينها وبين ${last.ar}. ربما يفصل بينهما بحر.` : `لا تشترك ${c.ar} مع ${last.ar} في حدود برية. اختر جارة لـ${last.ar}.`;
+      const t = !c.landlocked && !last.landlocked && c.cont === last.cont ? `${c.ar} ${gC(c, 'قريبة', 'قريب')}، لكن لا حدود برية ${gC(c, 'بينها', 'بينه')} وبين ${last.ar}. ربما يفصل بينهما بحر.` : `لا ${gC(c, 'تشترك', 'يشترك')} ${c.ar} مع ${last.ar} في حدود برية. اختر جارة لـ${last.ar}.`;
       msg.textContent = fem(t); speak(t, LANG.ar); return;
     }
     path.push(id); sfx('tap'); drawPath();

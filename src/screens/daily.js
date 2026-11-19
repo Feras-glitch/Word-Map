@@ -6,6 +6,7 @@ import { journeyState } from '../journeys.js';
 import { speak, LANG } from '../speech.js';
 import { sfx } from '../sfx.js';
 import { openCard } from '../card.js';
+import { cnt } from '../arnum.js';
 
 const today = () => new Date().toLocaleDateString('en-CA');
 function hash(s) { let x = 2166136261; for (const ch of s) { x ^= ch.charCodeAt(0); x = Math.imul(x, 16777619); } return x >>> 0; }
@@ -76,7 +77,7 @@ export function dailyScreen(root) {
     confetti(40); sfx('win');
     speak('هبطنا في ' + target.ar + '!', LANG.ar);
     panel.replaceChildren(
-      h('div', { class: 'sp-head' }, h('img', { class: 'sp-flag', src: flagUrl(target.f), alt: '' }), h('b', {}, 'هبطنا في ' + target.ar + '!'), h('span', { class: 'sp-n' }, '🔥 ' + streak.toLocaleString('ar-EG') + ' يوم')),
+      h('div', { class: 'sp-head' }, h('img', { class: 'sp-flag', src: flagUrl(target.f), alt: '' }), h('b', {}, 'هبطنا في ' + target.ar + '!'), h('span', { class: 'sp-n' }, '🔥 ' + cnt(streak, 'يوم واحد', 'يومان', 'أيام', 'يوماً'))),
       h('p', {}, streak > 1 ? `رائع! هذه رحلتك رقم ${streak.toLocaleString('ar-EG')} على التوالي. عُد غداً لرحلة جديدة.` : 'عُد غداً لرحلة جديدة، واجمع سلسلة رحلات متتالية!'),
       h('button', { class: 'btn big', onclick: () => openCard(target.id) }, '📖 افتح بطاقة ' + target.ar));
   }

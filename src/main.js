@@ -71,7 +71,7 @@ export function go(name, { replace = false } = {}) {
 function render() {
   let name = location.hash.slice(1).split('?')[0] || 'home';
   if (!screens[name]) name = 'home';
-  if (!store.me && name !== 'profiles') { history.replaceState(null, '', '#profiles'); name = 'profiles'; }
+  if (!store.me && !['profiles', 'parent', 'about'].includes(name)) { history.replaceState(null, '', '#profiles'); name = 'profiles'; }
   const sc = screens[name];
   // شاشات الأهل والاستوديو تُعرض بصيغتها الأصلية
   setAddressee(undefined); setFemOff(['parent', 'about', 'studio'].includes(name));
@@ -86,7 +86,7 @@ function render() {
     app.append(h('header', { class: 'top' },
       sc.noBack ? h('span') : h('button', { class: 'back', 'aria-label': 'رجوع', onclick: () => (history.length > 1 ? history.back() : go(sc.back || 'home')) }, '→'),
       h('h1', {}, sc.title),
-      h('button', { class: 'home-btn', 'aria-label': 'الرئيسية', onclick: () => go('home') }, '🏠')));
+      store.me ? h('button', { class: 'home-btn', 'aria-label': 'الرئيسية', onclick: () => go('home') }, '🏠') : h('span')));
   }
   app.append(main);
   cleanup = sc.fn(main, { go }) || null;

@@ -153,4 +153,44 @@ await test('البحث: الدولة قبل البحر والنهر', () => {
   assert.ok(ex.indexOf('const countries = search(') < ex.indexOf('NAT.items.filter((x) => x.ar.includes(q)'), 'ترتيب نتائج البحث');
 });
 
+await test('التمييز العددي: ٣ ملايين، ألف، ١١ سؤالاً، ١٠٠ سؤال', async () => {
+  const { cnt, bigNum, times, stampsWord } = await import('../src/arnum.js');
+  const Q = (n) => cnt(n, 'سؤال واحد', 'سؤالين', 'أسئلة', 'سؤالاً');
+  assert.equal(Q(1), 'سؤال واحد'); assert.equal(Q(2), 'سؤالين'); assert.equal(Q(3), '٣ أسئلة'); assert.equal(Q(10), '١٠ أسئلة');
+  assert.equal(Q(11), '١١ سؤالاً'); assert.equal(Q(100), '١٠٠ سؤال'); assert.equal(Q(103), '١٠٣ أسئلة');
+  assert.equal(bigNum(3, 'm'), '٣ ملايين'); assert.equal(bigNum(1, 'k'), 'ألف'); assert.equal(bigNum(9, 'k'), '٩ آلاف'); assert.equal(bigNum(15, 'm'), '١٥ مليون'); assert.equal(bigNum(2.5, 'm'), '٢٫٥ مليون');
+  assert.equal(times(2), 'مرتين'); assert.equal(stampsWord(0), 'لا أختام بعد'); assert.equal(stampsWord(1), 'ختم واحد');
+});
+
+await test('لا تُكتب الأعداد بلا تمييز صحيح في الشاشات', () => {
+  for (const f of fs.readdirSync(new URL('../src/screens/', import.meta.url))) {
+    const t = read('src/screens/' + f);
+    assert.ok(!/\$\{ar\([^}]*\)\} سؤالاً/.test(t), f + ': «سؤالاً» بعد عدد بلا cnt');
+    assert.ok(!/toLocaleString\('ar-EG'\) \+ ' (ختم|يوم|محطة|تحية|سؤال)'/.test(t), f + ': تمييز عددي يدوي');
+  }
+});
+
+await test('بيانات المراجعة: جيران الصين بلا أقاليمها، وجنوب السودان في شرق أفريقيا، والعملات مصححة', () => {
+  assert.ok(!byId.CHN.borders.includes('HKG') && !byId.CHN.borders.includes('MAC'));
+  assert.equal(byId.SSD.sub, 'شرق أفريقيا');
+  const bad = ['هنداروس', 'قرطبة', 'روبية باكستاني', 'روبية نيبالي', 'نولتوم', 'لارى', 'جوردى', 'أثيوبي', 'أريتري', 'بروندي', 'رييال', 'قيرغستاني', 'ترينداد', 'هريفنيا أوكراني'];
+  for (const c of states) if (c.cur?.ar) for (const b of bad) assert.ok(!new RegExp(b + '(?![ء-ي])').test(c.cur.ar), `${c.id}: ${c.cur.ar}`);
+  assert.equal(byId.GRL.ar, 'غرينلاند');
+});
+
+await test('غزة: أرقام نوفمبر ٢٠٢٦، وسبتة ومليلية مدينتان محتلتان', () => {
+  const t = byId.PSE.popInfo?.gaza?.text || '';
+  assert.ok(t.includes('٧٤ ألف') && t.includes('٢٠ ألف طفل'), 'أرقام غزة');
+  assert.ok(read('src/card.js').includes('سبتة ومليلية') && read('src/screens/missions.js').includes('مدينتان مغربيتان تحتلهما إسبانيا'));
+  assert.ok(byId.MAR.borders.includes('ESP'), 'إسبانيا تبقى جارة للمغرب');
+});
+
+await test('الصينية خيار لكل طفل، والوقت لا يُتجاوز بمستكشف جديد', () => {
+  const q = read('src/quiz.js');
+  assert.ok(/useZh = zhOn\(\) &&/.test(q) && /names_zh' && !zhOn\(\)/.test(q), 'أسئلة الصينية مشروطة بخيار الطفل');
+  assert.ok(read('src/store.js').includes('q.zh = q.zh === true'));
+  assert.ok(/limitFor\(\) \? parentLock\(\(\) => newProfile/.test(read('src/screens/profiles.js')), 'إنشاء مستكشف بالرقم السري حين يُفعَّل الحد');
+  assert.ok(/if \(setting && !gated\) return mathGate/.test(read('src/lock.js')), 'سؤال حساب قبل اختيار الرقم أول مرة');
+});
+
 console.log(process.exitCode ? '\nفشل بعض الاختبارات' : `\nنجحت الاختبارات كلها (${n})`);

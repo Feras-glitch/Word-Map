@@ -4,6 +4,9 @@ import { LEVELS } from '../data.js';
 import { speak } from '../speech.js';
 import { sfx } from '../sfx.js';
 import { placementTest } from '../quiz.js';
+import { stampsWord } from '../arnum.js';
+import { limitFor } from '../timelimit.js';
+import { parentLock } from '../lock.js';
 
 const AVATARS = ['🦁', '🐯', '🐼', '🦊', '🐸', '🐧', '🦄', '🐢', '🐬', '🦉', '🐫', '🦋'];
 
@@ -14,14 +17,16 @@ export function profilesScreen(root, { go }) {
     for (const p of store.profiles) {
       list.append(h('button', { class: 'profile-card', onclick: () => { sfx('tap'); store.switchTo(p.id); go('home', { replace: true }); } },
         h('span', { class: 'av' }, p.avatar), h('b', {}, p.name),
-        h('small', {}, LEVELS[p.level].emoji + ' ' + LEVELS[p.level].name + ' · ' + Object.keys(p.stamps).length + ' ختم')));
+        h('small', {}, LEVELS[p.level].emoji + ' ' + LEVELS[p.level].name + ' · ' + stampsWord(Object.keys(p.stamps).length))));
     }
-    list.append(h('button', { class: 'profile-card add', onclick: () => newProfile(root, go) }, h('span', { class: 'av' }, '➕'), h('b', {}, 'مستكشف جديد')));
+    list.append(h('button', { class: 'profile-card add', onclick: () => (limitFor() ? parentLock(() => newProfile(root, go)) : newProfile(root, go)) }, h('span', { class: 'av' }, '➕'), h('b', {}, 'مستكشف جديد')));
   };
   draw();
   root.append(
     owl(store.profiles.length ? 'أهلاً بك! من سيستكشف العالم اليوم؟' : 'مرحباً! أنا بومة المستكشفين. لنصنع جواز سفرك أولاً!', { size: 96 }),
     list,
+    // للوالدين من الشاشة الأولى: الرقم السري، ووقت اللعب، واستعادة نسخة احتياطية على جهاز جديد
+    h('div', { class: 'row', style: { justifyContent: 'center', marginTop: '18px' } }, h('button', { class: 'btn small soft', onclick: () => go('parent') }, '🔒 للوالدين: الإعدادات والنسخة الاحتياطية')),
   );
   if (!store.profiles.length) newProfile(root, go);
 }

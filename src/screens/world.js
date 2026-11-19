@@ -31,21 +31,31 @@ export function buildSession(p) {
     add(c, shuffle(requiredFor(c))[0], { review: id });
     add(c, shuffle(OTHER_SKILLS.filter((k) => kindFor(k, c)))[0] || 'continent', { review: id });
   }
-  // ٢) دول زارها الطفل ولم يتقنها: نسأل عن المهارات الناقصة، الإلزامية أولاً
-  const cands = Object.keys(p.stamps || {}).map((id) => byId[id]).filter((c) => c && goldEligible(p, c.id));
-  for (const c of shuffle(cands).slice(0, 3)) {
-    const ev = p.evidence?.[c.id] || {};
-    const missing = [...requiredFor(c).filter((k) => evAskable(ev, k)), ...(OTHER_SKILLS.filter((k) => ev[k]).length >= OTHER_NEEDED ? [] : shuffle(OTHER_SKILLS.filter((k) => !ev[k] && kindFor(k, c))))];
-    for (const sk of missing.slice(0, 2)) add(c, sk, { gold: c.id });
-  }
-  // ٣) بقية الأسئلة من دول العالم على قدر المستوى
   const kinds = level === 1 ? ['flag', 'flagWho', 'continent', 'map', 'bigger', 'landmarkPic'] : ['flag', 'flagWho', 'capital', 'capWho', 'spell', 'map', 'landmarkWho', 'landmarkPic', 'names', 'natureWho', 'neighbor', 'language', 'continent', 'bigger', 'morePop', 'north'];
   const CMP = ['bigger', 'morePop', 'north']; const cmps = () => specs.filter((s) => CMP.includes(s.kind)).length;
+  const any = (c) => shuffle(kinds.filter((k) => usable(k, c) && !(k === 'map' && maps() >= 2) && !(CMP.includes(k) && cmps() >= 2)))[0];
+  const addAny = (c) => { const k = any(c); if (k && specs.length < N) { specs.push({ id: c.id, kind: k }); used.add(c.id); } };
+  // سبعة أسئلة من الدول التي زارها الطفل، وثلاثة من جيرانها؛ فلا يُسأل عن بلاد بعيدة لم يرها
+  const VISITED_Q = 7;
+  const visited = Object.keys(p.stamps || {}).map((id) => byId[id]).filter(Boolean);
+  // ٢) دول زارها ولم يتقنها: نسأل عن المهارات الناقصة، الإلزامية أولاً
+  for (const c of shuffle(visited.filter((c) => goldEligible(p, c.id)))) {
+    if (specs.length >= VISITED_Q) break;
+    const ev = p.evidence?.[c.id] || {};
+    const missing = [...requiredFor(c).filter((k) => evAskable(ev, k)), ...(OTHER_SKILLS.filter((k) => ev[k]).length >= OTHER_NEEDED ? [] : shuffle(OTHER_SKILLS.filter((k) => !ev[k] && kindFor(k, c))))];
+    for (const sk of missing.slice(0, 2)) if (specs.length < VISITED_Q) add(c, sk, { gold: c.id });
+  }
+  // ٢ب) ما بقي من حصة المزورة: أسئلة تثبيت عن دول زارها (ومنها ما أتقنه)
+  for (const c of shuffle(visited)) { if (specs.length >= VISITED_Q) break; if (!used.has(c.id)) addAny(c); }
+  // ٣) جيران الدول المزورة التي لم يزرها بعد (ومن مستواه أولاً)
+  const lv = new Set(pool(level).map((c) => c.id));
+  const nb = [...new Set(visited.flatMap((c) => c.borders))].map((id) => byId[id]).filter((c) => c && c.kind === 'state' && !p.stamps?.[c.id]);
+  const nbs = [...shuffle(nb.filter((c) => lv.has(c.id))), ...shuffle(nb.filter((c) => !lv.has(c.id)))];
+  for (const c of nbs) { if (specs.length >= N) break; if (!used.has(c.id)) addAny(c); }
+  // ٤) إن لم يزر بعد ما يكفي: بقية الأسئلة من دول العالم على قدر المستوى
   for (const c of shuffle(pool(level))) {
     if (specs.length >= N) break;
-    if (used.has(c.id)) continue;
-    const k = shuffle(kinds.filter((k) => usable(k, c) && !(k === 'map' && maps() >= 2) && !(CMP.includes(k) && cmps() >= 2)))[0];
-    if (k) { specs.push({ id: c.id, kind: k }); used.add(c.id); }
+    if (!used.has(c.id)) addAny(c);
   }
   return { specs: shuffle(specs), n };
 }
@@ -58,7 +68,7 @@ export function worldScreen(root, { go }) {
   const ready = Object.keys(me.stamps || {}).filter((id) => goldEligible(me, id)).length;
   const ids = Object.keys(me.stamps || {}).filter((id) => goldEligible(me, id));
   const bars = ids.map((id) => [id, goldPercent(me, id, requiredFor(byId[id]))]).sort((a, b) => b[1] - a[1]).slice(0, 6);
-  root.append(owl('عشرة أسئلة من الدول التي زرتها ومن العالم كله.'),
+  root.append(owl(Object.keys(me.stamps || {}).length ? 'عشرة أسئلة عن الدول التي زرتها وجيرانها.' : 'عشرة أسئلة من دول العالم. زر دولاً أكثر لتصير الأسئلة عنها.'),
     h('div', { class: 'panel' },
       due ? h('p', { class: 'strong' }, `🔔 فيه مراجعة لـ${ar(due)} من الدول التي أتقنتها.`) : null,
       h('p', {}, '🥇 أجب صحيحاً عن الدولة نفسها في أيام مختلفة، فيمتلئ شريطها وتنال ختمها الذهبي. الأسئلة التي تحمل 🥇 تملأ الشريط.'),

@@ -218,19 +218,20 @@ export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, mi
       const nat = natOn ? hit?.closest?.('[data-nat]') : null;
       if (nat && onNature) return onNature(nat.dataset.nat);
       const el = hit?.closest?.('[data-id]');
-      if (el && onTap) onTap(el.dataset.id, el.dataset.sub, el);
-      else if (!el && onMiss) onMiss();
+      if (el && onTap) onTap(el.dataset.id, el.dataset.sub, el, e);
+      else if (!el && onMiss) onMiss(e);
     }
   };
   svg.addEventListener('pointerup', end);
   svg.addEventListener('pointercancel', end);
   svg.addEventListener('wheel', (e) => { e.preventDefault(); zoomAt(e.deltaY < 0 ? 1.2 : 1 / 1.2, e.clientX, e.clientY); }, { passive: false });
 
+  let home = null; // العرض الذي يعود إليه زر 🌍 (في الأسئلة: منطقة السؤال لا العالم كله)
   const zoomBtns = document.createElement('div');
   zoomBtns.className = 'zoom-btns';
   const mk = (txt, fn, label) => { const b = document.createElement('button'); b.textContent = txt; b.setAttribute('aria-label', label); b.onclick = fn; return b; };
   const centerZoom = (f) => { const r = rect(); zoomAt(f, r.left + r.width / 2, r.top + r.height / 2); };
-  zoomBtns.append(mk('+', () => centerZoom(1.5), 'تكبير'), mk('−', () => centerZoom(1 / 1.5), 'تصغير'), mk('🌍', () => world(600), 'العالم كله'));
+  zoomBtns.append(mk('+', () => centerZoom(1.5), 'تكبير'), mk('−', () => centerZoom(1 / 1.5), 'تصغير'), mk('🌍', () => (home ? zoomTo(home, 600, 0) : world(600)), 'العرض الأول'));
   wrap.append(zoomBtns);
   // سهم الشمال (في هذا الإسقاط يبقى الشمال إلى الأعلى)
   if (compass) { const cp = document.createElement('div'); cp.className = 'compass'; cp.setAttribute('aria-label', 'الشمال إلى الأعلى'); cp.innerHTML = '<span>▲</span><b>ش</b><small>N</small>'; wrap.append(cp); }
@@ -240,6 +241,14 @@ export function createMap({ fill = defaultFill, onTap, onMiss, labels = true, mi
   const all = () => [...paths, ...dots];
   return {
     el: wrap, svg, overlay: gOver, zoomTo, zoomToCountry, world,
+    setHome(b) { home = b; },
+    // لمسة قريبة من دولة صغيرة على الشاشة تُحسب لها: الإصبع أعرض من الأردن ولبنان على الهاتف
+    near(id, e, px = 24) {
+      if (!e) return false;
+      const rs = [...svg.querySelectorAll(`[data-id="${id}"]`)].map((el) => el.getBoundingClientRect()).filter((r) => r.width || r.height);
+      if (!rs.length || rs.some((r) => Math.max(r.width, r.height) > 48)) return false;
+      return rs.some((r) => Math.hypot(Math.max(r.left - e.clientX, 0, e.clientX - r.right), Math.max(r.top - e.clientY, 0, e.clientY - r.bottom)) <= px);
+    },
     setFill(fn) { for (const p of all()) p.style.fill = fn(byId[p.dataset.id]); },
     mark(id, cls, on = true) { for (const p of all()) if (p.dataset.id === id) p.classList.toggle(cls, on); },
     clearMarks(cls) { for (const p of all()) p.classList.remove(cls); },
@@ -265,3 +274,15 @@ export function arcPath(a, b, bend = 0.25) {
   return `M${a[0]},${a[1]} Q${mx - dy * bend},${my + dx * bend} ${b[0]},${b[1]}`;
 }
 export const svgEl = S;
+
+// منطقة سؤال «أين الدولة؟»: إقليم حول الدولة على قدر المستوى، والدولة في موضع عشوائي قرب وسطه
+// (لا في وسطه تماماً فيُكشف الجواب، ولا في الزاوية العليا تحت أزرار التكبير)
+export function questionBox(c, level) {
+  const [x0, y0, x1, y1] = c.bb;
+  const [cx, cy] = c.cen || [(x0 + x1) / 2, (y0 + y1) / 2];
+  const W0 = level === 1 ? 320 : level === 2 ? 480 : 720;
+  const w = Math.min(M.w, Math.max(W0, (x1 - x0) * 1.6)), hh = Math.min(M.h, Math.max(W0 * 0.62, (y1 - y0) * 1.6));
+  const fx = 0.38 + Math.random() * 0.28, fy = 0.38 + Math.random() * 0.28;
+  const bx = Math.min(Math.max(cx - w * fx, 0), M.w - w), by = Math.min(Math.max(cy - hh * fy, 0), M.h - hh);
+  return [bx, by, bx + w, by + hh];
+}

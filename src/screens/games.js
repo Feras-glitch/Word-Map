@@ -3,10 +3,11 @@ import { store } from '../store.js';
 import { pool, pick, shuffle, flagUrl, states, contBox, byId, contColors } from '../data.js';
 import { speak, LANG } from '../speech.js';
 import { sfx } from '../sfx.js';
-import { createMap, lighten } from '../map.js';
+import { createMap, lighten, questionBox } from '../map.js';
 import { openCard } from '../card.js';
-import { record } from '../mastery.js';
+import { record, weakest } from '../mastery.js';
 import { look, namedCapital } from '../quiz.js';
+import { cnt } from '../arnum.js';
 
 const ROUNDS = 10;
 const PRAISE = ['أحسنت!', 'رائع!', 'ممتاز!', 'بطل!', 'صحيح!', 'ما شاء الله!'];
@@ -27,7 +28,7 @@ export function gamesScreen(root, { go }) {
   );
 }
 
-function finish(root, key, score, total, replay) {
+function finish(root, key, score, total, replay, misses = [], title = null) {
   const st = score >= total * 0.9 ? 3 : score >= total * 0.6 ? 2 : score >= total * 0.3 ? 1 : 0;
   store.setStars(key, st);
   if (st >= 2) { confetti(); sfx('win'); }
@@ -36,14 +37,29 @@ function finish(root, key, score, total, replay) {
   root.innerHTML = '';
   root.append(h('div', { class: 'panel result' },
     h('div', { class: 'big-stars' }, starsEl(st)),
-    h('h2', {}, score.toLocaleString('ar-EG') + ' من ' + total.toLocaleString('ar-EG')),
+    h('h2', {}, title || score.toLocaleString('ar-EG') + ' من ' + total.toLocaleString('ar-EG')),
     owl(msg),
+    // ما فات الطفل في هذه الجولة، مع بطاقة كل دولة: الخطأ فرصة للتعلم
+    misses.length ? h('div', { class: 'missed' }, h('b', {}, '📖 لنتعرّف على ما فاتنا:'), h('div', { class: 'neighbors' }, [...new Set(misses)].map((id) => h('button', { class: 'chip', onclick: () => openCard(id) }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))) : null,
     h('div', { class: 'row' }, h('button', { class: 'btn big', onclick: replay }, '🔁 العب مرة أخرى'), h('button', { class: 'btn big soft', onclick: () => history.back() }, '🎮 الألعاب'))));
 }
 
-function header(i, score) {
+// أسئلة التمرين: نحو ثلثها من دول أخطأ فيها الطفل، وخُمسها من دول زارها، والباقي جديد من مستواه
+function practiceSet(level, n, cands = pool(level)) {
+  const p = store.me; const ok = new Set(cands.map((c) => c.id));
+  const errs = Object.entries(p.practice || {}).map(([id, m]) => { let a = 0, b = 0; for (const x of Object.values(m)) { a += x.ok || 0; b += x.bad || 0; } return [id, b / (a + b || 1), b]; })
+    .filter((x) => x[2] > 0).sort((x, y) => y[1] - x[1]).map((x) => x[0]);
+  const weak = [...new Set([...weakest(8, p), ...errs])].filter((id) => ok.has(id)).slice(0, Math.ceil(n * 0.3));
+  const visited = shuffle(Object.keys(p.stamps || {}).filter((id) => ok.has(id) && !weak.includes(id))).slice(0, Math.ceil(n * 0.2));
+  const chosen = [...weak, ...visited];
+  const rest = shuffle(cands.filter((c) => !chosen.includes(c.id))).slice(0, n - chosen.length);
+  return shuffle([...chosen.map((id) => byId[id]), ...rest]);
+}
+
+// hist: نتيجة كل سؤال مضى ('ok' | 'half' | 'bad') فتتلوّن النقطة بحسبها
+function header(i, score, hist = []) {
   return h('div', { class: 'q-head' },
-    h('div', { class: 'q-dots' }, Array.from({ length: ROUNDS }, (_, k) => h('i', { class: k < i ? 'done' : k === i ? 'now' : '' }))),
+    h('div', { class: 'q-dots' }, Array.from({ length: ROUNDS }, (_, k) => h('i', { class: k < i ? (hist[k] === 'bad' ? 'miss' : hist[k] === 'half' ? 'half' : 'done') : k === i ? 'now' : '' }))),
     h('span', { class: 'score' }, '⭐ ' + score.toLocaleString('ar-EG')));
 }
 
@@ -51,10 +67,10 @@ function header(i, score) {
 function choiceGame(root, key, makeQ) {
   const level = store.me.level;
   const nOpt = level === 1 ? 3 : 4;
-  const qs = pick(pool(level), ROUNDS);
-  let i = 0, score = 0;
+  const qs = practiceSet(level, ROUNDS);
+  let i = 0, score = 0; const hist = [], misses = [];
   const next = () => {
-    if (i >= ROUNDS) return finish(root, key, score, ROUNDS, () => choiceGame(root, key, makeQ));
+    if (i >= ROUNDS) return finish(root, key, score, ROUNDS, () => choiceGame(root, key, makeQ), misses);
     const c = qs[i];
     const q = makeQ(c, level, nOpt);
     root.innerHTML = '';
@@ -66,6 +82,7 @@ function choiceGame(root, key, makeQ) {
         const ok = o.correct;
         record(c.id, key === 'capital' ? 'capital' : 'flag', ok, { src: 'practice' });
         b.classList.add(ok ? 'right' : 'wrong');
+        hist[i] = ok ? 'ok' : 'bad'; if (!ok) misses.push(c.id);
         if (ok) { score++; sfx('correct'); speak(praise() + ' ' + q.answerSpeech, LANG.ar); }
         else { sfx('wrong'); opts.querySelector('[data-c="1"]').classList.add('right'); speak('الجواب: ' + q.answerSpeech, LANG.ar); }
         feedback.replaceChildren(h('button', { class: 'btn', onclick: () => { i++; next(); } }, i + 1 >= ROUNDS ? 'النتيجة 🏁' : 'التالي ←'),
@@ -77,7 +94,7 @@ function choiceGame(root, key, makeQ) {
       opts.append(txt ? h('div', { class: 'opt-wrap' }, b, h('button', { class: 'opt-say', 'aria-label': 'استمع إلى الخيار', onclick: () => speak(txt, LANG.ar) }, '🔊')) : b);
     }
     const feedback = h('div', { class: 'feedback' });
-    root.append(header(i, score), h('div', { class: 'question' }, q.prompt), opts, feedback);
+    root.append(header(i, score, hist), h('div', { class: 'question' }, q.prompt), opts, feedback);
     q.onShow?.();
   };
   next();
@@ -119,32 +136,34 @@ export function capitalGame(root) {
 export function whereGame(root) {
   const level = store.me.level;
   const candidates = pool(level).filter((c) => c.bb && !c.dotOnly && (level === 3 || !c.small));
-  const qs = pick(candidates, ROUNDS);
-  let i = 0, score = 0, tries = 0, locked = false;
+  const qs = practiceSet(level, ROUNDS, candidates);
+  let i = 0, score = 0, tries = 0, locked = false; const hist = [], misses = [];
   const fill = (c) => (c.kind === 'state' ? contColors[c.cont] : lighten(contColors[c.cont] || '#ccc', 0.5));
-  const m = createMap({ fill, labels: level === 1, onTap: (id) => tap(id), onMiss: () => { if (!locked) speak('هذا في البحر. المس اليابسة', LANG.ar); } });
+  const m = createMap({ fill, labels: level === 1, onTap: (id, _s, _el, e) => tap(id, e), onMiss: (e) => { if (locked) return; if (m.near(qs[i].id, e)) tap(qs[i].id, e); else speak('هذا في البحر. المس اليابسة', LANG.ar); } });
   const top = h('div', { class: 'where-top' });
   const fb = h('div', { class: 'feedback floating' });
   root.append(top, m.el, fb);
 
   function ask() {
-    if (i >= ROUNDS) { root.classList.remove('full'); return finish(root, 'where', score, ROUNDS, () => { root.innerHTML = ''; root.classList.add('full'); whereGame(root); }); }
+    if (i >= ROUNDS) { root.classList.remove('full'); return finish(root, 'where', score, ROUNDS, () => { root.innerHTML = ''; root.classList.add('full'); whereGame(root); }, misses); }
     const c = qs[i]; tries = 0; locked = false;
-    top.replaceChildren(header(i, score), h('div', { class: 'where-q' },
+    top.replaceChildren(header(i, score, hist), h('div', { class: 'where-q' },
       level < 3 ? h('img', { src: flagUrl(c.f), alt: '' }) : null,
       h('span', {}, 'أين ', h('b', {}, c.ar), '؟'),
       h('button', { class: 'say', onclick: () => speak('أين ' + c.ar + '؟', LANG.ar) }, '🔊')));
     fb.replaceChildren();
     m.clearMarks('right'); m.clearMarks('wrong');
-    if (level < 3) m.zoomTo(contBox[c.cont] || [0, 0, 2000, 1000]); else m.world();
+    const qb = level < 3 ? questionBox(c, level) : null; m.setHome(qb);
+    if (qb) m.zoomTo(qb, 700, 0); else m.world();
     speak('أين ' + c.ar + '؟', LANG.ar);
   }
-  function tap(id) {
+  function tap(id, e) {
     if (locked || id === 'ATA') return;
     const c = qs[i];
+    if (id !== c.id && m.near(c.id, e)) id = c.id;
     if (id === c.id) {
       record(c.id, 'map', tries === 0, { src: 'practice' });
-      locked = true; score += tries === 0 ? 1 : 0.5; sfx('correct'); m.mark(id, 'right');
+      locked = true; score += tries === 0 ? 1 : 0.5; hist[i] = tries === 0 ? 'ok' : 'half'; if (tries) misses.push(c.id); sfx('correct'); m.mark(id, 'right');
       speak(praise() + ' هذه ' + c.ar, LANG.ar);
       done();
     } else {
@@ -152,7 +171,7 @@ export function whereGame(root) {
       const t = byId[id];
       if (tries >= 2) {
         record(c.id, 'map', false, { src: 'practice' });
-        locked = true; m.mark(c.id, 'right'); m.zoomToCountry(c.id);
+        locked = true; hist[i] = 'bad'; misses.push(c.id); m.mark(c.id, 'right'); m.zoomToCountry(c.id);
         speak('هذه ' + t.ar + '. و' + c.ar + ' هنا', LANG.ar); done();
       } else speak('هذه ' + t.ar + '. حاول مرة أخرى', LANG.ar);
     }
@@ -188,7 +207,7 @@ export function memoryGame(root) {
           if (matched === pairs) setTimeout(() => {
             if (!root.isConnected) return;
             const score = Math.max(0, Math.min(10, Math.round(10 - (moves - pairs) * (10 / (pairs * 1.6)))));
-            finish(root, 'memory', score, 10, () => { root.innerHTML = ''; memoryGame(root); });
+            finish(root, 'memory', score, 10, () => { root.innerHTML = ''; memoryGame(root); }, [], `وجدت ${cnt(pairs, 'زوجاً واحداً', 'زوجين', 'أزواج', 'زوجاً')} في ${cnt(moves, 'محاولة واحدة', 'محاولتين', 'محاولات', 'محاولة')}`);
           }, 900);
         } else {
           busy = true;

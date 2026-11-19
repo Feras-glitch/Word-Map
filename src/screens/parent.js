@@ -7,6 +7,7 @@ import { saveFile, pickTextFile, copyText } from '../save.js';
 import { parentLock, lockNow } from '../lock.js';
 import { certStatus } from '../certs.js';
 import { gp } from '../gender.js';
+import { cnt } from '../arnum.js';
 
 const ar = (n) => Number(n).toLocaleString('ar-EG');
 const DAY = 864e5;
@@ -58,19 +59,22 @@ export function parentScreen(root, { go }) {
         const a = act[d]; const q = a?.q || 0;
         return h('div', { class: 'ab', title: d }, h('i', { style: { height: (q / maxQ) * 100 + '%', opacity: q ? 1 : 0.15 } }), h('small', {}, new Date(d).toLocaleDateString('ar-EG', { weekday: 'narrow' })));
       })),
-      h('p', { class: 'hint' }, total ? `${gp(p, 'أجاب', 'أجابت')} عن ${ar(total)} سؤالاً إجمالاً، ${gp(p, 'ونشط', 'ونشطت')} ${ar(active7)} من آخر ٧ أيام. آخر نشاط: ${lastDay === today() ? 'اليوم' : new Date(lastDay).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long' })}.` : gp(p, 'لم يُجب', 'لم تُجب') + ' عن أسئلة بعد.'),
+      h('p', { class: 'hint' }, total ? `${gp(p, 'أجاب', 'أجابت')} عن ${cnt(total, 'سؤال واحد', 'سؤالين', 'أسئلة', 'سؤالاً')} إجمالاً، ${gp(p, 'ونشط', 'ونشطت')} ${ar(active7)} من آخر ٧ أيام. آخر نشاط: ${lastDay === today() ? 'اليوم' : new Date(lastDay).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long' })}.` : gp(p, 'لم يُجب', 'لم تُجب') + ' عن أسئلة بعد.'),
       Object.keys(sum).length ? [h('h4', {}, 'المهارات: الإجابة الأولى في الأسئلة (لا تُحسب الألعاب)'), h('p', { class: 'hint' }, 'الخط الرمادي حدّ التخمين: نسبة قريبة منه تعني أن الطفل يخمّن.'), h('div', { class: 'skill-bars' }, Object.entries(SKILLS).filter(([k]) => sum[k]).map(([k, t]) => {
         const x = sum[k]; const n = x.ok + x.bad; const pct = Math.round((x.ok / n) * 100);
         // أقل من ١٠ إجابات لا تكفي لنسبة ذات معنى. والخط الرمادي حدّ التخمين (خيار من ٣ أو ٤)، ولا تخمين في سؤال الخريطة
-        if (n < 10) return h('div', { class: 'sb' }, h('span', {}, t), h('div', { class: 'bar' }), h('small', {}, `${ar(n)} فقط، قليلة`));
+        if (n < 10) return h('div', { class: 'sb' }, h('span', {}, t), h('div', { class: 'bar' }), h('small', {}, `${cnt(n, 'إجابة واحدة', 'إجابتان', 'إجابات', 'إجابة')} فقط، قليلة`));
         return h('div', { class: 'sb' }, h('span', {}, t), h('div', { class: 'bar' }, h('i', { style: { width: pct + '%', background: pct >= 75 ? '#1a9b55' : pct >= 50 ? '#e0a800' : '#e5484d' } }), k === 'map' ? null : h('u', { class: 'chance' + (k === 'compare' ? ' half' : ''), title: 'حد التخمين' })), h('small', {}, `${ar(pct)}٪ من ${ar(n)}`));
       }))] : null,
-      (() => { let n = 0; for (const m of Object.values(p.practice || {})) for (const x of Object.values(m)) n += x.ok + x.bad; return n ? h('p', { class: 'hint' }, `${gp(p, 'وأجاب', 'وأجابت')} في ألعاب التدريب عن ${ar(n)} سؤالاً (تُعرض منفصلة لأنها تمرين، وقد يرى فيها التلميح أو يحاول مرتين).`) : null; })(),
+      (() => { let n = 0; for (const m of Object.values(p.practice || {})) for (const x of Object.values(m)) n += x.ok + x.bad; return n ? h('p', { class: 'hint' }, `${gp(p, 'وأجاب', 'وأجابت')} في ألعاب التدريب عن ${cnt(n, 'سؤال واحد', 'سؤالين', 'أسئلة', 'سؤالاً')} (تُعرض منفصلة لأنها تمرين، وقد يرى فيها التلميح أو يحاول مرتين).`) : null; })(),
       weak.length ? [h('h4', {}, gp(p, 'دول يخطئ', 'دول تخطئ') + ' فيها أكثر من غيرها (بنسبة الخطأ، محاولتان على الأقل)'), h('div', { class: 'neighbors' }, weak.map((id) => h('span', { class: 'chip' }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))] : null,
       (p.stories || []).length ? [h('h4', {}, gp(p, 'آخر ما اكتشفه', 'آخر ما اكتشفته') + ' في المهام'), h('ul', { class: 'stories' }, p.stories.slice(0, 6).map((st) => h('li', {}, h('span', {}, st.text + (st.detail ? ' — ' + st.detail : '')), h('small', {}, new Date(st.date).toLocaleDateString('ar-EG', { day: 'numeric', month: 'short' })))))] : null,
       h('h4', {}, 'صيغة المخاطبة'),
       h('div', { class: 'levels gender' }, [['m', '👦', 'ولد'], ['f', '👧', 'بنت']].map(([k, e, t]) => h('button', { class: 'lv-btn' + (p.gender === k ? ' on' : ''), onclick: () => { store.updateProfile(p.id, { gender: k }); draw(); } }, h('span', {}, e), h('b', {}, t)))),
       p.gender ? null : h('p', { class: 'hint' }, 'لم تُحدَّد بعد؛ يخاطَب الطفل بصيغة المذكر حتى تختاروا.'),
+      h('h4', {}, 'أسئلة بالأسماء الصينية'),
+      h('div', { class: 'levels gender' }, [[false, '🚫', 'لا'], [true, '🇨🇳', 'نعم']].map(([k, e, t]) => h('button', { class: 'lv-btn' + (!!p.zh === k ? ' on' : ''), onclick: () => { store.updateProfile(p.id, { zh: k }); draw(); } }, h('span', {}, e), h('b', {}, t)))),
+      h('p', { class: 'hint' }, 'إن فعّلتموها ظهرت أسئلة «ما اسم الدولة بالصينية؟» في ' + gp(p, 'ألعابه', 'ألعابها') + '. وتبقى الأسماء الصينية في البطاقات للجميع.'),
       h('h4', {}, 'المستوى'),
       h('div', { class: 'levels' }, Object.entries(LEVELS).map(([k, L]) => h('button', { class: 'lv-btn' + (+k === p.level ? ' on' : ''), onclick: () => { store.updateProfile(p.id, { level: +k }); draw(); } },
         h('span', {}, L.emoji), h('b', {}, L.name), h('small', {}, L.ages)))),
@@ -107,7 +111,7 @@ export function parentScreen(root, { go }) {
     const when = r.at ? new Date(r.at).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long', year: 'numeric' }) : 'تاريخ غير معروف';
     const d = modal(h('div', { class: 'panel' }, h('h3', {}, 'استبدال البيانات الحالية بهذه النسخة؟'),
       h('p', {}, 'تاريخ النسخة: ' + when),
-      h('ul', { class: 'bk-sum' }, r.summary.map((x) => h('li', {}, `${x.avatar} ${x.name}: ${ar(x.stamps)} ختم زيارة، ${ar(x.gold)} ختم ذهبي`))),
+      h('ul', { class: 'bk-sum' }, r.summary.map((x) => h('li', {}, `${x.avatar} ${x.name}: أختام الزيارة ${ar(x.stamps)}، والأختام الذهبية ${ar(x.gold)}`))),
       h('p', { class: 'hint' }, 'ستُستبدل كل الملفات الموجودة الآن. احفظ نسخة من بياناتك الحالية أولاً إن أردت الرجوع إليها.'),
       h('div', { class: 'row' }, h('button', { class: 'btn danger', onclick: () => { d.close(); const err = store.importData(text); toast(err || 'تمت الاستعادة ✓', 4000); if (!err) setTimeout(draw, 300); } }, 'نعم، استبدل'), h('button', { class: 'btn soft', onclick: () => d.close() }, 'إلغاء'))));
   }
@@ -115,9 +119,9 @@ export function parentScreen(root, { go }) {
   function timePanel() {
     const cur = +store.parent.dailyMinutes || 0;
     return h('div', { class: 'panel' }, h('h3', {}, '⏱️ وقت اللعب اليومي'),
-      h('p', { class: 'hint' }, 'لكل طفل وقته في اليوم. حين ينتهي تظهر له رسالة لطيفة، وتستطيعون إضافة ربع ساعة بالرقم السري.'),
+      h('p', { class: 'hint' }, 'يأخذ كل طفل هذا الوقت كاملاً في يومه. حين ينتهي تظهر له رسالة لطيفة، وتستطيعون إضافة ربع ساعة له وحده بالرقم السري. وما دام الحد مفعّلاً فإنشاء مستكشف جديد يحتاج الرقم السري.'),
       h('div', { class: 'row wrap' }, [0, 20, 30, 45, 60].map((m) => h('button', { class: 'btn small' + (m === cur ? '' : ' soft'), onclick: () => { store.setParent({ dailyMinutes: m }); draw(); } }, m ? m.toLocaleString('ar-EG') + ' دقيقة' : 'بلا حد'))),
-      h('p', { class: 'hint' }, store.profiles.map((p) => `${p.avatar} ${p.name}: ${(p.usage?.[today()] || 0).toLocaleString('ar-EG')} دقيقة اليوم`).join(' · ')));
+      h('p', { class: 'hint' }, store.profiles.map((p) => `${p.avatar} ${p.name}: ${p.usage?.[today()] ? cnt(p.usage[today()], 'دقيقة واحدة', 'دقيقتان', 'دقائق', 'دقيقة') + ' اليوم' : gp(p, 'لم يلعب اليوم', 'لم تلعب اليوم')}`).join(' · ')));
   }
   function pinPanel() {
     return h('div', { class: 'panel' }, h('h3', {}, '🔑 الرقم السري'),
