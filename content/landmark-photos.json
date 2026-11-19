@@ -224,6 +224,24 @@
   "page": "https://commons.wikimedia.org/wiki/File:Masai_Mara_at_Sunset.jpg",
   "review": "ok"
  },
+ "KOR": {
+  "file": "Front view of the Imperial Throne Hall Geunjeongjeon at Gyeongbokgung Palace with blue sky in Seoul.jpg",
+  "title": "Gyeongbokgung",
+  "artist": "Basile Morin",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Front_view_of_the_Imperial_Throne_Hall_Geunjeongjeon_at_Gyeongbokgung_Palace_with_blue_sky_in_Seoul.jpg",
+  "review": "pending"
+ },
+ "KWT": {
+  "file": "Kuwait towers.jpg",
+  "title": "Kuwait Towers",
+  "artist": "Mikael Lindmark",
+  "license": "CC BY-SA 2.5 se",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5/se/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Kuwait_towers.jpg",
+  "review": "pending"
+ },
  "LBN": {
   "file": "Forest_of_The_cedars_of_God.jpg",
   "title": "Cedars of God",
@@ -270,13 +288,13 @@
   "review": "ok"
  },
  "MYS": {
-  "file": "Petronas_Towers_Logo.svg",
+  "file": "Petronas Towers at Night - from the base upwards.jpg",
   "title": "Petronas Towers",
-  "artist": "Unknown authorUnknown author",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Petronas_Towers_Logo.svg",
-  "review": "rejected"
+  "artist": "Dcubillas",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Petronas_Towers_at_Night_-_from_the_base_upwards.jpg",
+  "review": "pending"
  },
  "NGA": {
   "file": "Zuma_Rock.jpg",
@@ -322,6 +340,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Jerusalem_DomeoftheRock_J65_(cropped).JPG",
   "review": "ok"
+ },
+ "QAT": {
+  "file": "Fisherman on the Doha Corniche next to the Islamic Museum.jpg",
+  "title": "Museum of Islamic Art, Doha",
+  "artist": "Picture taken by Aju George Chris &amp; uploaded by Creative Commons Qatar @ Flickr.com",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Fisherman_on_the_Doha_Corniche_next_to_the_Islamic_Museum.jpg",
+  "review": "pending"
  },
  "RUS": {
   "file": "Moscow_Kremlin_(8281675670).jpg",
@@ -369,13 +396,13 @@
   "review": "ok"
  },
  "SYR": {
-  "file": "Umayyad_Mosque,_Damascus.jpg",
+  "file": "Damascus, Syria, The Umayyad Mosque, The Courtyard, Islamic Art.jpg",
   "title": "Umayyad Mosque",
-  "artist": "Bernard Gagnon",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Umayyad_Mosque,_Damascus.jpg",
-  "review": "rejected"
+  "artist": "Vyacheslav Argenberg",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Damascus,_Syria,_The_Umayyad_Mosque,_The_Courtyard,_Islamic_Art.jpg",
+  "review": "pending"
  },
  "TUN": {
   "file": "Great_Mosque_of_Kairouan_Panorama_-_Grande_Mosquée_de_Kairouan_Panorama.jpg",
@@ -432,13 +459,13 @@
   "review": "ok"
  },
  "DJI": {
-  "file": "Lake_Assal_NASA.jpg",
+  "file": "Lake Assal 1-Djibouti.jpg",
   "title": "Lake Assal (Djibouti)",
-  "artist": "NASA",
+  "artist": "Fishercd",
   "license": "Public domain",
   "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Lake_Assal_NASA.jpg",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:Lake_Assal_1-Djibouti.jpg",
+  "review": "pending"
  },
  "COM": {
   "file": "Mount_Karthala_(11000398163).jpg",
