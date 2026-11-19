@@ -4,6 +4,7 @@ import { h, owl, toast, confetti, modal } from '../ui.js';
 import { createMap, lighten, project, projection, svgEl, NAT } from '../map.js';
 import { states, byId, pool, flagUrl, contColors, contBox, continents, shuffle, search } from '../data.js';
 import { store } from '../store.js';
+import { landmarkPhoto } from '../photos.js';
 import { fem, toFem3 } from '../gender.js';
 import { speak, LANG } from '../speech.js';
 import { sfx } from '../sfx.js';
@@ -59,7 +60,9 @@ export function findScreen(root, { go }) {
   function drawClues() {
     list.replaceChildren(...chain.slice(0, shown).map((cl) => h('li', {}, h('span', { class: 'ci' }, cl.icon), cl.text,
       h('button', { class: 'say', 'aria-label': 'استمع', onclick: () => speak(cl.text, LANG.ar) }, '🔊'),
-      cl.nat ? h('button', { class: 'btn small soft', onclick: () => { helped = true; m.setNature(true); m.zoomToNature(cl.nat); setTimeout(() => m.flashNature(cl.nat), 750); } }, 'أرني') : null)));
+      cl.nat ? h('button', { class: 'btn small soft', onclick: () => { helped = true; m.setNature(true); m.zoomToNature(cl.nat); setTimeout(() => m.flashNature(cl.nat), 750); } }, 'أرني') : null,
+      // دليل المعلم: صورته إن وُجدت
+      cl.kind === 'landmark' && landmarkPhoto(target.id) ? h('img', { class: 'clue-photo', src: landmarkPhoto(target.id).url, alt: '' }) : null)));
     btnNext.style.display = shown < chain.length ? '' : 'none';
     btnGive.style.display = shown >= chain.length ? '' : 'none';
   }

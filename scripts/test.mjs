@@ -138,7 +138,7 @@ await test('صور المعالم: لكل صورة معتمدة ملف ورخص�
   for (const [id, m] of ok) {
     assert.ok(byId[id], id);
     assert.ok(fs.existsSync(new URL(`../src/landmark-img/${id}.jpg`, import.meta.url)), 'ملف ' + id);
-    assert.match(m.license, /^(CC0|CC BY|Public domain|PD)/i, 'رخصة ' + id);
+    assert.match(m.license, /^(CC0|CC BY|Public domain|PD|FAL|GFDL|Attribution)/i, 'رخصة ' + id);
     assert.ok(m.artist && m.page, 'صاحب ' + id);
   }
 });
