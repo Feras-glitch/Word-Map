@@ -193,4 +193,12 @@ await test('الصينية خيار لكل طفل، والوقت لا يُتجا
   assert.ok(/if \(setting && !gated\) return mathGate/.test(read('src/lock.js')), 'سؤال حساب قبل اختيار الرقم أول مرة');
 });
 
+await test('لعبة «أين هذه الدولة؟» بلا أسماء على الخريطة لكل المستويات، والخروج من جولة جارية يُسأل عنه', () => {
+  const g = read('src/screens/games.js');
+  assert.ok(/createMap\(\{ fill, labels: false/.test(g), 'لا أسماء في لعبة أين');
+  assert.ok((g.match(/setPageGuard\(/g) || []).length >= 3, 'حارس الخروج في الألعاب الثلاث');
+  assert.ok(/guard: \(\) => \(!decided && answered > 0/.test(read('src/quiz.js')), 'حارس الخروج في الأسئلة');
+  assert.ok(/minutesLeft\(\) <= 0\) parentLock\(sw\)/.test(read('src/screens/profiles.js')), 'الانتقال إلى ملف أخ بعد انتهاء الوقت بالرقم السري');
+});
+
 console.log(process.exitCode ? '\nفشل بعض الاختبارات' : `\nنجحت الاختبارات كلها (${n})`);

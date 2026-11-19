@@ -3,7 +3,7 @@ import '@fontsource/cairo/arabic-700.css';
 import '@fontsource/cairo/arabic-900.css';
 import '@fontsource/cairo/latin-700.css';
 import './style.css';
-import { h, consumeSkipPop, closeTopModal, clearModals, toast } from './ui.js';
+import { h, consumeSkipPop, closeTopModal, clearModals, toast, setPageGuard, pageGuardMsg, confirmLeave } from './ui.js';
 import { store } from './store.js';
 import { setFemOff, setAddressee } from './gender.js';
 import { startTimeLimit } from './timelimit.js';
@@ -62,13 +62,17 @@ const screens = {
 const app = document.getElementById('app');
 let cleanup = null;
 
+let curHash = location.hash;
 export function go(name, { replace = false } = {}) {
+  const g = pageGuardMsg();
+  if (g) return confirmLeave(g, () => { setPageGuard(null); go(name, { replace }); });
   const hash = '#' + name;
   if (replace) history.replaceState(null, '', hash); else if (location.hash !== hash) history.pushState(null, '', hash);
   render();
 }
 
 function render() {
+  setPageGuard(null); curHash = location.hash;
   let name = location.hash.slice(1).split('?')[0] || 'home';
   if (!screens[name]) name = 'home';
   if (!store.me && !['profiles', 'parent', 'about'].includes(name)) { history.replaceState(null, '', '#profiles'); name = 'profiles'; }
@@ -96,6 +100,8 @@ function render() {
 window.addEventListener('popstate', () => {
   if (consumeSkipPop()) return;      // رجوع ناتج عن إغلاق نافذة بزر ✕
   if (closeTopModal()) return;       // زر الرجوع يغلق النافذة المفتوحة أولاً
+  const g = pageGuardMsg();
+  if (g) { history.pushState(null, '', curHash); return confirmLeave(g, () => { setPageGuard(null); history.back(); }); }
   render();
 });
 render();

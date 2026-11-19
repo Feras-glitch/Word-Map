@@ -1,4 +1,4 @@
-import { h, owl, confetti, stars as starsEl } from '../ui.js';
+import { h, owl, confetti, stars as starsEl, setPageGuard } from '../ui.js';
 import { store } from '../store.js';
 import { pool, pick, shuffle, flagUrl, states, contBox, byId, contColors } from '../data.js';
 import { speak, LANG } from '../speech.js';
@@ -69,6 +69,7 @@ function choiceGame(root, key, makeQ) {
   const nOpt = level === 1 ? 3 : 4;
   const qs = practiceSet(level, ROUNDS);
   let i = 0, score = 0; const hist = [], misses = [];
+  setPageGuard(() => (hist.length && hist.length < ROUNDS ? 'إن خرجت الآن ضاعت إجابات هذه الجولة.' : null));
   const next = () => {
     if (i >= ROUNDS) return finish(root, key, score, ROUNDS, () => choiceGame(root, key, makeQ), misses);
     const c = qs[i];
@@ -138,8 +139,9 @@ export function whereGame(root) {
   const candidates = pool(level).filter((c) => c.bb && !c.dotOnly && (level === 3 || !c.small));
   const qs = practiceSet(level, ROUNDS, candidates);
   let i = 0, score = 0, tries = 0, locked = false; const hist = [], misses = [];
+  setPageGuard(() => (hist.length && hist.length < ROUNDS ? 'إن خرجت الآن ضاعت إجابات هذه الجولة.' : null));
   const fill = (c) => (c.kind === 'state' ? contColors[c.cont] : lighten(contColors[c.cont] || '#ccc', 0.5));
-  const m = createMap({ fill, labels: level === 1, onTap: (id, _s, _el, e) => tap(id, e), onMiss: (e) => { if (locked) return; if (m.near(qs[i].id, e)) tap(qs[i].id, e); else speak('هذا في البحر. المس اليابسة', LANG.ar); } });
+  const m = createMap({ fill, labels: false, onTap: (id, _s, _el, e) => tap(id, e), onMiss: (e) => { if (locked) return; if (m.near(qs[i].id, e)) tap(qs[i].id, e); else speak('هذا في البحر. المس اليابسة', LANG.ar); } });
   const top = h('div', { class: 'where-top' });
   const fb = h('div', { class: 'feedback floating' });
   root.append(top, m.el, fb);
@@ -189,6 +191,7 @@ export function memoryGame(root) {
   const cs = pick(pool(level), pairs);
   const cards = shuffle(cs.flatMap((c) => [{ c, t: 'flag' }, { c, t: withNames ? 'name' : 'flag' }]));
   let open = [], matched = 0, moves = 0, busy = false;
+  setPageGuard(() => (moves && matched < pairs ? 'إن خرجت الآن ضاعت إجابات هذه الجولة.' : null));
   const info = h('div', { class: 'q-head' }, h('span', {}, '🔁 المحاولات: ', h('b', { class: 'mv' }, '٠')), h('span', {}, '✅ ', h('b', { class: 'mt' }, '٠'), ' / ' + pairs.toLocaleString('ar-EG')));
   const grid = h('div', { class: 'memory ' + (pairs > 6 ? 'm16' : 'm12') });
   for (const card of cards) {

@@ -119,7 +119,7 @@ export function parentScreen(root, { go }) {
   function timePanel() {
     const cur = +store.parent.dailyMinutes || 0;
     return h('div', { class: 'panel' }, h('h3', {}, '⏱️ وقت اللعب اليومي'),
-      h('p', { class: 'hint' }, 'يأخذ كل طفل هذا الوقت كاملاً في يومه. حين ينتهي تظهر له رسالة لطيفة، وتستطيعون إضافة ربع ساعة له وحده بالرقم السري. وما دام الحد مفعّلاً فإنشاء مستكشف جديد يحتاج الرقم السري.'),
+      h('p', { class: 'hint' }, 'يأخذ كل طفل هذا الوقت كاملاً في يومه. حين ينتهي تظهر له رسالة لطيفة، وتستطيعون إضافة ربع ساعة له وحده بالرقم السري. وما دام الحد مفعّلاً فإنشاء مستكشف جديد، والانتقال إلى ملف أخ بعد انتهاء الوقت، يحتاجان الرقم السري.'),
       h('div', { class: 'row wrap' }, [0, 20, 30, 45, 60].map((m) => h('button', { class: 'btn small' + (m === cur ? '' : ' soft'), onclick: () => { store.setParent({ dailyMinutes: m }); draw(); } }, m ? m.toLocaleString('ar-EG') + ' دقيقة' : 'بلا حد'))),
       h('p', { class: 'hint' }, store.profiles.map((p) => `${p.avatar} ${p.name}: ${p.usage?.[today()] ? cnt(p.usage[today()], 'دقيقة واحدة', 'دقيقتان', 'دقائق', 'دقيقة') + ' اليوم' : gp(p, 'لم يلعب اليوم', 'لم تلعب اليوم')}`).join(' · ')));
   }

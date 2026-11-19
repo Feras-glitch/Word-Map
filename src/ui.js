@@ -25,23 +25,46 @@ export function toast(msg, ms = 2600) {
 const stack = [];
 let skipPop = 0;
 export function consumeSkipPop() { if (skipPop > 0) { skipPop--; return true; } return false; }
-export function closeTopModal() { const t = stack[stack.length - 1]; if (!t) return false; t.dismiss(); return true; }
+export function closeTopModal() {
+  const t = stack[stack.length - 1]; if (!t) return false;
+  const g = t.guard?.();
+  // زر الرجوع وسط جولة: نعيد السجل كما كان ونسأل أولاً
+  if (g) { history.pushState({ modal: 1 }, '', location.hash); confirmLeave(g, () => { t.dismiss(); skipPop++; history.back(); }); return true; }
+  t.dismiss(); return true;
+}
+
+// حارس الصفحة: لعبة جارية تطلب تأكيداً قبل مغادرتها، فلا تضيع الجولة بلمسة خاطئة
+let pageGuard = null;
+export const setPageGuard = (fn) => { pageGuard = fn; };
+export const pageGuardMsg = () => pageGuard?.() || null;
+export function confirmLeave(msg, onYes) {
+  if (document.querySelector('.leave-ask')) return;
+  const el = h('div', { class: 'leave-ask', role: 'alertdialog' }, h('div', { class: 'leave-box' },
+    h('p', {}, '🦉 ' + msg),
+    h('div', { class: 'row' },
+      h('button', { class: 'btn big', onclick: () => el.remove() }, 'أكمل اللعب'),
+      h('button', { class: 'btn soft', onclick: () => { el.remove(); onYes(); } }, 'اخرج الآن'))));
+  document.body.append(el);
+}
 export function clearModals() { while (stack.length) stack.pop().dismiss(); }
 
-export function modal(content, { onClose, cls = '', replace = false } = {}) {
+export function modal(content, { onClose, cls = '', replace = false, guard } = {}) {
   const back = h('div', { class: 'modal-back' });
   const box = h('div', { class: 'modal ' + cls });
   let done = false;
   const remove = () => { back.classList.remove('show'); setTimeout(() => back.remove(), 250); };
   const entry = {
+    guard,
     // إغلاق بلا لمس السجل (عند الرجوع أو الاستبدال أو الانتقال)
     dismiss() { if (done) return; done = true; const i = stack.indexOf(entry); if (i >= 0) stack.splice(i, 1); remove(); onClose?.(); },
   };
-  const close = () => {
+  const really = () => {
     if (done) return;
     entry.dismiss();
     if (history.state && history.state.modal) { skipPop++; history.back(); }
   };
+  // guard: دالة تعيد رسالة إن كان الإغلاق يضيّع شيئاً، فيُسأل الطفل أولاً
+  const close = () => { if (done) return; const g = guard?.(); if (g) confirmLeave(g, really); else really(); };
   box.append(h('button', { class: 'modal-x', 'aria-label': 'إغلاق', onclick: close }, '✕'), content);
   back.append(box);
   back.addEventListener('click', (e) => { if (e.target === back) close(); });

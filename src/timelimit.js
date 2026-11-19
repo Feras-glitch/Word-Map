@@ -1,6 +1,6 @@
 // وقت اللعب اليومي: يحدده الأب من لوحة الوالدين. يُعدّ وقت كل طفل بالدقائق والتطبيق ظاهر،
 // وحين ينتهي تظهر رسالة لطيفة من البومة. الوقت الإضافي بالرقم السري فقط.
-import { h, owlSVG } from './ui.js';
+import { h, owlSVG, setPageGuard } from './ui.js';
 import { store } from './store.js';
 import { today } from './mastery.js';
 import { parentLock } from './lock.js';
@@ -17,10 +17,12 @@ let overlay = null;
 function check() {
   if (!store.me || FREE.includes(route()) || minutesLeft() > 0) { overlay?.remove(); overlay = null; return; }
   if (overlay) return;
+  setPageGuard(null); document.querySelector('.leave-ask')?.remove();
   overlay = h('div', { class: 'time-up', role: 'dialog' },
     h('div', { class: 'owl-wrap', html: owlSVG(120, 'wink') }),
     h('h2', {}, `انتهى وقت الاستكشاف اليوم يا ${store.me.name} 🌙`),
     h('p', {}, 'أحسنت اليوم! العالم ينتظرك غداً.'),
+    h('p', { class: 'hint' }, 'تبديل المستكشف الآن يحتاج الرقم السري للوالدين.'),
     h('button', { class: 'btn big soft', onclick: () => { location.hash = '#profiles'; } }, '👥 تبديل المستكشف'),
     h('button', { class: 'btn small soft', onclick: () => parentLock(() => { const min = extraToday() + 15; store.patch((p) => { p.extraTime = { day: today(), min }; }); check(); }) }, '🔒 للوالدين: ربع ساعة إضافية'));
   document.body.append(overlay);

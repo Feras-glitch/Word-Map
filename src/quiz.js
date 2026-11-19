@@ -218,7 +218,7 @@ export function runQuiz({ title, country, questions, onDone, onDecide, onAbort, 
   questions = [...questions];
   // في مسابقة الإخوة يُخاطَب اللاعب صاحب الدور بصيغته
   if (pid) setAddressee(store.profiles.find((x) => x.id === pid)?.gender || null);
-  const m = modal(box, { cls: 'quiz-modal', onClose: () => { if (pid) setAddressee(undefined); if (!decided && answered > 0) onAbort?.(score, answered); onClose?.(); } });
+  const m = modal(box, { cls: 'quiz-modal', guard: () => (!decided && answered > 0 ? 'إن خرجت الآن ضاعت إجابات هذه الجولة.' : null), onClose: () => { if (pid) setAddressee(undefined); if (!decided && answered > 0) onAbort?.(score, answered); onClose?.(); } });
   const head = () => h('div', { class: 'q-head' },
     h('b', {}, title),
     h('div', { class: 'q-dots', 'aria-hidden': 'true' }, questions.slice(0, main).map((_, k) => h('i', { class: k < i ? (results[k] ? 'done' : 'miss') : k === i ? 'now' : '' }))));

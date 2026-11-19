@@ -5,7 +5,7 @@ import { speak } from '../speech.js';
 import { sfx } from '../sfx.js';
 import { placementTest } from '../quiz.js';
 import { stampsWord } from '../arnum.js';
-import { limitFor } from '../timelimit.js';
+import { limitFor, minutesLeft } from '../timelimit.js';
 import { parentLock } from '../lock.js';
 
 const AVATARS = ['🦁', '🐯', '🐼', '🦊', '🐸', '🐧', '🦄', '🐢', '🐬', '🦉', '🐫', '🦋'];
@@ -15,7 +15,12 @@ export function profilesScreen(root, { go }) {
   const draw = () => {
     list.innerHTML = '';
     for (const p of store.profiles) {
-      list.append(h('button', { class: 'profile-card', onclick: () => { sfx('tap'); store.switchTo(p.id); go('home', { replace: true }); } },
+      list.append(h('button', { class: 'profile-card', onclick: () => {
+        sfx('tap');
+        const sw = () => { store.switchTo(p.id); go('home', { replace: true }); };
+        // بعد انتهاء وقت الطفل لا ينتقل إلى ملف أخيه إلا بإذن الوالدين
+        if (limitFor() && store.me && p.id !== store.me.id && minutesLeft() <= 0) parentLock(sw); else sw();
+      } },
         h('span', { class: 'av' }, p.avatar), h('b', {}, p.name),
         h('small', {}, LEVELS[p.level].emoji + ' ' + LEVELS[p.level].name + ' · ' + stampsWord(Object.keys(p.stamps).length))));
     }
