@@ -1,0 +1,38 @@
+name: جلب الصور الثانية وحيوانات القارات
+
+# يُشغَّل يدوياً. الصور الجديدة تُحفظ بحالة «pending» ولا تظهر في التطبيق قبل مراجعتها بالنظر.
+on:
+  workflow_dispatch:
+    inputs:
+      set:
+        description: 'second = صورة ثانية لكل دولة، animals = حيوانات القارات'
+        required: true
+        default: 'second'
+      only:
+        description: 'مفاتيح مفصولة بفواصل (فارغ = الجديد والمعدّل فقط)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with: { node-version: 22 }
+      - name: ImageMagick
+        run: (command -v convert || (sudo apt-get update -qq && sudo apt-get install -y -qq imagemagick)) && convert -version | head -1
+      - name: الجلب
+        env: { PH_SET: '${{ github.event.inputs.set }}', PH_ONLY: '${{ github.event.inputs.only }}' }
+        run: node scripts/fetch-photos.mjs
+      - name: الحفظ في المستودع
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A src/second-img src/animal-img content/second-photos.json content/animal-photos.json content/SECOND-PHOTOS-CREDITS.md content/ANIMAL-PHOTOS-CREDITS.md 2>/dev/null || true
+          if git diff --cached --quiet; then echo "لا جديد"; exit 0; fi
+          git commit -m "صور ${{ github.event.inputs.set }} من ويكيميديا كومنز (بانتظار المراجعة)"
+          git pull --rebase -q && git push

@@ -1,0 +1,972 @@
+{
+ "AFG": {
+  "kind": "animal",
+  "ar": "كلب الصيد الأفغاني",
+  "wiki": "Afghan Hound"
+ },
+ "AGO": {
+  "kind": "animal",
+  "ar": "الظبي الأسود العملاق",
+  "wiki": "Giant sable antelope"
+ },
+ "ALB": {
+  "kind": "animal",
+  "ar": "النسر الذهبي",
+  "wiki": "Golden eagle"
+ },
+ "AND": {
+  "kind": "animal",
+  "ar": "الشامواه البيريني",
+  "wiki": "Pyrenean chamois"
+ },
+ "ARE": {
+  "kind": "animal",
+  "ar": "الصقر الحُر",
+  "wiki": "Saker falcon"
+ },
+ "ARG": {
+  "kind": "food",
+  "ar": "الماتيه",
+  "wiki": "Mate (drink)"
+ },
+ "ARM": {
+  "kind": "food",
+  "ar": "المشمش",
+  "wiki": "Apricot"
+ },
+ "ATG": {
+  "kind": "food",
+  "ar": "الأناناس",
+  "wiki": "Pineapple"
+ },
+ "AUS": {
+  "kind": "animal",
+  "ar": "الكنغر",
+  "wiki": "Red kangaroo"
+ },
+ "AUT": {
+  "kind": "food",
+  "ar": "كعكة زاخر",
+  "wiki": "Sachertorte"
+ },
+ "AZE": {
+  "kind": "animal",
+  "ar": "حصان قره باغ",
+  "wiki": "Karabakh horse"
+ },
+ "BDI": {
+  "kind": "animal",
+  "ar": "فرس النهر",
+  "wiki": "Hippopotamus"
+ },
+ "BEL": {
+  "kind": "food",
+  "ar": "الوافل البلجيكي",
+  "wiki": "Belgian waffle"
+ },
+ "BEN": {
+  "kind": "animal",
+  "ar": "النمر الأرقط (الفهد)",
+  "wiki": "African leopard"
+ },
+ "BFA": {
+  "kind": "food",
+  "ar": "زبدة الشيا",
+  "wiki": "Shea butter"
+ },
+ "BGD": {
+  "kind": "animal",
+  "ar": "النمر البنغالي",
+  "wiki": "Bengal tiger"
+ },
+ "BGR": {
+  "kind": "plant",
+  "ar": "الوردة الدمشقية",
+  "wiki": "Rosa × damascena"
+ },
+ "BHR": {
+  "kind": "food",
+  "ar": "المجبوس",
+  "wiki": "Machboos"
+ },
+ "BHS": {
+  "kind": "animal",
+  "ar": "طائر الفلامنغو",
+  "wiki": "American flamingo"
+ },
+ "BIH": {
+  "kind": "food",
+  "ar": "الكباب البوسني (التشيفابي)",
+  "wiki": "Ćevapi"
+ },
+ "BLR": {
+  "kind": "animal",
+  "ar": "البيسون الأوروبي",
+  "wiki": "European bison"
+ },
+ "BLZ": {
+  "kind": "animal",
+  "ar": "حيوان التابير",
+  "wiki": "Baird's tapir"
+ },
+ "BOL": {
+  "kind": "animal",
+  "ar": "اللاما",
+  "wiki": "Llama"
+ },
+ "BRA": {
+  "kind": "animal",
+  "ar": "طائر الطوقان",
+  "wiki": "Toco toucan"
+ },
+ "BRB": {
+  "kind": "animal",
+  "ar": "السمك الطائر",
+  "wiki": "Flying fish"
+ },
+ "BRN": {
+  "kind": "animal",
+  "ar": "القرد الأنفي",
+  "wiki": "Proboscis monkey"
+ },
+ "BTN": {
+  "kind": "animal",
+  "ar": "التاكين",
+  "wiki": "Takin"
+ },
+ "BWA": {
+  "kind": "animal",
+  "ar": "الفيل الأفريقي",
+  "wiki": "African bush elephant"
+ },
+ "CAF": {
+  "kind": "animal",
+  "ar": "ظبي البونغو",
+  "wiki": "Bongo (antelope)"
+ },
+ "CAN": {
+  "kind": "food",
+  "ar": "شراب القيقب",
+  "wiki": "Maple syrup"
+ },
+ "CHE": {
+  "kind": "animal",
+  "ar": "كلب سانت برنارد",
+  "wiki": "St. Bernard (dog)"
+ },
+ "CHL": {
+  "kind": "animal",
+  "ar": "كندور الأنديز",
+  "wiki": "Andean condor"
+ },
+ "CHN": {
+  "kind": "animal",
+  "ar": "الباندا العملاقة",
+  "wiki": "Giant panda"
+ },
+ "CIV": {
+  "kind": "animal",
+  "ar": "فيل الغابة الأفريقي",
+  "wiki": "African forest elephant"
+ },
+ "CMR": {
+  "kind": "animal",
+  "ar": "الضفدع العملاق (جالوت)",
+  "wiki": "Goliath frog"
+ },
+ "COD": {
+  "kind": "animal",
+  "ar": "الأوكابي",
+  "wiki": "Okapi"
+ },
+ "COG": {
+  "kind": "animal",
+  "ar": "غوريلا الأراضي المنخفضة",
+  "wiki": "Western lowland gorilla"
+ },
+ "COL": {
+  "kind": "food",
+  "ar": "القهوة",
+  "wiki": "Coffee bean"
+ },
+ "COM": {
+  "kind": "animal",
+  "ar": "سمكة الكولاكانث",
+  "wiki": "Coelacanth"
+ },
+ "CPV": {
+  "kind": "animal",
+  "ar": "السلحفاة ضخمة الرأس",
+  "wiki": "Loggerhead sea turtle"
+ },
+ "CRI": {
+  "kind": "animal",
+  "ar": "حيوان الكسلان",
+  "wiki": "Brown-throated sloth"
+ },
+ "CUB": {
+  "kind": "animal",
+  "ar": "التمساح الكوبي",
+  "wiki": "Cuban crocodile"
+ },
+ "CYP": {
+  "kind": "food",
+  "ar": "جبن الحلوم",
+  "wiki": "Halloumi"
+ },
+ "CZE": {
+  "kind": "food",
+  "ar": "حلوى الترديلنيك",
+  "wiki": "Trdelník"
+ },
+ "DEU": {
+  "kind": "food",
+  "ar": "البريتزل",
+  "wiki": "Pretzel"
+ },
+ "DJI": {
+  "kind": "animal",
+  "ar": "القرش الحوتي",
+  "wiki": "Whale shark"
+ },
+ "DMA": {
+  "kind": "animal",
+  "ar": "ببغاء السيسيرو",
+  "wiki": "Imperial amazon"
+ },
+ "DNK": {
+  "kind": "food",
+  "ar": "المعجنات الدنماركية",
+  "wiki": "Danish pastry"
+ },
+ "DOM": {
+  "kind": "animal",
+  "ar": "إغوانا وحيد القرن",
+  "wiki": "Rhinoceros iguana"
+ },
+ "DZA": {
+  "kind": "animal",
+  "ar": "ثعلب الفنك",
+  "wiki": "Fennec fox"
+ },
+ "ECU": {
+  "kind": "animal",
+  "ar": "سلحفاة غالاباغوس",
+  "wiki": "Galápagos tortoise"
+ },
+ "EGY": {
+  "kind": "food",
+  "ar": "الكشري",
+  "wiki": "Koshary"
+ },
+ "ERI": {
+  "kind": "animal",
+  "ar": "الحمار البري الأفريقي",
+  "wiki": "African wild ass"
+ },
+ "ESP": {
+  "kind": "food",
+  "ar": "الباييا",
+  "wiki": "Paella"
+ },
+ "EST": {
+  "kind": "animal",
+  "ar": "طائر السنونو",
+  "wiki": "Barn swallow"
+ },
+ "ETH": {
+  "kind": "food",
+  "ar": "الإنجيرا",
+  "wiki": "Injera"
+ },
+ "FIN": {
+  "kind": "animal",
+  "ar": "الدب البني",
+  "wiki": "Brown bear"
+ },
+ "FJI": {
+  "kind": "animal",
+  "ar": "إغوانا فيجي المخططة",
+  "wiki": "Fiji banded iguana"
+ },
+ "FRA": {
+  "kind": "food",
+  "ar": "الكرواسون",
+  "wiki": "Croissant"
+ },
+ "FSM": {
+  "kind": "animal",
+  "ar": "الشفنين العملاق (المانتا)",
+  "wiki": "Giant oceanic manta ray"
+ },
+ "GAB": {
+  "kind": "animal",
+  "ar": "قرد الماندريل",
+  "wiki": "Mandrill"
+ },
+ "GBR": {
+  "kind": "food",
+  "ar": "السكون",
+  "wiki": "Scone"
+ },
+ "GEO": {
+  "kind": "food",
+  "ar": "الخاتشابوري",
+  "wiki": "Khachapuri"
+ },
+ "GHA": {
+  "kind": "food",
+  "ar": "الفوفو",
+  "wiki": "Fufu"
+ },
+ "GIN": {
+  "kind": "animal",
+  "ar": "الشمبانزي",
+  "wiki": "Chimpanzee"
+ },
+ "GMB": {
+  "kind": "food",
+  "ar": "الفول السوداني",
+  "wiki": "Peanut"
+ },
+ "GNB": {
+  "kind": "food",
+  "ar": "الكاجو",
+  "wiki": "Cashew"
+ },
+ "GNQ": {
+  "kind": "animal",
+  "ar": "السلحفاة الجلدية",
+  "wiki": "Leatherback sea turtle"
+ },
+ "GRC": {
+  "kind": "food",
+  "ar": "جبن الفيتا",
+  "wiki": "Feta"
+ },
+ "GRD": {
+  "kind": "plant",
+  "ar": "جوزة الطيب",
+  "wiki": "Nutmeg"
+ },
+ "GTM": {
+  "kind": "animal",
+  "ar": "طائر الكيتزال",
+  "wiki": "Resplendent quetzal"
+ },
+ "GUY": {
+  "kind": "animal",
+  "ar": "طائر الهواتزين",
+  "wiki": "Hoatzin"
+ },
+ "HND": {
+  "kind": "animal",
+  "ar": "ببغاء المكاو القرمزي",
+  "wiki": "Scarlet macaw"
+ },
+ "HRV": {
+  "kind": "animal",
+  "ar": "كلب الدلماسي",
+  "wiki": "Dalmatian (dog)"
+ },
+ "HTI": {
+  "kind": "food",
+  "ar": "المانجو",
+  "wiki": "Mango"
+ },
+ "HUN": {
+  "kind": "food",
+  "ar": "الغولاش",
+  "wiki": "Goulash"
+ },
+ "IDN": {
+  "kind": "animal",
+  "ar": "تنين كومودو",
+  "wiki": "Komodo dragon"
+ },
+ "IND": {
+  "kind": "animal",
+  "ar": "الطاووس الهندي",
+  "wiki": "Indian peafowl"
+ },
+ "IRL": {
+  "kind": "food",
+  "ar": "خبز الصودا",
+  "wiki": "Soda bread"
+ },
+ "IRN": {
+  "kind": "plant",
+  "ar": "الزعفران",
+  "wiki": "Saffron"
+ },
+ "IRQ": {
+  "kind": "food",
+  "ar": "المسكوف",
+  "wiki": "Masgouf"
+ },
+ "ISL": {
+  "kind": "animal",
+  "ar": "طائر البفن",
+  "wiki": "Atlantic puffin"
+ },
+ "ITA": {
+  "kind": "food",
+  "ar": "البيتزا",
+  "wiki": "Pizza"
+ },
+ "JAM": {
+  "kind": "animal",
+  "ar": "الطائر الطنان ذو الذيل الشريطي",
+  "wiki": "Red-billed streamertail"
+ },
+ "JOR": {
+  "kind": "food",
+  "ar": "المنسف",
+  "wiki": "Mansaf"
+ },
+ "JPN": {
+  "kind": "food",
+  "ar": "السوشي",
+  "wiki": "Sushi"
+ },
+ "KAZ": {
+  "kind": "animal",
+  "ar": "ظبي السايغا",
+  "wiki": "Saiga antelope"
+ },
+ "KEN": {
+  "kind": "animal",
+  "ar": "الفهد الصياد (الشيتا)",
+  "wiki": "Cheetah"
+ },
+ "KGZ": {
+  "kind": "animal",
+  "ar": "نمر الثلج",
+  "wiki": "Snow leopard"
+ },
+ "KHM": {
+  "kind": "food",
+  "ar": "سمك الأموك",
+  "wiki": "Fish amok"
+ },
+ "KIR": {
+  "kind": "animal",
+  "ar": "طائر الفرقاط",
+  "wiki": "Great frigatebird"
+ },
+ "KNA": {
+  "kind": "animal",
+  "ar": "القرد الأخضر (الفرفت)",
+  "wiki": "Green monkey"
+ },
+ "KOR": {
+  "kind": "food",
+  "ar": "الكيمتشي",
+  "wiki": "Kimchi"
+ },
+ "XKX": {
+  "kind": "food",
+  "ar": "الفليا",
+  "wiki": "Flia"
+ },
+ "KWT": {
+  "kind": "animal",
+  "ar": "سمك الزبيدي",
+  "wiki": "Pampus argenteus"
+ },
+ "LAO": {
+  "kind": "food",
+  "ar": "الأرز الدبق",
+  "wiki": "Glutinous rice"
+ },
+ "LBN": {
+  "kind": "food",
+  "ar": "التبولة",
+  "wiki": "Tabbouleh"
+ },
+ "LBR": {
+  "kind": "animal",
+  "ar": "فرس النهر القزم",
+  "wiki": "Pygmy hippopotamus"
+ },
+ "LBY": {
+  "kind": "food",
+  "ar": "البازين",
+  "wiki": "Bazeen"
+ },
+ "LCA": {
+  "kind": "animal",
+  "ar": "ببغاء سانت لوسيا",
+  "wiki": "St. Lucia amazon"
+ },
+ "LIE": {
+  "kind": "animal",
+  "ar": "الوعل الألبي",
+  "wiki": "Alpine ibex"
+ },
+ "LKA": {
+  "kind": "plant",
+  "ar": "الشاي السيلاني",
+  "wiki": "Ceylon tea"
+ },
+ "LSO": {
+  "kind": "animal",
+  "ar": "حصان باسوتو",
+  "wiki": "Basotho pony"
+ },
+ "LTU": {
+  "kind": "animal",
+  "ar": "اللقلق الأبيض",
+  "wiki": "White stork"
+ },
+ "LUX": {
+  "kind": "animal",
+  "ar": "طائر الصعو ذهبي التاج",
+  "wiki": "Goldcrest"
+ },
+ "LVA": {
+  "kind": "animal",
+  "ar": "طائر الذعرة البيضاء",
+  "wiki": "White wagtail"
+ },
+ "MAR": {
+  "kind": "food",
+  "ar": "الكسكس",
+  "wiki": "Couscous"
+ },
+ "MCO": {
+  "kind": "food",
+  "ar": "معجنات الباربجوان",
+  "wiki": "Barbajuan"
+ },
+ "MDA": {
+  "kind": "food",
+  "ar": "العنب",
+  "wiki": "Grape"
+ },
+ "MDG": {
+  "kind": "animal",
+  "ar": "الليمور حلقي الذيل",
+  "wiki": "Ring-tailed lemur"
+ },
+ "MDV": {
+  "kind": "animal",
+  "ar": "السلحفاة الخضراء",
+  "wiki": "Green sea turtle"
+ },
+ "MEX": {
+  "kind": "food",
+  "ar": "التاكو",
+  "wiki": "Taco"
+ },
+ "MHL": {
+  "kind": "plant",
+  "ar": "جوز الهند",
+  "wiki": "Coconut"
+ },
+ "MKD": {
+  "kind": "food",
+  "ar": "الأيفار",
+  "wiki": "Ajvar"
+ },
+ "MLI": {
+  "kind": "food",
+  "ar": "الفونيو",
+  "wiki": "Fonio"
+ },
+ "MLT": {
+  "kind": "food",
+  "ar": "الباستيزي",
+  "wiki": "Pastizz"
+ },
+ "MMR": {
+  "kind": "food",
+  "ar": "المحينغا",
+  "wiki": "Mohinga"
+ },
+ "MNE": {
+  "kind": "plant",
+  "ar": "الزيتون",
+  "wiki": "Olive"
+ },
+ "MNG": {
+  "kind": "animal",
+  "ar": "الجمل ذو السنامين",
+  "wiki": "Bactrian camel"
+ },
+ "MOZ": {
+  "kind": "animal",
+  "ar": "الأطوم (بقرة البحر)",
+  "wiki": "Dugong"
+ },
+ "MRT": {
+  "kind": "food",
+  "ar": "المشوي",
+  "wiki": "Mechoui"
+ },
+ "MUS": {
+  "kind": "animal",
+  "ar": "طائر الدودو",
+  "wiki": "Dodo"
+ },
+ "MWI": {
+  "kind": "animal",
+  "ar": "أسماك بحيرة ملاوي الملونة",
+  "wiki": "Mbuna"
+ },
+ "MYS": {
+  "kind": "food",
+  "ar": "ناسي ليماك",
+  "wiki": "Nasi lemak"
+ },
+ "NAM": {
+  "kind": "animal",
+  "ar": "ظبي الجيمسبوك",
+  "wiki": "Gemsbok"
+ },
+ "NER": {
+  "kind": "animal",
+  "ar": "المها أبو عدس",
+  "wiki": "Addax"
+ },
+ "NGA": {
+  "kind": "food",
+  "ar": "أرز الجولوف",
+  "wiki": "Jollof rice"
+ },
+ "NIC": {
+  "kind": "animal",
+  "ar": "طائر الموتموت",
+  "wiki": "Turquoise-browed motmot"
+ },
+ "NLD": {
+  "kind": "plant",
+  "ar": "زهرة التوليب",
+  "wiki": "Tulip"
+ },
+ "NOR": {
+  "kind": "animal",
+  "ar": "سمك السلمون",
+  "wiki": "Atlantic salmon"
+ },
+ "NPL": {
+  "kind": "food",
+  "ar": "المومو",
+  "wiki": "Momo (food)"
+ },
+ "NRU": {
+  "kind": "animal",
+  "ar": "طائر النودي البني",
+  "wiki": "Brown noddy"
+ },
+ "NZL": {
+  "kind": "animal",
+  "ar": "طائر الكيوي",
+  "wiki": "Kiwi (bird)"
+ },
+ "OMN": {
+  "kind": "animal",
+  "ar": "الطهر العربي",
+  "wiki": "Arabian tahr"
+ },
+ "PAK": {
+  "kind": "animal",
+  "ar": "الماعز المارخور",
+  "wiki": "Markhor"
+ },
+ "PAN": {
+  "kind": "animal",
+  "ar": "العقاب الهاربي",
+  "wiki": "Harpy eagle"
+ },
+ "PER": {
+  "kind": "animal",
+  "ar": "الألبكة",
+  "wiki": "Alpaca"
+ },
+ "PHL": {
+  "kind": "animal",
+  "ar": "النسر الفلبيني",
+  "wiki": "Philippine eagle"
+ },
+ "PLW": {
+  "kind": "animal",
+  "ar": "قناديل بحيرة القناديل",
+  "wiki": "Jellyfish Lake"
+ },
+ "PNG": {
+  "kind": "animal",
+  "ar": "طائر الجنة",
+  "wiki": "Raggiana bird-of-paradise"
+ },
+ "POL": {
+  "kind": "food",
+  "ar": "البيروغي",
+  "wiki": "Pierogi"
+ },
+ "PRK": {
+  "kind": "food",
+  "ar": "النينغميون (نودلز باردة)",
+  "wiki": "Naengmyeon"
+ },
+ "PRT": {
+  "kind": "food",
+  "ar": "باستيل دي ناتا",
+  "wiki": "Pastel de nata"
+ },
+ "PRY": {
+  "kind": "food",
+  "ar": "الشيبا",
+  "wiki": "Chipa (food)"
+ },
+ "PSE": {
+  "kind": "food",
+  "ar": "المسخّن",
+  "wiki": "Musakhan"
+ },
+ "QAT": {
+  "kind": "animal",
+  "ar": "المها العربي",
+  "wiki": "Arabian oryx"
+ },
+ "ROU": {
+  "kind": "food",
+  "ar": "الماماليغا",
+  "wiki": "Mămăligă"
+ },
+ "RUS": {
+  "kind": "animal",
+  "ar": "النمر السيبيري",
+  "wiki": "Siberian tiger"
+ },
+ "RWA": {
+  "kind": "animal",
+  "ar": "غوريلا الجبال",
+  "wiki": "Mountain gorilla"
+ },
+ "SAU": {
+  "kind": "food",
+  "ar": "التمر",
+  "wiki": "Date palm"
+ },
+ "SDN": {
+  "kind": "plant",
+  "ar": "الصمغ العربي",
+  "wiki": "Gum arabic"
+ },
+ "SEN": {
+  "kind": "food",
+  "ar": "الثيبوديين",
+  "wiki": "Thieboudienne"
+ },
+ "SGP": {
+  "kind": "food",
+  "ar": "أرز الدجاج الهايناني",
+  "wiki": "Hainanese chicken rice"
+ },
+ "SLB": {
+  "kind": "animal",
+  "ar": "السقنقور ذو الذيل القابض",
+  "wiki": "Prehensile-tailed skink"
+ },
+ "SLE": {
+  "kind": "animal",
+  "ar": "قرد ديانا",
+  "wiki": "Diana monkey"
+ },
+ "SLV": {
+  "kind": "food",
+  "ar": "البوبوسا",
+  "wiki": "Pupusa"
+ },
+ "SMR": {
+  "kind": "food",
+  "ar": "كعكة الجبال الثلاثة",
+  "wiki": "Torta Tre Monti"
+ },
+ "SOM": {
+  "kind": "animal",
+  "ar": "الجمل العربي (وحيد السنام)",
+  "wiki": "Dromedary"
+ },
+ "SRB": {
+  "kind": "food",
+  "ar": "التوت الأحمر",
+  "wiki": "Raspberry"
+ },
+ "SSD": {
+  "kind": "animal",
+  "ar": "ظبي الكوب أبيض الأذنين",
+  "wiki": "White-eared kob"
+ },
+ "STP": {
+  "kind": "food",
+  "ar": "الكاكاو",
+  "wiki": "Cocoa bean"
+ },
+ "SUR": {
+  "kind": "animal",
+  "ar": "الضفدع السام الأزرق",
+  "wiki": "Dyeing dart frog"
+ },
+ "SVK": {
+  "kind": "food",
+  "ar": "الهالوشكي",
+  "wiki": "Bryndzové halušky"
+ },
+ "SVN": {
+  "kind": "animal",
+  "ar": "حصان الليبيزانر",
+  "wiki": "Lipizzan"
+ },
+ "SWE": {
+  "kind": "animal",
+  "ar": "الموظ",
+  "wiki": "Moose"
+ },
+ "SWZ": {
+  "kind": "animal",
+  "ar": "وحيد القرن الأبيض",
+  "wiki": "White rhinoceros"
+ },
+ "SYC": {
+  "kind": "plant",
+  "ar": "جوز الهند البحري (كوكو دي مير)",
+  "wiki": "Lodoicea"
+ },
+ "SYR": {
+  "kind": "food",
+  "ar": "الكبة",
+  "wiki": "Kibbeh"
+ },
+ "TCD": {
+  "kind": "animal",
+  "ar": "بقر الكوري",
+  "wiki": "Kuri cattle"
+ },
+ "TGO": {
+  "kind": "food",
+  "ar": "اليام",
+  "wiki": "Yam (vegetable)"
+ },
+ "THA": {
+  "kind": "animal",
+  "ar": "الفيل الآسيوي",
+  "wiki": "Asian elephant"
+ },
+ "TJK": {
+  "kind": "animal",
+  "ar": "خروف ماركو بولو",
+  "wiki": "Marco Polo sheep"
+ },
+ "TKM": {
+  "kind": "animal",
+  "ar": "حصان أخال تكه",
+  "wiki": "Akhal-Teke"
+ },
+ "TLS": {
+  "kind": "animal",
+  "ar": "التمساح البحري",
+  "wiki": "Saltwater crocodile"
+ },
+ "TON": {
+  "kind": "animal",
+  "ar": "الحوت الأحدب",
+  "wiki": "Humpback whale"
+ },
+ "TTO": {
+  "kind": "animal",
+  "ar": "طائر أبو منجل القرمزي",
+  "wiki": "Scarlet ibis"
+ },
+ "TUN": {
+  "kind": "food",
+  "ar": "البريك التونسي",
+  "wiki": "Brik"
+ },
+ "TUR": {
+  "kind": "food",
+  "ar": "البقلاوة",
+  "wiki": "Baklava"
+ },
+ "TUV": {
+  "kind": "plant",
+  "ar": "القلقاس العملاق (البولاكا)",
+  "wiki": "Cyrtosperma merkusii"
+ },
+ "TZA": {
+  "kind": "animal",
+  "ar": "الزرافة",
+  "wiki": "Masai giraffe"
+ },
+ "UGA": {
+  "kind": "animal",
+  "ar": "الكركي المتوّج",
+  "wiki": "Grey crowned crane"
+ },
+ "UKR": {
+  "kind": "food",
+  "ar": "البورشت",
+  "wiki": "Borscht"
+ },
+ "URY": {
+  "kind": "food",
+  "ar": "الدولسي دي ليتشي",
+  "wiki": "Dulce de leche"
+ },
+ "USA": {
+  "kind": "animal",
+  "ar": "النسر الأصلع",
+  "wiki": "Bald eagle"
+ },
+ "UZB": {
+  "kind": "food",
+  "ar": "البلوف (الأرز البخاري)",
+  "wiki": "Plov"
+ },
+ "VCT": {
+  "kind": "animal",
+  "ar": "ببغاء سانت فنسنت",
+  "wiki": "St. Vincent amazon"
+ },
+ "VEN": {
+  "kind": "food",
+  "ar": "الأريبا",
+  "wiki": "Arepa"
+ },
+ "VNM": {
+  "kind": "food",
+  "ar": "الفو",
+  "wiki": "Pho"
+ },
+ "VUT": {
+  "kind": "animal",
+  "ar": "سرطان جوز الهند",
+  "wiki": "Coconut crab"
+ },
+ "WSM": {
+  "kind": "animal",
+  "ar": "حمامة منقار الأسنان",
+  "wiki": "Tooth-billed pigeon"
+ },
+ "YEM": {
+  "kind": "food",
+  "ar": "السلتة",
+  "wiki": "Saltah"
+ },
+ "ZAF": {
+  "kind": "animal",
+  "ar": "ظبي السبرينغبوك",
+  "wiki": "Springbok"
+ },
+ "ZMB": {
+  "kind": "animal",
+  "ar": "عقاب السمك الأفريقي",
+  "wiki": "African fish eagle"
+ },
+ "ZWE": {
+  "kind": "food",
+  "ar": "السادزا",
+  "wiki": "Sadza"
+ }
+}

@@ -1,0 +1,177 @@
+{
+ "asia-bornean-orangutan": {
+  "cont": "asia",
+  "ar": "إنسان الغاب (الأورانغوتان)",
+  "wiki": "Bornean orangutan"
+ },
+ "asia-red-panda": {
+  "cont": "asia",
+  "ar": "الباندا الحمراء",
+  "wiki": "Red panda"
+ },
+ "asia-indian-rhinoceros": {
+  "cont": "asia",
+  "ar": "وحيد القرن الهندي",
+  "wiki": "Indian rhinoceros"
+ },
+ "asia-japanese-macaque": {
+  "cont": "asia",
+  "ar": "قرد المكاك الياباني",
+  "wiki": "Japanese macaque"
+ },
+ "asia-arabian-oryx": {
+  "cont": "asia",
+  "ar": "المها العربي",
+  "wiki": "Arabian oryx"
+ },
+ "africa-lion": {
+  "cont": "africa",
+  "ar": "الأسد",
+  "wiki": "Lion"
+ },
+ "africa-plains-zebra": {
+  "cont": "africa",
+  "ar": "الحمار الوحشي",
+  "wiki": "Plains zebra"
+ },
+ "africa-hippopotamus": {
+  "cont": "africa",
+  "ar": "فرس النهر",
+  "wiki": "Hippopotamus"
+ },
+ "africa-nile-crocodile": {
+  "cont": "africa",
+  "ar": "تمساح النيل",
+  "wiki": "Nile crocodile"
+ },
+ "africa-common-ostrich": {
+  "cont": "africa",
+  "ar": "النعامة",
+  "wiki": "Common ostrich"
+ },
+ "africa-giraffe": {
+  "cont": "africa",
+  "ar": "الزرافة",
+  "wiki": "Giraffe"
+ },
+ "europe-red-fox": {
+  "cont": "europe",
+  "ar": "الثعلب الأحمر",
+  "wiki": "Red fox"
+ },
+ "europe-european-hedgehog": {
+  "cont": "europe",
+  "ar": "القنفذ الأوروبي",
+  "wiki": "European hedgehog"
+ },
+ "europe-reindeer": {
+  "cont": "europe",
+  "ar": "الرنة",
+  "wiki": "Reindeer"
+ },
+ "europe-eurasian-lynx": {
+  "cont": "europe",
+  "ar": "الوشق الأوراسي",
+  "wiki": "Eurasian lynx"
+ },
+ "europe-red-deer": {
+  "cont": "europe",
+  "ar": "الأيل الأحمر",
+  "wiki": "Red deer"
+ },
+ "namerica-american-bison": {
+  "cont": "namerica",
+  "ar": "البيسون الأمريكي",
+  "wiki": "American bison"
+ },
+ "namerica-polar-bear": {
+  "cont": "namerica",
+  "ar": "الدب القطبي",
+  "wiki": "Polar bear"
+ },
+ "namerica-raccoon": {
+  "cont": "namerica",
+  "ar": "الراكون",
+  "wiki": "Raccoon"
+ },
+ "namerica-north-american-beaver": {
+  "cont": "namerica",
+  "ar": "القندس",
+  "wiki": "North American beaver"
+ },
+ "namerica-monarch-butterfly": {
+  "cont": "namerica",
+  "ar": "فراشة الملك",
+  "wiki": "Monarch butterfly"
+ },
+ "samerica-jaguar": {
+  "cont": "samerica",
+  "ar": "اليغور (الجاغوار)",
+  "wiki": "Jaguar"
+ },
+ "samerica-capybara": {
+  "cont": "samerica",
+  "ar": "الكابيبارا",
+  "wiki": "Capybara"
+ },
+ "samerica-giant-anteater": {
+  "cont": "samerica",
+  "ar": "آكل النمل العملاق",
+  "wiki": "Giant anteater"
+ },
+ "samerica-green-anaconda": {
+  "cont": "samerica",
+  "ar": "الأناكوندا الخضراء",
+  "wiki": "Green anaconda"
+ },
+ "samerica-amazon-river-dolphin": {
+  "cont": "samerica",
+  "ar": "دلفين الأمازون الوردي",
+  "wiki": "Amazon river dolphin"
+ },
+ "oceania-koala": {
+  "cont": "oceania",
+  "ar": "الكوالا",
+  "wiki": "Koala"
+ },
+ "oceania-platypus": {
+  "cont": "oceania",
+  "ar": "خلد الماء (منقار البط)",
+  "wiki": "Platypus"
+ },
+ "oceania-emu": {
+  "cont": "oceania",
+  "ar": "طائر الإيمو",
+  "wiki": "Emu"
+ },
+ "oceania-tasmanian-devil": {
+  "cont": "oceania",
+  "ar": "الشيطان التسماني",
+  "wiki": "Tasmanian devil"
+ },
+ "oceania-ocellaris-clownfish": {
+  "cont": "oceania",
+  "ar": "سمكة المهرج",
+  "wiki": "Ocellaris clownfish"
+ },
+ "antarctica-emperor-penguin": {
+  "cont": "antarctica",
+  "ar": "البطريق الإمبراطوري",
+  "wiki": "Emperor penguin"
+ },
+ "antarctica-adelie-penguin": {
+  "cont": "antarctica",
+  "ar": "بطريق أديلي",
+  "wiki": "Adélie penguin"
+ },
+ "antarctica-leopard-seal": {
+  "cont": "antarctica",
+  "ar": "فقمة النمر",
+  "wiki": "Leopard seal"
+ },
+ "antarctica-weddell-seal": {
+  "cont": "antarctica",
+  "ar": "فقمة ويدل",
+  "wiki": "Weddell seal"
+ }
+}
