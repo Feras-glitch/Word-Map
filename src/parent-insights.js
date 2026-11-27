@@ -1,7 +1,7 @@
 // خلاصات للوالدين: ملخص الأسبوع، وأخطاء التمرين، وأسئلة العشاء
 import { byId, states, continents, shuffle } from './data.js';
 import { SUBJECTS, recsOf, itemsOf } from './exams.js';
-import { knowledgeById, natureById } from './exam-questions.js';
+import { knowledgeById, natureById, iconLabel } from './exam-questions.js';
 import { cnt, li } from './arnum.js';
 import { gp } from './gender.js';
 import { weakest } from './mastery.js';
@@ -15,6 +15,7 @@ const capName = (c) => (c.capAr || '').replace(/\s*\(.*\)\s*/, '');
 export function itemName(subj, id) {
   const c = byId[id];
   if (c && SUBJECTS[subj].country) return ({ flags: 'علم ', map: 'موقع ', capitals: 'عاصمة ', landmarks: 'معلم ', continents: '', languages: 'لغة ', money: 'عملة ' }[subj] || '') + c.ar;
+  if (subj === 'icons') return iconLabel(id);
   return natureById[id]?.ar || knowledgeById[id]?.q || id;
 }
 
