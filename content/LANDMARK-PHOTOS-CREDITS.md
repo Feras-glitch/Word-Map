@@ -59,7 +59,7 @@
 - **EST** — [Old_Town_of_Tallinn,_Tallinn,_Estonia_-_panoramio_(58).jpg](https://commons.wikimedia.org/wiki/File:Old_Town_of_Tallinn,_Tallinn,_Estonia_-_panoramio_(58).jpg) — Ben Bender — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **ETH** — [Lalibela,_san_giorgio,_esterno_24.jpg](https://commons.wikimedia.org/wiki/File:Lalibela,_san_giorgio,_esterno_24.jpg) — Sailko — CC BY 3.0 (https://creativecommons.org/licenses/by/3.0)
 - **FIN** — [Suomenlinna_aerial.JPG](https://commons.wikimedia.org/wiki/File:Suomenlinna_aerial.JPG) — Migro — Public domain
-- **FJI** — [Yasawa Islands banner Waya Island.jpg](https://commons.wikimedia.org/wiki/File:Yasawa_Islands_banner_Waya_Island.jpg) — msdstefan — Public domain
+- **FJI** — [Palm trees, Naviti island, Yasawa, Fiji (1) - August 2016.jpg](https://commons.wikimedia.org/wiki/File:Palm_trees,_Naviti_island,_Yasawa,_Fiji_(1)_-_August_2016.jpg) — Rickard Törnblad — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **FRA** — [Tour_Eiffel_Wikimedia_Commons_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Tour_Eiffel_Wikimedia_Commons_(cropped).jpg) — Benh LIEU SONG — Public domain
 - **FSM** — [Nan_madol.jpg](https://commons.wikimedia.org/wiki/File:Nan_madol.jpg) — NOAA — Public domain
 - **GAB** — [Lopé_National_Park_river_crop.jpg](https://commons.wikimedia.org/wiki/File:Lop%C3%A9_National_Park_river_crop.jpg) — FX — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
@@ -88,7 +88,7 @@
 - **JAM** — [Dunns_River_Falls_climb.JPG](https://commons.wikimedia.org/wiki/File:Dunns_River_Falls_climb.JPG) — Breakyunit at English Wikipedia — CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
 - **JOR** — [Al_Deir_Petra.JPG](https://commons.wikimedia.org/wiki/File:Al_Deir_Petra.JPG) — Azurfrog — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **JPN** — [View_of_Mount_Fuji_from_Ōwakudani_20211202.jpg](https://commons.wikimedia.org/wiki/File:View_of_Mount_Fuji_from_%C5%8Cwakudani_20211202.jpg) — Suicasmo — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
-- **KAZ** — [Baiterek metro station, Astana, 2026.jpg](https://commons.wikimedia.org/wiki/File:Baiterek_metro_station,_Astana,_2026.jpg) — Bdx — CC0 (http://creativecommons.org/publicdomain/zero/1.0/deed.en)
+- **KAZ** — [Interior of Bayterek Tower 02.jpg](https://commons.wikimedia.org/wiki/File:Interior_of_Bayterek_Tower_02.jpg) — Davide Mauro — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **KEN** — [Masai_Mara_at_Sunset.jpg](https://commons.wikimedia.org/wiki/File:Masai_Mara_at_Sunset.jpg) — Danijel Mihajlovic — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **KGZ** — [Issykkul_plyag.jpg](https://commons.wikimedia.org/wiki/File:Issykkul_plyag.jpg) — Қайырқан Әсем — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **KHM** — [Angkor_Wat.jpg](https://commons.wikimedia.org/wiki/File:Angkor_Wat.jpg) — Bjørn Christian Tørrissen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
@@ -167,7 +167,7 @@
 - **SVK** — [SlovakiaPanorama.jpg](https://commons.wikimedia.org/wiki/File:SlovakiaPanorama.jpg) — Abrget47j — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **SVN** — [Lake_Bled_from_the_Mountain.jpg](https://commons.wikimedia.org/wiki/File:Lake_Bled_from_the_Mountain.jpg) — Canadianhockey91 — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **SWE** — [Gamla_stan_September_2014_01.jpg](https://commons.wikimedia.org/wiki/File:Gamla_stan_September_2014_01.jpg) — Arild Vågen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
-- **SWZ** — [Swaziland.Beer.JPG](https://commons.wikimedia.org/wiki/File:Swaziland.Beer.JPG) — Ekem — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
+- **SWZ** — [Granite_monolith.jpg](https://commons.wikimedia.org/wiki/File:Granite_monolith.jpg) — theswazigirl — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **SYC** — [Valleé_de_mai2.jpg](https://commons.wikimedia.org/wiki/File:Valle%C3%A9_de_mai2.jpg) — غير معروف — CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
 - **SYR** — [Damascus, Syria, The Umayyad Mosque, The Courtyard, Islamic Art.jpg](https://commons.wikimedia.org/wiki/File:Damascus,_Syria,_The_Umayyad_Mosque,_The_Courtyard,_Islamic_Art.jpg) — Vyacheslav Argenberg — CC BY 4.0 (https://creativecommons.org/licenses/by/4.0)
 - **TCD** — [Lake chad shore (detilt).jpg](https://commons.wikimedia.org/wiki/File:Lake_chad_shore_(detilt).jpg) — File:Lake chad shore.jpg: Coolthoom1 Detilt: Hike395 — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
@@ -180,7 +180,7 @@
 - **TTO** — [Water lilies at Pitch lake, Trinidad and Tobago.jpg](https://commons.wikimedia.org/wiki/File:Water_lilies_at_Pitch_lake,_Trinidad_and_Tobago.jpg) — John Cray — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **TUN** — [Great_Mosque_of_Kairouan_Panorama_-_Grande_Mosquée_de_Kairouan_Panorama.jpg](https://commons.wikimedia.org/wiki/File:Great_Mosque_of_Kairouan_Panorama_-_Grande_Mosqu%C3%A9e_de_Kairouan_Panorama.jpg) — MAREK SZAREJKO from CLONMEL, IRELAND - POLAND — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0)
 - **TUR** — [Hagia_Sophia_(228968325).jpeg](https://commons.wikimedia.org/wiki/File:Hagia_Sophia_(228968325).jpeg) — Adli Wahid — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
-- **TUV** — [Vaiaku Lagi Hotel.jpg](https://commons.wikimedia.org/wiki/File:Vaiaku_Lagi_Hotel.jpg) — lirneasia — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
+- **TUV** — [Tuvalu Funafuti Atoll.JPG](https://commons.wikimedia.org/wiki/File:Tuvalu_Funafuti_Atoll.JPG) — Gabriella Jacobi — CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
 - **TZA** — [Mount Kilimanjaro.jpg](https://commons.wikimedia.org/wiki/File:Mount_Kilimanjaro.jpg) — Muhammad Mahdi Karim — GFDL 1.2 (http://www.gnu.org/licenses/old-licenses/fdl-1.2.html)
 - **UGA** — [Jinja source of Nile.jpg](https://commons.wikimedia.org/wiki/File:Jinja_source_of_Nile.jpg) — Dror Feitelson — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **UKR** — [Ранок_на_Кукулі.jpg](https://commons.wikimedia.org/wiki/File:%D0%A0%D0%B0%D0%BD%D0%BE%D0%BA_%D0%BD%D0%B0_%D0%9A%D1%83%D0%BA%D1%83%D0%BB%D1%96.jpg) — Vian — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)

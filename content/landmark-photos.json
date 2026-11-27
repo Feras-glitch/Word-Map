@@ -513,13 +513,13 @@
   "review": "ok"
  },
  "FJI": {
-  "file": "Yasawa Islands banner Waya Island.jpg",
+  "file": "Palm trees, Naviti island, Yasawa, Fiji (1) - August 2016.jpg",
   "title": "",
-  "artist": "msdstefan",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Yasawa_Islands_banner_Waya_Island.jpg",
-  "review": "rejected"
+  "artist": "Rickard Törnblad",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Palm_trees,_Naviti_island,_Yasawa,_Fiji_(1)_-_August_2016.jpg",
+  "review": "pending"
  },
  "FRA": {
   "file": "Tour_Eiffel_Wikimedia_Commons_(cropped).jpg",
@@ -774,13 +774,13 @@
   "review": "ok"
  },
  "KAZ": {
-  "file": "Baiterek metro station, Astana, 2026.jpg",
+  "file": "Interior of Bayterek Tower 02.jpg",
   "title": "",
-  "artist": "Bdx",
-  "license": "CC0",
-  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "page": "https://commons.wikimedia.org/wiki/File:Baiterek_metro_station,_Astana,_2026.jpg",
-  "review": "rejected"
+  "artist": "Davide Mauro",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Interior_of_Bayterek_Tower_02.jpg",
+  "review": "pending"
  },
  "KEN": {
   "file": "Masai_Mara_at_Sunset.jpg",
@@ -1485,13 +1485,13 @@
   "review": "ok"
  },
  "SWZ": {
-  "file": "Swaziland.Beer.JPG",
-  "title": "",
-  "artist": "Ekem",
+  "file": "Granite_monolith.jpg",
+  "title": "Sibebe",
+  "artist": "theswazigirl",
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Swaziland.Beer.JPG",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:Granite_monolith.jpg",
+  "review": "pending"
  },
  "SYC": {
   "file": "Valleé_de_mai2.jpg",
@@ -1602,13 +1602,13 @@
   "review": "ok"
  },
  "TUV": {
-  "file": "Vaiaku Lagi Hotel.jpg",
+  "file": "Tuvalu Funafuti Atoll.JPG",
   "title": "",
-  "artist": "lirneasia",
-  "license": "CC BY 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Vaiaku_Lagi_Hotel.jpg",
-  "review": "rejected"
+  "artist": "Gabriella Jacobi",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Tuvalu_Funafuti_Atoll.JPG",
+  "review": "pending"
  },
  "TZA": {
   "file": "Mount Kilimanjaro.jpg",
