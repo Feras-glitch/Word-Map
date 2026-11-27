@@ -38,4 +38,4 @@ jobs:
           git add -A src/landmark-img content/landmark-photos.json content/LANDMARK-PHOTOS-CREDITS.md
           if git diff --cached --quiet; then echo "لا جديد"; exit 0; fi
           git commit -m "صور المعالم من ويكيميديا كومنز (${{ github.event.inputs.mode || 'بانتظار المراجعة' }})"
-          git push
+          for i in 1 2 3 4; do git pull --rebase -q && git push && break; sleep 7; done

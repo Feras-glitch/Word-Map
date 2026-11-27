@@ -35,4 +35,4 @@ jobs:
           for f in src/second-img src/animal-img content/second-photos.json content/animal-photos.json content/SECOND-PHOTOS-CREDITS.md content/ANIMAL-PHOTOS-CREDITS.md; do [ -e "$f" ] && git add -A "$f"; done; true
           if git diff --cached --quiet; then echo "لا جديد"; exit 0; fi
           git commit -m "صور ${{ github.event.inputs.set }} من ويكيميديا كومنز (بانتظار المراجعة)"
-          git pull --rebase -q && git push
+          for i in 1 2 3 4; do git pull --rebase -q && git push && break; sleep 7; done
