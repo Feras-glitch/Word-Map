@@ -519,7 +519,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Palm_trees,_Naviti_island,_Yasawa,_Fiji_(1)_-_August_2016.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "FRA": {
   "file": "Tour_Eiffel_Wikimedia_Commons_(cropped).jpg",
@@ -780,7 +780,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Interior_of_Bayterek_Tower_02.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "KEN": {
   "file": "Masai_Mara_at_Sunset.jpg",
@@ -1491,7 +1491,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Granite_monolith.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "SYC": {
   "file": "Valleé_de_mai2.jpg",
@@ -1608,7 +1608,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Tuvalu_Funafuti_Atoll.JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "TZA": {
   "file": "Mount Kilimanjaro.jpg",
