@@ -29,6 +29,6 @@ export function aboutScreen(root) {
       'العواصم والمعالم واللغات الرسمية ونظام الحكم: راجعها مراجعون مستقلون مقابل الدساتير والمواقع الرسمية وبريتانيكا. مصادر كل دولة في آخر تبويب «الحكم والأرقام» من بطاقتها.'),
     h('details', { class: 'panel' }, h('summary', {}, h('b', {}, '📷 صور المعالم وأصحابها')),
       h('p', { class: 'hint' }, 'صور حرة الرخصة من ويكيميديا كومنز، رُوجعت كل صورة بالنظر قبل وضعها. لكل صورة صاحبها ورخصتها:'),
-      h('ul', { class: 'about-list', dir: 'auto' }, photoCredits().map((p) => h('li', {}, h('b', {}, (byId[p.id]?.ar || p.id) + ': '), h('a', { href: p.page, target: '_blank', rel: 'noopener' }, p.file), ' — ' + p.artist + ' — ' + p.license)))),
+      h('ul', { class: 'about-list', dir: 'auto' }, photoCredits().map((p) => h('li', {}, h('b', {}, (p.what ? p.what + ' — ' : '') + (byId[p.id]?.ar || p.id) + ': '), h('a', { href: p.page, target: '_blank', rel: 'noopener' }, p.file), ' — ' + p.artist + ' — ' + p.license)))),
   );
 }

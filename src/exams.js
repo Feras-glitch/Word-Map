@@ -6,7 +6,7 @@ import { store } from './store.js';
 import { today, addEvidence, goldEligible } from './mastery.js';
 import { requiredFor } from './screens/world.js';
 import { applyAnswer, coverage, pickRound, weekKey } from './exams-core.js';
-import { KNOWLEDGE, knowledgeById, greetOf, greetQ, natureItems, natureById, natureQ, moneyOk, currencyQ, govQ } from './exam-questions.js';
+import { KNOWLEDGE, knowledgeById, greetOf, greetQ, natureItems, natureById, natureQ, moneyOk, currencyQ, govQ, iconItems, iconLabel, iconQ } from './exam-questions.js';
 import { journeys, journeyState } from './journeys.js';
 import { h } from './ui.js';
 import { flagUrl } from './data.js';
@@ -44,11 +44,13 @@ export const SUBJECTS = {
     q: (id, lv) => natureQ(natureById[id], lv === 1 ? 3 : 4, lv), label: (id) => natureById[id]?.ar },
   knowledge: { icon: '📘', title: 'المفاهيم والرحلات', c: '#0ea5e9', country: false, levels: [1, 2, 3], items: (lv) => KNOWLEDGE.filter((k) => k.lv <= lv).map((k) => k.id),
     q: (id, lv) => knowledgeById[id].gen(lv === 1 ? 3 : 4), label: (id) => knowledgeById[id]?.q || knowledgeById[id]?.id },
+  icons: { icon: '🐾', title: 'حيوانات وأطعمة', c: '#c2410c', country: false, levels: [1, 2, 3], items: (lv) => iconItems(lv),
+    q: (id, lv) => iconQ(id, lv === 1 ? 3 : 4), label: (id) => iconLabel(id) },
   money: { icon: '💰', title: 'العملة ونظام الحكم', c: '#a0522d', country: true, levels: [3], extra: true, ok: (c) => moneyOk(c, 'cur') || moneyOk(c, 'gov'),
     q: (c) => (moneyOk(c, 'gov') && (!moneyOk(c, 'cur') || Math.random() < 0.5) ? govQ(c, 4) : currencyQ(c, 4)) },
 };
-export const SUBJECT_ORDER = ['flags', 'map', 'capitals', 'landmarks', 'continents', 'languages', 'nature', 'knowledge', 'money'];
-export const subjectsFor = (lv) => SUBJECT_ORDER.filter((k) => SUBJECTS[k].levels.includes(lv));
+export const SUBJECT_ORDER = ['flags', 'map', 'capitals', 'landmarks', 'continents', 'languages', 'nature', 'icons', 'knowledge', 'money'];
+export const subjectsFor = (lv) => SUBJECT_ORDER.filter((k) => SUBJECTS[k].levels.includes(lv) && (SUBJECTS[k].country || SUBJECTS[k].items(lv).length));
 
 // عناصر المادة لمستوى الطفل، داخل نطاق (null = كل عناصر المستوى)
 export function itemsOf(subj, lv, scopeIds = null) {

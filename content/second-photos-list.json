@@ -2,12 +2,14 @@
  "AFG": {
   "kind": "animal",
   "ar": "كلب الصيد الأفغاني",
-  "wiki": "Afghan Hound"
+  "wiki": "Afghan Hound",
+  "q": "search:Afghan Hound dog"
  },
  "AGO": {
   "kind": "animal",
   "ar": "الظبي الأسود العملاق",
-  "wiki": "Giant sable antelope"
+  "wiki": "Giant sable antelope",
+  "q": "search:Giant sable antelope Hippotragus niger variani"
  },
  "ALB": {
   "kind": "animal",
@@ -17,7 +19,8 @@
  "AND": {
   "kind": "animal",
   "ar": "الشامواه البيريني",
-  "wiki": "Pyrenean chamois"
+  "wiki": "Pyrenean chamois",
+  "q": "search:Rupicapra pyrenaica Pyrenees"
  },
  "ARE": {
   "kind": "animal",
@@ -52,7 +55,8 @@
  "AZE": {
   "kind": "animal",
   "ar": "حصان قره باغ",
-  "wiki": "Karabakh horse"
+  "wiki": "Karabakh horse",
+  "q": "search:Karabakh horse"
  },
  "BDI": {
   "kind": "animal",
@@ -147,7 +151,8 @@
  "CAN": {
   "kind": "food",
   "ar": "شراب القيقب",
-  "wiki": "Maple syrup"
+  "wiki": "Maple syrup",
+  "q": "search:maple syrup pancakes"
  },
  "CHE": {
   "kind": "animal",
@@ -212,7 +217,8 @@
  "CYP": {
   "kind": "food",
   "ar": "جبن الحلوم",
-  "wiki": "Halloumi"
+  "wiki": "Halloumi",
+  "q": "search:Halloumi cheese grilled"
  },
  "CZE": {
   "kind": "food",
@@ -317,7 +323,8 @@
  "GHA": {
   "kind": "food",
   "ar": "الفوفو",
-  "wiki": "Fufu"
+  "wiki": "Fufu",
+  "q": "search:Fufu Ghana soup"
  },
  "GIN": {
   "kind": "animal",
@@ -512,7 +519,8 @@
  "LSO": {
   "kind": "animal",
   "ar": "حصان باسوتو",
-  "wiki": "Basotho pony"
+  "wiki": "Basotho pony",
+  "q": "search:Basotho pony Lesotho"
  },
  "LTU": {
   "kind": "animal",
@@ -577,7 +585,8 @@
  "MLT": {
   "kind": "food",
   "ar": "الباستيزي",
-  "wiki": "Pastizz"
+  "wiki": "Pastizz",
+  "q": "search:Pastizzi Malta"
  },
  "MMR": {
   "kind": "food",
@@ -587,7 +596,8 @@
  "MNE": {
   "kind": "plant",
   "ar": "الزيتون",
-  "wiki": "Olive"
+  "wiki": "Olive",
+  "q": "search:olive tree Montenegro"
  },
  "MNG": {
   "kind": "animal",
@@ -667,7 +677,8 @@
  "OMN": {
   "kind": "animal",
   "ar": "الطهر العربي",
-  "wiki": "Arabian tahr"
+  "wiki": "Arabian tahr",
+  "q": "search:Arabian tahr"
  },
  "PAK": {
   "kind": "animal",
@@ -717,7 +728,8 @@
  "PRY": {
   "kind": "food",
   "ar": "الشيبا",
-  "wiki": "Chipa (food)"
+  "wiki": "Chipa (food)",
+  "q": "search:Chipa Paraguay"
  },
  "PSE": {
   "kind": "food",
@@ -752,7 +764,8 @@
  "SDN": {
   "kind": "plant",
   "ar": "الصمغ العربي",
-  "wiki": "Gum arabic"
+  "wiki": "Gum arabic",
+  "q": "search:Acacia senegal gum arabic"
  },
  "SEN": {
   "kind": "food",
@@ -817,7 +830,8 @@
  "SVN": {
   "kind": "animal",
   "ar": "حصان الليبيزانر",
-  "wiki": "Lipizzan"
+  "wiki": "Lipizzan",
+  "q": "search:Lipizzaner horses Lipica"
  },
  "SWE": {
   "kind": "animal",
@@ -922,7 +936,8 @@
  "UZB": {
   "kind": "food",
   "ar": "البلوف (الأرز البخاري)",
-  "wiki": "Plov"
+  "wiki": "Plov",
+  "q": "search:Uzbek plov"
  },
  "VCT": {
   "kind": "animal",
@@ -967,6 +982,7 @@
  "ZWE": {
   "kind": "food",
   "ar": "السادزا",
-  "wiki": "Sadza"
+  "wiki": "Sadza",
+  "q": "search:Sadza Zimbabwe"
  }
 }

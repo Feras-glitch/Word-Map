@@ -10,7 +10,7 @@ import { journeyState } from './journeys.js';
 import { conceptBtn } from './concepts.js';
 import { landmarkIcon } from './landmarks.js';
 import { times, bigNum, cnt, gC } from './arnum.js';
-import { landmarkPhoto } from './photos.js';
+import { landmarkPhoto, secondPhoto, KIND } from './photos.js';
 import { goldProgress, goldEligible, OTHER_NEEDED } from './mastery.js';
 import { requiredFor } from './screens/world.js';
 import { hasVisit, hasGold, giveVisit, visitWait, visitFailed, dueReviews } from './mastery.js';
@@ -125,7 +125,17 @@ function capitalTab(c) {
         h('div', { class: 'lm-row' + (landmarkPhoto(c.id) ? ' has-photo' : '') }, h('span', { class: 'lm-icon', 'aria-hidden': 'true' }, landmarkIcon(c.landmark)), c.lm3 ? triFold(c.lm3) : h('b', {}, c.landmark))),
       h('button', { class: 'btn small soft', onclick: () => speak(landmarkSpeech(c), LANG.ar) }, '🔊 اسمع عن المعلم'),
     ) : null,
+    secondFig(c),
   );
+}
+
+// الصورة الثانية: حيوان أو طعام أو نبات تشتهر به الدولة
+function secondFig(c) {
+  const p = secondPhoto(c.id); if (!p) return null;
+  const k = KIND[p.kind] || KIND.animal;
+  return h('div', { class: 'story second' }, h('span', { class: 'st-label' }, k.icon + ' ' + k.label + ':'),
+    h('figure', { class: 'lm-photo' }, h('img', { src: p.url, alt: p.ar, loading: 'lazy' }), h('figcaption', { dir: 'ltr' }, '📷 ', h('a', { href: p.page, target: '_blank', rel: 'noopener' }, p.artist), ' · ' + p.license)),
+    h('div', { class: 'lm-row has-photo' }, h('b', {}, p.ar), say(p.ar, LANG.ar)));
 }
 
 function greetBox(g) {

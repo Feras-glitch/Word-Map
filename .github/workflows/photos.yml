@@ -32,7 +32,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A src/second-img src/animal-img content/second-photos.json content/animal-photos.json content/SECOND-PHOTOS-CREDITS.md content/ANIMAL-PHOTOS-CREDITS.md 2>/dev/null || true
+          for f in src/second-img src/animal-img content/second-photos.json content/animal-photos.json content/SECOND-PHOTOS-CREDITS.md content/ANIMAL-PHOTOS-CREDITS.md; do [ -e "$f" ] && git add -A "$f"; done; true
           if git diff --cached --quiet; then echo "لا جديد"; exit 0; fi
           git commit -m "صور ${{ github.event.inputs.set }} من ويكيميديا كومنز (بانتظار المراجعة)"
           git pull --rebase -q && git push

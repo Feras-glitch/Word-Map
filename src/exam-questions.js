@@ -137,3 +137,31 @@ export function govQ(c, n) {
     options: opts.map((o) => ({ correct: o === mine, el: txt(o), label: o })) };
 }
 export { continents, LANG };
+
+// ---------- «صور مشهورة»: حيوان أو طعام أو نبات تشتهر به دولة، وحيوانات القارات ----------
+import { secondPhoto, KIND, allAnimals } from './photos.js';
+import LIST2 from '../content/second-photos-list.json';
+const CONT_ORDER = ['asia', 'africa', 'europe', 'namerica', 'samerica', 'oceania', 'antarctica'];
+export function iconItems(lv) {
+  const sec = states.filter((s) => secondPhoto(s.id) && (lv > 1 || secondPhoto(s.id).kind === 'animal')).map((s) => 's:' + s.id);
+  return [...sec, ...allAnimals().map((a) => 'a:' + a.key)];
+}
+export function iconLabel(id) {
+  if (id.startsWith('s:')) { const p = secondPhoto(id.slice(2)); return p ? p.ar + ' — ' + byId[id.slice(2)]?.ar : id; }
+  return allAnimals().find((a) => 'a:' + a.key === id)?.ar || id;
+}
+export function iconQ(id, n) {
+  if (id.startsWith('s:')) {
+    const c = byId[id.slice(2)]; const p = secondPhoto(c.id); const k = KIND[p.kind] || KIND.animal;
+    const opts = shuffle([c, ...others(c, n - 1, (s) => LIST2[s.id]?.ar !== p.ar)]);
+    return { skill: 'icons', explain: `${p.ar}: ${k.label.replace(/:$/, '')} ${c.ar}.`, say: `${p.ar}. بأي دولة من هذه يشتهر؟`,
+      prompt: h('div', {}, h('img', { class: 'q-photo', src: p.url, alt: '' }), h('p', {}, k.icon + ' ', h('b', {}, p.ar), ': بأي دولة من هذه يشتهر؟')),
+      options: opts.map((o) => ({ correct: o.id === c.id, el: flagOpt(o), label: o.ar })) };
+  }
+  const a = allAnimals().find((x) => 'a:' + x.key === id);
+  const wrong = shuffle(CONT_ORDER.filter((k) => k !== a.cont && (a.cont !== 'antarctica' || k !== 'oceania'))).slice(0, n - 1);
+  const opts = shuffle([a.cont, ...wrong]);
+  return { skill: 'icons', explain: `${a.ar} من حيوانات قارة ${continents[a.cont]}.`, say: `${a.ar}. في أي قارة يعيش؟`,
+    prompt: h('div', {}, h('img', { class: 'q-photo', src: a.url, alt: '' }), h('p', {}, '🐾 ', h('b', {}, a.ar), ': في أي قارة يشتهر؟')),
+    options: opts.map((k) => ({ correct: k === a.cont, el: txt('قارة ' + continents[k]), label: continents[k] })) };
+}

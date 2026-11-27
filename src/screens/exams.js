@@ -13,7 +13,8 @@ import { SUBJECTS, subjectsFor, itemsOf, questionFor, scopesFor, recsOf, recordA
 import { shuffle } from '../data.js';
 import { openExamCert } from '../certs.js';
 import { cnt } from '../arnum.js';
-import { natureById } from '../exam-questions.js';
+import { natureById, iconLabel } from '../exam-questions.js';
+import { secondPhoto, allAnimals } from '../photos.js';
 import { knowledgeById, KNOWLEDGE_GROUPS, knowledgeGroup } from '../exam-questions.js';
 
 const ar = (n) => Number(n).toLocaleString('ar-EG');
@@ -108,8 +109,11 @@ export function albumScreen(root, { go }) {
       else pic = h('img', { src: flagUrl(c.f), alt: '', loading: 'lazy' });
       if (subj === 'capitals' && s) name = c.capAr.replace(/\s*\(.*\)\s*/, '');
     } else if (subj === 'nature') { const it = natureById[id]; pic = h('span', { class: 'kn-ic' }, { ocean: '🌊', sea: '⛵', river: '🏞️', lake: '💧', range: '⛰️', peak: '🏔️', desert: '🏜️' }[it.kind]); name = it.ar; }
-    else { const k = knowledgeById[id]; pic = h('span', { class: 'kn-ic' }, k.icon || '🐪'); name = k.q ? (s ? k.a : '؟') : (s ? '✓' : '؟'); }
-    return h('button', { class: 'al-item' + (s ? ' lit' : '') + (s === 3 ? ' master' : ''), title: name, onclick: () => (c ? openCard(id) : toast(knowledgeById[id]?.explain || natureById[id]?.fact || name, 5000)) },
+    else if (subj === 'icons') {
+      const url = id.startsWith('s:') ? secondPhoto(id.slice(2))?.url : allAnimals().find((a) => 'a:' + a.key === id)?.url;
+      pic = h('img', { src: url, alt: '', loading: 'lazy', class: 'ph' }); name = s ? iconLabel(id) : '؟';
+    } else { const k = knowledgeById[id]; pic = h('span', { class: 'kn-ic' }, k.icon || '🐪'); name = k.q ? (s ? k.a : '؟') : (s ? '✓' : '؟'); }
+    return h('button', { class: 'al-item' + (s ? ' lit' : '') + (s === 3 ? ' master' : ''), title: name, onclick: () => (c ? openCard(id) : subj === 'icons' ? (id.startsWith('s:') ? openCard(id.slice(2)) : toast(iconLabel(id), 3000)) : toast(knowledgeById[id]?.explain || natureById[id]?.fact || name, 5000)) },
       pic, h('small', {}, name), h('i', { class: 'st' }, starsTxt(s)));
   }
 

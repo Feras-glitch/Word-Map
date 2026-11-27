@@ -30,6 +30,7 @@ import { missionsScreen, findScreen, guideScreen, nileScreen, routeScreen, layer
 import { examsScreen, albumScreen, bigExamScreen } from './screens/exams.js';
 import { puzzleScreen } from './screens/puzzle.js';
 import { compareScreen } from './screens/compare.js';
+import { animalsScreen } from './screens/animals.js';
 import { autoBackup } from './autobackup.js';
 
 const screens = {
@@ -43,6 +44,7 @@ const screens = {
   'g-capital': { title: '🏛️ ما العاصمة؟', fn: capitalGame, back: 'games' },
   'g-puzzle': { title: '🧩 أحجية الخريطة', fn: puzzleScreen, back: 'games', full: true },
   compare: { title: '⚖️ قارن بين دولتين', fn: compareScreen },
+  animals: { title: '🐾 حيوانات القارات', fn: animalsScreen },
   'g-memory': { title: '🧠 ذاكرة الأعلام', fn: memoryGame, back: 'games' },
   battuta: { title: '🐪 رحلة ابن بطوطة', fn: battutaScreen, full: true },
   islamic: { title: '🕋 العالم الإسلامي', fn: islamicScreen, full: true },
