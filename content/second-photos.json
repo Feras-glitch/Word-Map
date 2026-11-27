@@ -6,7 +6,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Afghan_Hound_cream_portrait.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "AGO": {
   "q": "search:Palanca Negra Gigante sable antelope|Giant Sable Antelope (22018702922).jpg",
@@ -15,7 +15,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Museu_de_Hist%C3%B3ria_Natural_in_Luanda_-_Angola_2015.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "ALB": {
   "q": "wiki:Golden eagle",
@@ -411,7 +411,7 @@
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Amazona_imperialis_-Roseau_-Dominica_-aviary-6a.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "DNK": {
   "q": "wiki:Danish pastry",
@@ -735,7 +735,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Margherita_Originale.JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "JAM": {
   "q": "wiki:Red-billed streamertail",
@@ -879,7 +879,7 @@
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Stlpar1_Amazona_versicolor_St._Lucia_Parrot.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "LIE": {
   "q": "wiki:Alpine ibex",
@@ -978,7 +978,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Axolotl_ganz.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MHL": {
   "q": "wiki:Coconut",
@@ -1023,7 +1023,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Old_olive,_stara_maslina,_info_tabla.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "MNG": {
   "q": "wiki:Bactrian camel",
@@ -1320,7 +1320,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:John_Harris_-_1614c96b3e_(2).jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "SEN": {
   "q": "wiki:Thieboudienne",
@@ -1428,7 +1428,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Tatra_Chamois.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "SVN": {
   "q": "search:Lipizzaner horses Lipica",
@@ -1545,7 +1545,7 @@
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Scarlet_Ibis_(Eudocimus_ruber)_(4090204788).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "TUN": {
   "q": "wiki:Brik",
@@ -1626,7 +1626,7 @@
   "license": "CC BY 2.5",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
   "page": "https://commons.wikimedia.org/wiki/File:Amazona_guildingii-4.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "VEN": {
   "q": "wiki:Arepa",
@@ -1689,7 +1689,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:African_fish_eagle_(Haliaeetus_vocifer)_with_fish.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "ZWE": {
   "q": "search:Sadza Zimbabwe",

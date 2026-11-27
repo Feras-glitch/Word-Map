@@ -253,4 +253,19 @@ await test('الدول المذكّرة تشمل الأردن والعراق و�
   assert.ok(!/ar\(taps\) \+ ' محاولات'/.test(read('src/screens/missions.js')), 'تمييز عدد المحاولات في قصص المهام');
 });
 
+await test('معاني الأعلام: لكل دولة نص، بلا ذكر إسرائيل، بأرقام عربية', () => {
+  const F = JSON.parse(read('content/flag-symbols.json'));
+  const C = JSON.parse(read('src/data/countries.json')).filter((c) => c.kind === 'state');
+  for (const c of C) assert.ok(F[c.id] && F[c.id].length > 20, 'لا نص لعلم ' + c.id);
+  for (const [k, v] of Object.entries(F)) { assert.ok(!/إسرائيل|اسرائيل|صهيون/.test(v), k); assert.ok(!/[0-9]/.test(v), k + ': أرقام لاتينية'); }
+});
+
+await test('الصور الثانية وحيوانات القارات: قوائم سليمة بلا خنزير ولا خمر، ولا صورة تُعرض قبل مراجعتها', () => {
+  const L = JSON.parse(read('content/second-photos-list.json')); const A = JSON.parse(read('content/continent-animals-list.json'));
+  const ids = new Set(JSON.parse(read('src/data/countries.json')).map((c) => c.id));
+  for (const [k, v] of Object.entries(L)) { assert.ok(ids.has(k), k); assert.ok(['animal', 'food', 'plant'].includes(v.kind), k); assert.ok(!/pork|bacon|ham\b|wine|beer|sausage|خنزير|نبيذ|خمر/i.test(v.wiki + v.ar + (v.q || '').split('|')[0]), k); }
+  for (const [k, v] of Object.entries(A)) assert.ok(['asia', 'africa', 'europe', 'namerica', 'samerica', 'oceania', 'antarctica'].includes(v.cont), k);
+  const P = read('src/photos.js'); assert.ok((P.match(/review === 'ok'/g) || []).length >= 3, 'شرط المراجعة في كل أنواع الصور');
+});
+
 console.log(process.exitCode ? '\nفشل بعض الاختبارات' : `\nنجحت الاختبارات كلها (${n})`);

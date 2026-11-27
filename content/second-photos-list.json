@@ -6,10 +6,9 @@
   "q": "search:Afghan hound dog portrait|Dog heart (Afghan Hound).jpg"
  },
  "AGO": {
-  "kind": "animal",
-  "ar": "الظبي الأسود العملاق",
-  "wiki": "Giant sable antelope",
-  "q": "search:Palanca Negra Gigante sable antelope|Giant Sable Antelope (22018702922).jpg"
+  "kind": "plant",
+  "ar": "نبتة الولوتشيا العجيبة",
+  "wiki": "Welwitschia"
  },
  "ALB": {
   "kind": "animal",
@@ -149,10 +148,9 @@
   "wiki": "Bongo (antelope)"
  },
  "CAN": {
-  "kind": "food",
-  "ar": "شراب القيقب",
-  "wiki": "Maple syrup",
-  "q": "search:maple syrup bottle maple leaf|Bacon Pancakes - Moksha Caffè 2026-05-03.jpg"
+  "kind": "animal",
+  "ar": "إوزة كندا",
+  "wiki": "Canada goose"
  },
  "CHE": {
   "kind": "animal",
@@ -239,7 +237,7 @@
   "kind": "animal",
   "ar": "ببغاء السيسيرو",
   "wiki": "Imperial amazon",
-  "q": "search:Amazona imperialis Dominica|Amazona_imperialis_-Roseau_-Dominica_-aviary-6a-3c.jpg"
+  "q": "search:Sisserou parrot|Amazona imperialis -Roseau -Dominica -aviary-6a.jpg|Amazona imperialis -Roseau -Dominica -aviary-6a.jpg"
  },
  "DNK": {
   "kind": "food",
@@ -432,7 +430,7 @@
   "kind": "food",
   "ar": "المنسف",
   "wiki": "Mansaf",
-  "q": "search:Mansaf Jordan dish rice|Mansaf,_the_traditional_dish_of_Jordan.jpg"
+  "q": "search:Mansaf|"
  },
  "JPN": {
   "kind": "food",
@@ -521,10 +519,9 @@
   "wiki": "Ceylon tea"
  },
  "LSO": {
-  "kind": "animal",
-  "ar": "حصان باسوتو",
-  "wiki": "Basotho pony",
-  "q": "search:Basotho pony horse Lesotho rider|Howard C. Hillegas.jpg"
+  "kind": "plant",
+  "ar": "الصبّار الحلزوني",
+  "wiki": "Aloe polyphylla"
  },
  "LTU": {
   "kind": "animal",
@@ -587,10 +584,9 @@
   "wiki": "Fonio"
  },
  "MLT": {
-  "kind": "food",
-  "ar": "الباستيزي",
-  "wiki": "Pastizz",
-  "q": "search:Pastizzi plate|Pastizz in the oven.jpg"
+  "kind": "animal",
+  "ar": "الكلب المالطي",
+  "wiki": "Maltese dog"
  },
  "MMR": {
   "kind": "food",
@@ -601,7 +597,7 @@
   "kind": "plant",
   "ar": "الزيتون",
   "wiki": "Olive",
-  "q": "search:Stara maslina Bar Montenegro|Old olive tree in Bar, Montenegro.jpg"
+  "q": "search:olive branch fruit Olea europaea|Old olive, stara maslina, info tabla.jpg"
  },
  "MNG": {
   "kind": "animal",
@@ -767,9 +763,8 @@
  },
  "SDN": {
   "kind": "plant",
-  "ar": "الصمغ العربي",
-  "wiki": "Gum arabic",
-  "q": "search:gum arabic tears|Gum Arabic exuding.jpg"
+  "ar": "شجرة الهشاب (الصمغ العربي)",
+  "wiki": "Senegalia senegal"
  },
  "SEN": {
   "kind": "food",
@@ -942,7 +937,7 @@
   "kind": "food",
   "ar": "البلوف (الأرز البخاري)",
   "wiki": "Plov",
-  "q": "search:Plov Uzbek dish plate|Palov ko‘tarayotgan xizmatchi.jpg"
+  "q": "search:Osh plov rice|"
  },
  "VCT": {
   "kind": "animal",
