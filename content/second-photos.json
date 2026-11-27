@@ -6,7 +6,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Dog_heart_(Afghan_Hound).jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "AGO": {
   "q": "search:Giant sable antelope Hippotragus niger variani",
@@ -15,7 +15,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Giant_Sable_Antelope_(22018702922).jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "ALB": {
   "q": "wiki:Golden eagle",
@@ -24,7 +24,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:015_Wild_Golden_Eagle_in_flight_at_Pfyn-Finges_(Switzerland)_Photo_by_Giles_Laurent.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "AND": {
   "q": "search:Rupicapra pyrenaica Pyrenees",
@@ -33,7 +33,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:WLE_-_2020_-_Parque_nacional_de_Ordesa_y_Monte_Perdido_-_03.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "ARE": {
   "q": "wiki:Saker falcon",
@@ -42,7 +42,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Falco_cherrug_(Marek_Szczepanek).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "ARG": {
   "q": "wiki:Mate (drink)",
@@ -51,7 +51,7 @@
   "license": "CC BY-SA 2.5",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
   "page": "https://commons.wikimedia.org/wiki/File:Mate_en_calabaza.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "ARM": {
   "q": "wiki:Apricot",
@@ -60,7 +60,7 @@
   "license": "GFDL 1.2",
   "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html",
   "page": "https://commons.wikimedia.org/wiki/File:Apricot_and_cross_section.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "ATG": {
   "q": "wiki:Pineapple",
@@ -69,7 +69,7 @@
   "license": "CC BY 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:%E0%B4%95%E0%B5%88%E0%B4%A4%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B4%95%E0%B5%8D%E0%B4%95.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "AUS": {
   "q": "wiki:Red kangaroo",
@@ -78,7 +78,7 @@
   "license": "GFDL 1.2",
   "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html",
   "page": "https://commons.wikimedia.org/wiki/File:Red_kangaroo_-_melbourne_zoo.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "AUT": {
   "q": "wiki:Sachertorte",
@@ -87,7 +87,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Sachertorte_DSC03027.JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "AZE": {
   "q": "search:Karabakh horse",
@@ -96,7 +96,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Karabakh_horse_head_4.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BDI": {
   "q": "wiki:Hippopotamus",
@@ -105,7 +105,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Portrait_Hippopotamus_in_the_water.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BEL": {
   "q": "wiki:Belgian waffle",
@@ -114,7 +114,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Waffle_with_strawberries_and_confectioner%27s_sugar.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BEN": {
   "q": "wiki:African leopard",
@@ -123,7 +123,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Leopard_(Panthera_pardus_pardus)_Kruger.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BFA": {
   "q": "wiki:Shea butter",
@@ -132,7 +132,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:M%C3%A9lange_du_Beurre_de_karit%C3%A9_et_huiles_essentielles_dans_une_boite_pour_massage_02.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BGD": {
   "q": "wiki:Bengal tiger",
@@ -141,7 +141,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Bengal_tiger_in_Sanjay_Dubri_Tiger_Reserve_December_2024_by_Tisha_Mukherjee_11.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BGR": {
   "q": "wiki:Rosa × damascena",
@@ -150,7 +150,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:%D9%85%D8%B1%D8%A7%D8%B3%D9%85_%DA%AF%D9%84%D8%A7%D8%A8%DA%AF%DB%8C%D8%B1%DB%8C_%D8%AF%D8%B1_%D9%82%D9%85%D8%B5%D8%B1_%DA%A9%D8%A7%D8%B4%D8%A7%D9%86_Golabgiri_(%22making_Rosewater%22)_-_Ghamsar-_Kashan-_Iran_19.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BHR": {
   "q": "wiki:Machboos",
@@ -159,7 +159,7 @@
   "license": "CC0",
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Machboos_(cropped).JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "BHS": {
   "q": "wiki:American flamingo",
@@ -168,7 +168,7 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:American_Flamingo_JG.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BIH": {
   "q": "wiki:Ćevapi",
@@ -177,7 +177,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Closeup_grilled_Serbian_sausages_(49152328346).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BLR": {
   "q": "wiki:European bison",
@@ -186,7 +186,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:European_bison_(Bison_bonasus)_male_Bia%C5%82owieza.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BLZ": {
   "q": "wiki:Baird's tapir",
@@ -195,7 +195,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Baird%27s_tapir_mother_with_baby_(92151).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BOL": {
   "q": "wiki:Llama",
@@ -204,7 +204,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Llamas,_Vernagt-Stausee,_Italy.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BRA": {
   "q": "wiki:Toco toucan",
@@ -213,7 +213,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:006_Toco_toucan_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent_(cropped).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BRB": {
   "q": "wiki:Flying fish",
@@ -222,7 +222,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Sailfin_flyingfish.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BRN": {
   "q": "wiki:Proboscis monkey",
@@ -231,7 +231,7 @@
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Proboscis_Monkey_in_Borneo.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BTN": {
   "q": "wiki:Takin",
@@ -240,7 +240,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Thimphu-Takin-Reservat-06-2015-gje.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "BWA": {
   "q": "wiki:African bush elephant",
@@ -249,7 +249,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:178_Male_African_bush_elephant_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "CAF": {
   "q": "wiki:Bongo (antelope)",
@@ -258,7 +258,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Tragelaphus_eurycerus_-Marwell_Wildlife,_Hampshire,_England-8a.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "CAN": {
   "q": "search:maple syrup pancakes",
@@ -267,7 +267,7 @@
   "license": "CC0",
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Bacon_Pancakes_-_Moksha_Caff%C3%A8_2026-05-03.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "CHE": {
   "q": "wiki:St. Bernard (dog)",
@@ -276,7 +276,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Hummel_Vedor_vd_Robandahoeve.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "CHL": {
   "q": "wiki:Andean condor",
@@ -285,7 +285,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:AndeanCondorMale.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "CHN": {
   "q": "wiki:Giant panda",
@@ -294,7 +294,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Grosser_Panda.JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "CIV": {
   "q": "wiki:African forest elephant",
@@ -303,7 +303,7 @@
   "license": "CC BY 2.5",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
   "page": "https://commons.wikimedia.org/wiki/File:Loxodontacyclotis.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "CMR": {
   "q": "wiki:Goliath frog",
@@ -312,7 +312,7 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Conraua_goliath_photo_from_iNaturalist_539752953.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "COD": {
   "q": "wiki:Okapi",
@@ -321,7 +321,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Saint-Aignan_(Loir-et-Cher)._Okapi.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "COG": {
   "q": "wiki:Western lowland gorilla",
@@ -330,7 +330,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:WesternLowlandGorilla03.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "COL": {
   "q": "wiki:Coffee bean",
@@ -339,7 +339,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Roasted_coffee_beans.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "COM": {
   "q": "wiki:Coelacanth",
@@ -348,7 +348,7 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Coelacanth_off_Pumula_on_the_KwaZulu-Natal_South_Coast,_South_Africa,_on_22_November_2019.png",
-  "review": "pending"
+  "review": "ok"
  },
  "CPV": {
   "q": "wiki:Loggerhead sea turtle",
@@ -357,7 +357,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Loggerhead_sea_turtle.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "CRI": {
   "q": "wiki:Brown-throated sloth",
@@ -366,7 +366,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Bradypus.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "CUB": {
   "q": "wiki:Cuban crocodile",
@@ -375,7 +375,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Crocodylus_Rhombifer.JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "CYP": {
   "q": "search:Halloumi cheese grilled",
@@ -384,7 +384,7 @@
   "license": "CC BY 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Grilled_Halloumi.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "CZE": {
   "q": "wiki:Trdelník",
@@ -393,7 +393,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Trdeln%C3%ADk-Basket-20101.JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "DEU": {
   "q": "wiki:Pretzel",
@@ -402,7 +402,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:BrezelnSalz02_(cropped).JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "DJI": {
   "q": "wiki:Whale shark",
@@ -411,7 +411,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Similan_Dive_Center_-_great_whale_shark.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "DMA": {
   "q": "wiki:Imperial amazon",
@@ -420,7 +420,7 @@
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Amazona_imperialis_-Roseau_-Dominica_-aviary-6a-3c.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "DNK": {
   "q": "wiki:Danish pastry",
@@ -429,7 +429,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Glazed_apple_Danish.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "DOM": {
   "q": "wiki:Rhinoceros iguana",
@@ -438,7 +438,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:RhinoIguanaMay07Pedernales.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "DZA": {
   "q": "wiki:Fennec fox",
@@ -447,7 +447,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Fennec_Fox_Vulpes_zerda.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "ECU": {
   "q": "wiki:Galápagos tortoise",
@@ -456,7 +456,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Galapagos_giant_tortoise_Geochelone_elephantopus.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "EGY": {
   "q": "wiki:Koshary",
@@ -465,7 +465,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Egyptian_food_Koshary.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "ERI": {
   "q": "wiki:African wild ass",
@@ -474,7 +474,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Equus_africanus_somaliensis_-_R%C3%A9serve_africaine_de_Sigean_01.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "ESP": {
   "q": "wiki:Paella",
@@ -483,7 +483,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:01_Paella_Valenciana_original.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "EST": {
   "q": "wiki:Barn swallow",
@@ -492,7 +492,7 @@
   "license": "CC BY-SA 2.5",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
   "page": "https://commons.wikimedia.org/wiki/File:Rauchschwalbe_Hirundo_rustica.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "ETH": {
   "q": "wiki:Injera",
@@ -501,7 +501,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Injera_with_eight_kinds_of_stew.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "FIN": {
   "q": "wiki:Brown bear",
@@ -510,7 +510,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:2010-kodiak-bear-1.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "FJI": {
   "q": "wiki:Fiji banded iguana",
@@ -519,7 +519,7 @@
   "license": "CC0",
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Brachylophus_bulabula_Cologne_Zoo.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "FRA": {
   "q": "wiki:Croissant",
@@ -528,7 +528,7 @@
   "license": "CC0",
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Croissant-Petr_Kratochvil.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "FSM": {
   "q": "wiki:Giant oceanic manta ray",
@@ -537,7 +537,7 @@
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Manta_birostris-Thailand4.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "GAB": {
   "q": "wiki:Mandrill",
@@ -546,7 +546,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Mandrill_Albert_September_2015_Zoo_Berlin_(2).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "GBR": {
   "q": "wiki:Scone",
@@ -555,7 +555,7 @@
   "license": "CC BY-SA 2.5",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
   "page": "https://commons.wikimedia.org/wiki/File:Scone_varieties.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "GEO": {
   "q": "wiki:Khachapuri",
@@ -564,7 +564,7 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Old_Tbilisi,_Georgian_khachapuri,_Georgia.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "GHA": {
   "q": "search:Fufu Ghana soup",
@@ -573,7 +573,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Fufu_and_light_soup_in_asanka.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "GIN": {
   "q": "wiki:Chimpanzee",
@@ -582,7 +582,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:015_Chimpanzee_at_Kibale_forest_National_Park_Photo_by_Giles_Laurent.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "GMB": {
   "q": "wiki:Peanut",
@@ -591,7 +591,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Arachis_hypogaea_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-163.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "GNB": {
   "q": "wiki:Cashew",
@@ -600,7 +600,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Cashew_apples.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "GNQ": {
   "q": "wiki:Leatherback sea turtle",
@@ -609,7 +609,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Leatherback_sea_turtle_Tinglar,_USVI_(5839996547).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "GRC": {
   "q": "wiki:Feta",
@@ -618,7 +618,7 @@
   "license": "CC BY-SA 2.5",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
   "page": "https://commons.wikimedia.org/wiki/File:Feta_Cheese.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "GRD": {
   "q": "wiki:Nutmeg",
@@ -627,7 +627,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Biji_Pala_Bubuk.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "GTM": {
   "q": "wiki:Resplendent quetzal",
@@ -636,7 +636,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Resplendent_quetzal_san_gerardo_de_dota_3.31.24_DSC_3989-topaz-denoiseraw.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "GUY": {
   "q": "wiki:Hoatzin",
@@ -645,7 +645,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Hoatzin_(Opisthocomus_hoazin)_Rio_Napo.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "HND": {
   "q": "wiki:Scarlet macaw",
@@ -654,7 +654,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Scarlet_macaw_(Ara_macao_cyanopterus)_Copan.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "HRV": {
   "q": "wiki:Dalmatian (dog)",
@@ -663,7 +663,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Sun_Dog_Dalmatian.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "HTI": {
   "q": "wiki:Mango",
@@ -672,7 +672,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Mangos_-_single_and_halved.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "HUN": {
   "q": "wiki:Goulash",
@@ -681,7 +681,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Gulyas080.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "IDN": {
   "q": "wiki:Komodo dragon",
@@ -690,7 +690,7 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:202306_Varanus_komodoensis.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "IND": {
   "q": "wiki:Indian peafowl",
@@ -699,7 +699,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Peacock_on_tree_(52077240794).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "IRL": {
   "q": "wiki:Soda bread",
@@ -708,7 +708,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Ben_W_Bell_Soda_Bread_Farl_05_June_2007.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "IRN": {
   "q": "wiki:Saffron",
@@ -717,7 +717,7 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Saffron_-_premium_spice.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "IRQ": {
   "q": "wiki:Masgouf",
@@ -726,7 +726,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Masgouf.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "ISL": {
   "q": "wiki:Atlantic puffin",
@@ -735,7 +735,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Puffin_(Fratercula_arctica).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "ITA": {
   "q": "wiki:Pizza",
@@ -744,7 +744,7 @@
   "license": "CC0",
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Pizza-3007395.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "JAM": {
   "q": "wiki:Red-billed streamertail",
@@ -753,7 +753,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Red-billed_streamertail_(Trochilus_polytmus)_adult_male_2.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "JOR": {
   "q": "wiki:Mansaf",
@@ -762,7 +762,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Mansaf,_the_traditional_dish_of_Jordan.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "JPN": {
   "q": "wiki:Sushi",
@@ -771,7 +771,7 @@
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Sushi_platter.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "KAZ": {
   "q": "wiki:Saiga antelope",
@@ -780,7 +780,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Saiga_antelope_at_the_Stepnoi_Sanctuary.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "KEN": {
   "q": "wiki:Cheetah",
@@ -789,7 +789,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Male_cheetah_facing_left_in_South_Africa.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "KGZ": {
   "q": "wiki:Snow leopard",
@@ -798,7 +798,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Irbis4.JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "KHM": {
   "q": "wiki:Fish amok",
@@ -807,7 +807,7 @@
   "license": "CC0",
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Fish_Amok_with_Rice.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "KIR": {
   "q": "wiki:Great frigatebird",
@@ -816,7 +816,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Male_greater_frigate_bird_displaying.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "KNA": {
   "q": "wiki:Green monkey",
@@ -825,7 +825,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Gambia06Bijilo0015_(5421078756).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "KOR": {
   "q": "wiki:Kimchi",
@@ -834,7 +834,7 @@
   "license": "CC BY-SA 2.0 kr",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/kr/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Various_kimchi.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "XKX": {
   "q": "wiki:Flia",
@@ -843,7 +843,7 @@
   "license": "CC0",
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Flia%CC%A0.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "KWT": {
   "q": "wiki:Pampus argenteus",
@@ -852,7 +852,7 @@
   "license": "CC BY 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Pampus_argenteus_1.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "LAO": {
   "q": "wiki:Glutinous rice",
@@ -861,7 +861,7 @@
   "license": "CC BY-SA 2.0 kr",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/kr/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Chapssal_(glutinous_rice).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "LBN": {
   "q": "wiki:Tabbouleh",
@@ -870,7 +870,7 @@
   "license": "CC0",
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Tabouleh_1.JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "LBR": {
   "q": "wiki:Pygmy hippopotamus",
@@ -879,7 +879,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Hexaprotodon_liberiensis_in_Edinburgh_Zoo.JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "LBY": {
   "q": "wiki:Bazeen",
@@ -888,7 +888,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Bazin.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "LCA": {
   "q": "wiki:St. Lucia amazon",
@@ -897,7 +897,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Amazona_versicolor_-St_Lucia-5a.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "LIE": {
   "q": "wiki:Alpine ibex",
@@ -906,7 +906,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:003_Wild_Alpine_Ibex_Sunset_Creux_du_Van_Mont_Racine_Photo_by_Giles_Laurent.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "LKA": {
   "q": "wiki:Ceylon tea",
@@ -915,7 +915,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Ceylon_Pettiagalla_Tea.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "LSO": {
   "q": "search:Basotho pony Lesotho",
@@ -924,7 +924,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Howard_C._Hillegas.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "LTU": {
   "q": "wiki:White stork",
@@ -933,7 +933,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:White_stork_(Ciconia_ciconia)_Bia%C5%82owieza.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "LUX": {
   "q": "wiki:Goldcrest",
@@ -942,7 +942,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Goldcrest_1.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "LVA": {
   "q": "wiki:White wagtail",
@@ -951,7 +951,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:20180415_015_Winterswijk_Witte_kwikstaart_(40785272624).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MAR": {
   "q": "wiki:Couscous",
@@ -960,7 +960,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Moroccan_cuscus,_from_Casablanca,_September_2018.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MCO": {
   "q": "wiki:Barbajuan",
@@ -969,7 +969,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Barbaguiai.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MDA": {
   "q": "wiki:Grape",
@@ -978,7 +978,7 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Grapes,_Rostov-on-Don,_Russia.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MDG": {
   "q": "wiki:Ring-tailed lemur",
@@ -987,7 +987,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Ring-tailed_lemur_(Lemur_catta).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MDV": {
   "q": "wiki:Green sea turtle",
@@ -996,7 +996,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Green_sea_turtle_(Chelonia_mydas)_Moorea.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MEX": {
   "q": "wiki:Taco",
@@ -1005,7 +1005,7 @@
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:001_Tacos_de_carnitas,_carne_asada_y_al_pastor.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "MHL": {
   "q": "wiki:Coconut",
@@ -1014,7 +1014,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Cocos_nucifera_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-187.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MKD": {
   "q": "wiki:Ajvar",
@@ -1023,7 +1023,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Ajvar1_bright.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MLI": {
   "q": "wiki:Fonio",
@@ -1032,7 +1032,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:SEN_Village_Chief_Theodore.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MLT": {
   "q": "search:Pastizzi Malta",
@@ -1041,7 +1041,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Pastizz_in_the_oven.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "MMR": {
   "q": "wiki:Mohinga",
@@ -1050,7 +1050,7 @@
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Mohnga.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MNE": {
   "q": "search:olive tree Montenegro",
@@ -1059,7 +1059,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Old_olive_tree_in_Bar,_Montenegro.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "MNG": {
   "q": "wiki:Bactrian camel",
@@ -1068,7 +1068,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Camelus_bactrianus_(55026866188).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MOZ": {
   "q": "wiki:Dugong",
@@ -1077,7 +1077,7 @@
   "license": "CC BY-SA 3.0 de",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Dugong.JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "MRT": {
   "q": "wiki:Mechoui",
@@ -1086,7 +1086,7 @@
   "license": "CC BY 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Mechoui.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MUS": {
   "q": "wiki:Dodo",
@@ -1095,7 +1095,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Oxford_Dodo_display.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MWI": {
   "q": "wiki:Mbuna",
@@ -1104,7 +1104,7 @@
   "license": "CC BY-SA 2.5",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
   "page": "https://commons.wikimedia.org/wiki/File:Melanochromis_cyaneorhabdos.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MYS": {
   "q": "wiki:Nasi lemak",
@@ -1113,7 +1113,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Nasi_Lemak_dengan_Chili_Nasi_Lemak_dan_Sotong_Pedas,_di_Penang_Summer_Restaurant.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "NAM": {
   "q": "wiki:Gemsbok",
@@ -1122,7 +1122,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Gemsbok_(Oryx_gazella)_male.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "NER": {
   "q": "wiki:Addax",
@@ -1131,7 +1131,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:A_big_male_Addax_showing_as_the_power_of_his_horns.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "NGA": {
   "q": "wiki:Jollof rice",
@@ -1140,7 +1140,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Jollof_Rice_with_Stew.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "NIC": {
   "q": "wiki:Turquoise-browed motmot",
@@ -1149,7 +1149,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Turquoise-browed_motmot_(Eumomota_superciliosa_apiaster)_Copan_2.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "NLD": {
   "q": "wiki:Tulip",
@@ -1158,7 +1158,7 @@
   "license": "CC0",
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:%D7%A6%D7%91%D7%A2%D7%95%D7%A0%D7%99%D7%9D.JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "NOR": {
   "q": "wiki:Atlantic salmon",
@@ -1167,7 +1167,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Wst_atlantischer_lachs_stoer_001.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "NPL": {
   "q": "wiki:Momo (food)",
@@ -1176,7 +1176,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Momo_nepal.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "NRU": {
   "q": "wiki:Brown noddy",
@@ -1185,7 +1185,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Common_noddy_(Anous_stolidus_pileatus)_in_flight_Michaelmas_Cay.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "NZL": {
   "q": "wiki:Kiwi (bird)",
@@ -1194,7 +1194,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:TeTuatahianui.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "OMN": {
   "q": "search:Arabian tahr",
@@ -1203,7 +1203,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Stuffed_Arabian_Tahr.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "PAK": {
   "q": "wiki:Markhor",
@@ -1212,7 +1212,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Markhor_Schraubenziege_Capra_falconeri_Zoo_Augsburg-02.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "PAN": {
   "q": "wiki:Harpy eagle",
@@ -1221,7 +1221,7 @@
   "license": "CC BY 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Harpia_harpyja_001_800.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "PER": {
   "q": "wiki:Alpaca",
@@ -1230,7 +1230,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Alpaca_in_Higashiyama_Zoo_-_1.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "PHL": {
   "q": "wiki:Philippine eagle",
@@ -1239,7 +1239,7 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Pamarayeg_IIIx2_(cropped).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "PLW": {
   "q": "wiki:Jellyfish Lake",
@@ -1248,7 +1248,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Jellyfish_Lake_aerial_(March_2008).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "PNG": {
   "q": "wiki:Raggiana bird-of-paradise",
@@ -1257,7 +1257,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Raggiana_Bird-of-paradise_0A2A5379.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "POL": {
   "q": "wiki:Pierogi",
@@ -1266,7 +1266,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Pierogi_z_mas%C5%82em_-_2023.03.31.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "PRK": {
   "q": "wiki:Naengmyeon",
@@ -1275,7 +1275,7 @@
   "license": "CC BY 2.5",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
   "page": "https://commons.wikimedia.org/wiki/File:Naengmyeon_(cold_noodles).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "PRT": {
   "q": "wiki:Pastel de nata",
@@ -1284,7 +1284,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Pasteis_de_Belem.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "PRY": {
   "q": "search:Chipa Paraguay",
@@ -1293,7 +1293,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Chipa_Paraguay.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "PSE": {
   "q": "wiki:Musakhan",
@@ -1302,7 +1302,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Mushakhan_Dish.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "QAT": {
   "q": "wiki:Arabian oryx",
@@ -1311,7 +1311,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Arabian_oryx_(oryx_leucoryx).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "ROU": {
   "q": "wiki:Mămăligă",
@@ -1320,7 +1320,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Mamaliga.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "RUS": {
   "q": "wiki:Siberian tiger",
@@ -1329,7 +1329,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:P.t.altaica_Tomak_Male.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "RWA": {
   "q": "wiki:Mountain gorilla",
@@ -1338,7 +1338,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Susa_group,_mountain_gorilla.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "SAU": {
   "q": "wiki:Date palm",
@@ -1347,7 +1347,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Dates005.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "SDN": {
   "q": "search:Acacia senegal gum arabic",
@@ -1356,7 +1356,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Gum_Arabic_exuding.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "SEN": {
   "q": "wiki:Thieboudienne",
@@ -1365,7 +1365,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Thieboudienne.JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "SGP": {
   "q": "wiki:Hainanese chicken rice",
@@ -1374,7 +1374,7 @@
   "license": "CC BY 2.5",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
   "page": "https://commons.wikimedia.org/wiki/File:Hainanese_Chicken_Rice.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "SLB": {
   "q": "wiki:Prehensile-tailed skink",
@@ -1383,7 +1383,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Corucia_zebrata_(2).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "SLE": {
   "q": "wiki:Diana monkey",
@@ -1392,7 +1392,7 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:La_Bourbansais_04.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "SLV": {
   "q": "wiki:Pupusa",
@@ -1401,7 +1401,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Pupusas_El_Salvador_Centro_America.JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "SMR": {
   "q": "wiki:Torta Tre Monti",
@@ -1410,7 +1410,7 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:La_Serenissima_Torta_Tre_Monti.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "SOM": {
   "q": "wiki:Dromedary",
@@ -1419,7 +1419,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Camelus_dromedarius_in_Nuweiba.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "SRB": {
   "q": "wiki:Raspberry",
@@ -1428,7 +1428,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Raspberries_(Rubus_idaeus).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "SSD": {
   "q": "wiki:White-eared kob",
@@ -1437,7 +1437,7 @@
   "license": "CC BY 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Male_Ugandan_kob_-_Queen_Elizabeth_National_Park,_Uganda_(4).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "STP": {
   "q": "wiki:Cocoa bean",
@@ -1446,7 +1446,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Cocoa_Pods.JPG",
-  "review": "pending"
+  "review": "ok"
  },
  "SUR": {
   "q": "wiki:Dyeing dart frog",
@@ -1455,7 +1455,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Dendrobates_tinctorius_-_Karlsruhe_Zoo_05.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "SVK": {
   "q": "wiki:Bryndzové halušky",
@@ -1464,7 +1464,7 @@
   "license": "CC0",
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Bryndzov%C3%A9_halu%C5%A1ky_so_slaninou.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "SVN": {
   "q": "search:Lipizzaner horses Lipica",
@@ -1473,7 +1473,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Lipizzaner_Horse.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "SWE": {
   "q": "wiki:Moose",
@@ -1482,7 +1482,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Alaska_moose.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "SWZ": {
   "q": "wiki:White rhinoceros",
@@ -1491,7 +1491,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:109_Male_White_rhinoceros_walking_in_the_Kalahari_Desert_of_Namibia_Photo_by_Giles_Laurent.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "SYC": {
   "q": "wiki:Lodoicea",
@@ -1500,7 +1500,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Female_coco_de_mer_growth.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "SYR": {
   "q": "wiki:Kibbeh",
@@ -1509,7 +1509,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Kibbeh3.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "TCD": {
   "q": "wiki:Kuri cattle",
@@ -1518,7 +1518,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:La_vache_kouri_au_mus%C3%A9e_national_du_Niger.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "TGO": {
   "q": "wiki:Yam (vegetable)",
@@ -1527,7 +1527,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Yam_at_monday_market_kaduna_state_01.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "THA": {
   "q": "wiki:Asian elephant",
@@ -1536,7 +1536,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Elephas_maximus_(Bandipur).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "TJK": {
   "q": "wiki:Marco Polo sheep",
@@ -1545,7 +1545,7 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Marco_Polo_sheep_pair_by_F%C3%A1bio_Olmos_(cropped).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "TKM": {
   "q": "wiki:Akhal-Teke",
@@ -1554,7 +1554,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Dagat-Geli.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "TLS": {
   "q": "wiki:Saltwater crocodile",
@@ -1563,7 +1563,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:SaltwaterCrocodile(%27Maximo%27).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "TON": {
   "q": "wiki:Humpback whale",
@@ -1572,7 +1572,7 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Humpback_whale_breaching_off_Cabo_San_Lucas.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "TTO": {
   "q": "wiki:Scarlet ibis",
@@ -1581,7 +1581,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Oceanografic_Scarlet_Ibis_02.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "TUN": {
   "q": "wiki:Brik",
@@ -1590,7 +1590,7 @@
   "license": "CC BY 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Brikdish.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "TUR": {
   "q": "wiki:Baklava",
@@ -1599,7 +1599,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Baklava(1).png",
-  "review": "pending"
+  "review": "ok"
  },
  "TUV": {
   "q": "wiki:Cyrtosperma merkusii",
@@ -1608,7 +1608,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Babai.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "TZA": {
   "q": "wiki:Masai giraffe",
@@ -1617,7 +1617,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Masai_giraffes_(Giraffa_tippelskirchi)_Arusha.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "UGA": {
   "q": "wiki:Grey crowned crane",
@@ -1626,7 +1626,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Grey_crowned_crane_(Balearica_regulorum_gibbericeps).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "UKR": {
   "q": "wiki:Borscht",
@@ -1635,7 +1635,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Borscht_served.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "URY": {
   "q": "wiki:Dulce de leche",
@@ -1644,7 +1644,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:DulceDeLeche.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "USA": {
   "q": "wiki:Bald eagle",
@@ -1653,7 +1653,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Bald_eagle_about_to_fly_in_Alaska_(2016).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "UZB": {
   "q": "search:Uzbek plov",
@@ -1662,7 +1662,7 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Palov_ko%E2%80%98tarayotgan_xizmatchi.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "VCT": {
   "q": "wiki:St. Vincent amazon",
@@ -1671,7 +1671,7 @@
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Amazona_guildingii_-Botanical_Gardens_-Kingstown_-Saint_Vincent-8a-4c.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "VEN": {
   "q": "wiki:Arepa",
@@ -1680,7 +1680,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Arepitas_Food_Macro.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "VNM": {
   "q": "wiki:Pho",
@@ -1689,7 +1689,7 @@
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Bowl_of_Meatball_pho.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "VUT": {
   "q": "wiki:Coconut crab",
@@ -1698,7 +1698,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Coconut_Crab_Birgus_latro.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "WSM": {
   "q": "wiki:Tooth-billed pigeon",
@@ -1707,7 +1707,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Naturalis_Biodiversity_Center_-_ZMA.AVES.56900_-_Didunculus_strigirostris_Jardine,_1845_-_Columbidae_-_skin_specimen.jpeg",
-  "review": "pending"
+  "review": "ok"
  },
  "YEM": {
   "q": "wiki:Saltah",
@@ -1716,7 +1716,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Saltah.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "ZAF": {
   "q": "wiki:Springbok",
@@ -1725,7 +1725,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:174_Male_Springbok_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "ZMB": {
   "q": "wiki:African fish eagle",
@@ -1734,7 +1734,7 @@
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:African_fish_eagle,_Haliaeetus_vocifer,_at_Chobe_National_Park,_Botswana_(33516612831).jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "ZWE": {
   "q": "search:Sadza Zimbabwe",
@@ -1743,6 +1743,6 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:An_Example_of_Kapenta_And_Sadza(as_it_is_known_in_Zimbabwe).JPG",
-  "review": "pending"
+  "review": "ok"
  }
 }

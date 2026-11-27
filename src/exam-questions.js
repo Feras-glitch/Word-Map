@@ -161,7 +161,7 @@ export function iconQ(id, n) {
   const a = allAnimals().find((x) => 'a:' + x.key === id);
   const wrong = shuffle(CONT_ORDER.filter((k) => k !== a.cont && (a.cont !== 'antarctica' || k !== 'oceania'))).slice(0, n - 1);
   const opts = shuffle([a.cont, ...wrong]);
-  return { skill: 'icons', explain: `${a.ar} من حيوانات قارة ${continents[a.cont]}.`, say: `${a.ar}. في أي قارة يعيش؟`,
-    prompt: h('div', {}, h('img', { class: 'q-photo', src: a.url, alt: '' }), h('p', {}, '🐾 ', h('b', {}, a.ar), ': في أي قارة يشتهر؟')),
+  return { skill: 'icons', explain: `${a.ar} من حيوانات قارة ${continents[a.cont]}.`, say: `${a.ar}. من حيوانات أي قارة؟`,
+    prompt: h('div', {}, h('img', { class: 'q-photo', src: a.url, alt: '' }), h('p', {}, '🐾 ', h('b', {}, a.ar), ': من حيوانات أي قارة؟')),
     options: opts.map((k) => ({ correct: k === a.cont, el: txt('قارة ' + continents[k]), label: continents[k] })) };
 }

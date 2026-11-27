@@ -3,13 +3,13 @@
   "kind": "animal",
   "ar": "كلب الصيد الأفغاني",
   "wiki": "Afghan Hound",
-  "q": "search:Afghan Hound dog"
+  "q": "search:Afghan hound dog portrait|Dog heart (Afghan Hound).jpg"
  },
  "AGO": {
   "kind": "animal",
   "ar": "الظبي الأسود العملاق",
   "wiki": "Giant sable antelope",
-  "q": "search:Giant sable antelope Hippotragus niger variani"
+  "q": "search:Palanca Negra Gigante sable antelope|Giant Sable Antelope (22018702922).jpg"
  },
  "ALB": {
   "kind": "animal",
@@ -152,7 +152,7 @@
   "kind": "food",
   "ar": "شراب القيقب",
   "wiki": "Maple syrup",
-  "q": "search:maple syrup pancakes"
+  "q": "search:maple syrup bottle maple leaf|Bacon Pancakes - Moksha Caffè 2026-05-03.jpg"
  },
  "CHE": {
   "kind": "animal",
@@ -238,7 +238,8 @@
  "DMA": {
   "kind": "animal",
   "ar": "ببغاء السيسيرو",
-  "wiki": "Imperial amazon"
+  "wiki": "Imperial amazon",
+  "q": "search:Amazona imperialis Dominica|Amazona_imperialis_-Roseau_-Dominica_-aviary-6a-3c.jpg"
  },
  "DNK": {
   "kind": "food",
@@ -419,7 +420,8 @@
  "ITA": {
   "kind": "food",
   "ar": "البيتزا",
-  "wiki": "Pizza"
+  "wiki": "Pizza",
+  "q": "search:Pizza Margherita|Pizza-3007395.jpg"
  },
  "JAM": {
   "kind": "animal",
@@ -429,7 +431,8 @@
  "JOR": {
   "kind": "food",
   "ar": "المنسف",
-  "wiki": "Mansaf"
+  "wiki": "Mansaf",
+  "q": "search:Mansaf Jordan dish rice|Mansaf,_the_traditional_dish_of_Jordan.jpg"
  },
  "JPN": {
   "kind": "food",
@@ -504,7 +507,8 @@
  "LCA": {
   "kind": "animal",
   "ar": "ببغاء سانت لوسيا",
-  "wiki": "St. Lucia amazon"
+  "wiki": "St. Lucia amazon",
+  "q": "search:Amazona versicolor|Amazona_versicolor_-St_Lucia-5a.jpg"
  },
  "LIE": {
   "kind": "animal",
@@ -520,7 +524,7 @@
   "kind": "animal",
   "ar": "حصان باسوتو",
   "wiki": "Basotho pony",
-  "q": "search:Basotho pony Lesotho"
+  "q": "search:Basotho pony horse Lesotho rider|Howard C. Hillegas.jpg"
  },
  "LTU": {
   "kind": "animal",
@@ -563,9 +567,9 @@
   "wiki": "Green sea turtle"
  },
  "MEX": {
-  "kind": "food",
-  "ar": "التاكو",
-  "wiki": "Taco"
+  "kind": "animal",
+  "ar": "السمندل المكسيكي (الأكسولوتل)",
+  "wiki": "Axolotl"
  },
  "MHL": {
   "kind": "plant",
@@ -586,7 +590,7 @@
   "kind": "food",
   "ar": "الباستيزي",
   "wiki": "Pastizz",
-  "q": "search:Pastizzi Malta"
+  "q": "search:Pastizzi plate|Pastizz in the oven.jpg"
  },
  "MMR": {
   "kind": "food",
@@ -597,7 +601,7 @@
   "kind": "plant",
   "ar": "الزيتون",
   "wiki": "Olive",
-  "q": "search:olive tree Montenegro"
+  "q": "search:Stara maslina Bar Montenegro|Old olive tree in Bar, Montenegro.jpg"
  },
  "MNG": {
   "kind": "animal",
@@ -765,7 +769,7 @@
   "kind": "plant",
   "ar": "الصمغ العربي",
   "wiki": "Gum arabic",
-  "q": "search:Acacia senegal gum arabic"
+  "q": "search:gum arabic tears|Gum Arabic exuding.jpg"
  },
  "SEN": {
   "kind": "food",
@@ -823,9 +827,9 @@
   "wiki": "Dyeing dart frog"
  },
  "SVK": {
-  "kind": "food",
-  "ar": "الهالوشكي",
-  "wiki": "Bryndzové halušky"
+  "kind": "animal",
+  "ar": "شامواه جبال تاترا",
+  "wiki": "Tatra chamois"
  },
  "SVN": {
   "kind": "animal",
@@ -891,7 +895,8 @@
  "TTO": {
   "kind": "animal",
   "ar": "طائر أبو منجل القرمزي",
-  "wiki": "Scarlet ibis"
+  "wiki": "Scarlet ibis",
+  "q": "search:Eudocimus ruber scarlet ibis flock|Oceanografic_Scarlet_Ibis_02.jpg"
  },
  "TUN": {
   "kind": "food",
@@ -937,12 +942,13 @@
   "kind": "food",
   "ar": "البلوف (الأرز البخاري)",
   "wiki": "Plov",
-  "q": "search:Uzbek plov"
+  "q": "search:Plov Uzbek dish plate|Palov ko‘tarayotgan xizmatchi.jpg"
  },
  "VCT": {
   "kind": "animal",
   "ar": "ببغاء سانت فنسنت",
-  "wiki": "St. Vincent amazon"
+  "wiki": "St. Vincent amazon",
+  "q": "search:Amazona guildingii|Amazona_guildingii_-Botanical_Gardens_-Kingstown_-Saint_Vincent-8a-4c.jpg"
  },
  "VEN": {
   "kind": "food",
@@ -977,7 +983,8 @@
  "ZMB": {
   "kind": "animal",
   "ar": "عقاب السمك الأفريقي",
-  "wiki": "African fish eagle"
+  "wiki": "African fish eagle",
+  "q": "search:Haliaeetus vocifer fish eagle flight|African_fish_eagle,_Haliaeetus_vocifer,_at_Chobe_National_Park,_Botswana_(33516612831).jpg"
  },
  "ZWE": {
   "kind": "food",
