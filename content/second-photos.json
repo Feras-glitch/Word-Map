@@ -1,21 +1,21 @@
 {
  "AFG": {
-  "q": "search:Afghan Hound dog",
-  "file": "Dog heart (Afghan Hound).jpg",
-  "artist": "Museum of Veterinary Anatomy FMVZ USP / Wagner Souza e Silva",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Dog_heart_(Afghan_Hound).jpg",
-  "review": "rejected"
- },
- "AGO": {
-  "q": "search:Giant sable antelope Hippotragus niger variani",
-  "file": "Giant Sable Antelope (22018702922).jpg",
-  "artist": "Thomas Quine",
+  "q": "search:Afghan hound dog portrait|Dog heart (Afghan Hound).jpg",
+  "file": "Afghan Hound cream portrait.jpg",
+  "artist": "tanakawho",
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Giant_Sable_Antelope_(22018702922).jpg",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:Afghan_Hound_cream_portrait.jpg",
+  "review": "pending"
+ },
+ "AGO": {
+  "q": "search:Palanca Negra Gigante sable antelope|Giant Sable Antelope (22018702922).jpg",
+  "file": "Museu de História Natural in Luanda - Angola 2015.jpg",
+  "artist": "David Stanley from Nanaimo, Canada",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Museu_de_Hist%C3%B3ria_Natural_in_Luanda_-_Angola_2015.jpg",
+  "review": "pending"
  },
  "ALB": {
   "q": "wiki:Golden eagle",
@@ -260,15 +260,6 @@
   "page": "https://commons.wikimedia.org/wiki/File:Tragelaphus_eurycerus_-Marwell_Wildlife,_Hampshire,_England-8a.jpg",
   "review": "ok"
  },
- "CAN": {
-  "q": "search:maple syrup pancakes",
-  "file": "Bacon Pancakes - Moksha Caffè 2026-05-03.jpg",
-  "artist": "Andy Li",
-  "license": "CC0",
-  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "page": "https://commons.wikimedia.org/wiki/File:Bacon_Pancakes_-_Moksha_Caff%C3%A8_2026-05-03.jpg",
-  "review": "rejected"
- },
  "CHE": {
   "q": "wiki:St. Bernard (dog)",
   "file": "Hummel_Vedor_vd_Robandahoeve.jpg",
@@ -414,13 +405,13 @@
   "review": "ok"
  },
  "DMA": {
-  "q": "wiki:Imperial amazon",
-  "file": "Amazona_imperialis_-Roseau_-Dominica_-aviary-6a-3c.jpg",
-  "artist": "Amazona_imperialis_-Roseau_-Dominica_-aviary-6a.jpg: Andrew Szymanski derivative work: Snowmanradio (talk)",
+  "q": "search:Amazona imperialis Dominica|Amazona_imperialis_-Roseau_-Dominica_-aviary-6a-3c.jpg",
+  "file": "Amazona imperialis -Roseau -Dominica -aviary-6a.jpg",
+  "artist": "Andrew Szymanski",
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Amazona_imperialis_-Roseau_-Dominica_-aviary-6a-3c.jpg",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:Amazona_imperialis_-Roseau_-Dominica_-aviary-6a.jpg",
+  "review": "pending"
  },
  "DNK": {
   "q": "wiki:Danish pastry",
@@ -738,13 +729,13 @@
   "review": "ok"
  },
  "ITA": {
-  "q": "wiki:Pizza",
-  "file": "Pizza-3007395.jpg",
-  "artist": "igorovsyannykov",
-  "license": "CC0",
-  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "page": "https://commons.wikimedia.org/wiki/File:Pizza-3007395.jpg",
-  "review": "rejected"
+  "q": "search:Pizza Margherita|Pizza-3007395.jpg",
+  "file": "Margherita Originale.JPG",
+  "artist": "Mario56",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Margherita_Originale.JPG",
+  "review": "pending"
  },
  "JAM": {
   "q": "wiki:Red-billed streamertail",
@@ -754,15 +745,6 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Red-billed_streamertail_(Trochilus_polytmus)_adult_male_2.jpg",
   "review": "ok"
- },
- "JOR": {
-  "q": "wiki:Mansaf",
-  "file": "Mansaf,_the_traditional_dish_of_Jordan.jpg",
-  "artist": "Jktab",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Mansaf,_the_traditional_dish_of_Jordan.jpg",
-  "review": "rejected"
  },
  "JPN": {
   "q": "wiki:Sushi",
@@ -891,13 +873,13 @@
   "review": "ok"
  },
  "LCA": {
-  "q": "wiki:St. Lucia amazon",
-  "file": "Amazona_versicolor_-St_Lucia-5a.jpg",
-  "artist": "Brennan Mulrooney",
-  "license": "CC BY 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Amazona_versicolor_-St_Lucia-5a.jpg",
-  "review": "rejected"
+  "q": "search:Amazona versicolor|Amazona_versicolor_-St_Lucia-5a.jpg",
+  "file": "Stlpar1 Amazona versicolor St. Lucia Parrot.jpg",
+  "artist": "Aaron Michael",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Stlpar1_Amazona_versicolor_St._Lucia_Parrot.jpg",
+  "review": "pending"
  },
  "LIE": {
   "q": "wiki:Alpine ibex",
@@ -916,15 +898,6 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Ceylon_Pettiagalla_Tea.jpg",
   "review": "ok"
- },
- "LSO": {
-  "q": "search:Basotho pony Lesotho",
-  "file": "Howard C. Hillegas.jpg",
-  "artist": "Thomas Franklin Fairfax Millard for Howard C. Hillegas.",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Howard_C._Hillegas.jpg",
-  "review": "rejected"
  },
  "LTU": {
   "q": "wiki:White stork",
@@ -999,13 +972,13 @@
   "review": "ok"
  },
  "MEX": {
-  "q": "wiki:Taco",
-  "file": "001_Tacos_de_carnitas,_carne_asada_y_al_pastor.jpg",
-  "artist": "Larry Miller",
-  "license": "CC BY-SA 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:001_Tacos_de_carnitas,_carne_asada_y_al_pastor.jpg",
-  "review": "rejected"
+  "q": "wiki:Axolotl",
+  "file": "Axolotl_ganz.jpg",
+  "artist": "LoKiLeCh",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Axolotl_ganz.jpg",
+  "review": "pending"
  },
  "MHL": {
   "q": "wiki:Coconut",
@@ -1034,15 +1007,6 @@
   "page": "https://commons.wikimedia.org/wiki/File:SEN_Village_Chief_Theodore.jpg",
   "review": "ok"
  },
- "MLT": {
-  "q": "search:Pastizzi Malta",
-  "file": "Pastizz in the oven.jpg",
-  "artist": "Kritzolina",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Pastizz_in_the_oven.jpg",
-  "review": "rejected"
- },
  "MMR": {
   "q": "wiki:Mohinga",
   "file": "Mohnga.jpg",
@@ -1053,13 +1017,13 @@
   "review": "ok"
  },
  "MNE": {
-  "q": "search:olive tree Montenegro",
-  "file": "Old olive tree in Bar, Montenegro.jpg",
-  "artist": "Sergeagle",
+  "q": "search:Stara maslina Bar Montenegro|Old olive tree in Bar, Montenegro.jpg",
+  "file": "Old olive, stara maslina, info tabla.jpg",
+  "artist": "BuhaM",
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Old_olive_tree_in_Bar,_Montenegro.jpg",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:Old_olive,_stara_maslina,_info_tabla.jpg",
+  "review": "pending"
  },
  "MNG": {
   "q": "wiki:Bactrian camel",
@@ -1350,13 +1314,13 @@
   "review": "ok"
  },
  "SDN": {
-  "q": "search:Acacia senegal gum arabic",
-  "file": "Gum Arabic exuding.jpg",
-  "artist": "Ashwin Baindur (User:AshLin)",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Gum_Arabic_exuding.jpg",
-  "review": "rejected"
+  "q": "search:gum arabic tears|Gum Arabic exuding.jpg",
+  "file": "John Harris - 1614c96b3e (2).jpg",
+  "artist": "John Harris",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:John_Harris_-_1614c96b3e_(2).jpg",
+  "review": "pending"
  },
  "SEN": {
   "q": "wiki:Thieboudienne",
@@ -1458,13 +1422,13 @@
   "review": "ok"
  },
  "SVK": {
-  "q": "wiki:Bryndzové halušky",
-  "file": "Bryndzové_halušky_so_slaninou.jpg",
-  "artist": "Gregory finster",
-  "license": "CC0",
-  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "page": "https://commons.wikimedia.org/wiki/File:Bryndzov%C3%A9_halu%C5%A1ky_so_slaninou.jpg",
-  "review": "rejected"
+  "q": "wiki:Tatra chamois",
+  "file": "Tatra_Chamois.jpg",
+  "artist": "Jakub Fryš",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tatra_Chamois.jpg",
+  "review": "pending"
  },
  "SVN": {
   "q": "search:Lipizzaner horses Lipica",
@@ -1575,13 +1539,13 @@
   "review": "ok"
  },
  "TTO": {
-  "q": "wiki:Scarlet ibis",
-  "file": "Oceanografic_Scarlet_Ibis_02.jpg",
-  "artist": "Rafa Esteve",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Oceanografic_Scarlet_Ibis_02.jpg",
-  "review": "rejected"
+  "q": "search:Eudocimus ruber scarlet ibis flock|Oceanografic_Scarlet_Ibis_02.jpg",
+  "file": "Scarlet Ibis (Eudocimus ruber) (4090204788).jpg",
+  "artist": "Dominic Sherony",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Scarlet_Ibis_(Eudocimus_ruber)_(4090204788).jpg",
+  "review": "pending"
  },
  "TUN": {
   "q": "wiki:Brik",
@@ -1655,23 +1619,14 @@
   "page": "https://commons.wikimedia.org/wiki/File:Bald_eagle_about_to_fly_in_Alaska_(2016).jpg",
   "review": "ok"
  },
- "UZB": {
-  "q": "search:Uzbek plov",
-  "file": "Palov ko‘tarayotgan xizmatchi.jpg",
-  "artist": "AIDEPCUL",
-  "license": "CC BY 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Palov_ko%E2%80%98tarayotgan_xizmatchi.jpg",
-  "review": "rejected"
- },
  "VCT": {
-  "q": "wiki:St. Vincent amazon",
-  "file": "Amazona_guildingii_-Botanical_Gardens_-Kingstown_-Saint_Vincent-8a-4c.jpg",
-  "artist": "Amazona_guildingii_-Botanical_Gardens_-Kingstown_-Saint_Vincent-8a.jpg: Chennette derivative work: Snowmanradio (talk)",
-  "license": "CC BY-SA 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Amazona_guildingii_-Botanical_Gardens_-Kingstown_-Saint_Vincent-8a-4c.jpg",
-  "review": "rejected"
+  "q": "search:Amazona guildingii|Amazona_guildingii_-Botanical_Gardens_-Kingstown_-Saint_Vincent-8a-4c.jpg",
+  "file": "Amazona guildingii-4.jpg",
+  "artist": "Original uploader was Beralpo at ru.wikipedia",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+  "page": "https://commons.wikimedia.org/wiki/File:Amazona_guildingii-4.jpg",
+  "review": "pending"
  },
  "VEN": {
   "q": "wiki:Arepa",
@@ -1728,13 +1683,13 @@
   "review": "ok"
  },
  "ZMB": {
-  "q": "wiki:African fish eagle",
-  "file": "African_fish_eagle,_Haliaeetus_vocifer,_at_Chobe_National_Park,_Botswana_(33516612831).jpg",
-  "artist": "Derek Keats from Johannesburg, South Africa",
-  "license": "CC BY 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:African_fish_eagle,_Haliaeetus_vocifer,_at_Chobe_National_Park,_Botswana_(33516612831).jpg",
-  "review": "rejected"
+  "q": "search:Haliaeetus vocifer fish eagle flight|African_fish_eagle,_Haliaeetus_vocifer,_at_Chobe_National_Park,_Botswana_(33516612831).jpg",
+  "file": "African fish eagle (Haliaeetus vocifer) with fish.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:African_fish_eagle_(Haliaeetus_vocifer)_with_fish.jpg",
+  "review": "pending"
  },
  "ZWE": {
   "q": "search:Sadza Zimbabwe",

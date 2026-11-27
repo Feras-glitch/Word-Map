@@ -2,8 +2,8 @@
 
 صور من ويكيميديا كومنز برخص حرة. لكل صورة صاحبها ورخصتها:
 
-- **AFG** — [Dog heart (Afghan Hound).jpg](https://commons.wikimedia.org/wiki/File:Dog_heart_(Afghan_Hound).jpg) — Museum of Veterinary Anatomy FMVZ USP / Wagner Souza e Silva — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
-- **AGO** — [Giant Sable Antelope (22018702922).jpg](https://commons.wikimedia.org/wiki/File:Giant_Sable_Antelope_(22018702922).jpg) — Thomas Quine — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
+- **AFG** — [Afghan Hound cream portrait.jpg](https://commons.wikimedia.org/wiki/File:Afghan_Hound_cream_portrait.jpg) — tanakawho — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
+- **AGO** — [Museu de História Natural in Luanda - Angola 2015.jpg](https://commons.wikimedia.org/wiki/File:Museu_de_Hist%C3%B3ria_Natural_in_Luanda_-_Angola_2015.jpg) — David Stanley from Nanaimo, Canada — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
 - **ALB** — [015_Wild_Golden_Eagle_in_flight_at_Pfyn-Finges_(Switzerland)_Photo_by_Giles_Laurent.jpg](https://commons.wikimedia.org/wiki/File:015_Wild_Golden_Eagle_in_flight_at_Pfyn-Finges_(Switzerland)_Photo_by_Giles_Laurent.jpg) — Giles Laurent — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **AND** — [WLE - 2020 - Parque nacional de Ordesa y Monte Perdido - 03.jpg](https://commons.wikimedia.org/wiki/File:WLE_-_2020_-_Parque_nacional_de_Ordesa_y_Monte_Perdido_-_03.jpg) — Moahim — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **ARE** — [Falco_cherrug_(Marek_Szczepanek).jpg](https://commons.wikimedia.org/wiki/File:Falco_cherrug_(Marek_Szczepanek).jpg) — Marek Szczepanek — CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
@@ -31,7 +31,6 @@
 - **BTN** — [Thimphu-Takin-Reservat-06-2015-gje.jpg](https://commons.wikimedia.org/wiki/File:Thimphu-Takin-Reservat-06-2015-gje.jpg) — Gerd Eichmann — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **BWA** — [178_Male_African_bush_elephant_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg](https://commons.wikimedia.org/wiki/File:178_Male_African_bush_elephant_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg) — Giles Laurent — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **CAF** — [Tragelaphus_eurycerus_-Marwell_Wildlife,_Hampshire,_England-8a.jpg](https://commons.wikimedia.org/wiki/File:Tragelaphus_eurycerus_-Marwell_Wildlife,_Hampshire,_England-8a.jpg) — Charles Miller from Basingstoke, United Kingdom — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
-- **CAN** — [Bacon Pancakes - Moksha Caffè 2026-05-03.jpg](https://commons.wikimedia.org/wiki/File:Bacon_Pancakes_-_Moksha_Caff%C3%A8_2026-05-03.jpg) — Andy Li — CC0 (http://creativecommons.org/publicdomain/zero/1.0/deed.en)
 - **CHE** — [Hummel_Vedor_vd_Robandahoeve.jpg](https://commons.wikimedia.org/wiki/File:Hummel_Vedor_vd_Robandahoeve.jpg) — Blanky — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **CHL** — [AndeanCondorMale.jpg](https://commons.wikimedia.org/wiki/File:AndeanCondorMale.jpg) — Greg Hume — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **CHN** — [Grosser_Panda.JPG](https://commons.wikimedia.org/wiki/File:Grosser_Panda.JPG) — J. Patrick Fischer — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
@@ -48,7 +47,7 @@
 - **CZE** — [Trdelník-Basket-20101.JPG](https://commons.wikimedia.org/wiki/File:Trdeln%C3%ADk-Basket-20101.JPG) — Tamorlan — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **DEU** — [BrezelnSalz02_(cropped).JPG](https://commons.wikimedia.org/wiki/File:BrezelnSalz02_(cropped).JPG) — Sundar1 — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **DJI** — [Similan_Dive_Center_-_great_whale_shark.jpg](https://commons.wikimedia.org/wiki/File:Similan_Dive_Center_-_great_whale_shark.jpg) — Abe Khao Lak — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
-- **DMA** — [Amazona_imperialis_-Roseau_-Dominica_-aviary-6a-3c.jpg](https://commons.wikimedia.org/wiki/File:Amazona_imperialis_-Roseau_-Dominica_-aviary-6a-3c.jpg) — Amazona_imperialis_-Roseau_-Dominica_-aviary-6a.jpg: Andrew Szymanski derivative work: Snowmanradio (talk) — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0)
+- **DMA** — [Amazona imperialis -Roseau -Dominica -aviary-6a.jpg](https://commons.wikimedia.org/wiki/File:Amazona_imperialis_-Roseau_-Dominica_-aviary-6a.jpg) — Andrew Szymanski — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0)
 - **DNK** — [Glazed_apple_Danish.jpg](https://commons.wikimedia.org/wiki/File:Glazed_apple_Danish.jpg) — Peter Isotalo — CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
 - **DOM** — [RhinoIguanaMay07Pedernales.jpg](https://commons.wikimedia.org/wiki/File:RhinoIguanaMay07Pedernales.jpg) — Tim Ross — Public domain
 - **DZA** — [Fennec_Fox_Vulpes_zerda.jpg](https://commons.wikimedia.org/wiki/File:Fennec_Fox_Vulpes_zerda.jpg) — Drew Avery — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
@@ -84,9 +83,8 @@
 - **IRN** — [Saffron_-_premium_spice.jpg](https://commons.wikimedia.org/wiki/File:Saffron_-_premium_spice.jpg) — Shaharbano — CC BY 4.0 (https://creativecommons.org/licenses/by/4.0)
 - **IRQ** — [Masgouf.jpg](https://commons.wikimedia.org/wiki/File:Masgouf.jpg) — Hill93 — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **ISL** — [Puffin_(Fratercula_arctica).jpg](https://commons.wikimedia.org/wiki/File:Puffin_(Fratercula_arctica).jpg) — Charles J. Sharp — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
-- **ITA** — [Pizza-3007395.jpg](https://commons.wikimedia.org/wiki/File:Pizza-3007395.jpg) — igorovsyannykov — CC0 (http://creativecommons.org/publicdomain/zero/1.0/deed.en)
+- **ITA** — [Margherita Originale.JPG](https://commons.wikimedia.org/wiki/File:Margherita_Originale.JPG) — Mario56 — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **JAM** — [Red-billed_streamertail_(Trochilus_polytmus)_adult_male_2.jpg](https://commons.wikimedia.org/wiki/File:Red-billed_streamertail_(Trochilus_polytmus)_adult_male_2.jpg) — Charles J. Sharp — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
-- **JOR** — [Mansaf,_the_traditional_dish_of_Jordan.jpg](https://commons.wikimedia.org/wiki/File:Mansaf,_the_traditional_dish_of_Jordan.jpg) — Jktab — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **JPN** — [Sushi_platter.jpg](https://commons.wikimedia.org/wiki/File:Sushi_platter.jpg) — chidorian from Japan — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0)
 - **KAZ** — [Saiga_antelope_at_the_Stepnoi_Sanctuary.jpg](https://commons.wikimedia.org/wiki/File:Saiga_antelope_at_the_Stepnoi_Sanctuary.jpg) — Andrey Giljov — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **KEN** — [Male_cheetah_facing_left_in_South_Africa.jpg](https://commons.wikimedia.org/wiki/File:Male_cheetah_facing_left_in_South_Africa.jpg) — AfricanConservation — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
@@ -101,10 +99,9 @@
 - **LBN** — [Tabouleh_1.JPG](https://commons.wikimedia.org/wiki/File:Tabouleh_1.JPG) — Miansari66 — CC0 (http://creativecommons.org/publicdomain/zero/1.0/deed.en)
 - **LBR** — [Hexaprotodon_liberiensis_in_Edinburgh_Zoo.JPG](https://commons.wikimedia.org/wiki/File:Hexaprotodon_liberiensis_in_Edinburgh_Zoo.JPG) — Bardrock — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **LBY** — [Bazin.jpg](https://commons.wikimedia.org/wiki/File:Bazin.jpg) — Libiya11 — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
-- **LCA** — [Amazona_versicolor_-St_Lucia-5a.jpg](https://commons.wikimedia.org/wiki/File:Amazona_versicolor_-St_Lucia-5a.jpg) — Brennan Mulrooney — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
+- **LCA** — [Stlpar1 Amazona versicolor St. Lucia Parrot.jpg](https://commons.wikimedia.org/wiki/File:Stlpar1_Amazona_versicolor_St._Lucia_Parrot.jpg) — Aaron Michael — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0)
 - **LIE** — [003_Wild_Alpine_Ibex_Sunset_Creux_du_Van_Mont_Racine_Photo_by_Giles_Laurent.jpg](https://commons.wikimedia.org/wiki/File:003_Wild_Alpine_Ibex_Sunset_Creux_du_Van_Mont_Racine_Photo_by_Giles_Laurent.jpg) — Giles Laurent — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **LKA** — [Ceylon_Pettiagalla_Tea.jpg](https://commons.wikimedia.org/wiki/File:Ceylon_Pettiagalla_Tea.jpg) — Brigade Piron — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
-- **LSO** — [Howard C. Hillegas.jpg](https://commons.wikimedia.org/wiki/File:Howard_C._Hillegas.jpg) — Thomas Franklin Fairfax Millard for Howard C. Hillegas. — Public domain
 - **LTU** — [White_stork_(Ciconia_ciconia)_Białowieza.jpg](https://commons.wikimedia.org/wiki/File:White_stork_(Ciconia_ciconia)_Bia%C5%82owieza.jpg) — Charles J. Sharp — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **LUX** — [Goldcrest_1.jpg](https://commons.wikimedia.org/wiki/File:Goldcrest_1.jpg) — Francis C. Franklin — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **LVA** — [20180415_015_Winterswijk_Witte_kwikstaart_(40785272624).jpg](https://commons.wikimedia.org/wiki/File:20180415_015_Winterswijk_Witte_kwikstaart_(40785272624).jpg) — Jac. Janssen from BAARLO LB, NL — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
@@ -113,13 +110,12 @@
 - **MDA** — [Grapes,_Rostov-on-Don,_Russia.jpg](https://commons.wikimedia.org/wiki/File:Grapes,_Rostov-on-Don,_Russia.jpg) — Vyacheslav Argenberg — CC BY 4.0 (https://creativecommons.org/licenses/by/4.0)
 - **MDG** — [Ring-tailed_lemur_(Lemur_catta).jpg](https://commons.wikimedia.org/wiki/File:Ring-tailed_lemur_(Lemur_catta).jpg) — Charles J. Sharp — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **MDV** — [Green_sea_turtle_(Chelonia_mydas)_Moorea.jpg](https://commons.wikimedia.org/wiki/File:Green_sea_turtle_(Chelonia_mydas)_Moorea.jpg) — Charles J. Sharp — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
-- **MEX** — [001_Tacos_de_carnitas,_carne_asada_y_al_pastor.jpg](https://commons.wikimedia.org/wiki/File:001_Tacos_de_carnitas,_carne_asada_y_al_pastor.jpg) — Larry Miller — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0)
+- **MEX** — [Axolotl_ganz.jpg](https://commons.wikimedia.org/wiki/File:Axolotl_ganz.jpg) — LoKiLeCh — CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
 - **MHL** — [Cocos_nucifera_-_Köhler–s_Medizinal-Pflanzen-187.jpg](https://commons.wikimedia.org/wiki/File:Cocos_nucifera_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-187.jpg) — Franz Eugen Köhler, Köhler's Medizinal-Pflanzen — Public domain
 - **MKD** — [Ajvar1_bright.jpg](https://commons.wikimedia.org/wiki/File:Ajvar1_bright.jpg) — Off-shell — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **MLI** — [SEN_Village_Chief_Theodore.jpg](https://commons.wikimedia.org/wiki/File:SEN_Village_Chief_Theodore.jpg) — Richard Nyberg, USAID — Public domain
-- **MLT** — [Pastizz in the oven.jpg](https://commons.wikimedia.org/wiki/File:Pastizz_in_the_oven.jpg) — Kritzolina — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **MMR** — [Mohnga.jpg](https://commons.wikimedia.org/wiki/File:Mohnga.jpg) — Charles Haynes — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0)
-- **MNE** — [Old olive tree in Bar, Montenegro.jpg](https://commons.wikimedia.org/wiki/File:Old_olive_tree_in_Bar,_Montenegro.jpg) — Sergeagle — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
+- **MNE** — [Old olive, stara maslina, info tabla.jpg](https://commons.wikimedia.org/wiki/File:Old_olive,_stara_maslina,_info_tabla.jpg) — BuhaM — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **MNG** — [Camelus_bactrianus_(55026866188).jpg](https://commons.wikimedia.org/wiki/File:Camelus_bactrianus_(55026866188).jpg) — Christian Ursilva from Copenhagen, Denmark — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **MOZ** — [Dugong.JPG](https://commons.wikimedia.org/wiki/File:Dugong.JPG) — Gejuni — CC BY-SA 3.0 de (https://creativecommons.org/licenses/by-sa/3.0/de/deed.en)
 - **MRT** — [Mechoui.jpg](https://commons.wikimedia.org/wiki/File:Mechoui.jpg) — Andre Piquet — CC BY 3.0 (https://creativecommons.org/licenses/by/3.0)
@@ -152,7 +148,7 @@
 - **RUS** — [P.t.altaica_Tomak_Male.jpg](https://commons.wikimedia.org/wiki/File:P.t.altaica_Tomak_Male.jpg) — Appaloosa — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **RWA** — [Susa_group,_mountain_gorilla.jpg](https://commons.wikimedia.org/wiki/File:Susa_group,_mountain_gorilla.jpg) — https://www.flickr.com/photos/deepphoto/ d_proffer — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
 - **SAU** — [Dates005.jpg](https://commons.wikimedia.org/wiki/File:Dates005.jpg) — Nepenthes — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
-- **SDN** — [Gum Arabic exuding.jpg](https://commons.wikimedia.org/wiki/File:Gum_Arabic_exuding.jpg) — Ashwin Baindur (User:AshLin) — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
+- **SDN** — [John Harris - 1614c96b3e (2).jpg](https://commons.wikimedia.org/wiki/File:John_Harris_-_1614c96b3e_(2).jpg) — John Harris — Public domain
 - **SEN** — [Thieboudienne.JPG](https://commons.wikimedia.org/wiki/File:Thieboudienne.JPG) — KVDP — Public domain
 - **SGP** — [Hainanese_Chicken_Rice.jpg](https://commons.wikimedia.org/wiki/File:Hainanese_Chicken_Rice.jpg) — No machine-readable author provided. Terence assumed (based on copyright claims). — CC BY 2.5 (https://creativecommons.org/licenses/by/2.5)
 - **SLB** — [Corucia_zebrata_(2).jpg](https://commons.wikimedia.org/wiki/File:Corucia_zebrata_(2).jpg) — TimVickers — Public domain
@@ -164,7 +160,7 @@
 - **SSD** — [Male_Ugandan_kob_-_Queen_Elizabeth_National_Park,_Uganda_(4).jpg](https://commons.wikimedia.org/wiki/File:Male_Ugandan_kob_-_Queen_Elizabeth_National_Park,_Uganda_(4).jpg) — Fanny Schertzer — CC BY 3.0 (https://creativecommons.org/licenses/by/3.0)
 - **STP** — [Cocoa_Pods.JPG](https://commons.wikimedia.org/wiki/File:Cocoa_Pods.JPG) — Photo by Medicaster. — Public domain
 - **SUR** — [Dendrobates_tinctorius_-_Karlsruhe_Zoo_05.jpg](https://commons.wikimedia.org/wiki/File:Dendrobates_tinctorius_-_Karlsruhe_Zoo_05.jpg) — H. Zell — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
-- **SVK** — [Bryndzové_halušky_so_slaninou.jpg](https://commons.wikimedia.org/wiki/File:Bryndzov%C3%A9_halu%C5%A1ky_so_slaninou.jpg) — Gregory finster — CC0 (http://creativecommons.org/publicdomain/zero/1.0/deed.en)
+- **SVK** — [Tatra_Chamois.jpg](https://commons.wikimedia.org/wiki/File:Tatra_Chamois.jpg) — Jakub Fryš — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **SVN** — [Lipizzaner Horse.jpg](https://commons.wikimedia.org/wiki/File:Lipizzaner_Horse.jpg) — Hank Miller — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **SWE** — [Alaska_moose.jpg](https://commons.wikimedia.org/wiki/File:Alaska_moose.jpg) — Paxson Woelber — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **SWZ** — [109_Male_White_rhinoceros_walking_in_the_Kalahari_Desert_of_Namibia_Photo_by_Giles_Laurent.jpg](https://commons.wikimedia.org/wiki/File:109_Male_White_rhinoceros_walking_in_the_Kalahari_Desert_of_Namibia_Photo_by_Giles_Laurent.jpg) — Giles Laurent — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
@@ -177,7 +173,7 @@
 - **TKM** — [Dagat-Geli.jpg](https://commons.wikimedia.org/wiki/File:Dagat-Geli.jpg) — Artur Baboev - give free of charge right for promouting of Akhal-teke article on Wikipedia — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **TLS** — [SaltwaterCrocodile('Maximo').jpg](https://commons.wikimedia.org/wiki/File:SaltwaterCrocodile(%27Maximo%27).jpg) — Obtained from Molly Ebersold of the St. Augustine Alligator Farm — Public domain
 - **TON** — [Humpback_whale_breaching_off_Cabo_San_Lucas.jpg](https://commons.wikimedia.org/wiki/File:Humpback_whale_breaching_off_Cabo_San_Lucas.jpg) — Juan Cruzado Cortés — CC BY 4.0 (https://creativecommons.org/licenses/by/4.0)
-- **TTO** — [Oceanografic_Scarlet_Ibis_02.jpg](https://commons.wikimedia.org/wiki/File:Oceanografic_Scarlet_Ibis_02.jpg) — Rafa Esteve — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
+- **TTO** — [Scarlet Ibis (Eudocimus ruber) (4090204788).jpg](https://commons.wikimedia.org/wiki/File:Scarlet_Ibis_(Eudocimus_ruber)_(4090204788).jpg) — Dominic Sherony — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0)
 - **TUN** — [Brikdish.jpg](https://commons.wikimedia.org/wiki/File:Brikdish.jpg) — Muckster — CC BY 3.0 (https://creativecommons.org/licenses/by/3.0)
 - **TUR** — [Baklava(1).png](https://commons.wikimedia.org/wiki/File:Baklava(1).png) — Sakaman — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **TUV** — [Babai.jpg](https://commons.wikimedia.org/wiki/File:Babai.jpg) — Tauʻolunga — CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
@@ -186,13 +182,12 @@
 - **UKR** — [Borscht_served.jpg](https://commons.wikimedia.org/wiki/File:Borscht_served.jpg) — liz west from Boxborough, MA — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
 - **URY** — [DulceDeLeche.jpg](https://commons.wikimedia.org/wiki/File:DulceDeLeche.jpg) — audinou from Paris, France — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
 - **USA** — [Bald_eagle_about_to_fly_in_Alaska_(2016).jpg](https://commons.wikimedia.org/wiki/File:Bald_eagle_about_to_fly_in_Alaska_(2016).jpg) — Andy Morffew from Itchen Abbas, Hampshire, UK — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
-- **UZB** — [Palov ko‘tarayotgan xizmatchi.jpg](https://commons.wikimedia.org/wiki/File:Palov_ko%E2%80%98tarayotgan_xizmatchi.jpg) — AIDEPCUL — CC BY 4.0 (https://creativecommons.org/licenses/by/4.0)
-- **VCT** — [Amazona_guildingii_-Botanical_Gardens_-Kingstown_-Saint_Vincent-8a-4c.jpg](https://commons.wikimedia.org/wiki/File:Amazona_guildingii_-Botanical_Gardens_-Kingstown_-Saint_Vincent-8a-4c.jpg) — Amazona_guildingii_-Botanical_Gardens_-Kingstown_-Saint_Vincent-8a.jpg: Chennette derivative work: Snowmanradio (talk) — CC BY-SA 2.0 (https://creativecommons.org/licenses/by-sa/2.0)
+- **VCT** — [Amazona guildingii-4.jpg](https://commons.wikimedia.org/wiki/File:Amazona_guildingii-4.jpg) — Original uploader was Beralpo at ru.wikipedia — CC BY 2.5 (https://creativecommons.org/licenses/by/2.5)
 - **VEN** — [Arepitas_Food_Macro.jpg](https://commons.wikimedia.org/wiki/File:Arepitas_Food_Macro.jpg) — Steven Depolo from Grand Rapids, MI, USA — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
 - **VNM** — [Bowl_of_Meatball_pho.jpg](https://commons.wikimedia.org/wiki/File:Bowl_of_Meatball_pho.jpg) — SerraKnightz — CC BY 4.0 (https://creativecommons.org/licenses/by/4.0)
 - **VUT** — [Coconut_Crab_Birgus_latro.jpg](https://commons.wikimedia.org/wiki/File:Coconut_Crab_Birgus_latro.jpg) — Drew Avery — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
 - **WSM** — [Naturalis_Biodiversity_Center_-_ZMA.AVES.56900_-_Didunculus_strigirostris_Jardine,_1845_-_Columbidae_-_skin_specimen.jpeg](https://commons.wikimedia.org/wiki/File:Naturalis_Biodiversity_Center_-_ZMA.AVES.56900_-_Didunculus_strigirostris_Jardine,_1845_-_Columbidae_-_skin_specimen.jpeg) — Jardine, 1845 — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **YEM** — [Saltah.jpg](https://commons.wikimedia.org/wiki/File:Saltah.jpg) — Rania al-Bahara — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **ZAF** — [174_Male_Springbok_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg](https://commons.wikimedia.org/wiki/File:174_Male_Springbok_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg) — Giles Laurent — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
-- **ZMB** — [African_fish_eagle,_Haliaeetus_vocifer,_at_Chobe_National_Park,_Botswana_(33516612831).jpg](https://commons.wikimedia.org/wiki/File:African_fish_eagle,_Haliaeetus_vocifer,_at_Chobe_National_Park,_Botswana_(33516612831).jpg) — Derek Keats from Johannesburg, South Africa — CC BY 2.0 (https://creativecommons.org/licenses/by/2.0)
+- **ZMB** — [African fish eagle (Haliaeetus vocifer) with fish.jpg](https://commons.wikimedia.org/wiki/File:African_fish_eagle_(Haliaeetus_vocifer)_with_fish.jpg) — Charles J. Sharp — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **ZWE** — [An Example of Kapenta And Sadza(as it is known in Zimbabwe).JPG](https://commons.wikimedia.org/wiki/File:An_Example_of_Kapenta_And_Sadza(as_it_is_known_in_Zimbabwe).JPG) — Simz711 — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
