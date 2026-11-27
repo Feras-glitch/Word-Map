@@ -9,13 +9,13 @@
   "review": "ok"
  },
  "AGO": {
-  "q": "search:Palanca Negra Gigante sable antelope|Giant Sable Antelope (22018702922).jpg",
-  "file": "Museu de História Natural in Luanda - Angola 2015.jpg",
-  "artist": "David Stanley from Nanaimo, Canada",
-  "license": "CC BY 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Museu_de_Hist%C3%B3ria_Natural_in_Luanda_-_Angola_2015.jpg",
-  "review": "rejected"
+  "q": "wiki:Welwitschia",
+  "file": "Welwitschia_mirabilis(2).jpg",
+  "artist": "Thomas Schoch",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Welwitschia_mirabilis(2).jpg",
+  "review": "pending"
  },
  "ALB": {
   "q": "wiki:Golden eagle",
@@ -260,6 +260,15 @@
   "page": "https://commons.wikimedia.org/wiki/File:Tragelaphus_eurycerus_-Marwell_Wildlife,_Hampshire,_England-8a.jpg",
   "review": "ok"
  },
+ "CAN": {
+  "q": "wiki:Canada goose",
+  "file": "Canada_goose_on_Seedskadee_NWR_(27826185489).jpg",
+  "artist": "USFWS Mountain-Prairie",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Canada_goose_on_Seedskadee_NWR_(27826185489).jpg",
+  "review": "pending"
+ },
  "CHE": {
   "q": "wiki:St. Bernard (dog)",
   "file": "Hummel_Vedor_vd_Robandahoeve.jpg",
@@ -405,13 +414,13 @@
   "review": "ok"
  },
  "DMA": {
-  "q": "search:Amazona imperialis Dominica|Amazona_imperialis_-Roseau_-Dominica_-aviary-6a-3c.jpg",
-  "file": "Amazona imperialis -Roseau -Dominica -aviary-6a.jpg",
-  "artist": "Andrew Szymanski",
+  "q": "search:Sisserou parrot|Amazona imperialis -Roseau -Dominica -aviary-6a.jpg|Amazona imperialis -Roseau -Dominica -aviary-6a.jpg",
+  "file": "Amazona imperialis -Roseau -Dominica -aviary-6a-3c.jpg",
+  "artist": "Amazona_imperialis_-Roseau_-Dominica_-aviary-6a.jpg: Andrew Szymanski derivative work: Snowmanradio (talk)",
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Amazona_imperialis_-Roseau_-Dominica_-aviary-6a.jpg",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:Amazona_imperialis_-Roseau_-Dominica_-aviary-6a-3c.jpg",
+  "review": "pending"
  },
  "DNK": {
   "q": "wiki:Danish pastry",
@@ -746,6 +755,15 @@
   "page": "https://commons.wikimedia.org/wiki/File:Red-billed_streamertail_(Trochilus_polytmus)_adult_male_2.jpg",
   "review": "ok"
  },
+ "JOR": {
+  "q": "search:Mansaf|",
+  "file": "Mansaf 1.jpg",
+  "artist": "Abdulla aljammal",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Mansaf_1.jpg",
+  "review": "pending"
+ },
  "JPN": {
   "q": "wiki:Sushi",
   "file": "Sushi_platter.jpg",
@@ -899,6 +917,15 @@
   "page": "https://commons.wikimedia.org/wiki/File:Ceylon_Pettiagalla_Tea.jpg",
   "review": "ok"
  },
+ "LSO": {
+  "q": "wiki:Aloe polyphylla",
+  "file": "Aloe_polyphylla_3.jpg",
+  "artist": "Stan Shebs",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Aloe_polyphylla_3.jpg",
+  "review": "pending"
+ },
  "LTU": {
   "q": "wiki:White stork",
   "file": "White_stork_(Ciconia_ciconia)_Białowieza.jpg",
@@ -1007,6 +1034,15 @@
   "page": "https://commons.wikimedia.org/wiki/File:SEN_Village_Chief_Theodore.jpg",
   "review": "ok"
  },
+ "MLT": {
+  "q": "wiki:Maltese dog",
+  "file": "Maltese_600.jpg",
+  "artist": "Sannse",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Maltese_600.jpg",
+  "review": "pending"
+ },
  "MMR": {
   "q": "wiki:Mohinga",
   "file": "Mohnga.jpg",
@@ -1017,13 +1053,13 @@
   "review": "ok"
  },
  "MNE": {
-  "q": "search:Stara maslina Bar Montenegro|Old olive tree in Bar, Montenegro.jpg",
-  "file": "Old olive, stara maslina, info tabla.jpg",
-  "artist": "BuhaM",
+  "q": "search:olive branch fruit Olea europaea|Old olive, stara maslina, info tabla.jpg",
+  "file": "Olea europaea details.jpg",
+  "artist": "Polymathie",
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Old_olive,_stara_maslina,_info_tabla.jpg",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:Olea_europaea_details.jpg",
+  "review": "pending"
  },
  "MNG": {
   "q": "wiki:Bactrian camel",
@@ -1312,15 +1348,6 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Dates005.jpg",
   "review": "ok"
- },
- "SDN": {
-  "q": "search:gum arabic tears|Gum Arabic exuding.jpg",
-  "file": "John Harris - 1614c96b3e (2).jpg",
-  "artist": "John Harris",
-  "license": "Public domain",
-  "licenseUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:John_Harris_-_1614c96b3e_(2).jpg",
-  "review": "rejected"
  },
  "SEN": {
   "q": "wiki:Thieboudienne",
@@ -1618,6 +1645,15 @@
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Bald_eagle_about_to_fly_in_Alaska_(2016).jpg",
   "review": "ok"
+ },
+ "UZB": {
+  "q": "search:Osh plov rice|",
+  "file": "Farg'onacha osh.jpg",
+  "artist": "UzbekistanWikiEditor",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Farg%27onacha_osh.jpg",
+  "review": "pending"
  },
  "VCT": {
   "q": "search:Amazona guildingii|Amazona_guildingii_-Botanical_Gardens_-Kingstown_-Saint_Vincent-8a-4c.jpg",
