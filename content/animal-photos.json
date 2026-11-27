@@ -153,13 +153,13 @@
   "review": "ok"
  },
  "namerica-polar-bear": {
-  "q": "search:polar bear Ursus maritimus Svalbard|",
-  "file": "Polar bear (Ursus maritimus) with its prey.jpg",
-  "artist": "AWeith",
+  "q": "search:polar bear walking sea ice Ursus maritimus|Polar bear (Ursus maritimus) with its prey.jpg",
+  "file": "NOR-2016-Svalbard-Near Polar Ice Cap (81° N)-Polar bear (Ursus maritimus) 06.jpg",
+  "artist": "Godot13",
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Polar_bear_(Ursus_maritimus)_with_its_prey.jpg",
-  "review": "rejected"
+  "page": "https://commons.wikimedia.org/wiki/File:NOR-2016-Svalbard-Near_Polar_Ice_Cap_(81%C2%B0_N)-Polar_bear_(Ursus_maritimus)_06.jpg",
+  "review": "pending"
  },
  "namerica-raccoon": {
   "q": "wiki:Raccoon",
