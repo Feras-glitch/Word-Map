@@ -2,7 +2,7 @@
 import { byId, states, continents, shuffle } from './data.js';
 import { SUBJECTS, recsOf, itemsOf } from './exams.js';
 import { knowledgeById, natureById } from './exam-questions.js';
-import { cnt } from './arnum.js';
+import { cnt, li } from './arnum.js';
 import { gp } from './gender.js';
 import { weakest } from './mastery.js';
 
@@ -59,7 +59,7 @@ export function dinnerQuestions(p) {
       p.level > 1 && c.capAr ? { q: `ما عاصمة ${c.ar}؟`, a: capName(c) } : null,
       { q: `في أي قارة ${c.ar}؟`, a: continents[c.cont] },
       c.landmark ? { q: `اذكر معلماً مشهوراً في ${c.ar}.`, a: c.landmark } : null,
-      p.level > 1 && c.borders.filter((b) => byId[b]?.kind === 'state').length ? { q: `اذكر دولة جارة لـ${c.ar}.`, a: c.borders.filter((b) => byId[b]?.kind === 'state').map((b) => byId[b].ar).slice(0, 4).join(' أو ') } : null,
+      p.level > 1 && c.borders.filter((b) => byId[b]?.kind === 'state').length ? { q: `اذكر دولة جارة ${li(c.ar)}.`, a: c.borders.filter((b) => byId[b]?.kind === 'state').map((b) => byId[b].ar).slice(0, 4).join(' أو ') } : null,
       p.level === 1 ? { q: `ما ألوان علم ${c.ar}؟ (اطلب منه أن يصفه)`, a: 'افتحوا بطاقة الدولة وقارنوا' } : null,
     ].filter(Boolean);
     out.push(shuffle(opts)[0]);

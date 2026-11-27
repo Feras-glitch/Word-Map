@@ -201,4 +201,56 @@ await test('لعبة «أين هذه الدولة؟» بلا أسماء على �
   assert.ok(/minutesLeft\(\) <= 0\) parentLock\(sw\)/.test(read('src/screens/profiles.js')), 'الانتقال إلى ملف أخ بعد انتهاء الوقت بالرقم السري');
 });
 
+await test('اختباراتي: النجوم في أيام متباعدة، والجولة تبدأ بالمستحق، والاختبار الكبير يوزّع المواد', async () => {
+  const X = await import('../src/exams-core.js');
+  let r = X.applyAnswer(undefined, true, '2026-12-01');
+  assert.equal(r.rec.s, 1); assert.ok(r.lit && r.gained);
+  r = X.applyAnswer(r.rec, true, '2026-12-02'); assert.equal(r.rec.s, 1, 'لا نجمة ثانية في اليوم التالي مباشرة');
+  r = X.applyAnswer(r.rec, true, '2026-12-03'); assert.equal(r.rec.s, 2, 'الثانية بعد يومين');
+  r = X.applyAnswer(r.rec, true, '2026-12-06'); assert.equal(r.rec.s, 2, 'الثالثة تحتاج أسبوعاً');
+  r = X.applyAnswer(r.rec, true, '2026-12-10'); assert.equal(r.rec.s, 3);
+  assert.ok(!X.isDue(r.rec, '2026-12-20') && X.isDue(r.rec, '2027-01-09'), 'المتقن يعود بعد شهر');
+  r = X.applyAnswer(r.rec, false, '2027-01-09'); assert.equal(r.rec.s, 2); assert.equal(r.rec.miss, 1);
+  const recs = { A: { s: 1, last: '2026-12-01' }, B: { s: 2, last: '2026-12-09' } };
+  const ids = ['A', 'B', 'C', 'D'];
+  assert.deepEqual(X.pickRound(ids, recs, '2026-12-10', 3), ['A', 'C', 'D']);
+  const cv = X.coverage(ids, recs, '2026-12-10'); assert.equal(cv.lit, 2); assert.equal(cv.none, 2); assert.equal(cv.due, 1);
+  const plan = X.buildExam(['P', 'Q', 'R', 'S', 'T'], [{ key: 'f', ok: () => true }, { key: 'm', ok: () => true }], 6);
+  assert.equal(plan.length, 6); assert.ok(plan.filter((x) => x.subj === 'f').length === 3, 'توزيع متساوٍ');
+  assert.equal(new Set(plan.slice(0, 5).map((x) => x.id)).size, 5, 'دول مختلفة قبل التكرار');
+  assert.ok(X.passed(8, 10) && !X.passed(7, 10));
+  assert.equal(X.weekKey('2026-11-27'), '2026-11-21', 'الأسبوع يبدأ السبت');
+});
+
+await test('قفل الوالدين: «نسيت الرقم» بسؤال الاسترجاع، ولا يُحفظ في النسخة الاحتياطية', () => {
+  const L = read('src/lock.js'), S = read('src/store.js');
+  assert.ok(/store\.parent\.recHash \? secretGate\(reset/.test(L), 'سؤال الاسترجاع قبل سؤال الحساب');
+  assert.ok(/via: resetVia/.test(L) && read('src/screens/parent.js').includes("pc?.via === 'forgot'"), 'أثر التغيير ظاهر للأب');
+  assert.ok(/delete d\.parent\.recHash/.test(S), 'سؤال الاسترجاع لا يخرج في النسخة');
+});
+
+await test('أسئلة المعرفة المكتوبة: كل سؤال له جواب واحد صحيح وخيارات خاطئة مختلفة عنه', () => {
+  const t = read('src/exam-questions.js');
+  const items = [...t.matchAll(/\{ id: '([a-z0-9-]+)', lv: (\d), icon: '[^']*', q: '([^']+)', a: ([^,]+), w: \[([^\]]+)\]/g)];
+  assert.ok(items.length >= 25, 'عدد الأسئلة المكتوبة ' + items.length);
+  const ids = new Set();
+  for (const [, id, lv, q, a, w] of items) {
+    assert.ok(!ids.has(id), 'مكرر ' + id); ids.add(id);
+    assert.ok(+lv >= 1 && +lv <= 3);
+    const ws = [...w.matchAll(/'([^']+)'/g)].map((m) => m[1]);
+    assert.ok(ws.length >= 1 && !ws.includes(a.replace(/'/g, '').trim()), id + ': جواب ضمن الخطأ');
+  }
+});
+
+await test('عناصر المفاهيم والرحلات بلا معرّف مكرر', () => {
+  const t = read('src/exam-questions.js');
+  assert.ok(/id: 'bs-' \+ s\.cc \+ '-' \+ s\.year \+ '-' \+ k/.test(t), 'معرّف محطات ابن بطوطة فريد (مدينتان في الدولة نفسها والسنة نفسها)');
+});
+
+await test('الدول المذكّرة تشمل الأردن والعراق والصومال والفاتيكان', async () => {
+  const { MASC } = await import('../src/arnum.js');
+  for (const id of ['JOR', 'IRQ', 'MAR', 'SDN', 'LBN', 'YEM', 'SOM', 'VAT', 'NER']) assert.ok(MASC.has(id), id);
+  assert.ok(!/ar\(taps\) \+ ' محاولات'/.test(read('src/screens/missions.js')), 'تمييز عدد المحاولات في قصص المهام');
+});
+
 console.log(process.exitCode ? '\nفشل بعض الاختبارات' : `\nنجحت الاختبارات كلها (${n})`);

@@ -577,8 +577,8 @@ ol { list-style-type: arabic-indic; }
 .next-step.assigned { background: linear-gradient(135deg, #7b5cd6, #5a3fb8); }
 .greet-big { font-size: 2rem; font-weight: 900; margin: 4px 0; }
 .q-dotmap svg { width: 100%; max-height: 190px; border-radius: 12px; }
-.q-dotmap .pulse { animation: pulse 1.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-@keyframes pulse { 50% { transform: scale(1.6); opacity: .3; } }
+.q-dotmap .pulse { animation: dotpulse 1.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes dotpulse { 50% { transform: scale(1.6); opacity: .3; } }
 .ex-rep { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
 .ex-rep .er { display: grid; gap: 4px; background: #f7f9fc; border-radius: 12px; padding: 8px 10px; }
 .ex-rep small { color: #5a6478; } .ex-rep .weak { color: #b42318; }
@@ -595,13 +595,13 @@ details.child-set { margin-top: 10px; border-top: 1px dashed #d8dee8; padding-to
   .tiles.even { grid-template-columns: repeat(3, 1fr); }
   .tiles.simple { grid-template-columns: repeat(4, 1fr); }
   .modal { max-width: 720px; }
-  .quiz-modal .modal { max-width: 780px; }
+  .modal.quiz-modal { max-width: 780px; }
   .q-flag { width: min(70%, 380px); }
   .qo-big-flag { max-height: 130px; }
   .opt { padding: 22px 12px; font-size: 1.35rem; }
   .q-dotmap svg { max-height: 280px; }
   /* بطاقة الدولة بعمودين: العلم والخريطة ثابتان، والمعلومات بجانبهما */
-  .card-modal .modal { max-width: 960px; }
+  .modal.card-modal { max-width: 960px; }
   .card-modal .card { display: grid; grid-template-columns: 320px 1fr; column-gap: 20px; align-items: start; }
   .card-modal .card > * { grid-column: 2; }
   .card-modal .card > .card-head { grid-column: 1; grid-row: 1 / span 8; position: sticky; top: 0; grid-template-columns: 1fr; margin-top: 0; }
@@ -617,3 +617,21 @@ details.child-set { margin-top: 10px; border-top: 1px dashed #d8dee8; padding-to
 .card-flag img { cursor: zoom-in; }
 .tour { text-align: center; } .tour .owl-wrap { display: inline-block; } .tour-e { font-size: 3.5rem; } .tour h3 { margin: 4px 0; font-size: 1.5rem; } .tour p { font-size: 1.15rem; line-height: 1.8; }
 .tour-dots { display: flex; justify-content: center; gap: 6px; margin: 10px 0 14px; } .tour-dots i { width: 10px; height: 10px; border-radius: 50%; background: #d6dde8; } .tour-dots i.on { background: var(--blue); }
+.zh-q { text-align: center; } .zh-big { font-size: 4rem; font-weight: 900; letter-spacing: 6px; margin: 6px 0; } .zh-py { font-size: 1.4rem; color: #b42318; direction: ltr; }
+.zh-btn { margin-top: 10px; }
+
+.puzzle-map { flex: 1; min-height: 45vh; }
+.puzzle-tray { display: flex; gap: 10px; overflow-x: auto; padding: 10px; background: #fff; border-top: 2px solid #e3e8ef; min-height: 120px; touch-action: none; }
+.pz-piece { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 4px; width: 96px; padding: 6px; border-radius: 14px; background: #f7f9fc; border: 2px solid #e3e8ef; cursor: grab; touch-action: none; user-select: none; }
+.pz-piece svg { width: 80px; height: 64px; pointer-events: none; } .pz-piece b { font-size: .85rem; }
+.pz-piece.lifted { opacity: .35; } .pz-piece.ghost { position: fixed; z-index: 500; pointer-events: none; transform: translate(-50%, -60%) scale(1.1); box-shadow: 0 10px 30px #0004; opacity: .95; }
+.pz-piece.shake { animation: shake .4s; }
+@keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+.cmp-pick { display: flex; gap: 8px; align-items: center; margin: 8px 0; } .cmp-sel { flex: 1; font: inherit; font-weight: 700; padding: 10px; border-radius: 14px; border: 2px solid #d6dde8; background: #fff; min-height: 48px; }
+.cmp { background: #fff; border-radius: 20px; padding: 10px; box-shadow: var(--shadow); }
+.cmp-row { display: grid; grid-template-columns: 90px 1fr 1fr; gap: 8px; align-items: center; padding: 8px 4px; border-bottom: 1px solid #eef1f5; }
+.cmp-row .cl { font-weight: 800; font-size: .9rem; } .cmp-row .cv { font-weight: 700; text-align: center; }
+.cmp-c { display: flex; flex-direction: column; align-items: center; gap: 4px; border: 0; background: none; font: inherit; cursor: pointer; } .cmp-c img { width: 100%; max-width: 120px; border-radius: 6px; box-shadow: 0 0 0 1px #0002; }
+.cmp-map svg { width: 100%; height: 90px; border-radius: 10px; }
+.cb { display: grid; gap: 2px; } .cb i { display: block; height: 12px; border-radius: 99px; } .cb small { color: #5a6478; }
+.cmp-sum { margin-top: 10px; } .cmp-sum p { margin: 6px 0; font-weight: 700; }

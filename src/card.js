@@ -265,7 +265,8 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
     sub ? h('div', { class: 'sub-note' }, '📌 ' + sub) : null,
     bar, pane,
     h('div', { class: 'card-actions' },
-      onShowOnMap && c.bb ? h('button', { class: 'btn small soft', onclick: () => { m.close(); onShowOnMap(c.id); } }, '📍 أرني على الخريطة') : null),
+      onShowOnMap && c.bb ? h('button', { class: 'btn small soft', onclick: () => { m.close(); onShowOnMap(c.id); } }, '📍 أرني على الخريطة') : null,
+      isState && store.me ? h('button', { class: 'btn small soft', onclick: () => { m.close(); setTimeout(() => (location.hash = '#compare?a=' + c.id), 250); } }, '⚖️ قارنها بدولة أخرى') : null),
   );
   show(0, true);
 

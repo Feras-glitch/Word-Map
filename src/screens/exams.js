@@ -29,7 +29,7 @@ export function coverBar(cv) {
 
 export function familyGoalBar() {
   const g = familyGoal();
-  if (!g.per.length) return null;
+  if (g.per.length < 2) return null;
   const pct = Math.min(100, Math.round((g.got / g.target) * 100));
   return h('div', { class: 'fam-goal' + (g.got >= g.target ? ' done' : '') },
     h('b', {}, g.got >= g.target ? '🎉 حققت العائلة هدف الأسبوع!' : '🎯 هدف العائلة هذا الأسبوع'),
@@ -45,7 +45,7 @@ export function examsScreen(root, { go }) {
   root.append(owl(lv === 1 ? 'اختر ألبوماً، وأجب لتضيء صوره واحدة بعد واحدة!' : 'لكل مادة ألبوم. أجب صحيحاً فيضيء العنصر، وفي أيام مختلفة تكتمل نجومه الثلاث.'),
     familyGoalBar() || '',
     as ? h('button', { class: 'next-step assigned', onclick: () => go(`exam?s=${as.subj}&sc=${encodeURIComponent(as.scope || 'all')}&w=1`) },
-      h('span', { class: 'ne' }, '🎯'), h('span', {}, h('b', {}, 'اختبار الأسبوع من الوالدين'), h('small', {}, SUBJECTS[as.subj].icon + ' ' + SUBJECTS[as.subj].title + (as.scopeTitle ? ' · ' + as.scopeTitle : ''))), h('span', { class: 'na' }, '←')) : null,
+      h('span', { class: 'ne' }, '🎯'), h('span', {}, h('b', {}, 'اختبار الأسبوع من الوالدين'), h('small', {}, SUBJECTS[as.subj].icon + ' ' + SUBJECTS[as.subj].title + (as.scopeTitle ? ' · ' + as.scopeTitle : ''))), h('span', { class: 'na' }, '←')) : '',
     h('button', { class: 'play-card', style: { '--c': '#e5484d' }, onclick: () => go('world') }, h('span', { class: 'pe' }, '🥇'), h('span', { class: 'tt' }, h('b', {}, 'اختبار اليوم'), h('small', {}, 'عشرة أسئلة مختلطة لجمع الأختام الذهبية'))),
     h('h2', { class: 'sec-title' }, '📚 ألبومات المواد'),
     h('div', { class: 'albums' }, subs.filter((k) => !SUBJECTS[k].extra).map((k) => albumTile(k))),
@@ -78,7 +78,7 @@ export function albumScreen(root, { go }) {
   const head = h('div', { class: 'album-head' });
   const grid = h('div', { class: 'album-grid ' + subj });
   const chips = S.country ? h('div', { class: 'scope-chips' }, scopes.map((s) => h('button', { class: 'chip' + (s === scope ? ' on' : ''), onclick: (e) => { scope = s; chips.querySelectorAll('.chip').forEach((b) => b.classList.toggle('on', b === e.currentTarget)); draw(); } }, s.title))) : null;
-  root.append(h('div', { class: 'album-title' }, h('span', {}, S.icon), h('h2', {}, S.title)), chips, head, grid);
+  root.append(h('div', { class: 'album-title' }, h('span', {}, S.icon), h('h2', {}, S.title)), chips || '', head, grid);
   draw();
 
   function draw() {

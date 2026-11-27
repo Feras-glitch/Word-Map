@@ -1,7 +1,7 @@
 // تحدي العائلة: يلعب أفراد العائلة بالدور على جهاز واحد، ولكلٍّ أسئلة على قدر مستواه
 import { h, owl, confetti, toast } from '../ui.js';
 import { store } from '../store.js';
-import { pool, LEVELS, shuffle } from '../data.js';
+import { pool, LEVELS, shuffle, flagUrl, states, pick } from '../data.js';
 import { buildSet, runQuiz } from '../quiz.js';
 import { speak, LANG } from '../speech.js';
 import { sfx } from '../sfx.js';
@@ -63,7 +63,43 @@ export function familyScreen(root, { go }) {
         h('button', { class: 'btn small' + (same ? ' soft' : ''), onclick: () => { same = false; setup(); } }, 'كل لاعب على قدر مستواه'),
         h('button', { class: 'btn small' + (same ? '' : ' soft'), onclick: () => { same = true; setup(); } }, 'مستوى واحد للجميع')),
       h('p', { class: 'hint' }, same ? 'كل اللاعبين يُسألون بمستوى «رحّالة» نفسه، وبأنواع الأسئلة نفسها وأربعة خيارات، عن دول مختلفة من المجموعة نفسها. فالمقارنة أعدل، لكنها ليست تامة.' : 'كل لاعب يُسأل بحسب مستواه، فالمقارنة بين النقاط تقريبية: هي للتشجيع لا للحكم.'),
-      h('button', { class: 'btn big', onclick: start }, '🏁 ابدأ التحدي'));
+      h('button', { class: 'btn big', onclick: start }, '🏁 ابدأ التحدي'),
+      ...store.profiles.filter((p) => p.zh).map((p) => h('button', { class: 'btn big soft zh-btn', onclick: () => zhChallenge(p) }, `🇨🇳 ${p.avatar} ${p.name} حَكَم الصينية`)));
+  }
+
+  // ---------- حَكَم الصينية: من يتكلم الصينية يقرأ اسم الدولة لإخوته، وهم يخمّنون الدولة معاً ----------
+  function zhChallenge(ref) {
+    const R = 8; const list = shuffle(pool(1)).slice(0, R);
+    let i = 0, team = 0;
+    const next = () => {
+      root.innerHTML = '';
+      if (i >= R) {
+        if (team >= R - 2) { confetti(); sfx('win'); }
+        root.append(owl(`أحسنتم! عرفتم ${ar(team)} من ${ar(R)}. شكراً يا ${ref.name} على التعليم!`),
+          h('button', { class: 'btn big', onclick: () => zhChallenge(ref) }, '🔁 مرة أخرى'), h('button', { class: 'btn big soft', onclick: setup }, 'رجوع'));
+        speak(`أحسنتم! شكراً يا ${ref.name}`, LANG.ar); return;
+      }
+      const c = list[i];
+      const opts = shuffle([c, ...pick(states.filter((s) => s.id !== c.id && s.cont === c.cont), 3)]);
+      const fb = h('div', { class: 'feedback' });
+      let locked = false;
+      const optBox = h('div', { class: 'options' }); optBox.hidden = true;
+      opts.forEach((o) => optBox.append(h('button', { class: 'opt', onclick: (e) => {
+        if (locked) return; locked = true;
+        const ok = o.id === c.id; if (ok) team++;
+        e.currentTarget.classList.add(ok ? 'right' : 'wrong'); optBox.querySelector(`[data-id="${c.id}"]`)?.classList.add('right');
+        sfx(ok ? 'correct' : 'wrong'); speak(ok ? 'صحيح! هذه ' + c.ar : 'إنها ' + c.ar, LANG.ar);
+        fb.replaceChildren(h('button', { class: 'btn', onclick: () => { i++; next(); } }, i + 1 >= R ? 'النتيجة 🏁' : 'التالي ←'));
+      }, 'data-id': o.id }, h('span', { class: 'qo-flag' }, h('img', { src: flagUrl(o.f), alt: '' }), h('b', {}, o.ar)))));
+      const show = h('button', { class: 'btn big', onclick: () => { optBox.hidden = false; show.remove(); } }, '👀 أظهر الخيارات للإخوة');
+      root.append(h('div', { class: 'q-head' }, h('b', {}, `🇨🇳 ${ref.avatar} ${ref.name} حَكَم الصينية`), h('span', {}, `${ar(i + 1)} / ${ar(R)} · ✅ ${ar(team)}`)),
+        h('div', { class: 'question zh-q' },
+          h('p', {}, `يا ${ref.name}، اقرأ هذا الاسم بالصينية لإخوتك، ولا تقل اسمه بالعربية!`),
+          h('div', { class: 'zh-big', lang: 'zh' }, c.zh), h('div', { class: 'zh-py' }, c.py),
+          h('button', { class: 'btn small soft', onclick: () => speak(c.zh, LANG.zh) }, '🔊 اسمع النطق')),
+        show, optBox, fb);
+    };
+    next();
   }
 
   function start() {

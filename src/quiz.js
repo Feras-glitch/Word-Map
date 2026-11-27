@@ -9,7 +9,7 @@ import { record } from './mastery.js';
 import { createMap, lighten, NAT, questionBox } from './map.js';
 import { store } from './store.js';
 import { setAddressee } from './gender.js';
-import { gC } from './arnum.js';
+import { gC, li } from './arnum.js';
 
 // عبارات التشجيع تتنوع ولا تتكرر مرتين متتاليتين
 const PRAISE = ['أحسنت!', 'رائع!', 'صحيح!', 'ممتاز!', 'إجابة موفقة!', 'ما شاء الله!'];
@@ -105,7 +105,7 @@ export const Q = {
     const right = nb[Math.floor(Math.random() * nb.length)];
     const wrong = others(c, n - 1, (s) => !c.borders.includes(s.id) && s.id !== right.id);
     const opts = shuffle([right, ...wrong]);
-    return { skill: 'neighbor', explain: `${right.ar} جارة لـ${c.ar}.`, say: `أيّ هذه الدول جارة لـ${c.ar}؟`, prompt: h('p', {}, '🤝 أيّ هذه الدول جارة لـ', h('b', {}, c.ar), '؟'),
+    return { skill: 'neighbor', explain: `${right.ar} جارة ${li(c.ar)}.`, say: `أيّ هذه الدول جارة ${li(c.ar)}؟`, prompt: h('p', {}, '🤝 أيّ هذه الدول جارة ' + (c.ar.startsWith('ال') ? 'لل' : 'ل'), h('b', {}, c.ar.startsWith('ال') ? c.ar.slice(2) : c.ar), '؟'),
       options: opts.map((o) => ({ correct: o.id === right.id, el: flagOpt(o), label: o.ar })) };
   },
   // ---------- الاتجاه المعاكس (للتمرين الشامل فقط، حيث لا سياق يكشف الجواب) ----------

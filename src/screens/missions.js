@@ -8,7 +8,7 @@ import { landmarkPhoto } from '../photos.js';
 import { fem, toFem3 } from '../gender.js';
 import { speak, LANG } from '../speech.js';
 import { sfx } from '../sfx.js';
-import { gC, cnt } from '../arnum.js';
+import { gC, cnt, li } from '../arnum.js';
 import { clueChain, cluesFor, candidates } from '../clues.js';
 import { tri, openCard } from '../card.js';
 
@@ -353,7 +353,7 @@ export function routeScreen(root, { go }) {
     if (path.includes(id)) { msg.textContent = fem(`مررتَ ب${c.ar} من قبل.`); return; }
     if (!last.borders.includes(id)) {
       wrongs++; sfx('wrong'); m.flash(id, 'flash', 900);
-      const t = !c.landlocked && !last.landlocked && c.cont === last.cont ? `${c.ar} ${gC(c, 'قريبة', 'قريب')}، لكن لا حدود برية ${gC(c, 'بينها', 'بينه')} وبين ${last.ar}. ربما يفصل بينهما بحر.` : `لا ${gC(c, 'تشترك', 'يشترك')} ${c.ar} مع ${last.ar} في حدود برية. اختر جارة لـ${last.ar}.`;
+      const t = !c.landlocked && !last.landlocked && c.cont === last.cont ? `${c.ar} ${gC(c, 'قريبة', 'قريب')}، لكن لا حدود برية ${gC(c, 'بينها', 'بينه')} وبين ${last.ar}. ربما يفصل بينهما بحر.` : `لا ${gC(c, 'تشترك', 'يشترك')} ${c.ar} مع ${last.ar} في حدود برية. اختر جارة ${li(last.ar)}.`;
       msg.textContent = fem(t); speak(t, LANG.ar); return;
     }
     path.push(id); sfx('tap'); drawPath();

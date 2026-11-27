@@ -28,3 +28,6 @@ export const stampsWord = (n) => (n ? cnt(n, 'ختم واحد', 'ختمان', '�
 // الدول المذكّرة في الاستعمال العربي المشهور؛ وسائرها مؤنث
 export const MASC = new Set(['JOR', 'IRQ', 'MAR', 'SDN', 'SSD', 'LBN', 'YEM', 'MNE', 'SOM', 'VAT', 'NER']);
 export const gC = (c, f, m) => (MASC.has(c?.id) ? m : f);
+
+// لام الجر مع الأسماء: «للأردن»، «لمصر»
+export const li = (name) => (name.startsWith('ال') ? 'لل' + name.slice(2) : 'ل' + name);

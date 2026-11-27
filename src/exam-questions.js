@@ -61,7 +61,7 @@ const WRITTEN = [
 // محطات ابن بطوطة: «في أي دولة تقع اليوم مدينة كذا؟» (المدن لا الدول والجزر)
 const seen = new Set();
 const STATIONS = ibnBattuta.filter((s) => byId[s.cc] && !['MDV', 'LKA'].includes(s.cc) && !seen.has(s.city) && seen.add(s.city));
-const stationItems = STATIONS.map((s) => ({ id: 'bs-' + s.cc + '-' + s.year, lv: 2, gen: (n) => {
+const stationItems = STATIONS.map((s, k) => ({ id: 'bs-' + s.cc + '-' + s.year + '-' + k, lv: 2, gen: (n) => {
   const c = byId[s.cc]; const opts = shuffle([c, ...others(c, n - 1, (x) => !STATIONS.some((t) => t.cc === x.id && t.city === s.city))]);
   return { skill: 'knowledge', explain: `${s.city} في ${c.ar} اليوم. ${s.story}`, say: `زار ابن بطوطة ${s.city}. في أي دولة تقع اليوم؟`,
     prompt: h('p', {}, '🐪 زار ابن بطوطة ', h('b', {}, s.city), ' سنة ' + ar(s.year) + '. في أي دولة تقع اليوم؟'),

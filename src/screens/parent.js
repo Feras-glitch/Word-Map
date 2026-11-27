@@ -4,6 +4,8 @@ import { store } from '../store.js';
 import { states, byId, flagUrl, LEVELS, continents, contEmoji } from '../data.js';
 import { skillSummary, weakest, dueReviews, SKILLS, today } from '../mastery.js';
 import { saveFile, pickTextFile, copyText } from '../save.js';
+import { autoBackup } from '../autobackup.js';
+import { Capacitor } from '@capacitor/core';
 import { parentLock, lockNow, editSecret } from '../lock.js';
 import { SUBJECTS, subjectsFor, itemsOf, recsOf, coverageOf, scopesFor } from '../exams.js';
 import { weakItems } from '../exams-core.js';
@@ -29,8 +31,8 @@ export function parentScreen(root, { go }) {
       h('button', { class: 'btn small soft', onclick: () => { lockNow(); go('home'); } }, '🔒 قفل والخروج')));
     // تذكير شهري بالنسخة الاحتياطية: التقدم محفوظ على هذا الجهاز وحده
     const lastB = store.parent.lastBackup; const hasProgress = ps.some((p) => Object.keys(p.stamps || {}).length);
-    if (hasProgress && (!lastB || Date.now() - lastB > 30 * DAY)) root.append(h('div', { class: 'panel warn' },
-      h('b', {}, '💾 ' + (lastB ? 'مرّ أكثر من شهر على آخر نسخة احتياطية.' : 'لم تُحفظ نسخة احتياطية بعد.')),
+    if (hasProgress && (!lastB || Date.now() - lastB > 14 * DAY) && !(store.parent.autoBackup && Date.now() - store.parent.autoBackup.at < 14 * DAY)) root.append(h('div', { class: 'panel warn' },
+      h('b', {}, '💾 ' + (lastB ? 'مرّ أكثر من أسبوعين على آخر نسخة احتياطية.' : 'لم تُحفظ نسخة احتياطية بعد.')),
       h('p', { class: 'hint' }, 'تقدم الأولاد محفوظ على هذا الجهاز وحده، ومسح بيانات التطبيق يمحوه. احفظ نسخة من القسم أدناه.')));
     // تنبيه دائم إن تغيّر الرقم السري عن طريق «نسيت الرقم»
     const pc = store.parent.pinChange;
@@ -76,7 +78,7 @@ export function parentScreen(root, { go }) {
         const a = act[d]; const q = a?.q || 0;
         return h('div', { class: 'ab', title: d }, h('i', { style: { height: (q / maxQ) * 100 + '%', opacity: q ? 1 : 0.15 } }), h('small', {}, new Date(d).toLocaleDateString('ar-EG', { weekday: 'narrow' })));
       })),
-      h('p', { class: 'hint' }, total ? `${gp(p, 'أجاب', 'أجابت')} عن ${cnt(total, 'سؤال واحد', 'سؤالين', 'أسئلة', 'سؤالاً')} إجمالاً، ${gp(p, 'ونشط', 'ونشطت')} ${ar(active7)} من آخر ٧ أيام. آخر نشاط: ${lastDay === today() ? 'اليوم' : new Date(lastDay).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long' })}.` : gp(p, 'لم يُجب', 'لم تُجب') + ' عن أسئلة بعد.'),
+      h('p', { class: 'hint' }, total ? `${gp(p, 'أجاب', 'أجابت')} عن ${cnt(total, 'سؤال واحد', 'سؤالين', 'أسئلة', 'سؤالاً')} إجمالاً، ${gp(p, 'ونشط', 'ونشطت')} في ${cnt(active7, 'يوم واحد', 'يومين', 'أيام', 'يوماً')} من آخر سبعة أيام. آخر نشاط: ${lastDay === today() ? 'اليوم' : new Date(lastDay).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long' })}.` : gp(p, 'لم يُجب', 'لم تُجب') + ' عن أسئلة بعد.'),
       Object.keys(sum).length ? [h('h4', {}, 'المهارات: الإجابة الأولى في الأسئلة (لا تُحسب الألعاب)'), h('p', { class: 'hint' }, 'الخط الرمادي حدّ التخمين: نسبة قريبة منه تعني أن الطفل يخمّن.'), h('div', { class: 'skill-bars' }, Object.entries(SKILLS).filter(([k]) => sum[k]).map(([k, t]) => {
         const x = sum[k]; const n = x.ok + x.bad; const pct = Math.round((x.ok / n) * 100);
         // أقل من ١٠ إجابات لا تكفي لنسبة ذات معنى. والخط الرمادي حدّ التخمين (خيار من ٣ أو ٤)، ولا تخمين في سؤال الخريطة
@@ -125,7 +127,7 @@ export function parentScreen(root, { go }) {
       scBox.replaceChildren(...(SUBJECTS[subj].country ? scs : [{ key: 'all', title: 'الكل' }]).map((s) => h('button', { class: 'chip' + (s.key === sc?.key ? ' on' : ''), onclick: () => { sc = s; redraw(); } }, s.title)));
     };
     redraw();
-    const d = modal(h('div', { class: 'panel' }, h('h3', {}, '🎯 اختبار الأسبوع لـ' + p.name), h('p', { class: 'hint' }, 'يظهر له في «اختباراتي» وفي الشاشة الرئيسية، وترى نتيجته هنا.'),
+    const d = modal(h('div', { class: 'panel' }, h('h3', {}, '🎯 اختبار الأسبوع ل' + p.name), h('p', { class: 'hint' }, 'يظهر له في «اختباراتي» وفي الشاشة الرئيسية، وترى نتيجته هنا.'),
       h('h4', {}, 'المادة'), subBox, h('h4', {}, 'النطاق'), scBox,
       h('button', { class: 'btn big', onclick: () => { store.patchProfile(p.id, (x) => { x.assigned = { subj, scope: sc?.key || 'all', scopeTitle: sc?.title || '', at: today(), done: null }; }); d.close(); toast('أُرسل الاختبار'); draw(); } }, 'إرسال')));
   }
@@ -154,6 +156,7 @@ export function parentScreen(root, { go }) {
           catch { toast('تعذّر حفظ الملف؛ استخدم «نسخ رمز النسخة»'); }
         } }, '📤 حفظ ملف نسخة'),
         h('button', { class: 'btn soft', onclick: async () => { if (await copyText(store.exportData())) { store.setParent({ lastBackup: Date.now() }); toast('نُسخ الرمز. الصقه في رسالة لنفسك أو ملاحظة'); } else toast('تعذّر النسخ'); } }, '📋 نسخ رمز النسخة')),
+      Capacitor.isNativePlatform() ? h('p', { class: 'hint' }, '🤖 نسخة تلقائية كل أسبوع: ' + (store.parent.autoBackup ? 'آخرها ' + new Date(store.parent.autoBackup.at).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long' }) + ' في ' + store.parent.autoBackup.where + ' (world-explorer-backup.json).' : 'لم تُحفظ بعد.'), ' ', h('button', { class: 'btn small soft', onclick: async () => { const w = await autoBackup(true); toast(w ? 'حُفظت في ' + w : 'تعذّر الحفظ التلقائي؛ استعمل «حفظ ملف نسخة»'); draw(); } }, 'احفظ الآن')) : h('p', { class: 'hint' }, '💡 على ويندوز: احفظ ملف النسخة مرة في الأسبوع في مجلد المستندات أو على قرص خارجي.'),
       h('div', { class: 'row wrap' },
         h('button', { class: 'btn soft', onclick: async () => { const t = await pickTextFile(); if (t) restore(t); } }, '📥 استعادة من ملف'),
         h('button', { class: 'btn soft', onclick: () => {

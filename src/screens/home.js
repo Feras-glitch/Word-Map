@@ -19,6 +19,7 @@ const SECTIONS = [
     { k: 'battuta', e: '🐪', t: 'رحلة ابن بطوطة', s: 'سافر مع الرحالة العظيم', c: '#a0522d' },
     { k: 'islamic', e: '🕋', t: 'العالم الإسلامي', s: 'الحرمان والأقصى وطرق الحج', c: '#1b8a5a' },
     { k: 'hello', e: '👋', t: 'قل مرحباً', s: 'التحية بلغات العالم', c: '#2a9d8f' },
+    { k: 'compare', e: '⚖️', t: 'قارن بين دولتين', s: 'المساحة والسكان والموقع', c: '#64748b' },
   ]],
   ['🎮 العب وتمرّن', [
     { k: 'play', e: '🎮', t: 'العب', s: 'اختباراتي، والأختام الذهبية، والتمرين، واللعب مع العائلة', c: '#8e44ad', wide: true },
@@ -57,7 +58,7 @@ export function homeScreen(root, { go }) {
     ...(me.level === 1 ? simpleHome(go, due) : sections(SECTIONS, go, due)),
   );
   root.querySelector('.owl-wrap').addEventListener('click', () => speak(root.querySelector('.bubble').textContent, 'ar-SA'));
-  if (!me.toured) setTimeout(() => tour(me), 500);
+  if (!me.toured) setTimeout(() => { if (root.isConnected && ['', '#home'].includes(location.hash.split('?')[0]) && !document.querySelector('.modal-back')) tour(me); }, 600);
 }
 
 // جولة التعريف: ثلاث خطوات في أول دخول لكل مستكشف

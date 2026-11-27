@@ -28,6 +28,9 @@ import { playScreen } from './screens/play.js';
 import { conceptsScreen } from './concepts.js';
 import { missionsScreen, findScreen, guideScreen, nileScreen, routeScreen, layerScreen } from './screens/missions.js';
 import { examsScreen, albumScreen, bigExamScreen } from './screens/exams.js';
+import { puzzleScreen } from './screens/puzzle.js';
+import { compareScreen } from './screens/compare.js';
+import { autoBackup } from './autobackup.js';
 
 const screens = {
   profiles: { title: 'من يلعب؟', fn: profilesScreen, noBack: true },
@@ -38,6 +41,8 @@ const screens = {
   'g-flag': { title: '🚩 خمّن العلم', fn: flagGame, back: 'games' },
   'g-where': { title: '📍 أين هذه الدولة؟', fn: whereGame, back: 'games', full: true },
   'g-capital': { title: '🏛️ ما العاصمة؟', fn: capitalGame, back: 'games' },
+  'g-puzzle': { title: '🧩 أحجية الخريطة', fn: puzzleScreen, back: 'games', full: true },
+  compare: { title: '⚖️ قارن بين دولتين', fn: compareScreen },
   'g-memory': { title: '🧠 ذاكرة الأعلام', fn: memoryGame, back: 'games' },
   battuta: { title: '🐪 رحلة ابن بطوطة', fn: battutaScreen, full: true },
   islamic: { title: '🕋 العالم الإسلامي', fn: islamicScreen, full: true },
@@ -110,6 +115,7 @@ window.addEventListener('popstate', () => {
 });
 render();
 startTimeLimit();
+setTimeout(() => autoBackup().catch(() => {}), 4000);
 
 // تنبيه إن فشل الحفظ على الجهاز (مثلاً امتلاء الذاكرة)
 window.addEventListener('store-save-failed', () => toast('⚠️ تعذّر حفظ التقدم على هذا الجهاز. احفظ نسخة احتياطية من لوحة الوالدين', 6000));
