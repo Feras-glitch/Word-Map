@@ -88,7 +88,6 @@
 - **JAM** — [Dunns_River_Falls_climb.JPG](https://commons.wikimedia.org/wiki/File:Dunns_River_Falls_climb.JPG) — Breakyunit at English Wikipedia — CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
 - **JOR** — [Al_Deir_Petra.JPG](https://commons.wikimedia.org/wiki/File:Al_Deir_Petra.JPG) — Azurfrog — CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0)
 - **JPN** — [View_of_Mount_Fuji_from_Ōwakudani_20211202.jpg](https://commons.wikimedia.org/wiki/File:View_of_Mount_Fuji_from_%C5%8Cwakudani_20211202.jpg) — Suicasmo — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
-- **KAZ** — [Interior of Bayterek Tower 02.jpg](https://commons.wikimedia.org/wiki/File:Interior_of_Bayterek_Tower_02.jpg) — Davide Mauro — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **KEN** — [Masai_Mara_at_Sunset.jpg](https://commons.wikimedia.org/wiki/File:Masai_Mara_at_Sunset.jpg) — Danijel Mihajlovic — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **KGZ** — [Issykkul_plyag.jpg](https://commons.wikimedia.org/wiki/File:Issykkul_plyag.jpg) — Қайырқан Әсем — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
 - **KHM** — [Angkor_Wat.jpg](https://commons.wikimedia.org/wiki/File:Angkor_Wat.jpg) — Bjørn Christian Tørrissen — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0)
