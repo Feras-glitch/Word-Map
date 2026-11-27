@@ -14,6 +14,8 @@ const META = path.join(root, 'content/landmark-photos.json');
 const CREDITS = path.join(root, 'content/LANDMARK-PHOTOS-CREDITS.md');
 const TMP = fs.mkdtempSync('/tmp/lm-');
 const ONLY = process.env.LM_ONLY ? process.env.LM_ONLY.split(',') : null;
+// «upscale»: يعيد تنزيل الصورة المعتمدة نفسها بدقة أعلى، فتبقى مراجعتها كما هي
+const UPSCALE = process.env.LM_MODE === 'upscale';
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
 // عنوان مقالة المعلم في ويكيبيديا الإنجليزية: الدول الخمسون المشهورة، ودول الرحلات العربية
@@ -51,7 +53,8 @@ for (const id of Object.keys(COUNTRIES)) {
   let title = TITLES[id];
   try {
     if (ONLY && !ONLY.includes(id)) { if (old[id]) meta[id] = old[id]; continue; }
-    let file = OVERRIDE[id];
+    if (UPSCALE && old[id]?.review !== 'ok') { if (old[id]) meta[id] = old[id]; continue; }
+    let file = UPSCALE ? old[id].file : OVERRIDE[id];
     let cands = [];
     // «search:»: أول نتائج البحث في كومنز التي هي صور فوتوغرافية (jpg) برخصة حرة
     if (file?.startsWith('search:')) {
@@ -79,7 +82,7 @@ for (const id of Object.keys(COUNTRIES)) {
     }
     if (!file) { miss.push(id + ': لا صورة رئيسية'); continue; }
     file = file.replace(/^File:/, '');
-    const c = await api('https://commons.wikimedia.org/w/api.php', { action: 'query', titles: 'File:' + file, prop: 'imageinfo', iiprop: 'url|extmetadata', iiurlwidth: '640' });
+    const c = await api('https://commons.wikimedia.org/w/api.php', { action: 'query', titles: 'File:' + file, prop: 'imageinfo', iiprop: 'url|extmetadata', iiurlwidth: '960' });
     const ii = c.query?.pages?.[0]?.imageinfo?.[0];
     if (!ii) { miss.push(id + ': ليست في كومنز ' + file); continue; }
     const em = ii.extmetadata || {};
@@ -90,8 +93,8 @@ for (const id of Object.keys(COUNTRIES)) {
     if (!r.ok) { miss.push(id + ': فشل التنزيل'); continue; }
     fs.writeFileSync(raw, Buffer.from(await r.arrayBuffer()));
     const out = path.join(OUT_DIR, id + '.jpg');
-    // ٤٢٠ بكسل عرضاً، مقصوصة إلى نسبة ٤:٣، وجودة ٦٨: نحو ٣٠ كيلوبايت للصورة
-    execFileSync('convert', [raw + '[0]', '-auto-orient', '-resize', '420x315^', '-gravity', 'center', '-extent', '420x315', '-strip', '-interlace', 'Plane', '-quality', '68', out]);
+    // ٦٠٠ بكسل عرضاً (للوحي والكمبيوتر)، مقصوصة إلى نسبة ٤:٣، وجودة ٦٦: نحو ٤٥ كيلوبايت للصورة
+    execFileSync('convert', [raw + '[0]', '-auto-orient', '-resize', '600x450^', '-gravity', 'center', '-extent', '600x450', '-strip', '-interlace', 'Plane', '-quality', '66', out]);
     const same = old[id]?.file === file;
     meta[id] = { file, title: title || '', artist: strip(em.Artist?.value).slice(0, 160) || 'غير معروف', license: lic, licenseUrl: em.LicenseUrl?.value || '', page: ii.descriptionurl, review: same ? old[id].review : 'pending' };
     console.log('✓', id, file, lic, Math.round(fs.statSync(out).size / 1024) + 'KB');

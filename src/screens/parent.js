@@ -4,7 +4,12 @@ import { store } from '../store.js';
 import { states, byId, flagUrl, LEVELS, continents, contEmoji } from '../data.js';
 import { skillSummary, weakest, dueReviews, SKILLS, today } from '../mastery.js';
 import { saveFile, pickTextFile, copyText } from '../save.js';
-import { parentLock, lockNow } from '../lock.js';
+import { parentLock, lockNow, editSecret } from '../lock.js';
+import { SUBJECTS, subjectsFor, itemsOf, recsOf, coverageOf, scopesFor } from '../exams.js';
+import { weakItems } from '../exams-core.js';
+import { coverBar, familyGoalBar } from './exams.js';
+import { knowledgeById, natureById } from '../exam-questions.js';
+import { dinnerQuestions, weekSummary, practiceErrors, itemName } from '../parent-insights.js';
 import { certStatus } from '../certs.js';
 import { gp } from '../gender.js';
 import { cnt } from '../arnum.js';
@@ -27,12 +32,24 @@ export function parentScreen(root, { go }) {
     if (hasProgress && (!lastB || Date.now() - lastB > 30 * DAY)) root.append(h('div', { class: 'panel warn' },
       h('b', {}, '💾 ' + (lastB ? 'مرّ أكثر من شهر على آخر نسخة احتياطية.' : 'لم تُحفظ نسخة احتياطية بعد.')),
       h('p', { class: 'hint' }, 'تقدم الأولاد محفوظ على هذا الجهاز وحده، ومسح بيانات التطبيق يمحوه. احفظ نسخة من القسم أدناه.')));
+    // تنبيه دائم إن تغيّر الرقم السري عن طريق «نسيت الرقم»
+    const pc = store.parent.pinChange;
+    if (pc?.via === 'forgot' && !pc.seen) root.append(h('div', { class: 'panel warn' },
+      h('b', {}, '⚠️ تغيّر الرقم السري عن طريق «نسيت الرقم؟» يوم ' + new Date(pc.at).toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'long' })),
+      h('p', { class: 'hint' }, 'إن لم تكن أنت من غيّره، فقد يكون أحد الأولاد عرف جواب سؤال الاسترجاع. غيّر الرقم والسؤال من قسم «الرقم السري».'),
+      h('button', { class: 'btn small soft', onclick: () => { store.setParent({ pinChange: { ...pc, seen: true } }); draw(); } }, 'أنا من غيّره')));
     if (!ps.length) root.append(h('p', { class: 'empty' }, 'لا يوجد مستكشفون بعد.'));
+    if (ps.length) root.append(h('div', { class: 'panel' }, h('h3', {}, '📅 هذا الأسبوع'),
+      h('ul', { class: 'week-sum' }, ps.map((p) => h('li', {}, h('b', {}, p.avatar + ' ' + p.name + ': '), weekSummary(p)))),
+      familyGoalBar() || '',
+      h('button', { class: 'btn', onclick: () => dinner() }, '🍽️ أسئلة العشاء')));
     for (const p of ps) root.append(childPanel(p));
-    root.append(h('div', { class: 'panel' }, h('h3', {}, '🎙️ الأصوات'),
+    const devBtn = h('button', { class: 'btn soft', style: { display: 'none' }, onclick: () => go('studio?m=dev') }, '🛠️ استوديو المطور');
+    let lp = null; const voiceH = h('h3', { onpointerdown: () => { lp = setTimeout(() => { devBtn.style.display = ''; toast('ظهر استوديو المطور'); }, 900); }, onpointerup: () => clearTimeout(lp), onpointerleave: () => clearTimeout(lp) }, '🎙️ الأصوات');
+    root.append(h('div', { class: 'panel' }, voiceH,
       h('p', { class: 'hint' }, 'سجّلوا الأسماء والعبارات بأصواتكم بدل القراءة الآلية، واعتمدوا تسجيلات الأولاد.'),
       h('div', { class: 'row wrap' }, h('button', { class: 'btn', onclick: () => go('studio?m=family') }, '🎙️ استوديو الأهل'),
-        h('button', { class: 'btn soft', onclick: () => go('studio?m=dev') }, '🛠️ استوديو المطور'))), backupPanel(), timePanel(), pinPanel());
+        devBtn)), backupPanel(), timePanel(), pinPanel());
   }
 
   function childPanel(p) {
@@ -69,6 +86,9 @@ export function parentScreen(root, { go }) {
       (() => { let n = 0; for (const m of Object.values(p.practice || {})) for (const x of Object.values(m)) n += x.ok + x.bad; return n ? h('p', { class: 'hint' }, `${gp(p, 'وأجاب', 'وأجابت')} في ألعاب التدريب عن ${cnt(n, 'سؤال واحد', 'سؤالين', 'أسئلة', 'سؤالاً')} (تُعرض منفصلة لأنها تمرين، وقد يرى فيها التلميح أو يحاول مرتين).`) : null; })(),
       weak.length ? [h('h4', {}, gp(p, 'دول يخطئ', 'دول تخطئ') + ' فيها أكثر من غيرها (بنسبة الخطأ، محاولتان على الأقل)'), h('div', { class: 'neighbors' }, weak.map((id) => h('span', { class: 'chip' }, h('img', { src: flagUrl(byId[id].f), alt: '' }), byId[id].ar)))] : null,
       (p.stories || []).length ? [h('h4', {}, gp(p, 'آخر ما اكتشفه', 'آخر ما اكتشفته') + ' في المهام'), h('ul', { class: 'stories' }, p.stories.slice(0, 6).map((st) => h('li', {}, h('span', {}, st.text + (st.detail ? ' — ' + st.detail : '')), h('small', {}, new Date(st.date).toLocaleDateString('ar-EG', { day: 'numeric', month: 'short' })))))] : null,
+      examReport(p),
+      practiceErrors(p).length ? [h('h4', {}, gp(p, 'أخطاؤه', 'أخطاؤها') + ' في ألعاب التمرين'), h('div', { class: 'neighbors' }, practiceErrors(p).map((x) => h('span', { class: 'chip' }, h('img', { src: flagUrl(byId[x.id].f), alt: '' }), x.text)))] : null,
+      h('details', { class: 'child-set' }, h('summary', {}, '⚙️ إعدادات ' + p.name),
       h('h4', {}, 'صيغة المخاطبة'),
       h('div', { class: 'levels gender' }, [['m', '👦', 'ولد'], ['f', '👧', 'بنت']].map(([k, e, t]) => h('button', { class: 'lv-btn' + (p.gender === k ? ' on' : ''), onclick: () => { store.updateProfile(p.id, { gender: k }); draw(); } }, h('span', {}, e), h('b', {}, t)))),
       p.gender ? null : h('p', { class: 'hint' }, 'لم تُحدَّد بعد؛ يخاطَب الطفل بصيغة المذكر حتى تختاروا.'),
@@ -78,7 +98,43 @@ export function parentScreen(root, { go }) {
       h('h4', {}, 'المستوى'),
       h('div', { class: 'levels' }, Object.entries(LEVELS).map(([k, L]) => h('button', { class: 'lv-btn' + (+k === p.level ? ' on' : ''), onclick: () => { store.updateProfile(p.id, { level: +k }); draw(); } },
         h('span', {}, L.emoji), h('b', {}, L.name), h('small', {}, L.ages)))),
-      h('div', { class: 'row' }, h('button', { class: 'btn small danger', onclick: () => confirmDelete(p) }, '🗑️ حذف ' + p.name)));
+      h('div', { class: 'row' }, h('button', { class: 'btn small danger', onclick: () => confirmDelete(p) }, '🗑️ حذف ' + p.name))));
+  }
+  // تقرير الاختبارات: تغطية كل مادة، وأضعف العناصر، والاختبارات الكبيرة، واختبار الأسبوع
+  function examReport(p) {
+    const subs = subjectsFor(p.level);
+    const log = (p.examLog || []).filter((x) => x.kind === 'big').slice(0, 5);
+    const as = p.assigned;
+    return [h('h4', {}, '📝 الاختبارات'),
+      h('div', { class: 'ex-rep' }, subs.map((k) => {
+        const S = SUBJECTS[k]; const cv = coverageOf(p, k);
+        const weak = weakItems(itemsOf(k, p.level), recsOf(p, k), 4);
+        return h('div', { class: 'er' }, h('b', {}, S.icon + ' ' + S.title), coverBar(cv),
+          h('small', {}, `متقَن ${ar(cv.mastered)} · يتعلّمه ${ar(cv.learning)} · لم يُختبر ${ar(cv.none)}`),
+          weak.length ? h('small', { class: 'weak' }, 'أضعفها: ' + weak.map((id) => itemName(k, id)).join('، ')) : null);
+      })),
+      log.length ? h('ul', { class: 'stories' }, log.map((x) => h('li', {}, h('span', {}, `${x.pass ? '🎓' : '➖'} ${x.title}: ${ar(x.score)} من ${ar(x.total)}`), h('small', {}, new Date(x.date).toLocaleDateString('ar-EG', { day: 'numeric', month: 'short' }))))) : null,
+      as ? h('p', { class: 'hint' }, `🎯 اختبار الأسبوع: ${SUBJECTS[as.subj].title}${as.scopeTitle ? ' · ' + as.scopeTitle : ''} — ` + (as.done ? `أنجزه: ${ar(as.done.score)} من ${ar(as.done.total)}` : 'لم يُنجز بعد')) : null,
+      h('button', { class: 'btn small soft', onclick: () => assign(p) }, '🎯 ' + (as && !as.done ? 'غيّر اختبار الأسبوع' : 'اختر اختبار الأسبوع'))];
+  }
+  function assign(p) {
+    let subj = subjectsFor(p.level)[0]; const scs = scopesFor(p); let sc = scs.find((s) => s.key === 'all');
+    const subBox = h('div', { class: 'row wrap' }); const scBox = h('div', { class: 'row wrap' });
+    const redraw = () => {
+      subBox.replaceChildren(...subjectsFor(p.level).map((k) => h('button', { class: 'chip' + (k === subj ? ' on' : ''), onclick: () => { subj = k; redraw(); } }, SUBJECTS[k].icon + ' ' + SUBJECTS[k].title)));
+      scBox.replaceChildren(...(SUBJECTS[subj].country ? scs : [{ key: 'all', title: 'الكل' }]).map((s) => h('button', { class: 'chip' + (s.key === sc?.key ? ' on' : ''), onclick: () => { sc = s; redraw(); } }, s.title)));
+    };
+    redraw();
+    const d = modal(h('div', { class: 'panel' }, h('h3', {}, '🎯 اختبار الأسبوع لـ' + p.name), h('p', { class: 'hint' }, 'يظهر له في «اختباراتي» وفي الشاشة الرئيسية، وترى نتيجته هنا.'),
+      h('h4', {}, 'المادة'), subBox, h('h4', {}, 'النطاق'), scBox,
+      h('button', { class: 'btn big', onclick: () => { store.patchProfile(p.id, (x) => { x.assigned = { subj, scope: sc?.key || 'all', scopeTitle: sc?.title || '', at: today(), done: null }; }); d.close(); toast('أُرسل الاختبار'); draw(); } }, 'إرسال')));
+  }
+  function dinner() {
+    const ps = store.profiles;
+    modal(h('div', { class: 'panel' }, h('h3', {}, '🍽️ أسئلة العشاء'),
+      h('p', { class: 'hint' }, 'ثلاثة أسئلة لكل طفل مما تعلّمه مؤخراً. اقرأها عليه، واضغط السؤال لترى الجواب.'),
+      ...ps.map((p) => h('div', { class: 'dinner' }, h('h4', {}, p.avatar + ' ' + p.name),
+        ...dinnerQuestions(p).map((q) => { const a = h('span', { class: 'ans' }, ' ← ' + q.a); a.hidden = true; return h('p', { class: 'dq', onclick: () => { a.hidden = !a.hidden; } }, '❓ ' + q.q, a); })))));
   }
   const stat = (e, n, t) => h('div', { class: 'stat' }, h('span', {}, e), h('b', {}, n), h('small', {}, t));
 
@@ -126,6 +182,10 @@ export function parentScreen(root, { go }) {
   function pinPanel() {
     return h('div', { class: 'panel' }, h('h3', {}, '🔑 الرقم السري'),
       h('p', { class: 'hint' }, 'القفل يمنع الأولاد من تغيير المستوى أو حذف الملفات، وليس حماية أمنية. لا يُحفظ الرقم داخل النسخة الاحتياطية، وتبقى اللوحة مفتوحة عشر دقائق ثم تُقفل.'),
-      h('button', { class: 'btn soft', onclick: () => { store.setParent({ pinHash: null }); lockNow(); parentLock(draw); } }, 'تغيير الرقم السري'));
+      store.parent.pinChange ? h('p', { class: 'hint' }, 'آخر تغيير للرقم: ' + new Date(store.parent.pinChange.at).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long', year: 'numeric' }) + ({ forgot: ' (عن طريق «نسيت الرقم؟»)', set: '', change: '' }[store.parent.pinChange.via] || '')) : null,
+      h('p', { class: 'hint' }, store.parent.recHash ? '🔑 سؤال الاسترجاع: ' + store.parent.recQ : '⚠️ لا يوجد سؤال استرجاع بعد. أضفه حتى تسترجع الرقم إن نسيته.'),
+      h('div', { class: 'row wrap' },
+        h('button', { class: 'btn soft', onclick: () => { store.setParent({ pinHash: null }); lockNow(); parentLock(draw); } }, 'تغيير الرقم السري'),
+        h('button', { class: 'btn soft', onclick: () => editSecret(draw) }, store.parent.recHash ? 'تغيير سؤال الاسترجاع' : 'إضافة سؤال الاسترجاع')));
   }
 }

@@ -22,6 +22,11 @@ function world(fill, extra = []) {
   return svg;
 }
 
+// خريطة العالم الصغيرة مع نقطة نابضة (لأسئلة الأنهار والبحار والمحيطات)
+export function dotMap(xy) {
+  const [x, y] = xy;
+  return world(() => '#e6ecd9', [S('circle', { cx: x, cy: y, r: 34, fill: '#e5484d33', class: 'pulse' }), S('circle', { cx: x, cy: y, r: 16, fill: '#e5484d', stroke: '#fff', 'stroke-width': 5 })]);
+}
 export const CONCEPTS = {
   continent: {
     icon: '🌍', title: 'ما القارة؟',

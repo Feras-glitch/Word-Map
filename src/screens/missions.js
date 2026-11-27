@@ -8,16 +8,16 @@ import { landmarkPhoto } from '../photos.js';
 import { fem, toFem3 } from '../gender.js';
 import { speak, LANG } from '../speech.js';
 import { sfx } from '../sfx.js';
-import { gC } from '../arnum.js';
+import { gC, cnt } from '../arnum.js';
 import { clueChain, cluesFor, candidates } from '../clues.js';
 import { tri, openCard } from '../card.js';
 
 const ar = (n) => Number(n).toLocaleString('ar-EG');
 const today = () => new Date().toLocaleDateString('en-CA');
 const W = ['', 'دليل واحد', 'دليلين', '٣ أدلة', '٤ أدلة', '٥ أدلة', '٦ أدلة'];
-const cluesWord = (n) => W[n] || ar(n) + ' أدلة';
+const cluesWord = (n) => W[n] || cnt(n, 'دليل واحد', 'دليلين', 'أدلة', 'دليلاً');
 const andList = (a) => (a.length <= 1 ? a.join('') : a.slice(0, -1).join('، ') + ' و' + a[a.length - 1]);
-const dualWord = (n) => (n === 1 ? 'دولة واحدة' : n === 2 ? 'دولتين' : n <= 10 ? ar(n) + ' دول' : ar(n) + ' دولة');
+const dualWord = (n) => cnt(n, 'دولة واحدة', 'دولتين', 'دول', 'دولة');
 
 // قصة قصيرة تُحفظ في جواز الطفل ولوحة الوالدين
 function addStory(pid, story) {
@@ -93,7 +93,7 @@ export function findScreen(root, { go }) {
     const t = `أحسنت! وجدت ${target.ar} من ${cluesWord(n)}${taps === 1 ? ' ومن أول محاولة' : ''}!`;
     speak(t, LANG.ar);
     store.patchProfile(owner, (p) => { (p.found ||= {})[target.id] = { clues: n, taps, helped, date: today(), puzzle: puzzle?.from || null }; });
-    addStory(owner, { id: target.id, kind: 'find', text: `وجدتُ ${target.ar} من ${cluesWord(n)}`, detail: `${helped ? 'استعمل زر «أرني»' : 'وحده دون مساعدة'}، و${taps === 1 ? 'من أول لمسة' : 'بعد ' + ar(taps) + ' محاولات'}${puzzle ? '، في لغز من ' + puzzle.from : ''}` });
+    addStory(owner, { id: target.id, kind: 'find', text: `وجدتُ ${target.ar} من ${cluesWord(n)}`, detail: `${helped ? 'استعمل زر «أرني»' : 'وحده دون مساعدة'}، و${taps === 1 ? 'من أول لمسة' : 'بعد ' + cnt(taps, 'محاولة واحدة', 'محاولتين', 'محاولات', 'محاولة')}${puzzle ? '، في لغز من ' + puzzle.from : ''}` });
     panel.replaceChildren(h('div', { class: 'sp-head' }, h('img', { class: 'sp-flag', src: flagUrl(target.f), alt: '' }), h('b', {}, t)),
       h('div', { class: 'row wrap' }, h('button', { class: 'btn', onclick: () => openCard(target.id) }, '📖 بطاقة ' + target.ar),
         h('button', { class: 'btn soft', onclick: () => { root.innerHTML = ''; findScreen(root, { go }); } }, '🔁 لغز جديد')));
@@ -372,7 +372,7 @@ export function routeScreen(root, { go }) {
     const n = path.length - 2;
     const t = `وصلت إلى ${to.ar}! ${n === 0 ? 'لم تمرّ بأي دولة أخرى' : 'مررتَ ب' + ( n === 1 ? 'دولة واحدة' : n === 2 ? 'دولتين' : ar(n) + ' دول')} في الطريق.${path.length > best.length ? ` وأقصر طريق يمر ب${best.length - 2 === 1 ? 'دولة واحدة' : best.length - 2 === 2 ? 'دولتين' : ar(best.length - 2) + ' دول'}: ${best.slice(1, -1).map((x) => byId[x].ar).join('، ')}.` : ' وهذا أقصر طريق!'}`;
     speak(t, LANG.ar);
-    addStory(owner, { id: to.id, kind: 'route', path: path.slice(), notes: notes.slice(), text: `سافرتُ برّاً من ${from.ar} إلى ${to.ar}`, detail: `${path.length > 2 ? 'مرّ ب' + andList(path.slice(1, -1).map((x) => byId[x].ar)) : 'لم يمرّ بدول أخرى'}${wrongs ? '، واحتاج إلى ' + ar(wrongs) + ' تصحيحات أو تلميحات' : '، دون أخطاء'}` });
+    addStory(owner, { id: to.id, kind: 'route', path: path.slice(), notes: notes.slice(), text: `سافرتُ برّاً من ${from.ar} إلى ${to.ar}`, detail: `${path.length > 2 ? 'مرّ ب' + andList(path.slice(1, -1).map((x) => byId[x].ar)) : 'لم يمرّ بدول أخرى'}${wrongs ? '، واحتاج إلى ' + cnt(wrongs, 'تصحيح أو تلميح واحد', 'تصحيحين أو تلميحين', 'تصحيحات أو تلميحات', 'تصحيحاً أو تلميحاً') : '، دون أخطاء'}` });
     panel.replaceChildren(h('p', {}, '🏁 ' + t), ...notes.map((n) => h('p', { class: 'special-note' }, '💡 ' + n)), h('button', { class: 'btn', onclick: () => { root.innerHTML = ''; routeScreen(root, { go }); } }, '🔁 طريق جديد'));
   }
   drawPath();

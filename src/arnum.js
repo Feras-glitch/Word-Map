@@ -26,5 +26,5 @@ export const times = (n) => cnt(n, 'مرة واحدة', 'مرتين', 'مرات'
 export const stampsWord = (n) => (n ? cnt(n, 'ختم واحد', 'ختمان', 'أختام', 'ختماً') : 'لا أختام بعد');
 
 // الدول المذكّرة في الاستعمال العربي المشهور؛ وسائرها مؤنث
-export const MASC = new Set(['JOR', 'IRQ', 'MAR', 'SDN', 'SSD', 'LBN', 'YEM', 'MNE']);
+export const MASC = new Set(['JOR', 'IRQ', 'MAR', 'SDN', 'SSD', 'LBN', 'YEM', 'MNE', 'SOM', 'VAT', 'NER']);
 export const gC = (c, f, m) => (MASC.has(c?.id) ? m : f);

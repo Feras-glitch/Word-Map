@@ -260,7 +260,7 @@ export function openCard(id, { sub, onShowOnMap, stamp = true, replace = false, 
 
   const body = h('div', { class: 'card' },
     h('div', { class: 'card-head' },
-      h('div', { class: 'card-flag' + (isState ? '' : ' terr') }, h('img', { src: flagUrl(c.f), alt: 'علم ' + c.ar })),
+      h('div', { class: 'card-flag' + (isState ? '' : ' terr') }, h('img', { src: flagUrl(c.f), alt: 'علم ' + c.ar, onclick: () => modal(h('div', { class: 'flag-zoom' }, h('img', { src: flagUrl(c.f), alt: 'علم ' + c.ar }), h('h3', {}, 'علم ' + c.ar))) })),
       c.cen || c.bb ? h('button', { class: 'card-map', 'aria-label': 'موقع ' + c.ar + ' على الخريطة', onclick: () => { if (onShowOnMap && c.bb) { m.close(); onShowOnMap(c.id); } } }, miniMap(c.id), h('small', {}, '📍 ' + (continents[c.cont] || ''))) : null),
     sub ? h('div', { class: 'sub-note' }, '📌 ' + sub) : null,
     bar, pane,

@@ -9,6 +9,10 @@ on:
         description: 'رموز دول مفصولة بفواصل (فارغ = الكل)'
         required: false
         default: ''
+      mode:
+        description: 'upscale = إعادة تنزيل الصور المعتمدة بدقة أعلى'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -25,7 +29,7 @@ jobs:
       - run: npm ci
       - run: node scripts/build-data.mjs
       - name: الجلب
-        env: { LM_ONLY: '${{ github.event.inputs.only }}' }
+        env: { LM_ONLY: '${{ github.event.inputs.only }}', LM_MODE: '${{ github.event.inputs.mode }}' }
         run: node scripts/fetch-landmarks.mjs
       - name: الحفظ في المستودع
         run: |
@@ -33,5 +37,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A src/landmark-img content/landmark-photos.json content/LANDMARK-PHOTOS-CREDITS.md
           if git diff --cached --quiet; then echo "لا جديد"; exit 0; fi
-          git commit -m "صور المعالم من ويكيميديا كومنز (بانتظار المراجعة)"
+          git commit -m "صور المعالم من ويكيميديا كومنز (${{ github.event.inputs.mode || 'بانتظار المراجعة' }})"
           git push

@@ -27,6 +27,7 @@ import { journeysScreen } from './screens/journeys.js';
 import { playScreen } from './screens/play.js';
 import { conceptsScreen } from './concepts.js';
 import { missionsScreen, findScreen, guideScreen, nileScreen, routeScreen, layerScreen } from './screens/missions.js';
+import { examsScreen, albumScreen, bigExamScreen } from './screens/exams.js';
 
 const screens = {
   profiles: { title: 'من يلعب؟', fn: profilesScreen, noBack: true },
@@ -50,6 +51,9 @@ const screens = {
   studio: { title: '🎙️ الاستوديو الصوتي', fn: studioScreen },
   journeys: { title: '🧳 رحلاتي', fn: journeysScreen },
   play: { title: '🎮 العب', fn: playScreen },
+  exams: { title: '📝 اختباراتي', fn: examsScreen, back: 'play' },
+  exam: { title: '📚 الألبوم', fn: albumScreen, back: 'exams' },
+  bigexam: { title: '🎓 الاختبار الكبير', fn: bigExamScreen, back: 'exams' },
   concepts: { title: '📘 مفاهيم المستكشف', fn: conceptsScreen },
   missions: { title: '🔎 مهام المستكشف', fn: missionsScreen },
   find: { title: '🔎 ابحث عن بلدي', fn: findScreen, full: true, back: 'missions' },

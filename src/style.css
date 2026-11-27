@@ -547,3 +547,73 @@ ol { list-style-type: arabic-indic; }
 .leave-box { background: #fff; border-radius: 22px; padding: 20px; max-width: 360px; width: 100%; box-shadow: var(--shadow); text-align: center; }
 .leave-box p { font-size: 1.15rem; font-weight: 700; line-height: 1.8; margin: 0 0 14px; } .leave-box .row { justify-content: center; gap: 10px; }
 .time-up .hint { color: #dbe7f7; }
+
+/* ---------- v1.17: اختباراتي ---------- */
+.albums { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin: 8px 0 16px; }
+.album-tile { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 14px 10px; border: 0; border-radius: 20px; background: #fff; box-shadow: var(--shadow); border-bottom: 5px solid var(--c); font: inherit; cursor: pointer; }
+.album-tile .te { font-size: 2.2rem; } .album-tile b { font-size: 1.05rem; } .album-tile small { color: #5a6478; }
+.cover-bar { display: flex; width: 100%; height: 10px; border-radius: 99px; background: #e9edf3; overflow: hidden; }
+.cover-bar i { display: block; height: 100%; } .cover-bar i.m { background: #1a9b55; } .cover-bar i.l { background: #f0b429; }
+.album-title { display: flex; align-items: center; gap: 10px; } .album-title span { font-size: 2rem; } .album-title h2 { margin: 0; }
+.scope-chips { display: flex; gap: 6px; overflow-x: auto; padding: 6px 0; } .scope-chips .chip { white-space: nowrap; } .scope-chips .chip.on { background: var(--blue, #2776cc); color: #fff; }
+.album-head { background: #fff; border-radius: 18px; padding: 12px; margin: 8px 0; box-shadow: var(--shadow); text-align: center; } .album-head p { margin: 8px 0; font-weight: 700; }
+.album-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 8px; }
+.album-grid.knowledge, .album-grid.nature { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+.album-sub { margin: 14px 0 6px; font-size: 1rem; grid-column: 1 / -1; }
+.al-item { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 6px 4px; border: 2px solid #e3e8ef; border-radius: 14px; background: #fff; font: inherit; cursor: pointer; min-height: 44px; }
+.al-item img { width: 64px; height: 44px; object-fit: cover; border-radius: 6px; box-shadow: 0 0 0 1px #0002; filter: grayscale(1) opacity(.35); transition: filter .4s; }
+.al-item img.ph { height: 48px; }
+.al-item .kn-ic { font-size: 1.6rem; filter: grayscale(1) opacity(.4); }
+.al-item small { font-size: .78rem; line-height: 1.25; color: #8a93a5; text-align: center; overflow-wrap: anywhere; }
+.al-item .st { font-style: normal; font-size: .72rem; color: #c9ced8; letter-spacing: 1px; }
+.al-item.lit { border-color: #f0b429; } .al-item.lit img, .al-item.lit .kn-ic { filter: none; } .al-item.lit small { color: #1f2a44; font-weight: 700; } .al-item.lit .st { color: #e0a800; }
+.al-item.master { border-color: #1a9b55; background: #f1fbf5; }
+.big-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+.big-item { display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 16px; border: 2px solid #e3e8ef; background: #fff; font: inherit; font-weight: 700; cursor: pointer; text-align: start; }
+.big-item small { color: #5a6478; font-weight: 400; } .big-item.won { border-color: #1a9b55; background: #f1fbf5; }
+.fam-goal { background: #fff7e0; border: 2px solid #f0b429; border-radius: 18px; padding: 10px 14px; margin: 8px 0; display: grid; gap: 6px; }
+.fam-goal .bar { height: 12px; background: #fde8b0; border-radius: 99px; overflow: hidden; } .fam-goal .bar i { display: block; height: 100%; background: #e0a800; }
+.fam-goal.done { background: #eafaf0; border-color: #1a9b55; } .fam-goal small { color: #5a6478; }
+.next-step.assigned { background: linear-gradient(135deg, #7b5cd6, #5a3fb8); }
+.greet-big { font-size: 2rem; font-weight: 900; margin: 4px 0; }
+.q-dotmap svg { width: 100%; max-height: 190px; border-radius: 12px; }
+.q-dotmap .pulse { animation: pulse 1.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes pulse { 50% { transform: scale(1.6); opacity: .3; } }
+.ex-rep { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.ex-rep .er { display: grid; gap: 4px; background: #f7f9fc; border-radius: 12px; padding: 8px 10px; }
+.ex-rep small { color: #5a6478; } .ex-rep .weak { color: #b42318; }
+.week-sum { padding-inline-start: 18px; line-height: 1.9; }
+details.child-set { margin-top: 10px; border-top: 1px dashed #d8dee8; padding-top: 8px; } details.child-set summary { cursor: pointer; font-weight: 800; padding: 8px 0; }
+.dinner .dq { cursor: pointer; background: #f7f9fc; border-radius: 10px; padding: 8px 10px; margin: 6px 0; } .dinner .ans { color: #1a9b55; font-weight: 800; }
+.pin-ans.text { width: 100%; font-size: 1.05rem; text-align: start; margin: 6px 0; }
+.chips-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; } .chips-row .chip { font-size: .8rem; }
+.row.wrap .chip.on { background: var(--blue, #2776cc); color: #fff; }
+/* ---------- v1.17: اللوحي والكمبيوتر ---------- */
+@media (min-width: 760px) {
+  html { font-size: 112.5%; }
+  .screen:not(.full) { max-width: 980px; padding: 20px 24px 48px; }
+  .tiles.even { grid-template-columns: repeat(3, 1fr); }
+  .tiles.simple { grid-template-columns: repeat(4, 1fr); }
+  .modal { max-width: 720px; }
+  .quiz-modal .modal { max-width: 780px; }
+  .q-flag { width: min(70%, 380px); }
+  .qo-big-flag { max-height: 130px; }
+  .opt { padding: 22px 12px; font-size: 1.35rem; }
+  .q-dotmap svg { max-height: 280px; }
+  /* بطاقة الدولة بعمودين: العلم والخريطة ثابتان، والمعلومات بجانبهما */
+  .card-modal .modal { max-width: 960px; }
+  .card-modal .card { display: grid; grid-template-columns: 320px 1fr; column-gap: 20px; align-items: start; }
+  .card-modal .card > * { grid-column: 2; }
+  .card-modal .card > .card-head { grid-column: 1; grid-row: 1 / span 8; position: sticky; top: 0; grid-template-columns: 1fr; margin-top: 0; }
+  .card-head .card-flag img { max-width: 300px; }
+  .album-grid { grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); }
+  .al-item img { width: 84px; height: 58px; } .al-item img.ph { height: 64px; }
+  .albums { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+  .lm-photo img { max-width: 560px; }
+}
+@media (min-width: 1200px) { html { font-size: 120%; } .tiles.even { grid-template-columns: repeat(4, 1fr); } }
+/* العلم مكبَّراً */
+.flag-zoom { text-align: center; } .flag-zoom img { width: 100%; max-width: 640px; border-radius: 12px; box-shadow: 0 0 0 1px #0002, 0 10px 30px #0003; }
+.card-flag img { cursor: zoom-in; }
+.tour { text-align: center; } .tour .owl-wrap { display: inline-block; } .tour-e { font-size: 3.5rem; } .tour h3 { margin: 4px 0; font-size: 1.5rem; } .tour p { font-size: 1.15rem; line-height: 1.8; }
+.tour-dots { display: flex; justify-content: center; gap: 6px; margin: 10px 0 14px; } .tour-dots i { width: 10px; height: 10px; border-radius: 50%; background: #d6dde8; } .tour-dots i.on { background: var(--blue); }

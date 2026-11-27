@@ -18,6 +18,9 @@ export function normalizeProfile(p) {
   q.gender = q.gender === 'f' ? 'f' : q.gender === 'm' ? 'm' : null;
   q.zh = q.zh === true; // أسئلة الأسماء بالصينية: خيار لكل طفل يفعّله الوالدان
   q.battuta = Number.isFinite(+q.battuta) ? +q.battuta : 0;
+  // اختباراتي
+  q.exam = isObj(q.exam) ? q.exam : {}; q.examCerts = isObj(q.examCerts) ? q.examCerts : {}; q.examLog = Array.isArray(q.examLog) ? q.examLog : [];
+  if (q.assigned && (!isObj(q.assigned) || typeof q.assigned.subj !== 'string')) delete q.assigned;
   return q;
 }
 function normalizeState(d) {
@@ -84,7 +87,7 @@ export const store = {
   // النسخة الاحتياطية
   exportData() {
     const d = JSON.parse(JSON.stringify(load()));
-    if (d.parent) { delete d.parent.pin; delete d.parent.pinHash; }
+    if (d.parent) { delete d.parent.pin; delete d.parent.pinHash; delete d.parent.recHash; delete d.parent.recQ; delete d.parent.pinChange; }
     return JSON.stringify({ app: 'world-explorer', v: 2, at: new Date().toISOString(), data: d });
   },
   // يقرأ النسخة ويتحقق منها دون أن يغيّر شيئاً
@@ -102,7 +105,7 @@ export const store = {
     if (r.error) return r.error;
     const old = mem;
     const keep = old?.parent || {};
-    mem = r.data; mem.parent = { ...r.data.parent, pinHash: keep.pinHash };
+    mem = r.data; mem.parent = { ...r.data.parent, pinHash: keep.pinHash, recHash: keep.recHash, recQ: keep.recQ, pinChange: keep.pinChange };
     if (!save()) { mem = old; return 'تعذّر الحفظ على الجهاز؛ بقيت بياناتك السابقة كما هي'; }
     return null;
   },

@@ -7,6 +7,7 @@ let openUntil = 0;
 let fails = 0, blockedUntil = 0;
 const ar = (n) => n.toLocaleString('ar-EG');
 
+let resetVia = null;
 export function parentLock(onOpen, onCancel, gated = false) {
   let ok = false;
   if (Date.now() < openUntil) return onOpen();
@@ -35,8 +36,11 @@ export function parentLock(onOpen, onCancel, gated = false) {
     if (setting) {
       if (!first) { first = entry; entry = ''; sub.textContent = 'أعد إدخال الرقم للتأكيد'; return draw(); }
       if (first !== entry) { first = null; entry = ''; sub.textContent = 'الرقمان مختلفان. اختر رقماً من جديد'; return draw(); }
-      store.setParent({ pinHash: pinHash(entry) });
+      const was = store.parent.pinChange?.via;
+      store.setParent({ pinHash: pinHash(entry), pinChange: { at: new Date().toISOString(), via: resetVia || (was ? 'change' : 'set') } });
       toast('حُفظ الرقم السري');
+      // سؤال سري يكتبه الوالد: هو طريق استرجاع الرقم، بدل سؤال الحساب الذي يحله طفل بالآلة الحاسبة
+      if (!store.parent.recHash) { ok = true; m.close(); setTimeout(() => secretSetup(onOpen), 260); openUntil = Date.now() + 10 * 60e3; return; }
     } else if (Date.now() < blockedUntil) {
       entry = ''; draw(); sub.textContent = `محاولات كثيرة. انتظر ${cnt(Math.ceil((blockedUntil - Date.now()) / 1000), 'ثانية واحدة', 'ثانيتين', 'ثوانٍ', 'ثانية')}`;
       return;
@@ -52,9 +56,11 @@ export function parentLock(onOpen, onCancel, gated = false) {
     m.close(); setTimeout(onOpen, 260);
   }
   // نسيان الرقم: سؤال الحساب نفسه، ثم يُختار رقم جديد
+  // نسيان الرقم: السؤال السري الذي كتبه الوالد، ويبقى أثر التغيير ظاهراً في اللوحة
   function forgot() {
     ok = true; m.close();
-    setTimeout(() => mathGate('لاختيار رقم سري جديد', () => { store.setParent({ pinHash: null }); parentLock(onOpen, onCancel, true); }, onCancel), 260);
+    const reset = () => { store.setParent({ pinHash: null }); resetVia = 'forgot'; parentLock(() => { resetVia = null; onOpen(); }, onCancel, true); };
+    setTimeout(() => (store.parent.recHash ? secretGate(reset, onCancel) : mathGate('لاختيار رقم سري جديد', reset, onCancel)), 260);
   }
 }
 
@@ -76,3 +82,34 @@ function mathGate(why, onPass, onCancel) {
   const f = modal(box, { cls: 'lock-modal', onClose: () => { if (!passed) setTimeout(() => onCancel?.(), 0); } });
 }
 export const lockNow = () => { openUntil = 0; };
+
+// السؤال السري: سؤال وجواب يكتبهما الوالد، والجواب يُحفظ مُجزّأً لا نصاً
+const normAns = (t) => String(t || '').trim().toLowerCase().replace(/[\u064B-\u0652\u0640]/g, '').replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/\s+/g, ' ');
+const SUGGEST = ['ما اسم مدرستك الابتدائية؟', 'ما اسم أول مدينة عشت فيها؟', 'ما الطعام الذي لا تحبه أبداً؟'];
+function secretSetup(onDone) {
+  let saved = false;
+  const q = h('input', { class: 'pin-ans text', placeholder: 'اكتب سؤالاً لا يعرف الأولاد جوابه', value: SUGGEST[0] });
+  const a = h('input', { class: 'pin-ans text', placeholder: 'الجواب' });
+  const box = h('div', { class: 'lock' }, h('h3', {}, '🔑 سؤال الاسترجاع'),
+    h('p', { class: 'hint' }, 'إن نسيت الرقم السري ستجيب عن هذا السؤال لتختار رقماً جديداً. اختر سؤالاً جوابه عندك وحدك.'),
+    h('div', { class: 'chips-row' }, SUGGEST.map((t) => h('button', { class: 'chip', onclick: () => { q.value = t; } }, t))),
+    q, a,
+    h('button', { class: 'btn big', onclick: () => {
+      if (q.value.trim().length < 4 || normAns(a.value).length < 2) { toast('اكتب السؤال والجواب'); return; }
+      store.setParent({ recQ: q.value.trim(), recHash: pinHash('rec:' + normAns(a.value)) }); saved = true; toast('حُفظ سؤال الاسترجاع'); f.close();
+    } }, 'حفظ'));
+  const f = modal(box, { cls: 'lock-modal', onClose: () => { if (!saved) toast('يمكنك إضافة سؤال الاسترجاع لاحقاً من لوحة الوالدين'); setTimeout(onDone, 260); } });
+}
+export const editSecret = (onDone) => secretSetup(onDone || (() => {}));
+let secFails = 0, secBlocked = 0;
+function secretGate(onPass, onCancel) {
+  let passed = false;
+  const a = h('input', { class: 'pin-ans text', placeholder: 'الجواب' });
+  const box = h('div', { class: 'lock' }, h('h3', {}, '🔑 سؤال الاسترجاع'), h('p', {}, store.parent.recQ || ''), a,
+    h('button', { class: 'btn big', onclick: () => {
+      if (Date.now() < secBlocked) { toast('محاولات كثيرة. انتظر بضع دقائق'); return; }
+      if (pinHash('rec:' + normAns(a.value)) === store.parent.recHash) { secFails = 0; passed = true; f.close(); setTimeout(onPass, 260); }
+      else { a.value = ''; toast('الجواب غير صحيح'); if (++secFails >= 3) { secFails = 0; secBlocked = Date.now() + 10 * 60e3; } }
+    } }, 'تأكيد'));
+  const f = modal(box, { cls: 'lock-modal', onClose: () => { if (!passed) setTimeout(() => onCancel?.(), 0); } });
+}
