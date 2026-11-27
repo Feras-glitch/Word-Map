@@ -15,7 +15,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Welwitschia_mirabilis(2).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "ALB": {
   "q": "wiki:Golden eagle",
@@ -267,7 +267,7 @@
   "license": "Public domain",
   "licenseUrl": "",
   "page": "https://commons.wikimedia.org/wiki/File:Canada_goose_on_Seedskadee_NWR_(27826185489).jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "CHE": {
   "q": "wiki:St. Bernard (dog)",
@@ -420,7 +420,7 @@
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
   "page": "https://commons.wikimedia.org/wiki/File:Amazona_imperialis_-Roseau_-Dominica_-aviary-6a-3c.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "DNK": {
   "q": "wiki:Danish pastry",
@@ -762,7 +762,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Mansaf_1.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "JPN": {
   "q": "wiki:Sushi",
@@ -924,7 +924,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Aloe_polyphylla_3.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "LTU": {
   "q": "wiki:White stork",
@@ -1041,7 +1041,7 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "page": "https://commons.wikimedia.org/wiki/File:Maltese_600.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "MMR": {
   "q": "wiki:Mohinga",
@@ -1059,7 +1059,7 @@
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "page": "https://commons.wikimedia.org/wiki/File:Olea_europaea_details.jpg",
-  "review": "pending"
+  "review": "rejected"
  },
  "MNG": {
   "q": "wiki:Bactrian camel",
@@ -1653,7 +1653,7 @@
   "license": "CC0",
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "page": "https://commons.wikimedia.org/wiki/File:Farg%27onacha_osh.jpg",
-  "review": "pending"
+  "review": "ok"
  },
  "VCT": {
   "q": "search:Amazona guildingii|Amazona_guildingii_-Botanical_Gardens_-Kingstown_-Saint_Vincent-8a-4c.jpg",
