@@ -152,6 +152,15 @@
   "page": "https://commons.wikimedia.org/wiki/File:American_bison_k5680-1.jpg",
   "review": "ok"
  },
+ "namerica-polar-bear": {
+  "q": "search:polar bear Ursus maritimus Svalbard|",
+  "file": "Polar bear (Ursus maritimus) with its prey.jpg",
+  "artist": "AWeith",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Polar_bear_(Ursus_maritimus)_with_its_prey.jpg",
+  "review": "pending"
+ },
  "namerica-raccoon": {
   "q": "wiki:Raccoon",
   "file": "Raccoon_in_Central_Park_(35264).jpg",
