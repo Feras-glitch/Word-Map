@@ -1,1 +1,308 @@
-{}
+{
+ "asia-bornean-orangutan": {
+  "q": "wiki:Bornean orangutan",
+  "file": "Tanjung_Puting30477.jpg",
+  "artist": "Nanosanchez",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tanjung_Puting30477.jpg",
+  "review": "pending"
+ },
+ "asia-red-panda": {
+  "q": "wiki:Red panda",
+  "file": "Red_Panda_(24986761703).jpg",
+  "artist": "Mathias Appel",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Red_Panda_(24986761703).jpg",
+  "review": "pending"
+ },
+ "asia-indian-rhinoceros": {
+  "q": "wiki:Indian rhinoceros",
+  "file": "Great-Indian-one-horned-rhinoceros-at-Kaziranga-national-park-in-Assam-India.jpg",
+  "artist": "Mayank1704",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Great-Indian-one-horned-rhinoceros-at-Kaziranga-national-park-in-Assam-India.jpg",
+  "review": "pending"
+ },
+ "asia-japanese-macaque": {
+  "q": "wiki:Japanese macaque",
+  "file": "Japanese_Snow_Monkey_(Macaque)_Mother_Grooms_Her_Young.jpg",
+  "artist": "Rocktendo &amp; Adam Gman",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Japanese_Snow_Monkey_(Macaque)_Mother_Grooms_Her_Young.jpg",
+  "review": "pending"
+ },
+ "asia-arabian-oryx": {
+  "q": "wiki:Arabian oryx",
+  "file": "Arabian_oryx_(oryx_leucoryx).jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Arabian_oryx_(oryx_leucoryx).jpg",
+  "review": "pending"
+ },
+ "africa-lion": {
+  "q": "wiki:Lion",
+  "file": "020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg",
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg",
+  "review": "pending"
+ },
+ "africa-plains-zebra": {
+  "q": "wiki:Plains zebra",
+  "file": "Equus_quagga_burchellii_-_Etosha,_2014.jpg",
+  "artist": "Yathin S Krishnappa",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Equus_quagga_burchellii_-_Etosha,_2014.jpg",
+  "review": "pending"
+ },
+ "africa-hippopotamus": {
+  "q": "wiki:Hippopotamus",
+  "file": "Portrait_Hippopotamus_in_the_water.jpg",
+  "artist": "Muhammad Mahdi Karim",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Portrait_Hippopotamus_in_the_water.jpg",
+  "review": "pending"
+ },
+ "africa-nile-crocodile": {
+  "q": "wiki:Nile crocodile",
+  "file": "NileCrocodile.jpg",
+  "artist": "Dewet",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:NileCrocodile.jpg",
+  "review": "pending"
+ },
+ "africa-common-ostrich": {
+  "q": "wiki:Common ostrich",
+  "file": "Struthio_camelus_-_Etosha_2014_(3).jpg",
+  "artist": "Yathin S Krishnappa",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Struthio_camelus_-_Etosha_2014_(3).jpg",
+  "review": "pending"
+ },
+ "africa-giraffe": {
+  "q": "wiki:Giraffe",
+  "file": "Giraffe_Mikumi_National_Park.jpg",
+  "artist": "Muhammad Mahdi Karim Facebook The making of this document was supported by Wikimedia CH. (Submit your project!) For all the files concerned, please see the cate",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html",
+  "page": "https://commons.wikimedia.org/wiki/File:Giraffe_Mikumi_National_Park.jpg",
+  "review": "pending"
+ },
+ "europe-red-fox": {
+  "q": "wiki:Red fox",
+  "file": "Portrait_of_a_red_fox_in_Rautas_fjällurskog_(4×3).jpg",
+  "artist": "ClaudiaTen",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Portrait_of_a_red_fox_in_Rautas_fj%C3%A4llurskog_(4%C3%973).jpg",
+  "review": "pending"
+ },
+ "europe-european-hedgehog": {
+  "q": "wiki:European hedgehog",
+  "file": "Erinaceus_europaeus_LC0119.jpg",
+  "artist": "Jörg Hempel",
+  "license": "CC BY-SA 2.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/de/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Erinaceus_europaeus_LC0119.jpg",
+  "review": "pending"
+ },
+ "europe-reindeer": {
+  "q": "wiki:Reindeer",
+  "file": "Reinbukken_på_frisk_grønt_beite._-_panoramio.jpg",
+  "artist": "Are G Nilsen",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Reinbukken_p%C3%A5_frisk_gr%C3%B8nt_beite._-_panoramio.jpg",
+  "review": "pending"
+ },
+ "europe-eurasian-lynx": {
+  "q": "wiki:Eurasian lynx",
+  "file": "Lynx_Nationalpark_Bayerischer_Wald_01.jpg",
+  "artist": "Aconcagua (talk)",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Lynx_Nationalpark_Bayerischer_Wald_01.jpg",
+  "review": "pending"
+ },
+ "europe-red-deer": {
+  "q": "wiki:Red deer",
+  "file": "Cervus_elaphus_Luc_Viatour_6.jpg",
+  "artist": "Lviatour",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cervus_elaphus_Luc_Viatour_6.jpg",
+  "review": "pending"
+ },
+ "namerica-american-bison": {
+  "q": "wiki:American bison",
+  "file": "American_bison_k5680-1.jpg",
+  "artist": "Jack Dykinga",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:American_bison_k5680-1.jpg",
+  "review": "pending"
+ },
+ "namerica-raccoon": {
+  "q": "wiki:Raccoon",
+  "file": "Raccoon_in_Central_Park_(35264).jpg",
+  "artist": "Rhododendrites",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Raccoon_in_Central_Park_(35264).jpg",
+  "review": "pending"
+ },
+ "namerica-north-american-beaver": {
+  "q": "wiki:North American beaver",
+  "file": "American_Beaver.jpg",
+  "artist": "Steve from Washington, DC, USA",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:American_Beaver.jpg",
+  "review": "pending"
+ },
+ "namerica-monarch-butterfly": {
+  "q": "wiki:Monarch butterfly",
+  "file": "Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg",
+  "artist": "Photo by and (c)2007 Derek Ramsey (Ram-Man)",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html",
+  "page": "https://commons.wikimedia.org/wiki/File:Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg",
+  "review": "pending"
+ },
+ "samerica-jaguar": {
+  "q": "wiki:Jaguar",
+  "file": "Standing_jaguar.jpg",
+  "artist": "USFWS",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Standing_jaguar.jpg",
+  "review": "pending"
+ },
+ "samerica-capybara": {
+  "q": "wiki:Capybara",
+  "file": "Capybaracropped.jpg",
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Capybaracropped.jpg",
+  "review": "pending"
+ },
+ "samerica-giant-anteater": {
+  "q": "wiki:Giant anteater",
+  "file": "Myresluger2.jpg",
+  "artist": "Malene Thyssen",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Myresluger2.jpg",
+  "review": "pending"
+ },
+ "samerica-green-anaconda": {
+  "q": "wiki:Green anaconda",
+  "file": "Sucuri_verde.jpg",
+  "artist": "MKAMPIS",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Sucuri_verde.jpg",
+  "review": "pending"
+ },
+ "samerica-amazon-river-dolphin": {
+  "q": "wiki:Amazon river dolphin",
+  "file": "Amazonas-Flussdelfin_Orinoko3.jpg",
+  "artist": "Oceancetaceen",
+  "license": "CC BY-SA 2.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/de/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Amazonas-Flussdelfin_Orinoko3.jpg",
+  "review": "pending"
+ },
+ "oceania-koala": {
+  "q": "wiki:Koala",
+  "file": "Koala_climbing_tree.jpg",
+  "artist": "Diliff",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Koala_climbing_tree.jpg",
+  "review": "pending"
+ },
+ "oceania-platypus": {
+  "q": "wiki:Platypus",
+  "file": "Duck-billed_platypus_(Ornithorhynchus_anatinus)_Scottsdale.jpg",
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Duck-billed_platypus_(Ornithorhynchus_anatinus)_Scottsdale.jpg",
+  "review": "pending"
+ },
+ "oceania-emu": {
+  "q": "wiki:Emu",
+  "file": "Emu_1_-_Tidbinbilla.jpg",
+  "artist": "JJ Harrison (https://www.jjharrison.com.au/)",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Emu_1_-_Tidbinbilla.jpg",
+  "review": "pending"
+ },
+ "oceania-tasmanian-devil": {
+  "q": "wiki:Tasmanian devil",
+  "file": "Sarcophilus_harrisii_taranna.jpg",
+  "artist": "JJ Harrison (https://www.jjharrison.com.au/)",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Sarcophilus_harrisii_taranna.jpg",
+  "review": "pending"
+ },
+ "oceania-ocellaris-clownfish": {
+  "q": "wiki:Ocellaris clownfish",
+  "file": "Clown_fish_in_the_Andaman_Coral_Reef.jpg",
+  "artist": "Ritiks",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Clown_fish_in_the_Andaman_Coral_Reef.jpg",
+  "review": "pending"
+ },
+ "antarctica-emperor-penguin": {
+  "q": "wiki:Emperor penguin",
+  "file": "Aptenodytes_forsteri_-Snow_Hill_Island,_Antarctica_-adults_and_juvenile-8.jpg",
+  "artist": "Ian Duffy from UK",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Aptenodytes_forsteri_-Snow_Hill_Island,_Antarctica_-adults_and_juvenile-8.jpg",
+  "review": "pending"
+ },
+ "antarctica-adelie-penguin": {
+  "q": "wiki:Adélie penguin",
+  "file": "Hope_Bay-2016-Trinity_Peninsula–Adélie_penguin_(Pygoscelis_adeliae)_04.jpg",
+  "artist": "Godot13",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Hope_Bay-2016-Trinity_Peninsula%E2%80%93Ad%C3%A9lie_penguin_(Pygoscelis_adeliae)_04.jpg",
+  "review": "pending"
+ },
+ "antarctica-leopard-seal": {
+  "q": "wiki:Leopard seal",
+  "file": "Antarctic_Sound-2016-Brown_Bluff–Leopard_seal_(Hydrurga_leptonyx)_04.jpg",
+  "artist": "Godot13",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Antarctic_Sound-2016-Brown_Bluff%E2%80%93Leopard_seal_(Hydrurga_leptonyx)_04.jpg",
+  "review": "pending"
+ },
+ "antarctica-weddell-seal": {
+  "q": "wiki:Weddell seal",
+  "file": "Mikkelsen_Harbour-2016-Trinity_Island_(D'Hainaut_Island)–Weddell_seal_(Leptonychotes_weddellii)_03.jpg",
+  "artist": "Godot13",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Mikkelsen_Harbour-2016-Trinity_Island_(D%27Hainaut_Island)%E2%80%93Weddell_seal_(Leptonychotes_weddellii)_03.jpg",
+  "review": "pending"
+ }
+}
